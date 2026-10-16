@@ -1,0 +1,44 @@
+---
+import { type Lang, useT } from '../i18n';
+
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+---
+<section class="statement" id="statement">
+  <i class="px" style="top:64px;left:8%"></i><i class="px" style="top:96px;left:calc(8% + 32px);opacity:.6"></i>
+  <i class="px" style="bottom:96px;right:10%"></i><i class="px" style="bottom:64px;right:calc(10% + 32px);opacity:.6"></i><i class="px" style="bottom:128px;right:calc(10% + 32px);opacity:.3"></i>
+  <div class="wrap">
+    <h2 class="wide">{t('statement.lines').map((line) => <span>{line}</span>)}</h2>
+    <p>{t('statement.body')}</p>
+    <a class="go" href="#work">{t('statement.cta')} <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<style>
+  .statement { position: relative; background: var(--pink); color: #fff; padding: 140px 0 120px; overflow: hidden; text-align: center; }
+  .statement::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+  .px { position: absolute; background: #fff; width: 32px; height: 32px; }
+  h2 { position: relative; font-size: clamp(48px, 10vw, 160px); line-height: 0.88; }
+  h2 span { display: block; opacity: 0.28; transition: opacity 0.25s linear; }
+  p { position: relative; max-width: 640px; margin: 40px auto 0; font-size: clamp(17px, 1.6vw, 20px); font-weight: 500; }
+  .go { position: relative; display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; font-size: 18px; font-weight: 800; font-stretch: 125%; text-transform: uppercase; border-bottom: 3px solid #fff; padding-bottom: 4px; transition: gap 0.2s; }
+  .go:hover { gap: 20px; }
+  @media (max-width: 760px) { .statement { padding: 96px 0 88px; } }
+  @media (prefers-reduced-motion: reduce) { h2 span { opacity: 1; } }
+</style>
+
+<script>
+  // Lines light up as they scroll into the middle of the screen.
+  const lines = [...document.querySelectorAll<HTMLElement>('.statement h2 span')];
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const light = () => {
+      const vh = innerHeight;
+      for (const l of lines) {
+        const p = 1 - (l.getBoundingClientRect().top - vh * 0.35) / (vh * 0.4);
+        l.style.opacity = Math.max(0.28, Math.min(1, p)).toFixed(2);
+      }
+    };
+    addEventListener('scroll', () => requestAnimationFrame(light), { passive: true });
+    light();
+  }
+</script>

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Local working material (design prototypes, content inventory) — not part of the site
+prototypes/
+content-audit.csv
+.claude/settings.local.json

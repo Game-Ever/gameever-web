@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-game-ever.png';
+import { type Lang, useT, url } from '../i18n';
+
+interface Props { lang: Lang; path: string; variant: 'home' | 'project' }
+const { lang, path, variant } = Astro.props;
+const t = useT(lang);
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const home = url(lang);
+const links = [
+  { href: `${home}#work`, label: t('nav.work') },
+  { href: `${home}#services`, label: t('nav.services') },
+  { href: `${home}#clients`, label: t('nav.studio') },
+  { href: `${home}#contact`, label: t('nav.contact') },
+];
+---
+<header class="site-header" data-variant={variant}>
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href={home}><Image src={logo} alt="Game Ever" height={36} densities={[1, 2]} loading="eager" /></a>
+    {variant === 'home' ? (
+      <ul id="site-menu">
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    ) : (
+      <a class="back" href={`${home}#work`}>{t('project.allWork')}</a>
+    )}
+    <a class="lang" href={url(other, path)} hreflang={other} lang={other}>
+      <span aria-current="true">{lang.toUpperCase()}</span> / {other.toUpperCase()}
+    </a>
+    {variant === 'home' && (
+      <button class="burger" aria-label={t('nav.menu')} aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
+    )}
+  </nav>
+</header>
+
+<style>
+  .site-header { position: fixed; inset: 0 0 auto; z-index: 40; border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.3s; }
+  .site-header[data-variant='project'] { background: linear-gradient(rgba(0, 0, 0, 0.55), transparent); }
+  .site-header.solid { background: rgba(13, 13, 15, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--line); }
+  nav { display: flex; align-items: center; gap: 32px; height: var(--header-h); }
+  .logo img { height: 36px; width: auto; }
+  ul { display: flex; gap: 30px; list-style: none; padding: 0; margin-left: auto; font-weight: 600; font-size: 15px; font-stretch: 110%; }
+  ul a:hover { color: var(--pink); }
+  .back { margin-left: auto; font-weight: 700; font-stretch: 115%; text-transform: uppercase; font-size: 14px; border: 2px solid rgba(255, 255, 255, 0.8); padding: 10px 16px; }
+  .back:hover { background: var(--fg); color: var(--bg); }
+  .lang { font-family: var(--mono); font-size: 12px; border: 1px solid rgba(255, 255, 255, 0.4); padding: 6px 10px; color: var(--mute); white-space: nowrap; }
+  .lang span { color: var(--fg); }
+  .lang:hover { border-color: var(--fg); }
+  .burger { display: none; background: none; border: 0; width: 40px; height: 40px; cursor: pointer; }
+  .burger span { display: block; height: 2px; background: var(--fg); margin: 7px 6px; }
+
+  @media (max-width: 760px) {
+    nav { gap: 12px; }
+    ul { display: none; }
+    .lang { margin-left: auto; }
+    .site-header[data-variant='project'] .lang { margin-left: 0; }
+    .burger { display: block; }
+    nav.open ul { display: flex; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px; margin: 0; }
+    nav.open ul a { display: block; padding: 14px 0; font-size: 20px; border-bottom: 1px solid var(--line); }
+    .back { font-size: 12px; padding: 8px 12px; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header')!;
+  const nav = header.querySelector('nav')!;
+  const burger = header.querySelector<HTMLButtonElement>('.burger');
+  const onScroll = () => header.classList.toggle('solid', scrollY > innerHeight * 0.6 || nav.classList.contains('open'));
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  burger?.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    onScroll();
+  });
+  nav.querySelectorAll('ul a').forEach((a) => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger?.setAttribute('aria-expanded', 'false');
+    onScroll();
+  }));
+</script>

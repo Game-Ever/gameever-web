@@ -1,0 +1,50 @@
+/* Design tokens — direction "D · Showcase" */
+:root {
+  --bg: #0d0d0f;
+  --bg2: #17171a;
+  --fg: #f2f0eb;
+  --fg2: #c9c7c2;
+  --mute: #8e8c88;
+  --line: #2a2a2e;
+  --line2: #4a4a50;
+  --pink: #ff1f6b;
+  --pink-d: #c8104f;
+  --paper: #f2f0eb;
+  --paper-mute: #77746e;
+  --sans: 'Archivo', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --header-h: 76px;
+  --gutter: 40px;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+::selection { background: var(--pink); color: #fff; }
+
+.wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.wide { font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

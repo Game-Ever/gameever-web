@@ -1,0 +1,40 @@
+---
+import { type Lang, useT } from '../i18n';
+
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+const blocks = [
+  { n: '01', title: t('services.1.title'), body: t('services.1.body'), tags: t('services.1.tags'), cta: t('services.1.cta'), service: 'brand-games' },
+  { n: '02', title: t('services.2.title'), body: t('services.2.body'), tags: t('services.2.tags'), cta: t('services.2.cta'), service: 'codev' },
+];
+---
+<section class="wrap services" id="services">
+  {blocks.map((b) => (
+    <article class="svc">
+      <span class="num">{b.n}</span>
+      <h2 class="wide">{b.title}</h2>
+      <div>
+        <p>{b.body}</p>
+        <ul>{b.tags.map((tag) => <li>{tag}</li>)}</ul>
+        <a class="link" href={`?sv=${b.service}#work`} data-jump-service={b.service}>{b.cta} →</a>
+      </div>
+    </article>
+  ))}
+</section>
+
+<style>
+  .services { border-top: 1px solid var(--line); }
+  .svc { display: grid; grid-template-columns: 120px 1.3fr 1fr; gap: 40px; padding: 64px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .svc > * { min-width: 0; }
+  .num { font-family: var(--mono); color: var(--pink); font-size: 14px; padding-top: 12px; }
+  h2 { font-size: clamp(28px, 4.6vw, 68px); line-height: 0.92; overflow-wrap: break-word; }
+  p { color: var(--fg2); font-size: 18px; }
+  ul { list-style: none; padding: 0; margin: 20px 0 26px; display: flex; flex-wrap: wrap; gap: 6px; }
+  li { border: 1px solid var(--line2); padding: 5px 10px; font-size: 14px; font-weight: 600; }
+  .link { font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 15px; border-bottom: 2px solid var(--pink); padding-bottom: 3px; }
+  .link:hover { color: var(--pink); }
+  @media (max-width: 1000px) {
+    .svc { grid-template-columns: 1fr; gap: 14px; }
+    .num { padding: 0; }
+  }
+</style>

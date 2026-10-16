@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import Reel from '../../components/Reel.astro';
+import Statement from '../../components/Statement.astro';
+import Wall from '../../components/Wall.astro';
+import Services from '../../components/Services.astro';
+import Clients from '../../components/Clients.astro';
+import Contact from '../../components/Contact.astro';
+import { type Lang, langPaths, getProjects } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const projects = await getProjects();
+---
+<Base lang={lang} path="">
+  <main>
+    <Reel lang={lang} />
+    <Statement lang={lang} />
+    <Wall lang={lang} projects={projects} />
+    <Services lang={lang} />
+    <Clients lang={lang} />
+  </main>
+  <Contact lang={lang} />
+</Base>

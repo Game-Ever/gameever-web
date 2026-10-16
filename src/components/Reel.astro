@@ -1,0 +1,87 @@
+---
+import { type Lang, useT, REEL_ID } from '../i18n';
+
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+const src = `https://www.youtube-nocookie.com/embed/${REEL_ID}?autoplay=1&mute=1&loop=1&playlist=${REEL_ID}&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&enablejsapi=1`;
+---
+<section class="reel" aria-label={t('reel.label')}
+  data-i18n={JSON.stringify({ pause: t('reel.pause'), play: t('reel.play'), mute: t('reel.mute'), unmute: t('reel.unmute') })}>
+  <img class="poster" src={`https://i.ytimg.com/vi/${REEL_ID}/maxresdefault.jpg`} alt="" fetchpriority="high" />
+  <iframe class="yt" title={t('reel.label')} allow="autoplay; encrypted-media" tabindex="-1" data-src={src}></iframe>
+  <span class="label mono">{t('reel.label')}</span>
+  <div class="controls">
+    <button class="c-play" aria-label={t('reel.pause')}><svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" /></svg></button>
+    <button class="c-mute" aria-label={t('reel.unmute')}><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" /><path d="M17 9l4 6M21 9l-4 6" /></svg></button>
+    <button class="c-restart" aria-label={t('reel.restart')}><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7" /><path d="M4 4v4h4" /></svg></button>
+  </div>
+  <a class="scroll mono" href="#statement">{t('reel.scroll')} ↓</a>
+</section>
+
+<style>
+  .reel { position: relative; height: 100svh; min-height: 520px; overflow: hidden; background: #000; }
+  .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .yt { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100%; min-width: 177.78svh; transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s; }
+  .yt.on { opacity: 1; }
+  .reel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 22%, transparent 70%, rgba(13, 13, 15, 0.9) 100%); pointer-events: none; }
+  .controls { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+  .controls button { width: 52px; height: 52px; border: 2px solid rgba(255, 255, 255, 0.75); background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(6px); cursor: pointer; display: grid; place-items: center; transition: background 0.2s, border-color 0.2s; }
+  .controls button:hover { background: var(--pink); border-color: var(--pink); }
+  .controls :global(svg) { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; }
+  .label, .scroll { position: absolute; bottom: 52px; z-index: 3; color: rgba(255, 255, 255, 0.8); }
+  .label { left: var(--gutter); }
+  .scroll { right: var(--gutter); }
+  @media (max-width: 760px) {
+    .label, .scroll { display: none; }
+    .controls { bottom: 28px; }
+  }
+</style>
+
+<script>
+  const ICONS = {
+    pause: '<svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>',
+    play: '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>',
+    muted: '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>',
+    sound: '<svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a9 9 0 0 1 0 13"/></svg>',
+  };
+  const reel = document.querySelector<HTMLElement>('.reel');
+  if (reel) {
+    const i18n = JSON.parse(reel.dataset.i18n!);
+    const yt = reel.querySelector<HTMLIFrameElement>('.yt')!;
+    const btnPlay = reel.querySelector<HTMLButtonElement>('.c-play')!;
+    const btnMute = reel.querySelector<HTMLButtonElement>('.c-mute')!;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let playing = false;
+    let muted = true;
+    const cmd = (func: string, args: unknown[] = []) =>
+      yt.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
+    const setPlay = (p: boolean) => {
+      playing = p;
+      btnPlay.innerHTML = p ? ICONS.pause : ICONS.play;
+      btnPlay.setAttribute('aria-label', p ? i18n.pause : i18n.play);
+    };
+    const load = () => {
+      yt.src = yt.dataset.src!;
+      yt.addEventListener('load', () => setTimeout(() => yt.classList.add('on'), 1200), { once: true });
+      setPlay(true);
+    };
+    if (reduce) setPlay(false); else load();
+    btnPlay.addEventListener('click', () => {
+      if (!yt.getAttribute('src')) return load();
+      cmd(playing ? 'pauseVideo' : 'playVideo');
+      setPlay(!playing);
+    });
+    btnMute.addEventListener('click', () => {
+      muted = !muted;
+      cmd(muted ? 'mute' : 'unMute');
+      btnMute.innerHTML = muted ? ICONS.muted : ICONS.sound;
+      btnMute.setAttribute('aria-label', muted ? i18n.unmute : i18n.mute);
+    });
+    reel.querySelector('.c-restart')!.addEventListener('click', () => {
+      if (!yt.getAttribute('src')) return load();
+      cmd('seekTo', [0, true]);
+      cmd('playVideo');
+      setPlay(true);
+    });
+  }
+</script>

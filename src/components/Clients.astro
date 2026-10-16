@@ -1,0 +1,30 @@
+---
+import { type Lang, useT, CLIENTS } from '../i18n';
+
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+const half = Math.ceil(CLIENTS.length / 2);
+const rows = [CLIENTS.slice(0, half), CLIENTS.slice(half)];
+---
+<section class="clients" id="clients">
+  <div class="wrap">
+    <h2 class="mono">{t('clients.label')}</h2>
+    <ul class="sr-only">{CLIENTS.map((c) => <li>{c}</li>)}</ul>
+  </div>
+  {rows.map((row, i) => (
+    <div class:list={['belt', { rev: i === 1 }]} aria-hidden="true">
+      {[...row, ...row].map((c) => <span>{c}</span>)}
+    </div>
+  ))}
+</section>
+
+<style>
+  .clients { padding: 120px 0; overflow: hidden; }
+  h2 { color: var(--mute); font-weight: 400; margin-bottom: 36px; }
+  .belt { display: flex; width: max-content; gap: 64px; animation: belt 40s linear infinite; padding: 10px 0; }
+  .belt.rev { animation-direction: reverse; animation-duration: 46s; }
+  span { font-size: clamp(34px, 5vw, 72px); font-stretch: 125%; font-weight: 900; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1.5px #5a5a60; white-space: nowrap; transition: color 0.2s, -webkit-text-stroke-color 0.2s; }
+  span:hover { color: var(--fg); -webkit-text-stroke-color: var(--fg); }
+  span::after { content: ''; display: inline-block; width: 0.32em; height: 0.32em; background: var(--pink); margin-left: 64px; vertical-align: 0.25em; }
+  @keyframes belt { to { transform: translateX(-50%); } }
+</style>

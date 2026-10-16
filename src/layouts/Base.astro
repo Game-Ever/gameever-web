@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import logo from '../assets/logo-game-ever.png';
+import { type Lang, LANGS, useT, SOCIAL } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  /** Path after the language prefix, e.g. "" or "work/okhlos". Used for hreflang links. */
+  path: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  variant?: 'home' | 'project';
+  jsonLd?: Record<string, unknown>;
+}
+
+const { lang, path, title, description, image, variant = 'home', jsonLd } = Astro.props;
+const t = useT(lang);
+const pageTitle = title ? `${title} — Game Ever` : t('meta.title');
+const pageDescription = description ?? t('meta.description');
+const site = Astro.site!;
+const pathFor = (l: Lang) => new URL(`/${l}/${path ? path + '/' : ''}`, site).href;
+const ogImage = image ?? 'https://i.ytimg.com/vi/qyPSBhVrY08/maxresdefault.jpg';
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Game Ever',
+  legalName: 'Game Ever S.A.',
+  url: site.href,
+  logo: new URL(logo.src, site).href,
+  foundingDate: '2010',
+  email: 'info@gameeverstudio.com',
+  address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
+  sameAs: SOCIAL.map((s) => s.url),
+};
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <link rel="canonical" href={pathFor(lang)} />
+  {LANGS.map((l) => <link rel="alternate" hreflang={l} href={pathFor(l)} />)}
+  <link rel="alternate" hreflang="x-default" href={pathFor('en')} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Game Ever" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={pathFor(lang)} />
+  <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0d0d0f" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(org)} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+</head>
+<body>
+  <Header lang={lang} path={path} variant={variant} />
+  <slot />
+</body>
+</html>

@@ -1,0 +1,225 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import YouTube from '../../../components/YouTube.astro';
+import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP } from '../../../i18n';
+import { SERVICES, PLATFORMS } from '../../../data/taxonomy';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return LANGS.flatMap((lang) =>
+    projects.map((project, i) => ({
+      params: { lang, slug: project.id },
+      props: { project, next: projects[(i + 1) % projects.length] },
+    })));
+}
+
+interface Props { project: Project; next: Project }
+const lang = Astro.params.lang as Lang;
+const { project, next } = Astro.props;
+const d = project.data;
+const t = useT(lang);
+
+const platforms = d.platforms.map((p) => PLATFORMS[p][lang]);
+const services = d.services.map((s) => SERVICES[s][lang]);
+const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
+const trailer = allVideos[0];
+// Prefer a landscape screenshot behind the title; fall back to the square key art.
+const heroBg = d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
+const og = await getImage({ src: d.cover, width: 1200, format: 'jpg' });
+const ogUrl = new URL(og.src, Astro.site).href;
+const isGame = d.services.some((s) => ['brand-games', 'web-games', 'edutainment', 'original-ip'].includes(s)) && d.platforms.some((p) => !['youtube', 'tv'].includes(p));
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': isGame ? 'VideoGame' : 'CreativeWork',
+  name: d.title,
+  description: tr(d.description, lang),
+  image: ogUrl,
+  dateCreated: String(d.year),
+  creator: { '@type': 'Organization', name: 'Game Ever' },
+  ...(d.client !== ORIGINAL_IP ? { sponsor: { '@type': 'Organization', name: d.client } } : {}),
+  ...(isGame ? { gamePlatform: platforms } : {}),
+};
+---
+<Base lang={lang} path={`work/${project.id}`} title={d.title} description={tr(d.summary, lang)} image={ogUrl} variant="project" jsonLd={jsonLd}>
+  <main>
+    <section class="hero">
+      <Image class="bg" src={heroBg} alt="" widths={[640, 1024, 1600, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      <div class="wrap inner">
+        <div>
+          <span class="mono kicker">{[services[0], d.client === ORIGINAL_IP ? null : d.client, d.years ?? d.year].filter(Boolean).join(" · ")}</span>
+          <h1 class="wide">{d.title}</h1>
+          <div class="tags">
+            {d.genre && <span>{tr(d.genre, lang)}</span>}
+            {platforms.map((p) => <span>{p}</span>)}
+          </div>
+          {(trailer || d.links.length > 0) && (
+            <div class="ctas">
+              {trailer && <button class="cta primary" data-trailer={trailer}>▶ {t('project.trailer')}</button>}
+              {d.links.map((l) => <a class="cta" href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
+            </div>
+          )}
+        </div>
+        <Image class="art" src={d.cover} alt={d.title} width={320} height={320} densities={[1, 2]} loading="eager" />
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="overview">
+        <div>
+          <p class="lead">{tr(d.summary, lang)}</p>
+          <p class="body">{tr(d.description, lang)}</p>
+        </div>
+        <dl>
+          <dt>{t("project.client")}</dt><dd>{clientName(d.client, lang)}</dd>
+          <dt>{t('project.year')}</dt><dd>{d.years ?? d.year}</dd>
+          {platforms.length > 0 && <><dt>{t('project.platforms')}</dt><dd>{platforms.join(' · ')}</dd></>}
+          {d.genre && <><dt>{t('project.genre')}</dt><dd>{tr(d.genre, lang)}</dd></>}
+          {d.role && <><dt>{t('project.role')}</dt><dd>{tr(d.role, lang)}</dd></>}
+          <dt>{t('project.services')}</dt><dd>{services.join(' · ')}</dd>
+        </dl>
+      </section>
+
+      {d.entries.length > 0 ? (
+        <section class="block">
+          <h2 class="wide">{t('project.seasons')}</h2>
+          <div class="entries">
+            {d.entries.map((e) => (
+              <article>
+                {e.videos[0]
+                  ? <YouTube id={e.videos[0]} title={tr(e.title, lang)} playLabel={t('project.play')} />
+                  : <div class="novideo" />}
+                <h3>{tr(e.title, lang)}</h3>
+                <span class="mono">{e.year}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : allVideos.length > 0 && (
+        <section class="block">
+          <div class:list={['videos', { single: allVideos.length === 1 }]}>
+            {allVideos.map((id, i) => <YouTube id={id} title={`${d.title} ${i + 1}`} playLabel={t('project.play')} />)}
+          </div>
+        </section>
+      )}
+
+      {d.gallery.length > 0 && (
+        <section class="block" aria-label={t('project.gallery')}>
+          <div class="gallery">
+            {d.gallery.map((src, i) => <figure><Image src={src} alt={`${d.title} — ${i + 1}`} widths={[400, 800]} sizes="(max-width: 760px) 100vw, 400px" /></figure>)}
+          </div>
+        </section>
+      )}
+
+      {d.credits && (
+        <details class="credits">
+          <summary class="wide">{t('project.credits')}</summary>
+          {d.credits.split('\n\n').map((c) => <p class="mono">{c}</p>)}
+        </details>
+      )}
+    </div>
+
+    <a class="next" href={url(lang, `work/${next.id}`)}>
+      <div class="wrap">
+        <div><span class="mono">{t('project.next')}</span><h2 class="wide">{next.data.title}</h2></div>
+        <Image src={next.data.cover} alt="" width={240} height={240} densities={[1, 2]} />
+      </div>
+    </a>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>© {new Date().getFullYear()} Game Ever S.A.</span>
+      <span>{t('project.cta')} <a href="mailto:info@gameeverstudio.com">info@gameeverstudio.com</a></span>
+    </div>
+  </footer>
+
+  <div class="modal" hidden><button class="x" aria-label="Close">✕</button></div>
+</Base>
+
+<style>
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) blur(0px); }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.15) 0%, rgba(13, 13, 15, 0.3) 45%, rgba(13, 13, 15, 0.94) 85%, var(--bg) 100%); }
+  .inner { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
+  .kicker { color: rgba(255, 255, 255, 0.8); }
+  .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
+  h1 { font-size: clamp(44px, 8.5vw, 140px); line-height: 0.88; margin: 14px 0 26px; overflow-wrap: break-word; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { border: 1px solid rgba(255, 255, 255, 0.55); padding: 6px 11px; font-size: 14px; font-weight: 600; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(4px); }
+  .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
+  .cta.primary { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+  .overview { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; padding: 110px 0 90px; }
+  .lead { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.25; font-weight: 500; }
+  .body { color: var(--fg2); margin-top: 24px; font-size: 18px; }
+  dl { display: grid; grid-template-columns: auto 1fr; border-top: 1px solid var(--line); align-self: start; }
+  dt, dd { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); padding-right: 24px; }
+  dd { font-weight: 600; }
+
+  .block { margin-bottom: 90px; }
+  .block h2 { font-size: clamp(28px, 3.4vw, 48px); margin-bottom: 28px; }
+  .videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .videos.single { grid-template-columns: 1fr; }
+  .entries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 16px; }
+  .entries h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 12px; line-height: 1.15; }
+  .entries .mono { color: var(--mute); }
+  .novideo { aspect-ratio: 16 / 9; background: var(--bg2); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .gallery figure { margin: 0; background: var(--bg2); overflow: hidden; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .gallery figure:hover img { transform: scale(1.04); }
+
+  .credits { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .credits summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 28px 0; font-size: clamp(26px, 3vw, 40px); }
+  .credits summary::-webkit-details-marker { display: none; }
+  .credits summary::after { content: '+'; font-family: var(--mono); font-size: 28px; color: var(--pink); }
+  .credits[open] summary::after { content: '–'; }
+  .credits p { color: var(--fg2); line-height: 2; padding-bottom: 28px; text-transform: none; }
+
+  .next { display: block; margin-top: 110px; border-top: 1px solid var(--line); }
+  .next .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 70px; padding-bottom: 70px; }
+  .next .mono { color: var(--mute); }
+  .next h2 { font-size: clamp(36px, 7vw, 110px); line-height: 0.88; margin-top: 14px; transition: color 0.25s; overflow-wrap: break-word; }
+  .next img { width: min(240px, 30vw); height: auto; aspect-ratio: 1; object-fit: cover; transition: transform 0.6s; }
+  .next:hover h2 { color: var(--pink); }
+  .next:hover img { transform: rotate(-3deg) scale(1.05); }
+  .foot { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--mute); font-size: 14px; }
+  .foot .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .foot a { color: var(--fg); border-bottom: 1px solid var(--pink); }
+
+  .modal { position: fixed; inset: 0; z-index: 60; background: rgba(0, 0, 0, 0.92); display: grid; place-items: center; padding: 16px; }
+  .modal[hidden] { display: none; }
+  .modal :global(iframe) { width: min(1100px, 100%); aspect-ratio: 16 / 9; border: 0; }
+  .x { position: absolute; top: 18px; right: 20px; background: none; border: 0; color: #fff; font-size: 30px; cursor: pointer; }
+
+  @media (max-width: 900px) {
+    .inner { grid-template-columns: 1fr; }
+    .art { order: -1; width: 140px; }
+    .overview { grid-template-columns: 1fr; gap: 48px; padding: 72px 0 64px; }
+    .videos, .entries { grid-template-columns: 1fr; }
+    .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
+    .next img { width: 140px; }
+  }
+</style>
+
+<script>
+  const modal = document.querySelector<HTMLElement>('.modal')!;
+  const close = () => { modal.hidden = true; modal.querySelector('iframe')?.remove(); };
+  document.querySelector<HTMLButtonElement>('[data-trailer]')?.addEventListener('click', (e) => {
+    const id = (e.currentTarget as HTMLElement).dataset.trailer;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    iframe.allow = 'autoplay; encrypted-media; fullscreen';
+    iframe.allowFullscreen = true;
+    modal.append(iframe);
+    modal.hidden = false;
+    modal.querySelector<HTMLButtonElement>('.x')!.focus();
+  });
+  modal.querySelector('.x')!.addEventListener('click', close);
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+</script>
