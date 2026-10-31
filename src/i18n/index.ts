@@ -74,7 +74,8 @@ export function useT(lang: Lang) {
   return <K extends Key>(key: K, vars: Record<string, string | number> = {}) => {
     const value = ui[lang][key] as (typeof ui)['en'][K];
     return (typeof value === 'string'
-      ? value.replace(/\{(\w+)\}/g, (_, v) => String(vars[v] ?? ''))
+      // Placeholders without a value are kept, so client-side scripts can fill them later.
+      ? value.replace(/\{(\w+)\}/g, (m, v) => (v in vars ? String(vars[v]) : m))
       : value) as (typeof ui)['en'][K];
   };
 }
@@ -90,7 +91,12 @@ export const clientName = (client: string, lang: Lang) =>
 
 export const langPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 
-export const url = (lang: Lang, path = '') => `/${lang}/${path ? path.replace(/^\/|\/$/g, '') + '/' : ''}`;
+// The site can be served from a sub-path (e.g. GitHub Pages: /gameever-web/), so every
+// internal link goes through withBase().
+const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+export const withBase = (path = '') => BASE + path.replace(/^\//, '');
+
+export const url = (lang: Lang, path = '') => withBase(`${lang}/${path ? path.replace(/^\/|\/$/g, '') + '/' : ''}`);
 
 /** Published projects in "Featured" order: curated ones first, then newest. */
 export async function getProjects() {

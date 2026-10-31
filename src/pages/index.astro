@@ -1,0 +1,19 @@
+---
+// Root of the site: send visitors to the English home. On Cloudflare, `_redirects` does this
+// with a real HTTP redirect; this page covers hosts without redirects (e.g. GitHub Pages).
+import { url } from '../i18n';
+const target = url('en');
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Game Ever</title>
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content={`0; url=${target}`} />
+  <link rel="canonical" href={new URL(target, Astro.site).href} />
+</head>
+<body>
+  <a href={target}>Game Ever</a>
+</body>
+</html>

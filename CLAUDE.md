@@ -30,5 +30,15 @@ Rules:
 - `scripts/localize-images.mjs`: downloaded the old site's images into `src/assets/` (no image is hot-linked from WordPress anymore)
 - `prototypes/` and `content-audit.csv`: local-only design prototypes and inventory (git-ignored)
 
+## Two designs side by side
+- **v1 / D · Showcase** (current): `/en/`, `/es/`, built from `src/layouts/Base.astro` and `src/components/`.
+- **v2 · GDC-style** (comparison): `/v2/en/`, `/v2/es/`, built from `src/layouts/BaseV2.astro`, `src/components/v2/` and `src/i18n/v2.ts`. Always `noindex` and excluded from the sitemap.
+Both read the same project files. When one design is chosen, delete the other one's layout, components and pages.
+
+## Deploys
+- Preview: every push to `main` deploys to GitHub Pages at https://game-ever.github.io/gameever-web/ (`.github/workflows/deploy-pages.yml`), with `noindex` on every page.
+- Internal links must go through `url()`, `v2url()` or `withBase()` (`src/i18n/`), because the preview lives under `/gameever-web/`. `SITE_URL`, `BASE_PATH` and `PUBLIC_NOINDEX` env vars control this; without them the build targets gameeverstudio.com at the root.
+- Git push uses SSH with the repo-local `core.sshCommand` (key `~/.ssh/DesktopPablo`).
+
 ## Contact policy
 Contact is email only (info@ / jobs@). No forms.

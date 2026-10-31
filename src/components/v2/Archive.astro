@@ -1,0 +1,162 @@
+---
+import { Image } from 'astro:assets';
+import { type Lang, type Project, clientName } from '../../i18n';
+import { useV2, v2url } from '../../i18n/v2';
+import { SERVICES, PLATFORMS } from '../../data/taxonomy';
+
+interface Props { lang: Lang; projects: Project[] }
+const { lang, projects } = Astro.props;
+const t = useV2(lang);
+const usedSv = new Set(projects.flatMap((p) => p.data.services));
+const usedPf = new Set(projects.flatMap((p) => p.data.platforms));
+const services = Object.entries(SERVICES).filter(([k]) => usedSv.has(k as any));
+const platforms = Object.entries(PLATFORMS).filter(([k]) => usedPf.has(k as any));
+---
+<section class="archive" id="archive" data-i18n={JSON.stringify({ count: t('archive.count'), showing: t('archive.showing') })}>
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2">{t('archive.title')}</h2>
+      <p class="count" aria-live="polite">{t('archive.count', { n: projects.length })}</p>
+    </div>
+
+    <div class="tabs" role="group" aria-label={t('archive.title')}>
+      <button class="tab" data-sv="" aria-pressed="true">{t('archive.all')}</button>
+      {services.map(([k, v]) => <button class="tab" data-sv={k} aria-pressed="false">{v[lang]}</button>)}
+    </div>
+
+    <div class="tools">
+      <label class="search">
+        <span class="sr-only">{t('archive.search')}</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
+        <input type="search" name="q" placeholder={t('archive.search')} autocomplete="off" />
+      </label>
+      <select class="pf" aria-label={t('archive.platform')}>
+        <option value="">{t('archive.allPlatforms')}</option>
+        {platforms.map(([k, v]) => <option value={k}>{v[lang]}</option>)}
+      </select>
+      <select class="sort" aria-label={t('archive.sort')}>
+        <option value="featured">{t('archive.sort.featured')}</option>
+        <option value="newest">{t('archive.sort.newest')}</option>
+        <option value="az">{t('archive.sort.az')}</option>
+      </select>
+    </div>
+
+    <ul class="grid">
+      {projects.map((p, i) => (
+        <li class="item" data-title={p.data.title} data-client={p.data.client} data-year={p.data.year} data-order={i} data-sv={p.data.services.join(' ')} data-pf={p.data.platforms.join(' ')}>
+          <a href={v2url(lang, `work/${p.id}`)}>
+            <div class="img"><Image src={p.data.cover} alt="" widths={[300, 450, 680]} sizes="(max-width: 600px) 50vw, (max-width: 1100px) 33vw, 340px" loading={i < 8 ? 'eager' : 'lazy'} /></div>
+            <h3>{p.data.title}</h3>
+            <p class="client">{clientName(p.data.client, lang)}</p>
+            <p class="year">{p.data.years ?? p.data.year}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="empty" hidden>{t('archive.empty')} <button class="clear">{t('archive.clear')}</button></p>
+  </div>
+</section>
+
+<style>
+  .archive { padding: 96px 0; background: var(--white); }
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+  .h2 { color: var(--pink); }
+  .count { font-weight: 700; color: var(--ink2); }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 32px 0 16px; }
+  .tab { border: 2px solid var(--ink); background: #fff; border-radius: 48px; padding: 8px 18px 7px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.15s; }
+  .tab:hover { border-color: var(--pink); color: var(--pink); }
+  .tab[aria-pressed='true'] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+  .search { flex: 1; min-width: 240px; max-width: 460px; display: flex; align-items: center; gap: 10px; border: 2px solid var(--line); border-radius: 48px; padding: 0 18px; height: 50px; background: #fff; }
+  .search:focus-within { border-color: var(--pink); }
+  .search input { flex: 1; min-width: 0; border: 0; outline: none; font: 500 16px var(--body); background: none; }
+  select { height: 50px; border: 2px solid var(--line); border-radius: 48px; padding: 0 18px; font: 700 15px var(--body); background: #fff; cursor: pointer; }
+  select:focus { border-color: var(--pink); outline: none; }
+  .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px 20px; }
+  .item a { display: block; text-decoration: none; text-align: center; }
+  .img { aspect-ratio: 1; overflow: hidden; background: var(--blush); margin-bottom: 18px; }
+  .img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .item a:hover .img img { transform: scale(1.05); }
+  h3 { font-size: 22px; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; line-height: 1.25; }
+  .item a:hover h3 { color: var(--pink); text-decoration-thickness: 2px; }
+  .client { font-weight: 800; font-style: italic; margin-top: 8px; font-size: 16px; }
+  .year { font-size: 15px; color: var(--ink2); }
+  .empty { text-align: center; padding: 48px 0; color: var(--ink2); }
+  .empty button { background: none; border: 0; font-weight: 800; text-decoration: underline; cursor: pointer; }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 760px) {
+    .archive { padding: 64px 0; }
+    .tabs { flex-wrap: nowrap; overflow-x: auto; margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); padding: 0 var(--gutter) 6px; scrollbar-width: none; }
+    .tab { flex: 0 0 auto; }
+    .search { min-width: 100%; max-width: none; }
+    select { flex: 1; min-width: 0; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 32px 14px; }
+    h3 { font-size: 17px; }
+    .client, .year { font-size: 14px; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.archive');
+  if (root) {
+    const i18n = JSON.parse(root.dataset.i18n!);
+    const grid = root.querySelector<HTMLElement>('.grid')!;
+    const items = [...grid.querySelectorAll<HTMLElement>('.item')];
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('.tab')];
+    const search = root.querySelector<HTMLInputElement>('input[name=q]')!;
+    const pf = root.querySelector<HTMLSelectElement>('.pf')!;
+    const sort = root.querySelector<HTMLSelectElement>('.sort')!;
+    const count = root.querySelector<HTMLElement>('.count')!;
+    const empty = root.querySelector<HTMLElement>('.empty')!;
+    const state = { sv: '', pf: '', q: '', sort: 'featured' };
+    const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+    function render(writeUrl = true) {
+      const q = norm(state.q.trim());
+      const list = items.filter((el) =>
+        (!state.sv || el.dataset.sv!.split(' ').includes(state.sv)) &&
+        (!state.pf || el.dataset.pf!.split(' ').includes(state.pf)) &&
+        (!q || norm(`${el.dataset.title} ${el.dataset.client}`).includes(q)));
+      if (state.sort === 'newest') list.sort((a, b) => +b.dataset.year! - +a.dataset.year! || +a.dataset.order! - +b.dataset.order!);
+      else if (state.sort === 'az') list.sort((a, b) => a.dataset.title!.localeCompare(b.dataset.title!));
+      else list.sort((a, b) => +a.dataset.order! - +b.dataset.order!);
+      grid.replaceChildren(...list);
+      empty.hidden = list.length > 0;
+      count.textContent = list.length === items.length
+        ? i18n.count.replace('{n}', items.length)
+        : i18n.showing.replace('{n}', list.length).replace('{total}', items.length);
+      tabs.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sv === state.sv)));
+      if (writeUrl) {
+        const u = new URLSearchParams();
+        if (state.sv) u.set('sv', state.sv);
+        if (state.pf) u.set('pf', state.pf);
+        if (state.q) u.set('q', state.q);
+        if (state.sort !== 'featured') u.set('sort', state.sort);
+        history.replaceState(null, '', `${location.pathname}${u.size ? `?${u}` : ''}${location.hash}`);
+      }
+    }
+    const reset = () => { Object.assign(state, { sv: '', pf: '', q: '' }); search.value = ''; pf.value = ''; render(); };
+
+    const params = new URLSearchParams(location.search);
+    state.sv = params.get('sv') ?? '';
+    state.pf = params.get('pf') ?? '';
+    state.q = params.get('q') ?? '';
+    state.sort = ['featured', 'newest', 'az'].includes(params.get('sort') ?? '') ? params.get('sort')! : 'featured';
+    search.value = state.q; pf.value = state.pf; sort.value = state.sort;
+    render(false);
+
+    tabs.forEach((b) => b.addEventListener('click', () => { state.sv = b.dataset.sv!; render(); }));
+    search.addEventListener('input', () => { state.q = search.value; render(); });
+    pf.addEventListener('change', () => { state.pf = pf.value; render(); });
+    sort.addEventListener('change', () => { state.sort = sort.value; render(); });
+    root.querySelector('.clear')!.addEventListener('click', reset);
+    // Links elsewhere on the page ("See brand games") preset a service tab.
+    document.querySelectorAll<HTMLAnchorElement>('[data-archive-sv]').forEach((a) => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      reset();
+      state.sv = a.dataset.archiveSv!;
+      render();
+      root.scrollIntoView();
+    }));
+  }
+</script>

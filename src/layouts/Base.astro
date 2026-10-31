@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import logo from '../assets/logo-game-ever.png';
-import { type Lang, LANGS, useT, SOCIAL } from '../i18n';
+import { type Lang, LANGS, useT, url, withBase, SOCIAL } from '../i18n';
 
 interface Props {
   lang: Lang;
@@ -20,14 +20,14 @@ const t = useT(lang);
 const pageTitle = title ? `${title} — Game Ever` : t('meta.title');
 const pageDescription = description ?? t('meta.description');
 const site = Astro.site!;
-const pathFor = (l: Lang) => new URL(`/${l}/${path ? path + '/' : ''}`, site).href;
+const pathFor = (l: Lang) => new URL(url(l, path), site).href;
 const ogImage = image ?? 'https://i.ytimg.com/vi/qyPSBhVrY08/maxresdefault.jpg';
 const org = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Game Ever',
   legalName: 'Game Ever S.A.',
-  url: site.href,
+  url: new URL(withBase(), site).href,
   logo: new URL(logo.src, site).href,
   foundingDate: '2010',
   email: 'info@gameeverstudio.com',
@@ -54,7 +54,8 @@ const org = {
   <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0d0d0f" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href={withBase("favicon.svg")} type="image/svg+xml" />
+  {import.meta.env.PUBLIC_NOINDEX === "true" && <meta name="robots" content="noindex, nofollow" />}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
