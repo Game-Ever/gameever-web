@@ -40,5 +40,10 @@ Both read the same project files. When one design is chosen, delete the other on
 - Internal links must go through `url()`, `v2url()` or `withBase()` (`src/i18n/`), because the preview lives under `/gameever-web/`. `SITE_URL`, `BASE_PATH` and `PUBLIC_NOINDEX` env vars control this; without them the build targets gameeverstudio.com at the root.
 - Git push uses SSH with the repo-local `core.sshCommand` (key `~/.ssh/DesktopPablo`).
 
-## Contact policy
-Contact is email only (info@ / jobs@). No forms.
+## Language
+The user is writing and reviewing the site in Spanish first; English copy is a draft to be translated at the end. Write new copy in Spanish, keep an English draft so builds and the EN pages still work.
+
+## Contact
+The closing section (`src/components/Contact.astro`) has a contact form plus the direct info@ / jobs@ emails.
+- Delivery: set `PUBLIC_FORM_ENDPOINT` (and `PUBLIC_FORM_KEY` if the service needs one, e.g. Web3Forms) at build time. Without them the form opens the visitor's email app with the message addressed to info@.
+- Spam: hidden honeypot field `botcheck`.

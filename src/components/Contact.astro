@@ -3,12 +3,47 @@ import { type Lang, useT, SOCIAL } from '../i18n';
 
 interface Props { lang: Lang }
 const t = useT(Astro.props.lang);
+
+// Form delivery: set PUBLIC_FORM_ENDPOINT (and PUBLIC_FORM_KEY for services like Web3Forms) at build
+// time to post the form to a form service. Without them, submitting opens the visitor's email app
+// with the message ready to send to info@, so the form always works.
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+const formKey = import.meta.env.PUBLIC_FORM_KEY ?? '';
+const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'), error: t('form.error'), mailto: t('form.mailto'), subject: t('form.subject') };
 ---
 <footer class="contact" id="contact">
+  <div class="wrap top">
+    <div class="pitch">
+      <span class="mono label">{t('contact.label')}</span>
+      <h2 class="wide"><span>{t('contact.title')}</span> <em>{t('contact.titleEm')}</em></h2>
+      <p class="intro">{t('contact.intro')}</p>
+      <p class="direct"><span class="mono">{t('contact.direct')}</span><a class="mail" href="mailto:info@gameeverstudio.com">info@gameeverstudio.com</a></p>
+    </div>
+
+    <form class="form" novalidate data-endpoint={endpoint} data-key={formKey} data-msgs={JSON.stringify(msgs)}>
+      <h3 class="mono">{t('form.title')}</h3>
+      <div class="row">
+        <label><span>{t('form.name')}</span><input name="name" autocomplete="name" required /></label>
+        <label><span>{t('form.email')}</span><input name="email" type="email" autocomplete="email" required /></label>
+      </div>
+      <label><span>{t('form.company')}</span><input name="company" autocomplete="organization" /></label>
+      <fieldset>
+        <legend>{t('form.type')}</legend>
+        <div class="chips">
+          {t('form.types').map((type, i) => (
+            <label class="chip"><input type="radio" name="type" value={type} checked={i === 0} /><span>{type}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <label><span>{t('form.message')}</span><textarea name="message" rows="5" placeholder={t('form.messageHint')} required></textarea></label>
+      <!-- Honeypot: real visitors never see or fill this field -->
+      <input class="hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button type="submit">{t('form.send')} <span aria-hidden="true">→</span></button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
   <div class="wrap">
-    <span class="mono label">{t('contact.label')}</span>
-    <h2 class="wide">{t('contact.title')} <em>{t('contact.titleEm')}</em></h2>
-    <a class="mail" href="mailto:info@gameeverstudio.com">info@gameeverstudio.com</a>
     <div class="cols">
       <div><span class="mono">{t('contact.careers')}</span><a href="mailto:jobs@gameeverstudio.com">jobs@gameeverstudio.com</a></div>
       <div><span class="mono">{t('contact.studio')}</span>{t('contact.studioValue')}</div>
@@ -22,19 +57,106 @@ const t = useT(Astro.props.lang);
 </footer>
 
 <style>
-  /* Closing band in brand pink: big type in white, small text in ink for contrast. */
-  .contact { background: var(--pink); color: var(--bg); padding: 130px 0 40px; }
+  /* Closing band in brand pink: big type in white, small text in ink for contrast, form on an ink panel. */
+  .contact { background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
+  .top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
   .label { color: var(--bg); }
-  h2 { font-size: clamp(36px, 10vw, 170px); line-height: 0.86; margin-top: 20px; color: #fff; }
-  em { font-style: normal; color: var(--bg); }
-  .mail { display: inline-block; margin-top: 40px; font-size: clamp(22px, 3.4vw, 46px); font-weight: 800; font-stretch: 115%; border-bottom: 4px solid var(--bg); padding-bottom: 4px; overflow-wrap: anywhere; color: #fff; }
+  h2 { font-size: clamp(44px, 7vw, 120px); line-height: 0.86; margin-top: 20px; color: #fff; }
+  h2 span { display: block; }
+  em { font-style: normal; color: var(--bg); display: block; }
+  .intro { margin-top: 28px; max-width: 34ch; font-size: 19px; font-weight: 500; }
+  .direct { margin-top: 36px; }
+  .direct .mono { display: block; margin-bottom: 8px; opacity: 0.8; }
+  .mail { display: inline-block; font-size: clamp(20px, 2.4vw, 32px); font-weight: 800; font-stretch: 115%; border-bottom: 3px solid var(--bg); padding-bottom: 2px; overflow-wrap: anywhere; color: #fff; }
   .mail:hover { color: var(--bg); }
+
+  .form { background: var(--bg); color: var(--fg); padding: 36px; display: grid; gap: 22px; }
+  .form h3 { color: var(--pink); font-weight: 500; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .form label:not(.chip) { display: grid; gap: 8px; }
+  .form label:not(.chip) > span, legend { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9b7b2; }
+  input:not([type='radio']), textarea { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgba(255, 255, 255, 0.3); color: var(--fg); font: 500 17px var(--sans); padding: 8px 0; border-radius: 0; outline: none; transition: border-color 0.2s; }
+  textarea { resize: vertical; min-height: 120px; border: 2px solid rgba(255, 255, 255, 0.3); padding: 12px; }
+  textarea::placeholder { color: #6f6d69; }
+  input:focus, textarea:focus { border-color: var(--pink); }
+  .form :global(.invalid) { border-color: #ff6b6b; }
+  fieldset { border: 0; padding: 0; min-width: 0; }
+  legend { margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { position: relative; cursor: pointer; }
+  .chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .chip span { display: inline-block; border: 1px solid var(--line2); padding: 8px 12px; font-size: 14px; font-weight: 600; transition: all 0.15s; }
+  .chip:hover span { border-color: var(--fg); }
+  .chip input:checked + span { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .chip input:focus-visible + span { outline: 2px solid var(--pink); outline-offset: 2px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  button { justify-self: start; display: inline-flex; gap: 12px; align-items: center; background: var(--pink); color: #fff; border: 0; padding: 16px 26px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  button:hover { background: #fff; color: var(--bg); }
+  button:disabled { opacity: 0.6; cursor: wait; }
+  .status { min-height: 1.4em; font-size: 15px; color: #fff; }
+  .status:empty { display: none; }
+
   .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 100px; border-top: 1px solid rgba(13, 13, 15, 0.35); padding-top: 24px; font-size: 15px; }
   .cols div { min-width: 0; overflow-wrap: anywhere; }
   .cols .mono { display: block; color: var(--bg); opacity: 0.8; margin-bottom: 6px; }
   .cols a { text-decoration: underline; text-underline-offset: 3px; }
   .cols a:hover { color: #fff; }
   .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 72px; font-size: 13px; color: var(--bg); }
-  .contact :focus-visible { outline-color: var(--bg); }
-  @media (max-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
+  .pitch :focus-visible, .cols :focus-visible { outline-color: var(--bg); }
+
+  @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } }
+  @media (max-width: 760px) {
+    .contact { padding-top: 88px; }
+    .form { padding: 24px 18px; margin: 0 calc(var(--gutter) * -1); }
+    .row { grid-template-columns: 1fr; }
+    .cols { grid-template-columns: 1fr 1fr; margin-top: 72px; }
+  }
 </style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.contact .form');
+  if (form) {
+    const msgs = JSON.parse(form.dataset.msgs!);
+    const status = form.querySelector<HTMLElement>('.status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    const fields = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')];
+    fields.forEach((f) => f.addEventListener('input', () => f.classList.remove('invalid')));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const bad = fields.filter((f) => !f.checkValidity());
+      fields.forEach((f) => f.classList.toggle('invalid', bad.includes(f)));
+      if (bad.length) { bad[0].focus(); return; }
+      const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+      if (data.botcheck) return; // bot filled the honeypot
+      delete data.botcheck;
+      const subject = `${msgs.subject}: ${data.type} — ${data.name}${data.company ? ` (${data.company})` : ''}`;
+
+      // No form service configured: hand the message to the visitor's email app.
+      if (!form.dataset.endpoint) {
+        const body = `${data.message}\n\n—\n${data.name}\n${data.email}${data.company ? `\n${data.company}` : ''}\n${data.type}`;
+        location.href = `mailto:info@gameeverstudio.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        status.textContent = msgs.mailto;
+        return;
+      }
+
+      button.disabled = true;
+      button.firstChild!.textContent = `${msgs.sending} `;
+      try {
+        const res = await fetch(form.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ...data, subject, from_name: 'gameeverstudio.com', ...(form.dataset.key ? { access_key: form.dataset.key } : {}) }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.textContent = msgs.ok;
+      } catch {
+        status.textContent = msgs.error;
+      } finally {
+        button.disabled = false;
+        button.firstChild!.textContent = `${msgs.send} `;
+      }
+    });
+  }
+</script>
