@@ -22,16 +22,19 @@ const t = useT(Astro.props.lang);
 </footer>
 
 <style>
-  .contact { background: var(--paper); color: var(--bg); padding: 130px 0 40px; }
-  .label { color: var(--paper-mute); }
-  h2 { font-size: clamp(36px, 10vw, 170px); line-height: 0.86; margin-top: 20px; }
-  em { font-style: normal; color: var(--pink); }
-  .mail { display: inline-block; margin-top: 40px; font-size: clamp(22px, 3.4vw, 46px); font-weight: 800; font-stretch: 115%; border-bottom: 4px solid var(--pink); padding-bottom: 4px; overflow-wrap: anywhere; }
-  .mail:hover { color: var(--pink); }
-  .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 100px; border-top: 1px solid #cfccc5; padding-top: 24px; font-size: 15px; }
+  /* Closing band in brand pink: big type in white, small text in ink for contrast. */
+  .contact { background: var(--pink); color: var(--bg); padding: 130px 0 40px; }
+  .label { color: var(--bg); }
+  h2 { font-size: clamp(36px, 10vw, 170px); line-height: 0.86; margin-top: 20px; color: #fff; }
+  em { font-style: normal; color: var(--bg); }
+  .mail { display: inline-block; margin-top: 40px; font-size: clamp(22px, 3.4vw, 46px); font-weight: 800; font-stretch: 115%; border-bottom: 4px solid var(--bg); padding-bottom: 4px; overflow-wrap: anywhere; color: #fff; }
+  .mail:hover { color: var(--bg); }
+  .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 100px; border-top: 1px solid rgba(13, 13, 15, 0.35); padding-top: 24px; font-size: 15px; }
   .cols div { min-width: 0; overflow-wrap: anywhere; }
-  .cols .mono { display: block; color: var(--paper-mute); margin-bottom: 6px; }
-  .cols a:hover { color: var(--pink); }
-  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 72px; font-size: 13px; color: var(--paper-mute); }
+  .cols .mono { display: block; color: var(--bg); opacity: 0.8; margin-bottom: 6px; }
+  .cols a { text-decoration: underline; text-underline-offset: 3px; }
+  .cols a:hover { color: #fff; }
+  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 72px; font-size: 13px; color: var(--bg); }
+  .contact :focus-visible { outline-color: var(--bg); }
   @media (max-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
 </style>
