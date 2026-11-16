@@ -108,7 +108,8 @@ export async function getProjects() {
 }
 export type Project = CollectionEntry<'projects'>;
 
-export const CLIENTS = ['Cartoon Network', 'Warner Music', 'Devolver Digital', 'Fiat', 'Michelin', 'Chevrolet', 'Legends of Learning', 'Leader Entertainment', 'El Reino Infantil', 'Tic Tac', 'Tecpetrol', 'Rookbird Games'];
+// Plain-text client list (v2 design). Keep in sync with src/data/clients.ts, which has the logos.
+export const CLIENTS = ['Cartoon Network', 'Warner Music', 'Devolver Digital', 'Fiat', 'Michelin', 'Boomerang', 'Legends of Learning', 'Chevrolet', 'Leader Entertainment', 'El Reino Infantil', 'Tic Tac', 'Graffiti Games', 'Loto Plus', 'Rookbird Games', 'Tecpetrol', 'AUBASA'];
 
 export const SOCIAL = [
   { label: 'LinkedIn', url: 'https://www.linkedin.com/company/gameeverstudio/' },

@@ -1,19 +1,27 @@
 ---
-import { type Lang, useT, CLIENTS } from '../i18n';
+import { Image } from 'astro:assets';
+import { type Lang, useT } from '../i18n';
+import { CLIENT_LOGOS } from '../data/clients';
 
 interface Props { lang: Lang }
 const t = useT(Astro.props.lang);
-const half = Math.ceil(CLIENTS.length / 2);
-const rows = [CLIENTS.slice(0, half), CLIENTS.slice(half)];
+const half = Math.ceil(CLIENT_LOGOS.length / 2);
+const rows = [CLIENT_LOGOS.slice(0, half), CLIENT_LOGOS.slice(half)];
 ---
 <section class="clients" id="clients">
   <div class="wrap">
     <h2 class="mono">{t('clients.label')}</h2>
-    <ul class="sr-only">{CLIENTS.map((c) => <li>{c}</li>)}</ul>
+    <ul class="sr-only">{CLIENT_LOGOS.map((c) => <li>{c.name}</li>)}</ul>
   </div>
   {rows.map((row, i) => (
     <div class:list={['belt', { rev: i === 1 }]} aria-hidden="true">
-      {[...row, ...row].map((c) => <span>{c}</span>)}
+      {[...row, ...row].map((c) => (
+        <div class="tile" title={c.name}>
+          {c.logo
+            ? <Image src={c.logo} alt="" width={168} height={168} densities={[1, 2]} loading="eager" />
+            : <span>{c.name}</span>}
+        </div>
+      ))}
     </div>
   ))}
 </section>
@@ -21,10 +29,18 @@ const rows = [CLIENTS.slice(0, half), CLIENTS.slice(half)];
 <style>
   .clients { padding: 120px 0; overflow: hidden; }
   h2 { color: var(--mute); font-weight: 400; margin-bottom: 36px; }
-  .belt { display: flex; width: max-content; gap: 64px; animation: belt 40s linear infinite; padding: 10px 0; }
-  .belt.rev { animation-direction: reverse; animation-duration: 46s; }
-  span { font-size: clamp(34px, 5vw, 72px); font-stretch: 125%; font-weight: 900; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1.5px #5a5a60; white-space: nowrap; transition: color 0.2s, -webkit-text-stroke-color 0.2s; }
-  span:hover { color: var(--fg); -webkit-text-stroke-color: var(--fg); }
-  span::after { content: ''; display: inline-block; width: 0.32em; height: 0.32em; background: var(--pink); margin-left: 64px; vertical-align: 0.25em; }
+  /* Each tile carries its own right margin (no flex gap) so -50% is exactly one copy: a seamless loop. */
+  .belt { display: flex; width: max-content; animation: belt 48s linear infinite; padding: 6px 0; }
+  .belt.rev { animation-direction: reverse; animation-duration: 54s; }
+  .clients:hover .belt { animation-play-state: paused; }
+  .tile { flex: 0 0 auto; width: 168px; height: 168px; margin-right: 12px; background: #fff; display: grid; place-items: center; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+  .tile:hover { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--pink); }
+  .tile img { width: 100%; height: 100%; object-fit: contain; }
+  .tile span { color: var(--bg); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: 19px; line-height: 1; text-align: center; padding: 16px; }
   @keyframes belt { to { transform: translateX(-50%); } }
+  @media (max-width: 760px) {
+    .clients { padding: 88px 0; }
+    .tile { width: 120px; height: 120px; margin-right: 8px; }
+    .tile span { font-size: 14px; padding: 10px; }
+  }
 </style>
