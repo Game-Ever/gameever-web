@@ -2,14 +2,18 @@
 import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url, clientName } from '../i18n';
 import { AREAS, AREA_KEYS, areasOf } from '../data/taxonomy';
+import { WORLD_PROJECTS } from '../data/worlds';
 
-// variant "home": a short selection (first HOME_COUNT in Featured order) with a link to the full list.
+// variant "home": a short selection (first HOME_COUNT in Featured order, minus the projects already shown in
+// the "Qué hacemos" cards) with a link to the full list.
 // variant "full": every project, with area tabs (Todos / Videojuegos / Animación / Co-producción),
 // search and sort, all kept in the URL (?area=games&q=…&sort=newest) so links can be shared.
 interface Props { lang: Lang; projects: Project[]; variant?: 'home' | 'full' }
 const { lang, variant = 'full' } = Astro.props;
 const HOME_COUNT = 6;
-const projects = variant === 'home' ? Astro.props.projects.slice(0, HOME_COUNT) : Astro.props.projects;
+const projects = variant === 'home'
+  ? Astro.props.projects.filter((p) => !WORLD_PROJECTS.includes(p.id)).slice(0, HOME_COUNT)
+  : Astro.props.projects;
 const full = variant === 'full';
 const Heading = full ? 'h1' : 'h2';
 const t = useT(lang);

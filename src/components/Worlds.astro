@@ -1,7 +1,10 @@
 ---
 // "Qué hacemos": the two worlds (games and animation), each card jumping to the matching projects.
+// Each card plays a muted loop of one YouTube video (see src/data/worlds.ts); the project image stays on top
+// until the video is actually playing, so YouTube's own overlay never shows.
 import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url } from '../i18n';
+import { WORLDS, type World } from '../data/worlds';
 
 interface Props { lang: Lang; projects: Project[] }
 const { lang, projects } = Astro.props;
@@ -9,10 +12,12 @@ const t = useT(lang);
 const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
 const landscape = (id: string) => byId[id].data.gallery.find((g) => g.width > g.height * 1.2) ?? byId[id].data.cover;
 const groups = t('services.groups');
+const embed = (w: World) =>
+  `https://www.youtube-nocookie.com/embed/${w.video}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&cc_load_policy=0&enablejsapi=1&start=${w.start ?? 0}${w.end ? `&end=${w.end}` : ''}`;
 const cards = [
-  { title: t('worlds.games'), cta: t('worlds.gamesCta'), area: groups[0].area, img: landscape('juanito-arcade-mayhem') },
-  { title: t('worlds.anim'), cta: t('worlds.animCta'), area: groups[1].area, img: byId['lit-killah-bizarrap-flexin'].data.cover },
-];
+  { title: t('worlds.games'), cta: t('worlds.gamesCta'), area: groups[0].area, world: WORLDS.games },
+  { title: t('worlds.anim'), cta: t('worlds.animCta'), area: groups[1].area, world: WORLDS.animation },
+].map((c) => ({ ...c, img: landscape(c.world.project), source: byId[c.world.project].data.title, src: embed(c.world) }));
 ---
 <section class="worlds" id="what-we-do">
   <div class="wrap">
@@ -26,7 +31,11 @@ const cards = [
     <div class="cards">
       {cards.map((c) => (
         <a class="card" href={`${url(lang, "work")}?area=${c.area}`}>
-          <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
+          <span class="media" aria-hidden="true">
+            <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
+            <iframe class:list={["yt", { portrait: c.world.portrait }]} style={`--focus: ${c.world.focus ?? 50}%`} title="" tabindex="-1" allow="autoplay; encrypted-media" data-src={c.src} data-start={c.world.start ?? 0}></iframe>
+          </span>
+          <span class="source mono">{c.source}</span>
           <span class="title wide">{c.title}</span>
           <span class="cta mono">{c.cta} →</span>
         </a>
@@ -42,18 +51,67 @@ const cards = [
   h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
   h2 span { display: block; }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 64px; }
-  .card { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg2); isolation: isolate; }
-  .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: -1; }
-  .card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(13, 13, 15, 0.85) 100%); z-index: -1; }
+  /* container-type lets the video cover the 4:3 card with container units, whatever the card's width. */
+  .card { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg2); isolation: isolate; container-type: size; }
+  .media { position: absolute; inset: 0; z-index: -1; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+  /* 16:9 video scaled to cover the card, shown only while it plays. */
+  .yt { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; }
+  /* Vertical footage in a 16:9 frame: zoom until the vertical part (9/16 of the height wide) fills the card. */
+  .yt.portrait { width: 316.05cqw; height: 177.78cqw; top: var(--focus); transform: translate(-50%, calc(var(--focus) * -1)); }
+  .yt.on { opacity: 1; transition: opacity 0.8s; }
+  .card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.35) 0%, transparent 22%, transparent 45%, rgba(13, 13, 15, 0.85) 100%); z-index: -1; }
+  .source { position: absolute; left: 28px; top: 24px; color: rgba(255, 255, 255, 0.85); }
   .title { position: absolute; left: 28px; bottom: 56px; font-size: var(--subtitle-size); line-height: 0.95; transition: color 0.25s; }
   .cta { position: absolute; left: 28px; bottom: 26px; color: var(--fg2); }
-  .card:hover img { transform: scale(1.05); }
+  .card:hover .media { transform: scale(1.05); }
   .card:hover .title { color: var(--pink); }
   @media (max-width: 900px) {
     .head, .cards { grid-template-columns: 1fr; gap: 28px; }
     .cards { margin-top: 40px; gap: 14px; }
     .worlds { padding-bottom: 96px; }
+    .source { left: 18px; top: 16px; }
     .title { left: 18px; bottom: 44px; }
     .cta { left: 18px; bottom: 18px; }
   }
 </style>
+
+<script>
+  // Each card's video loads when the card comes near the screen, pauses when it leaves, and loops the chosen
+  // stretch (start → end or the end of the video) by seeking back to the start when it ends.
+  const frames = [...document.querySelectorAll<HTMLIFrameElement>('.worlds .yt')];
+  if (frames.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const cmd = (yt: HTMLIFrameElement, func: string, args: unknown[] = []) =>
+      yt.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
+    const visible = new Map<HTMLIFrameElement, boolean>();
+    const load = (yt: HTMLIFrameElement) => {
+      yt.src = `${yt.dataset.src}&origin=${encodeURIComponent(location.origin)}`;
+      yt.addEventListener('load', () => yt.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'world', channel: 'widget' }), '*'), { once: true });
+    };
+    addEventListener('message', (e) => {
+      const yt = frames.find((f) => f.contentWindow === e.source);
+      if (!yt || typeof e.data !== 'string') return;
+      let data: { event?: string; info?: unknown };
+      try { data = JSON.parse(e.data); } catch { return; }
+      const state = data.event === 'onStateChange' ? data.info
+        : data.event === 'infoDelivery' ? (data.info as { playerState?: number } | undefined)?.playerState
+        : undefined;
+      if (typeof state !== 'number') return;
+      // 1 = playing, 3 = buffering (keep the current view), 0 = ended (loop back), anything else = hide.
+      const on = state === 1 || (state === 3 && !!visible.get(yt));
+      visible.set(yt, on);
+      yt.classList.toggle('on', on);
+      if (state === 0) { cmd(yt, 'seekTo', [Number(yt.dataset.start) || 0, true]); cmd(yt, 'playVideo'); }
+      // No subtitles: some videos turn them on by default for the viewer's language.
+      if (state === 1) cmd(yt, 'unloadModule', ['captions']);
+    });
+    const io = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) {
+        const yt = target.querySelector<HTMLIFrameElement>('.yt')!;
+        if (!isIntersecting) { cmd(yt, 'pauseVideo'); continue; }
+        if (!yt.getAttribute('src')) load(yt); else cmd(yt, 'playVideo');
+      }
+    }, { rootMargin: '200px 0px' });
+    frames.forEach((yt) => io.observe(yt.closest('.card')!));
+  }
+</script>

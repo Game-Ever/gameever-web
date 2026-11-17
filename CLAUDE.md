@@ -54,7 +54,7 @@ Every section title uses `var(--title-size)` and every sub-title (card titles, a
 Short, strong phrases. No repeated key words across the home. Professional tone: first person plural or no verb; never tú/vos (no "Contanos", "Escribinos", "¿Buscás…?").
 
 ## Home vs. projects page
-- Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link.
+- Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link. Projects used in the "Qué hacemos" cards (`src/data/worlds.ts`: one muted YouTube loop per card, now the LIT Killah game trailer and the Flexin' video) are left out of that selection so nothing repeats; they still show on the projects page.
 - `/[lang]/work/` lists every project (`Wall` variant `full`) with area tabs (Todos / Videojuegos / Animación / Co-producción), search and sort (Featured, Newest, A–Z), kept in the URL (`?area=games&q=…&sort=newest`). Areas are derived from services/platforms by `areasOf()` in `src/data/taxonomy.ts` (no extra field in project files). Links from Qué hacemos and Servicios open the matching tab. Platform, era and client filters were dropped on purpose (not useful: almost one project per client).
 
 ## Version stamp
