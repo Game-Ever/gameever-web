@@ -23,8 +23,8 @@ description:
   en: "An alien invasion infects an old arcade cabinet, and Juanito, in his pajamas, jumps in to save the classics. 80+ levels across 8 worlds, each built on the mechanic of the game it honors, hand-animated bosses and local co-op. We created, developed and published it: it launched on Steam in August 2017 (96% positive reviews) and passed 500,000 downloads on Android. 4/5 from Pocket Gamer, 7/10 from IGN Spain."
   es: "Una invasión alienígena infecta una vieja máquina de arcade y Juanito, en pijama, entra a salvar los clásicos. Más de 80 niveles en 8 mundos, cada uno con la mecánica del juego que homenajea, jefes animados a mano y cooperativo local. Lo creamos, desarrollamos y publicamos nosotros: llegó a Steam en agosto de 2017, con 96 % de reseñas positivas, y en Android supera las 500.000 descargas. 4/5 en Pocket Gamer y 7/10 en IGN España."
 role:
-  en: "Original game: design, art, development, publishing"
-  es: "Juego propio: diseño, arte, desarrollo, publicación"
+  en: "Full development · Self-publishing"
+  es: "Desarrollo integral · Autopublicación"
 # Reference page for the media layout: highlights (big, with tabs), gallery (images + extra videos),
 # Detrás de escena (process, can hold videos) and En los medios (press: articles and videos).
 highlights:

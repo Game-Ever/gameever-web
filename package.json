@@ -1,7 +1,7 @@
 {
   "name": "gameever-web",
   "type": "module",
-  "version": "0.3.71",
+  "version": "0.3.72",
   "private": true,
   "scripts": {
     "dev": "astro dev",
