@@ -22,10 +22,12 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
 ---
 <section class="work" id="work" data-labels={JSON.stringify(labels)} data-i18n={JSON.stringify(i18n)}>
   <div class="wrap">
+    <span class="mono kicker">{t('work.label')}</span>
     <div class="work-head">
       <h2 class="wide">{t('work.title')}</h2>
-      <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>
+      <p class="intro">{t('work.intro')}</p>
     </div>
+    <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>
 
     <div class="toolbar">
       <label class="search">
@@ -93,9 +95,11 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
 
 <style>
   .work { padding: 110px 0 120px; background: linear-gradient(180deg, var(--pink-d) 0, var(--bg) 420px); }
-  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
-  .work-head h2 { font-size: clamp(40px, 6vw, 88px); line-height: 0.9; }
-  .count { color: rgba(255, 255, 255, 0.75); }
+  .kicker { color: #fff; opacity: 0.85; }
+  .work-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; margin: 22px 0 36px; }
+  .intro { color: rgba(255, 255, 255, 0.85); font-size: 18px; max-width: 46ch; }
+  .work-head h2 { font-size: clamp(36px, 5vw, 80px); line-height: 0.92; overflow-wrap: break-word; }
+  .count { display: block; color: rgba(255, 255, 255, 0.75); margin-bottom: 4px; }
 
   .toolbar { display: flex; gap: 8px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 12px 0; background: linear-gradient(var(--bg) 70%, transparent); }
   .search { flex: 1; min-width: 220px; max-width: 420px; display: flex; align-items: center; gap: 10px; border: 2px solid rgba(255, 255, 255, 0.8); padding: 0 14px; height: 48px; }
@@ -150,6 +154,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   }
   @media (max-width: 760px) {
     .work { padding-top: 80px; }
+    .work-head { grid-template-columns: 1fr; gap: 18px; }
     .search { min-width: 100%; max-width: none; }
     .btn, .sort { flex: 1; }
     .panel { grid-template-columns: 1fr; padding: 20px; }
@@ -262,11 +267,11 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
       else state[b.dataset.g as Group].delete(b.dataset.k!);
       render();
     });
-    // Service blocks further down can jump here with a preset filter.
+    // Links elsewhere on the page (Qué hacemos, Servicios) can jump here with a preset filter.
     document.querySelectorAll<HTMLElement>('[data-jump-service]').forEach((el) => el.addEventListener('click', (e) => {
       e.preventDefault();
       clearAll();
-      state.sv.add(el.dataset.jumpService!);
+      el.dataset.jumpService!.split(",").forEach((k) => state.sv.add(k)); // one service or a comma list
       render();
       root.scrollIntoView();
     }));

@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import Reel from '../../components/Reel.astro';
 import Statement from '../../components/Statement.astro';
+import About from '../../components/About.astro';
+import Worlds from '../../components/Worlds.astro';
 import Wall from '../../components/Wall.astro';
 import Services from '../../components/Services.astro';
 import Clients from '../../components/Clients.astro';
@@ -16,6 +18,8 @@ const projects = await getProjects();
   <main>
     <Reel lang={lang} />
     <Statement lang={lang} />
+    <About lang={lang} />
+    <Worlds lang={lang} projects={projects} />
     <Wall lang={lang} projects={projects} />
     <Services lang={lang} />
     <Clients lang={lang} />

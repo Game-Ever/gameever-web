@@ -8,7 +8,11 @@ const t = useT(Astro.props.lang);
 ---
 <section class="clients" id="clients">
   <div class="wrap">
-    <h2 class="mono">{t('clients.label')}</h2>
+    <span class="mono kicker">{t('clients.label')}</span>
+    <div class="head">
+      <h2 class="wide">{t('clients.title')}</h2>
+      <p>{t('clients.body')}</p>
+    </div>
     <ul class="grid">
       {CLIENT_LOGOS.map((c) => (
         <li title={c.name}>
@@ -24,7 +28,11 @@ const t = useT(Astro.props.lang);
 <style>
   /* White band: the logos have white backgrounds, so they sit directly on the page. */
   .clients { background: #fff; color: var(--bg); padding: 110px 0 90px; }
-  h2 { color: var(--paper-mute); font-weight: 400; margin-bottom: 40px; }
+  .kicker { color: var(--pink); }
+  .head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; margin: 22px 0 48px; }
+  h2 { font-size: clamp(36px, 5vw, 80px); line-height: 0.92; }
+  .head p { color: #4a4a50; font-size: 19px; max-width: 40ch; }
+  @media (max-width: 900px) { .head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } }
   .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px 16px; align-items: center; }
   li { aspect-ratio: 1; display: grid; place-items: center; transition: transform 0.25s; }
   li:hover { transform: scale(1.06); }
