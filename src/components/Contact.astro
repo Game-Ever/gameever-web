@@ -26,7 +26,7 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   <div class="wrap top">
     <div class="pitch">
       <span class="mono label">{t('contact.label')}</span>
-      <h2 class="wide"><span>{t('contact.title')}</span> <em>{t('contact.titleEm')}</em></h2>
+      <h2 class="wide">{t('contact.title').map((line) => <span>{line}</span>)} {t('contact.titleEm').map((line) => <em>{line}</em>)}</h2>
     </div>
 
     <form class="form" novalidate data-endpoint={endpoint} data-key={formKey} data-msgs={JSON.stringify(msgs)}>
