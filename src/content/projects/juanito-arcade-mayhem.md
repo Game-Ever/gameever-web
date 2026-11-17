@@ -14,7 +14,8 @@ genre:
   en: "Action · Arcade"
   es: "Acción · Arcade"
 featured: 8
-cover: "../../assets/projects/juanito-arcade-mayhem/cover.jpg"
+# Square cover from the studio (2026-11-17): cards and the thumbnail next to the title. The old 4:3 cover.jpg stays in the folder.
+cover: "../../assets/projects/juanito-arcade-mayhem/cover-square.jpg"
 summary:
   en: "Our own arcade-hopping action game, on Steam, iOS and Android."
   es: "Nuestro juego de acción que salta de arcade en arcade. En Steam, iOS y Android."
