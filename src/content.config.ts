@@ -10,7 +10,7 @@ const projects = defineCollection({
   loader: glob({ pattern: ['**/*.md', '!_*.md'], base: './src/content/projects' }),
   schema: ({ image }) => z.object({
     title: z.string(),
-    /** Series or franchise part of the title (e.g. "Las Canciones del Zoo"), at its start or end. The project page
+    /** Series or franchise part of the title (e.g. "Canciones del Zoo"), at its start or end. The project page
      *  shows it as a smaller line above the rest of the title; everywhere else the full title is used. */
     series: z.string().optional(),
     client: z.string(),

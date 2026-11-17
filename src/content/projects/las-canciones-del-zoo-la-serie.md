@@ -1,6 +1,6 @@
 ---
-title: "Las Canciones del Zoo: la serie"
-series: "Las Canciones del Zoo"
+title: "Canciones del Zoo: la serie"
+series: "Canciones del Zoo"
 client: "El Reino Infantil"
 year: 2020
 years: "2019–2020"

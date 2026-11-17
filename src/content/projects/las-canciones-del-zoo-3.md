@@ -1,6 +1,6 @@
 ---
-title: "Las Canciones del Zoo 3"
-series: "Las Canciones del Zoo"
+title: "Canciones del Zoo Vol. 3"
+series: "Canciones del Zoo"
 client: "El Reino Infantil"
 year: 2017
 years: "2016–2017"

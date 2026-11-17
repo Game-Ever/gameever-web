@@ -1,5 +1,6 @@
 ---
 title: "LIT Killah The Game"
+series: "LIT Killah"
 client: "Warner Music Argentina"
 year: 2020
 services:

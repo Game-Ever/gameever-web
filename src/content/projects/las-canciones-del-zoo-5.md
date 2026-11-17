@@ -1,6 +1,6 @@
 ---
-title: "Las Canciones del Zoo 5"
-series: "Las Canciones del Zoo"
+title: "Canciones del Zoo Vol. 5"
+series: "Canciones del Zoo"
 client: "El Reino Infantil"
 year: 2019
 years: "2019"

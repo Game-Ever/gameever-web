@@ -1,5 +1,6 @@
 ---
 title: "Juanito Arcade Mayhem"
+series: "Juanito"
 client: "Original IP"
 year: 2017
 services:

@@ -50,7 +50,7 @@ const groups = d.entryGroups.length
 // Gallery: large images for the viewer; portrait screenshots (phone games) go four per row, landscape two.
 const gallery = await Promise.all(d.gallery.map(async (src) => ({ src, full: (await getImage({ src, width: Math.min(src.width, 2000), format: 'webp' })).src })));
 const portraitGallery = d.gallery.length > 0 && d.gallery.every((g) => g.height > g.width);
-// Title in two sizes when the project names its series: "Las Canciones del Zoo" small, "3" big.
+// Title in two sizes when the project names its series: "Canciones del Zoo" small, "Vol. 3" big.
 const splitTitle = (p: { title: string; series?: string }) => {
   const s = p.series;
   if (!s || !(p.title.startsWith(s) || p.title.endsWith(s))) return { small: undefined, big: p.title };
@@ -267,7 +267,7 @@ const jsonLd = {
   .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
   /* Same size as the home tagline ("Soñamos. Creamos. Jugamos."). */
   h1 { font-size: clamp(34px, 6vw, 88px); line-height: 0.9; margin: 14px 0 0; overflow-wrap: break-word; }
-  /* Series line over the title (e.g. "Las Canciones del Zoo" over "3"), at the sub-title size. */
+  /* Series line over the title (e.g. "Canciones del Zoo" over "Vol. 3"), at the sub-title size. */
   h1 .series, .next h2 .series { display: block; font-size: var(--subtitle-size); line-height: 1; margin-bottom: 0.35em; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
   .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
