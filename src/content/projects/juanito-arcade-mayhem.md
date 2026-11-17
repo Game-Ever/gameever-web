@@ -5,12 +5,13 @@ year: 2017
 services:
   - "original-ip"
 platforms:
-  - "steam"
+  - "pc"
   - "ios"
   - "android"
+# Genre from the Steam store page (genres Action/Adventure/Casual; top tags Arcade, Retro, Shoot 'em up).
 genre:
-  en: "Platformer"
-  es: "Juego de plataformas"
+  en: "Action · Arcade"
+  es: "Acción · Arcade"
 featured: 8
 cover: "../../assets/projects/juanito-arcade-mayhem/cover.jpg"
 summary:
