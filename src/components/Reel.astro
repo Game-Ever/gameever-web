@@ -29,6 +29,8 @@ const src = `https://www.youtube-nocookie.com/embed/${REEL_ID}?autoplay=1&mute=1
   .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .yt { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100%; min-width: 177.78svh; transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s; }
   .yt.on { opacity: 1; }
+  /* Fade in when playback starts, but hide instantly on pause so YouTube's overlay never shows. */
+  .yt:not(.on) { transition: none; }
   /* Darker lower half so the tagline reads over any frame of the reel. */
   .reel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 22%, transparent 40%, rgba(13, 13, 15, 0.88) 100%); pointer-events: none; z-index: 1; }
   .overlay { position: absolute; left: 0; right: 0; bottom: 124px; z-index: 2; color: #fff; }
@@ -75,9 +77,27 @@ const src = `https://www.youtube-nocookie.com/embed/${REEL_ID}?autoplay=1&mute=1
       btnPlay.innerHTML = p ? ICONS.pause : ICONS.play;
       btnPlay.setAttribute('aria-label', p ? i18n.pause : i18n.play);
     };
+    // The video is only shown while it is actually playing. When paused, buffering at start or blocked
+    // from autoplaying (some phones), our poster image stays on top, so YouTube's own overlay
+    // (prev / play / next buttons) is never visible.
+    let visible = false;
+    const show = (on: boolean) => { visible = on; yt.classList.toggle('on', on); };
+    addEventListener('message', (e) => {
+      if (e.source !== yt.contentWindow || typeof e.data !== 'string') return;
+      let data: { event?: string; info?: unknown };
+      try { data = JSON.parse(e.data); } catch { return; }
+      const state = data.event === 'onStateChange' ? data.info
+        : data.event === 'infoDelivery' ? (data.info as { playerState?: number } | undefined)?.playerState
+        : undefined;
+      if (typeof state !== 'number') return;
+      // 1 = playing, 3 = buffering (keep the current view to avoid flicker), anything else = hide.
+      show(state === 1 || (state === 3 && visible));
+      setPlay(state === 1 || state === 3);
+    });
     const load = () => {
-      yt.src = yt.dataset.src!;
-      yt.addEventListener('load', () => setTimeout(() => yt.classList.add('on'), 1200), { once: true });
+      yt.src = `${yt.dataset.src}&origin=${encodeURIComponent(location.origin)}`;
+      // Ask the player to report its state changes to this page.
+      yt.addEventListener('load', () => yt.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'reel', channel: 'widget' }), '*'), { once: true });
       setPlay(true);
     };
     if (reduce) setPlay(false); else load();
