@@ -31,8 +31,6 @@ const services = d.services.map((s) => SERVICES[s][lang]);
 const mediaLayout = d.highlights.length > 0 && !d.entries.length;
 const highlights = mediaLayout ? d.highlights : [];
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
-// "Ver tráiler" in the hero plays the first highlight (or video); pages that list their clips don't need it.
-const trailer = d.entries.length ? undefined : highlights[0]?.id ?? allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
 // On phones (portrait) a landscape image crops the characters, so the square cover is used there instead.
@@ -101,9 +99,9 @@ const jsonLd = {
         <div>
           <span class="mono kicker">{[services[0], d.client === ORIGINAL_IP ? null : d.client].filter(Boolean).join(" · ")}</span>
           <h1 class="wide">{heading.small && <><span class="series">{heading.small}</span> </>}{heading.big}</h1>
-          {(trailer || d.links.length > 0) && (
+          {/* No "Ver tráiler" here: the videos are a scroll away. Only store and site buttons. */}
+          {d.links.length > 0 && (
             <div class="ctas">
-              {trailer && <button class="cta primary" data-trailer={trailer}>▶ {t('project.trailer')}</button>}
               {d.links.map((l) => <StoreButton lang={lang} label={l.label} url={l.url} webGame={l.webGame} />)}
             </div>
           )}
@@ -336,7 +334,6 @@ const jsonLd = {
     <div class="wrap"><Legal lang={lang} /></div>
   </footer>
 
-  <div class="modal" hidden><button class="x" aria-label="Close">✕</button></div>
 
   {gallery.length > 0 && (
     <div class="lightbox" role="dialog" aria-modal="true" aria-label={t('project.gallery')} hidden>
@@ -365,9 +362,6 @@ const jsonLd = {
   /* Series line over the title (e.g. "Canciones del Zoo" over "Vol. 3"), at the sub-title size. */
   h1 .series, .next h2 .series { display: block; font-size: var(--subtitle-size); line-height: 1; margin-bottom: 0.35em; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
-  .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
-  .cta.primary { background: var(--pink); border-color: var(--pink); color: #fff; }
-  .cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
   .overview { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; padding: 110px 0 90px; }
   .lead { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.25; font-weight: 500; }
@@ -540,10 +534,6 @@ const jsonLd = {
   /* Same bottom line as the home: version and rights. */
   .foot { padding: 40px 0 20px; }
 
-  .modal { position: fixed; inset: 0; z-index: 60; background: rgba(0, 0, 0, 0.92); display: grid; place-items: center; padding: 16px; }
-  .modal[hidden] { display: none; }
-  .modal :global(iframe) { width: min(1100px, 100%); aspect-ratio: 16 / 9; border: 0; }
-  .x { position: absolute; top: 18px; right: 20px; background: none; border: 0; color: #fff; font-size: 30px; cursor: pointer; }
 
   @media (max-width: 900px) {
     .inner { grid-template-columns: 1fr; }
@@ -590,19 +580,6 @@ const jsonLd = {
 </style>
 
 <script>
-  const modal = document.querySelector<HTMLElement>('.modal')!;
-  const close = () => { modal.hidden = true; modal.querySelector('iframe')?.remove(); };
-  document.querySelector<HTMLButtonElement>('[data-trailer]')?.addEventListener('click', (e) => {
-    const id = (e.currentTarget as HTMLElement).dataset.trailer;
-    const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-    iframe.allow = 'autoplay; encrypted-media; fullscreen';
-    iframe.allowFullscreen = true;
-    modal.append(iframe);
-    modal.hidden = false;
-    modal.querySelector<HTMLButtonElement>('.x')!.focus();
-  });
-  modal.querySelector('.x')!.addEventListener('click', close);
 
   // Series tabs (e.g. Canciones / A Jugar) and "Ver los N".
   const tabs = [...document.querySelectorAll<HTMLButtonElement>('.series [role=tab]')];
@@ -618,7 +595,6 @@ const jsonLd = {
     const open = panel.classList.toggle('expanded');
     btn.textContent = open ? btn.dataset.less! : btn.dataset.all!;
   }));
-  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
 
   const stopVideos = (root: ParentNode) => (window as any).stopVideos?.(root);
 
@@ -687,5 +663,4 @@ const jsonLd = {
       if (Math.abs(dx) > 50 && shots.length > 1) show(at + (dx < 0 ? 1 : -1));
     });
   }
-  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
 </script>
