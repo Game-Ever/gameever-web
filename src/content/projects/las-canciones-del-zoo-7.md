@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover (4:3, the characters) and hero (the scene): two images of the album's most viewed clip (Una vez un león).
+# Cover: Rita from "Rita la jirafita"; hero: the most viewed clip, "Una vez un león".
 cover: "../../assets/projects/las-canciones-del-zoo-7/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-7/hero.jpg"
 summary:

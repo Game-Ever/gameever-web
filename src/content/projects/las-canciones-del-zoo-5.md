@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover (4:3, the characters) and hero (the scene): two images of the album's most viewed clip (Los bomberos van deprisa).
+# Cover: Chulo from "Yo quiero caminar" (chosen by the studio); hero: the scene of the most viewed clip, "Los bomberos van deprisa".
 cover: "../../assets/projects/las-canciones-del-zoo-5/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-5/hero.jpg"
 summary:

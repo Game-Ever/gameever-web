@@ -10,7 +10,7 @@ platforms:
 genre:
   en: "Kids learning"
   es: "Aprendizaje infantil"
-# Cover (4:3, the characters) and hero (the scene): two frames of the most viewed video (the football game).
+# Cover: Lalo from "Los helados de fruta"; hero: the most viewed video (the football game).
 cover: "../../assets/projects/las-canciones-del-zoo-a-jugar/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-a-jugar/hero.jpg"
 summary:

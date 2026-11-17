@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids series"
   es: "Serie infantil"
-# Cover (4:3, the characters) and hero (the scene): two images of the most viewed episode, "Picnic con amigos".
+# Cover: Tufín from episode 2; hero: the scene of the most viewed episode, "Picnic con amigos".
 cover: "../../assets/projects/las-canciones-del-zoo-la-serie/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-la-serie/hero.jpg"
 summary:

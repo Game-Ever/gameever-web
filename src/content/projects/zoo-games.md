@@ -11,7 +11,8 @@ platforms:
 genre:
   en: "Kids · Learning"
   es: "Infantil · Aprendizaje"
-cover: "../../assets/projects/zoo-games/zoo-games-video-game.png"
+# Cover: a frame of the game trailer (Winona, Tufín and Lulú). The previous key art is kept in the folder.
+cover: "../../assets/projects/zoo-games/cover.jpg"
 summary:
   en: "25+ learning mini-games starring the characters of Las Canciones del Zoo."
   es: "Más de 25 minijuegos para aprender con los personajes de Las Canciones del Zoo."

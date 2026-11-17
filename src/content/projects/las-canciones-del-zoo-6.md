@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover (4:3, the characters) and hero (the scene): two images of the album's most viewed clip (La Patita Enfermita).
+# Cover: Chulo, Tufín and Winona from "El Zorro Tufín" (the full frame, extended to 4:3); hero: the scene of the most viewed clip, "La Patita Enfermita".
 cover: "../../assets/projects/las-canciones-del-zoo-6/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-6/hero.jpg"
 summary:
