@@ -30,6 +30,8 @@ const projects = defineCollection({
     /** Extra rows for the project's fact sheet (e.g. Canales, Formato, Público), shown before "Nuestro rol". */
     facts: z.array(z.object({ label: localized, value: text })).default([]),
     videos: z.array(z.string()).default([]),
+    /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
+    heroImage: image().optional(),
     /** Muted YouTube loop behind the project title (start / end in seconds). */
     heroVideo: z.object({ id: z.string(), start: z.number().default(0), end: z.number().optional() }).optional(),
     /** Key figures shown in a band under the title, e.g. { value: "12", label: { en: "music videos", es: "videoclips" } }. */

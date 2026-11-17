@@ -11,7 +11,9 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-cover: "../../assets/projects/la-granja-de-zenon-a-rodar/zenonarodar.png"
+# Cover and hero: frames from the official "Ponle Gasolina" and "Velocidad" thumbnails (cropped clear of the channel badges).
+cover: "../../assets/projects/la-granja-de-zenon-a-rodar/cover.jpg"
+heroImage: "../../assets/projects/la-granja-de-zenon-a-rodar/hero.jpg"
 summary:
   en: "Twelve 3D music videos for La Granja de Zenón’s new adventure: A Rodar. Zenón and friends set off to see the world on wheels."
   es: "Doce videoclips 3D para la nueva aventura de La Granja de Zenón: A Rodar. Zenón y sus amigos salen a recorrer el mundo sobre ruedas."
@@ -35,12 +37,14 @@ heroVideo:
   id: "DzUfPLdTbfs"
   start: 4
   end: 18
-# Views checked on YouTube in November 2026 (individual uploads only, mixes not counted).
+# Views and minutes checked on YouTube in November 2026: 234.7 M views on the 11 standalone uploads (the "Ya Vamos a Llegar" mix not counted); 26.6 min.
 stats:
   - value: "12"
     label: { en: "music videos", es: "videoclips" }
   - value: "+230 M"
     label: { en: "views on YouTube", es: "vistas en YouTube" }
+  - value: "26"
+    label: { en: "minutes of animation", es: "minutos de animación" }
   - value: "7"
     label: { en: "characters at the wheel", es: "personajes al volante" }
 entriesTitle:
@@ -50,17 +54,17 @@ entriesTitle:
 entries:
   - { title: "Arreglando el Auto", year: "2022", views: 94668077, videos: ["DzUfPLdTbfs"] }
   - { title: "Lavando el Auto", year: "2022", views: 90768642, videos: ["kcZQ2Z65kJo"] }
-  - { title: "El Camino Arcoíris", year: "2022", views: 20982960, videos: ["Ij2CSkw_lO8"] }
+  - { title: "El Camino Arcoíris", year: "2022", views: 20983145, videos: ["Ij2CSkw_lO8"] }
   - { title: "Vamos por el Mundo", year: "2022", views: 10618945, videos: ["JVCRa0feGDA"] }
-  - { title: "Velocidad", year: "2023", views: 7339952, videos: ["qf9rB9lIMGg"] }
+  - { title: "Velocidad", year: "2023", views: 7340256, videos: ["qf9rB9lIMGg"] }
   # No standalone upload: the song opens this mix, so no views shown.
   - { title: "Ya Vamos a Llegar", year: "2023", videos: ["88HLRkAtThg"] }
   - { title: "El Auto Bochinchero", year: "2022", views: 3840899, videos: ["sctBG6v_tvI"] }
-  - { title: "Lejos y Cerca", year: "2023", views: 2134205, videos: ["7SPDvZzPF1o"] }
+  - { title: "Lejos y Cerca", year: "2023", views: 2134234, videos: ["7SPDvZzPF1o"] }
   - { title: "Ponle Gasolina", year: "2023", views: 1385932, videos: ["YiZ7KbIDqxY"] }
-  - { title: "El Sonido de mi Auto", year: "2024", views: 1296296, videos: ["X3q5ApSOQXI"] }
-  - { title: "El Semáforo", year: "2024", views: 1176341, videos: ["LpjB4psGxb8"] }
-  - { title: "Paseando en Auto", year: "2024", views: 522704, videos: ["ndTiRgGdiIo"] }
+  - { title: "El Sonido de mi Auto", year: "2024", views: 1296351, videos: ["X3q5ApSOQXI"] }
+  - { title: "El Semáforo", year: "2024", views: 1176320, videos: ["LpjB4psGxb8"] }
+  - { title: "Paseando en Auto", year: "2024", views: 522706, videos: ["ndTiRgGdiIo"] }
 # PLACEHOLDER: process images and texts to come from the studio.
 process:
   - title: { en: "Characters and their cars", es: "Personajes y sus autos" }

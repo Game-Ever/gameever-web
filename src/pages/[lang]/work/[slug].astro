@@ -26,7 +26,7 @@ const services = d.services.map((s) => SERVICES[s][lang]);
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
 const trailer = allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
-const heroBg = d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
+const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
 // "94 M" / "7,3 M" / "891 k" (es) and "94M" / "7.3M" / "891K" (en).
 const compact = (n: number) => {
   const [v, unit] = n >= 1e6 ? [n / 1e6, lang === 'es' ? ' M' : 'M'] : [n / 1e3, lang === 'es' ? ' k' : 'K'];
@@ -243,7 +243,7 @@ const jsonLd = {
   /* Key figures under the title. */
   .stats { list-style: none; padding: 34px 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; border-bottom: 1px solid var(--line); }
   .stats li { display: grid; gap: 6px; border-left: 3px solid var(--pink); padding-left: 16px; }
-  .stats strong { font-size: clamp(34px, 4.4vw, 64px); line-height: 0.95; color: var(--fg); white-space: nowrap; }
+  .stats strong { font-size: clamp(32px, 3.8vw, 56px); line-height: 0.95; color: var(--fg); white-space: nowrap; }
   .stats span { color: var(--fg2); font-size: 15px; }
 
   /* Clips: title with series tabs, the most viewed clip large, the rest in a grid. */
