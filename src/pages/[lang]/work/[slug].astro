@@ -280,8 +280,8 @@ const jsonLd = {
           )}
           {mediaLayout && pressLinks.length > 0 && (
             <div class="press-cards">
-              {pressLinks.map((p) => (
-                <a class="press-card" href={p.url} target="_blank" rel="noopener">
+              {pressLinks.map((p, i) => (
+                <a class:list={['press-card', { 'fold-bottom': i > 0 }]} href={p.url} target="_blank" rel="noopener">
                   <span class="pc-top"><span class="pc-outlet wide">{p.outlet}</span>{p.score && <span class="pc-score wide">{p.score}</span>}</span>
                   <span class="pc-title">{p.title}</span>
                   <span class="pc-foot">
@@ -487,6 +487,12 @@ const jsonLd = {
   .press-card:hover { --fold: 48px; transform: translateY(-4px); }
   .press-card:hover::before { border-color: var(--pink); }
   .press-card:hover::after { background: linear-gradient(to bottom left, transparent 50%, var(--pink) 50%); }
+  /* Comparison: fold at the bottom-right corner (like a page about to turn). */
+  .press-card.fold-bottom { clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--fold)), calc(100% - var(--fold)) 100%, 0 100%); }
+  .press-card.fold-bottom::after { top: auto; bottom: 0; background: linear-gradient(to top left, transparent 50%, var(--line2) 50%); box-shadow: -4px -4px 10px rgba(0, 0, 0, 0.35); }
+  .press-card.fold-bottom:hover::after { background: linear-gradient(to top left, transparent 50%, var(--pink) 50%); }
+  .press-card.fold-bottom .pc-top { padding-right: 0; }
+  .press-card.fold-bottom .pc-foot { padding-right: 30px; }
   .pc-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding-right: 22px; }
   .pc-outlet { font-size: var(--subtitle-size); line-height: 1; text-transform: uppercase; transition: color 0.25s; }
   .press-card:hover .pc-outlet { color: var(--pink); }
