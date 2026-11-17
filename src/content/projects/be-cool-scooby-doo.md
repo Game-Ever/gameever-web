@@ -8,19 +8,22 @@ services:
 platforms:
   - "web"
 genre:
-  en: "Casual · Hidden object"
-  es: "Casual · Objetos ocultos"
+  en: "Hidden objects"
+  es: "Objetos ocultos"
 featured: 2
 cover: "../../assets/projects/be-cool-scooby-doo/cover.png"
 summary:
   en: "Two browser games for Cartoon Network starring the Scooby-Doo gang."
   es: "Dos juegos de navegador para Cartoon Network con la pandilla de Scooby-Doo."
 description:
-  en: "Two multilingual browser games for Cartoon Network’s Be Cool, Scooby-Doo! In Sandwich Tower, Scooby stacks the tallest sandwich he can with the right ingredients. In The Mysterious Mansion, the gang searches a haunted house by flashlight, collects hidden clues and unmasks the culprit before time runs out."
-  es: "Creamos dos juegos de navegador de Be Cool, Scooby-Doo! para Cartoon Network, en varios idiomas. En Sandwich Tower, Scooby apila el sándwich más alto posible con los ingredientes correctos. En La Mansión Misteriosa, la pandilla recorre una casa embrujada linterna en mano, junta pistas escondidas y descubre al culpable antes de que se acabe el tiempo."
+  en: "Two multilingual browser games for Cartoon Network’s Be Cool, Scooby-Doo! In Sandwich Tower, Scooby stacks the tallest sandwich he can with the right ingredients. In The Mysterious Mansion, the gang searches a haunted house by flashlight, collects hidden clues and unmasks the culprit before time runs out. We handled everything: game design, art, 2D animation, sound and programming."
+  es: "Creamos dos juegos de navegador de Be Cool, Scooby-Doo! para Cartoon Network, en varios idiomas. En Sandwich Tower, Scooby apila el sándwich más alto posible con los ingredientes correctos. En La Mansión Misteriosa, la pandilla recorre una casa embrujada linterna en mano, junta pistas escondidas y descubre al culpable antes de que se acabe el tiempo. Nos ocupamos de todo: diseño de juego, arte, animación 2D, sonido y programación."
 role:
-  en: "Game design, 2D art and animation, development"
-  es: "Game design, arte y animación 2D, desarrollo"
+  en: "Full development"
+  es: "Desarrollo integral"
+entriesTitle:
+  en: "The games"
+  es: "Los juegos"
 entries:
   - title: "The Mysterious Mansion"
     year: "2019"
