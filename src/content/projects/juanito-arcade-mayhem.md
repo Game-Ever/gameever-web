@@ -50,7 +50,8 @@ gallery:
   - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_4.png"
   - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_5.png"
   - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_3.png"
-heroImage: "../../assets/projects/juanito-arcade-mayhem/hero.jpg"
+# Key art from the studio (2026-11-17); the previous hero.jpg is kept in the folder.
+heroImage: "../../assets/projects/juanito-arcade-mayhem/hero-key-art.jpg"
 # Figures from the stores / YouTube, checked in November 2026.
 stats:
   - value: "96 %"
