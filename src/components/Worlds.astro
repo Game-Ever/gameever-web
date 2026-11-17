@@ -10,8 +10,8 @@ const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
 const landscape = (id: string) => byId[id].data.gallery.find((g) => g.width > g.height * 1.2) ?? byId[id].data.cover;
 const groups = t('services.groups');
 const cards = [
-  { title: t('worlds.games'), cta: t('worlds.gamesCta'), jump: groups[0].jump, img: landscape('juanito-arcade-mayhem') },
-  { title: t('worlds.anim'), cta: t('worlds.animCta'), jump: groups[1].jump, img: byId['lit-killah-bizarrap-flexin'].data.cover },
+  { title: t('worlds.games'), cta: t('worlds.gamesCta'), area: groups[0].area, img: landscape('juanito-arcade-mayhem') },
+  { title: t('worlds.anim'), cta: t('worlds.animCta'), area: groups[1].area, img: byId['lit-killah-bizarrap-flexin'].data.cover },
 ];
 ---
 <section class="worlds" id="what-we-do">
@@ -25,7 +25,7 @@ const cards = [
     </div>
     <div class="cards">
       {cards.map((c) => (
-        <a class="card" href={`${url(lang, "work")}?sv=${c.jump}`}>
+        <a class="card" href={`${url(lang, "work")}?area=${c.area}`}>
           <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
           <span class="title wide">{c.title}</span>
           <span class="cta mono">{c.cta} →</span>

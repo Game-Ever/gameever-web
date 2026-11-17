@@ -23,7 +23,7 @@ Rules:
 ## Structure
 - `src/content.config.ts`: project schema
 - `src/i18n/index.ts`: UI strings for both languages, client list, social links, helpers
-- `src/components/`: Reel, Statement, Wall (filters/search/sort with URL state), Services, Clients, Contact, YouTube
+- `src/components/`: Reel, Statement, Wall (area tabs/search/sort with URL state), Services, Clients, Contact, YouTube
 - `src/pages/[lang]/`: home and `work/[slug]` project pages; `[redirects].ts` generates `_redirects`
 - `legacy/legacy-projects.json`: full archive of the old WordPress portfolio (49 projects); `scripts/scrape-legacy.mjs` re-creates it
 - `scripts/import-legacy.mjs`: one-time import used to create the project files (the `.md` files are now the source of truth)
@@ -55,7 +55,7 @@ Short, strong phrases. No repeated key words across the home. Professional tone:
 
 ## Home vs. projects page
 - Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link.
-- `/[lang]/work/` lists every project with search, filters and sort (`Wall` variant `full`). Links from Qué hacemos and Servicios open it pre-filtered (`?sv=a,b`).
+- `/[lang]/work/` lists every project (`Wall` variant `full`) with area tabs (Todos / Videojuegos / Animación / Co-producción), search and sort (Featured, Newest, A–Z), kept in the URL (`?area=games&q=…&sort=newest`). Areas are derived from services/platforms by `areasOf()` in `src/data/taxonomy.ts` (no extra field in project files). Links from Qué hacemos and Servicios open the matching tab. Platform, era and client filters were dropped on purpose (not useful: almost one project per client).
 
 ## Version stamp
 The footer shows `Versión X.Y.Z` on the left (commit and build date only in data attributes, `src/data/build.ts`) and "© YEAR Game Ever. Todos los derechos reservados." on the right. Bump `version` in package.json on each design round.

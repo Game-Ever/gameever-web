@@ -10,7 +10,7 @@ const lang = Astro.params.lang as Lang;
 const t = useT(lang);
 const projects = await getProjects();
 ---
-<Base lang={lang} path="work" title={t('work.allTitle').replace(/\.$/, '')} description={t('work.intro')} variant="page">
+<Base lang={lang} path="work" title={t('work.allTitle').replace(/\.$/, '')} description={t('work.lines').join(' ')} variant="page">
   <main class="page">
     <Wall lang={lang} projects={projects} variant="full" />
   </main>

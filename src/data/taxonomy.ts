@@ -33,3 +33,26 @@ export const SERVICE_KEYS = Object.keys(SERVICES) as [ServiceKey, ...ServiceKey[
 export const PLATFORM_KEYS = Object.keys(PLATFORMS) as [PlatformKey, ...PlatformKey[]];
 
 export const eraOf = (year: number) => `${Math.floor(year / 10) * 10}s`;
+
+// The three areas of the studio (same as the Servicios accordions). The projects page filters by
+// area; each project's areas are derived from its services and platforms, so no extra field is needed.
+export const AREAS = {
+  games: { en: 'Video games', es: 'Videojuegos' },
+  animation: { en: 'Animation', es: 'Animación' },
+  coproduction: { en: 'Co-production', es: 'Co-producción' },
+} as const;
+export type AreaKey = keyof typeof AREAS;
+export const AREA_KEYS = Object.keys(AREAS) as AreaKey[];
+
+const GAME_SERVICES: ServiceKey[] = ['brand-games', 'web-games', 'edutainment'];
+const ANIMATION_SERVICES: ServiceKey[] = ['animation-3d', 'animation-2d', 'music-video', 'series', 'advertising', 'trailer'];
+const PLAYABLE: PlatformKey[] = ['web', 'ios', 'android', 'steam', 'pc', 'console', 'arcade'];
+
+export function areasOf(services: readonly ServiceKey[], platforms: readonly PlatformKey[]): AreaKey[] {
+  const areas: AreaKey[] = [];
+  // Original IP counts as a game only when it ships on a playable platform (series don't).
+  if (services.some((s) => GAME_SERVICES.includes(s)) || (services.includes('original-ip') && platforms.some((p) => PLAYABLE.includes(p)))) areas.push('games');
+  if (services.some((s) => ANIMATION_SERVICES.includes(s))) areas.push('animation');
+  if (services.includes('codev')) areas.push('coproduction');
+  return areas;
+}
