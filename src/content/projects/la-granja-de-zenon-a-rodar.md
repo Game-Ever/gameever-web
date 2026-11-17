@@ -13,8 +13,8 @@ genre:
   es: "Música infantil"
 cover: "../../assets/projects/la-granja-de-zenon-a-rodar/zenonarodar.png"
 summary:
-  en: "Twelve 3D music videos for La Granja de Zenón’s new adventure: the farm animals hit the road, each in their own car."
-  es: "Doce videoclips 3D para la nueva aventura de La Granja de Zenón: los animales salen a recorrer el mundo, cada uno en su auto."
+  en: "Twelve 3D music videos for La Granja de Zenón’s new adventure: Zenón and friends hit the road, each in their own car."
+  es: "Doce videoclips 3D para la nueva aventura de La Granja de Zenón: Zenón y sus amigos salen a recorrer el mundo, cada uno en su auto."
 description:
   en: "Between 2022 and 2024 we animated La Granja de Zenón: A Rodar for El Reino Infantil. Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and Beto the Wolf leave the farm and take to the road: jungles, beaches, mountains, small towns, big cities and even a rainbow road. Twelve new songs about the world of cars (filling up, washing, fixing, stopping at the traffic light) with more than 230 million views on YouTube. “Arreglando el Auto” and “Lavando el Auto” have over 90 million each."
   es: "Entre 2022 y 2024 animamos La Granja de Zenón: A Rodar para El Reino Infantil. Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el Lobo Beto dejan la granja y salen a la ruta: selvas, playas, montañas, pueblos, grandes ciudades y hasta un camino arcoíris. Doce canciones nuevas sobre el mundo de los autos (cargar combustible, lavarlos, arreglarlos, frenar en el semáforo) que ya suman más de 230 millones de vistas en YouTube. «Arreglando el Auto» y «Lavando el Auto» superan los 90 millones cada una."
