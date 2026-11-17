@@ -52,26 +52,22 @@ async function checkThumb(videoId: string) {
   .frame { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; border: 0; padding: 0; cursor: pointer; overflow: hidden; }
   .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s, filter 0.3s; }
   .frame:hover img { transform: scale(1.03); }
-  /* Phones: small play button in the bottom-right corner, so the thumbnail art stays visible. */
-  .play { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; background: var(--pink); color: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); transition: transform 0.2s, background 0.2s; }
-  .frame:hover .play { transform: scale(1.1); }
-  .play svg { width: 44px; height: 44px; padding: 13px; fill: currentColor; flex: none; }
+  /* Play button: YouTube's rounded rectangle in our pink, centered. Its size follows the player's width
+     (container query): small on cards and phones, bigger on wide players. No text: the shape says "video". */
+  .frame { container-type: inline-size; }
+  .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 64px; height: 45px; border-radius: 13px; background: var(--pink); color: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); transition: transform 0.2s; }
+  .play svg { width: 22px; height: 22px; margin-left: 3px; fill: currentColor; }
   .label { display: none; }
-  /* Desktop: a centered "Ver video" button, so it reads as a video at a glance. */
-  @media (min-width: 761px) {
-    .play { right: auto; bottom: auto; left: 50%; top: 50%; transform: translate(-50%, -50%); padding-right: 22px; }
-    .play svg { width: 48px; height: 48px; padding: 15px 10px 15px 16px; }
-    .label { display: block; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; letter-spacing: 0.02em; white-space: nowrap; }
-    .frame:hover .play { transform: translate(-50%, -50%) scale(1.06); }
-    .frame:hover img { filter: brightness(0.8); }
-    /* Big players (a single trailer) get a bigger button. */
-    .frame { container-type: inline-size; }
-    @container (min-width: 800px) {
-      .play { padding-right: 30px; }
-      .play svg { width: 64px; height: 64px; padding: 20px 12px 20px 22px; }
-      .label { font-size: 18px; }
-    }
+  .frame:hover .play, .frame:focus-visible .play { transform: translate(-50%, -50%) scale(1.1); }
+  @container (min-width: 520px) {
+    .play { width: 80px; height: 56px; border-radius: 16px; }
+    .play svg { width: 28px; height: 28px; }
   }
+  @container (min-width: 900px) {
+    .play { width: 100px; height: 70px; border-radius: 20px; }
+    .play svg { width: 36px; height: 36px; margin-left: 4px; }
+  }
+  @media (hover: hover) { .frame:hover img { filter: brightness(0.85); } }
   .frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   figcaption { color: var(--mute); margin-top: 10px; }
 </style>
