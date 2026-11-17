@@ -1,4 +1,5 @@
 ---
+import Dot from './Dot.astro';
 import { type Lang, useT, SOCIAL } from '../i18n';
 import Legal from './Legal.astro';
 
@@ -30,7 +31,7 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
     </div>
 
     <form class="form" novalidate data-endpoint={endpoint} data-key={formKey} data-msgs={JSON.stringify(msgs)}>
-      <h3 class="wide">{t('form.title')}</h3>
+      <h3 class="wide"><Dot text={t('form.title')} /></h3>
       <div class="row">
         <label><span>{t('form.name')}</span><input name="name" autocomplete="name" required /></label>
         <label><span>{t('form.email')}</span><input name="email" type="email" autocomplete="email" required /></label>

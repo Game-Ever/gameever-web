@@ -1,6 +1,7 @@
 ---
 // "Qué hacemos": the two worlds (games and animation), each card jumping to the matching projects.
 // Each card plays a muted loop of one YouTube video (see src/data/worlds.ts, and LoopVideo for how it plays).
+import Dot from './Dot.astro';
 import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url } from '../i18n';
 import LoopVideo from './LoopVideo.astro';
@@ -21,7 +22,7 @@ const cards = [
   <div class="wrap">
     <span class="mono kicker">{t('worlds.label')}</span>
     <div class="head">
-      <h2 class="wide">{t('worlds.title').map((line) => <span>{line}</span>)}</h2>
+      <h2 class="wide">{t('worlds.title').map((line) => <span><Dot text={line} /></span>)}</h2>
       <div class="aside">
         <p class="lines">{t('worlds.lines').map((line) => <span>{line}</span>)}</p>
       </div>

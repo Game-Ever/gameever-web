@@ -54,6 +54,8 @@ button { font: inherit; color: inherit; }
 .aside .lines span { display: block; }
 /* On pink backgrounds the bar switches to white so it stays visible. */
 .aside.on-pink { border-left-color: #fff; }
+/* The closing period of a section title (Dot.astro), in pink. */
+.dot { color: var(--pink); }
 /* One color per area (Qué hacemos, Servicios): cyan is always video games, pink animation, violet co-production. */
 .area-games { --area: var(--cyan); }
 .area-animation { --area: var(--pink); }

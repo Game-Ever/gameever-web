@@ -1,4 +1,5 @@
 ---
+import Dot from './Dot.astro';
 import { Image } from 'astro:assets';
 import { type Lang, useT } from '../i18n';
 import { CLIENT_LOGOS } from '../data/clients';
@@ -10,7 +11,7 @@ const t = useT(Astro.props.lang);
   <div class="wrap">
     <span class="mono kicker">{t('clients.label')}</span>
     <div class="head">
-      <h2 class="wide">{t('clients.title')}</h2>
+      <h2 class="wide"><Dot text={t('clients.title')} /></h2>
     </div>
     <ul class="grid">
       {CLIENT_LOGOS.map((c) => (

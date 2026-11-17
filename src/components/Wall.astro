@@ -1,4 +1,5 @@
 ---
+import Dot from './Dot.astro';
 import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url, clientName } from '../i18n';
 import { AREAS, AREA_KEYS, areasOf } from '../data/taxonomy';
@@ -29,7 +30,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   <div class="wrap">
     <span class="mono kicker">{t('work.label')}</span>
     <div class="work-head">
-      <Heading class="wide">{full ? t('work.allTitle') : t('work.title')}</Heading>
+      <Heading class="wide"><Dot text={full ? t('work.allTitle') : t('work.title')} /></Heading>
       {full && <div class="aside on-pink"><p class="lines">{t('work.lines').map((line) => <span>{line}</span>)}</p></div>}
     </div>
 

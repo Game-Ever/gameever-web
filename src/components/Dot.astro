@@ -1,0 +1,8 @@
+---
+// A title's closing period in pink (the brand "dot"): <Dot text="Trabajo seleccionado." />.
+// Text without a closing period is shown as is. The color comes from .dot in global.css.
+interface Props { text: string }
+const { text } = Astro.props;
+const m = /^([\s\S]*?)([.!?])$/.exec(text);
+---
+{m ? <>{m[1]}<span class="dot">{m[2]}</span></> : text}

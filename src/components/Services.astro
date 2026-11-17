@@ -1,5 +1,6 @@
 ---
 // Services as accordions: three blocks, all closed on load; each opens smoothly to show its list.
+import Dot from './Dot.astro';
 import { type Lang, useT, url } from '../i18n';
 
 interface Props { lang: Lang }
@@ -11,7 +12,7 @@ const groups = t('services.groups');
   <div class="wrap">
     <span class="mono kicker">{t('services.label')}</span>
     <div class="head">
-      <h2 class="wide">{t('services.title').map((line) => <span>{line}</span>)}</h2>
+      <h2 class="wide">{t('services.title').map((line) => <span><Dot text={line} /></span>)}</h2>
       <div class="aside">
         <p class="lines">{t('services.lines').map((line) => <span>{line}</span>)}</p>
       </div>

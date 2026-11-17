@@ -1,4 +1,5 @@
 ---
+import Dot from './Dot.astro';
 import { type Lang, useT } from '../i18n';
 
 interface Props { lang: Lang }
@@ -8,7 +9,7 @@ const t = useT(Astro.props.lang);
   <div class="wrap">
     <span class="mono kicker">{t('about.label')}</span>
     <div class="grid">
-      <h2 class="wide">{t('about.title')}</h2>
+      <h2 class="wide"><Dot text={t('about.title')} /></h2>
       <div class="aside">
         <p class="lines">{t('about.lines').map((line) => <span>{line}</span>)}</p>
       </div>
