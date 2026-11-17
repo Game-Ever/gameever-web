@@ -51,6 +51,12 @@ Until the user says the design is final: only the GitHub Pages preview is update
 
 ## Type scale
 Every section title uses `var(--title-size)` and every sub-title (card titles, accordion names, form title) uses `var(--subtitle-size)` (both in `src/styles/global.css`). Only the hero tagline over the reel (left-aligned, capped at 88px, one phrase per line) and project page titles plus the "Próximo proyecto" title (same size as that tagline) are larger. Paragraphs use `var(--body-size)`. Text next to a section title goes in the global `.aside` block: one pink left bar per block, body paragraphs only, all in the same normal style (no bold lead lines; the user chose this "option A"). Used in Nosotros, Qué hacemos, Servicios and Todos los proyectos; title + aside use a 1fr/1fr grid, top-aligned. On pink backgrounds add `.on-pink` (white bar instead of pink). Multi-line titles are arrays of lines in i18n (rendered as block spans). New sections must use these variables, not their own clamp().
+Section titles end with a period shown in pink through `src/components/Dot.astro` (`<Dot text={...} />`). The small labels over titles (`.mono.kicker`) are 14px.
+
+## Colors
+- Pink (`--pink`) is the brand color. Each area has its own color, used only to mean that area (classes `.area-games` / `.area-animation` / `.area-coproduction` set `--area`): cyan games, pink animation, violet co-production. Used in the Qué hacemos cards (border and glow) and in Servicios.
+- The contact band is a gradient: pink from the top-left, cyan from the top-right, dark violet in the middle and bottom; white text and form, pink button. Its 32px grid is hidden for now; the blinking pixels stay.
+- Home order: reel, Trabajo seleccionado, Qué hacemos, Servicios, Nosotros, Clientes, Contacto.
 
 ## Copy style
 Short, strong phrases. No repeated key words across the home. Professional tone: first person plural or no verb; never tú/vos (no "Contanos", "Escribinos", "¿Buscás…?").
