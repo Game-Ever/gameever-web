@@ -57,16 +57,17 @@ gallery:
 heroImage: "../../assets/projects/juanito-arcade-mayhem/hero-key-art.jpg"
 # Phone hero: the center square of the header art (Juanito and the robot whole).
 heroMobile: "../../assets/projects/juanito-arcade-mayhem/hero-mobile.jpg"
-# Figures from the stores / YouTube, checked in November 2026.
+# Figures from the stores, checked on 2026-11-17 (Steam: 96 % of 205 reviews; Google Play: 4.5 stars, 10.8K reviews).
+# Order: reach, then ratings, then content.
 stats:
-  - value: "96 %"
-    label: { en: "positive reviews on Steam", es: "reseñas positivas en Steam" }
   - value: "+500 K"
     label: { en: "downloads on Android", es: "descargas en Android" }
+  - value: "96 %"
+    label: { en: "positive reviews on Steam", es: "reseñas positivas en Steam" }
+  - value: "4,5 ★"
+    label: { en: "on Google Play, 10K+ reviews", es: "en Google Play, +10 k reseñas" }
   - value: "80+"
     label: { en: "levels in 8 worlds", es: "niveles en 8 mundos" }
-  - value: "6"
-    label: { en: "languages", es: "idiomas" }
 press:
   - { outlet: "Press Over", title: "Juanito Arcade Mayhem: el arcade 2D de disparos que te revolea creatividad por la cabeza", author: "Gustavo Sobrero", year: "2017", score: "8/10", url: "https://pressover.news/analisis/juanito-arcade-mayhem/" }
   - { outlet: "IGN España", title: "Juanito Arcade Mayhem. Análisis para PC", author: "Jose A. Rodríguez", year: "2017", score: "7/10", url: "https://es.ign.com/juanito-arcade-mayhem/124334/juanito-arcade-mayhem-analisis-para-pc" }

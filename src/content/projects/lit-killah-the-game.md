@@ -39,12 +39,16 @@ links:
     url: "https://play.google.com/store/apps/details?id=com.gameever.litkillah"
   - label: "App Store"
     url: "https://apps.apple.com/ar/app/lit-killah-the-game/id1494385191"
-# Figures from the stores / YouTube, checked in November 2026.
+# Figures checked on 2026-11-17: Google Play 5M+ downloads, 4.3 stars from 98.5K reviews; top 10 downloads in
+# Argentina on Android and iOS at launch (Cultura Geek, April 2020); launch videos on YouTube.
+# Order: reach, launch impact, ratings, buzz.
 stats:
   - value: "+5 M"
     label: { en: "downloads on Google Play", es: "descargas en Google Play" }
-  - value: "50"
-    label: { en: "levels", es: "niveles" }
+  - value: "Top 10"
+    label: { en: "downloads in Argentina", es: "descargas en Argentina" }
+  - value: "4,3 ★"
+    label: { en: "on Google Play, 98K+ reviews", es: "en Google Play, +98 k reseñas" }
   - value: "+2,7 M"
     label: { en: "views of the launch videos", es: "vistas de los videos de lanzamiento" }
 press:

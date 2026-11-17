@@ -555,6 +555,9 @@ const jsonLd = {
     .hero :global(.hero-video) { display: none; }
     .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
     .stats strong { font-size: 28px; }
+    /* Two columns on phones: long labels wrap instead of running into the next column. */
+    .stats li { min-width: 0; }
+    .stats span { white-space: normal; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
   }
