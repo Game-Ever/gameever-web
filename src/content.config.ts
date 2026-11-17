@@ -28,7 +28,7 @@ const projects = defineCollection({
     description: localized,
     role: localized.optional(),
     /** Extra rows for the project's fact sheet (e.g. Canales, Formato, Público), shown before "Nuestro rol". */
-    facts: z.array(z.object({ label: localized, value: text })).default([]),
+    facts: z.array(z.object({ label: localized, value: text, url: z.url().optional() })).default([]),
     videos: z.array(z.string()).default([]),
     /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
     heroImage: image().optional(),

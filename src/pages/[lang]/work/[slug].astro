@@ -107,7 +107,7 @@ const jsonLd = {
           <dt>{t('project.year')}</dt><dd>{d.years ?? d.year}</dd>
           {platforms.length > 0 && <><dt>{t('project.platforms')}</dt><dd>{platforms.join(' · ')}</dd></>}
           {d.genre && <><dt>{t('project.genre')}</dt><dd>{tr(d.genre, lang)}</dd></>}
-          {d.facts.map((x) => <><dt>{tr(x.label, lang)}</dt><dd>{tr(x.value, lang)}</dd></>)}
+          {d.facts.map((x) => <><dt>{tr(x.label, lang)}</dt><dd>{x.url ? <a class="fact-link" href={x.url} target="_blank" rel="noopener">{tr(x.value, lang)}</a> : tr(x.value, lang)}</dd></>)}
           {d.role && <><dt>{t('project.role')}</dt><dd>{tr(d.role, lang)}</dd></>}
           {/* Services only when there is no role: the role already says what we did. */}
           {!d.role && <><dt>{t('project.services')}</dt><dd>{services.join(' · ')}</dd></>}
@@ -254,6 +254,8 @@ const jsonLd = {
   dt, dd { padding: 14px 0; border-bottom: 1px solid var(--line); }
   dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); padding-right: 24px; }
   dd { font-weight: 600; }
+  .fact-link { border-bottom: 1px solid var(--pink); transition: color 0.2s; }
+  .fact-link:hover { color: var(--pink); }
 
   .block { margin-bottom: 90px; }
   .block h2 { font-size: clamp(28px, 3.4vw, 48px); margin-bottom: 28px; }
