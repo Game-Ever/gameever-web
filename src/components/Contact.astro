@@ -17,12 +17,10 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
     <div class="pitch">
       <span class="mono label">{t('contact.label')}</span>
       <h2 class="wide"><span>{t('contact.title')}</span> <em>{t('contact.titleEm')}</em></h2>
-      <p class="intro">{t('contact.intro')}</p>
-      <p class="direct"><span class="mono">{t('contact.direct')}</span><a class="mail" href="mailto:info@gameeverstudio.com">info@gameeverstudio.com</a></p>
     </div>
 
     <form class="form" novalidate data-endpoint={endpoint} data-key={formKey} data-msgs={JSON.stringify(msgs)}>
-      <h3 class="mono">{t('form.title')}</h3>
+      <h3 class="wide">{t('form.title')}</h3>
       <div class="row">
         <label><span>{t('form.name')}</span><input name="name" autocomplete="name" required /></label>
         <label><span>{t('form.email')}</span><input name="email" type="email" autocomplete="email" required /></label>
@@ -58,21 +56,17 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
 </footer>
 
 <style>
-  /* Closing band in brand pink: big type in white, small text in ink for contrast, form on an ink panel. */
+  /* Closing band in brand pink, split in two: the closing phrase on the left, the form (ink panel) on the right. */
   .contact { background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
-  .top { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+  .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center; }
   .label { color: var(--bg); }
-  h2 { font-size: clamp(44px, 7vw, 120px); line-height: 0.86; margin-top: 20px; color: #fff; }
+  /* Longest word ("INCREÍBLE", ~7.5× the font size) must fit half the page: capped at 80px. */
+  h2 { font-size: clamp(40px, 5.6vw, 80px); line-height: 0.88; margin-top: 20px; color: #fff; overflow-wrap: break-word; }
   h2 span { display: block; }
   em { font-style: normal; color: var(--bg); display: block; }
-  .intro { margin-top: 28px; max-width: 34ch; font-size: 19px; font-weight: 500; }
-  .direct { margin-top: 36px; }
-  .direct .mono { display: block; margin-bottom: 8px; opacity: 0.8; }
-  .mail { display: inline-block; font-size: clamp(20px, 2.4vw, 32px); font-weight: 800; font-stretch: 115%; border-bottom: 3px solid var(--bg); padding-bottom: 2px; overflow-wrap: anywhere; color: #fff; }
-  .mail:hover { color: var(--bg); }
 
   .form { background: var(--bg); color: var(--fg); padding: 36px; display: grid; gap: 22px; }
-  .form h3 { color: var(--pink); font-weight: 500; }
+  .form h3 { font-size: clamp(26px, 2.4vw, 36px); line-height: 1; color: #fff; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .form label { display: grid; gap: 8px; }
   .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9b7b2; }
