@@ -52,6 +52,8 @@ gallery:
   - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_3.png"
 # Key art from the studio (2026-11-17); the previous hero.jpg is kept in the folder.
 heroImage: "../../assets/projects/juanito-arcade-mayhem/hero-key-art.jpg"
+# Phone hero: the center square of the header art (Juanito and the robot whole).
+heroMobile: "../../assets/projects/juanito-arcade-mayhem/hero-mobile.jpg"
 # Figures from the stores / YouTube, checked in November 2026.
 stats:
   - value: "96 %"

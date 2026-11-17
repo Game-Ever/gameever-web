@@ -39,6 +39,8 @@ const projects = defineCollection({
     videos: z.array(z.string()).default([]),
     /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
     heroImage: image().optional(),
+    /** Square image for the phone hero (e.g. the center of the header art); defaults to the cover. */
+    heroMobile: image().optional(),
     /** Muted YouTube loop behind the project title (start / end in seconds). */
     heroVideo: z.object({ id: z.string(), start: z.number().default(0), end: z.number().optional() }).optional(),
     /** Key figures shown in a band under the title, e.g. { value: "12", label: { en: "music videos", es: "videoclips" } }. */
