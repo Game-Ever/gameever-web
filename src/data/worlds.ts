@@ -8,7 +8,7 @@ export interface World { project: string; video: string; start?: number; end?: n
 
 export const WORLDS: Record<'games' | 'animation', World> = {
   // Gameplay trailer (29 s, vertical): only the gameplay stretch, before the closing title cards.
-  games: { project: 'lit-killah-the-game', video: '1zLp4xW5lFo', start: 4, end: 19, portrait: true, focus: 40 },
+  games: { project: 'lit-killah-the-game', video: '1zLp4xW5lFo', start: 5, end: 16, portrait: true, focus: 40 },
   // Official music video (3 min 9 s): loops whole, skipping the first seconds.
   animation: { project: 'lit-killah-bizarrap-flexin', video: 'YWdcQfjdzBc', start: 8 },
 };

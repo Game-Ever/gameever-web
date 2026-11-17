@@ -13,7 +13,7 @@ const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
 const landscape = (id: string) => byId[id].data.gallery.find((g) => g.width > g.height * 1.2) ?? byId[id].data.cover;
 const groups = t('services.groups');
 const embed = (w: World) =>
-  `https://www.youtube-nocookie.com/embed/${w.video}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&cc_load_policy=0&enablejsapi=1&start=${w.start ?? 0}${w.end ? `&end=${w.end}` : ''}`;
+  `https://www.youtube-nocookie.com/embed/${w.video}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&cc_load_policy=0&enablejsapi=1&start=${w.start ?? 0}`;
 const cards = [
   { title: t('worlds.games'), cta: t('worlds.gamesCta'), area: groups[0].area, world: WORLDS.games },
   { title: t('worlds.anim'), cta: t('worlds.animCta'), area: groups[1].area, world: WORLDS.animation },
@@ -33,7 +33,7 @@ const cards = [
         <a class="card" href={`${url(lang, "work")}?area=${c.area}`}>
           <span class="media" aria-hidden="true">
             <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
-            <iframe class:list={["yt", { portrait: c.world.portrait }]} style={`--focus: ${c.world.focus ?? 50}%`} title="" tabindex="-1" allow="autoplay; encrypted-media" data-src={c.src} data-start={c.world.start ?? 0}></iframe>
+            <iframe class:list={["yt", { portrait: c.world.portrait }]} style={`--focus: ${c.world.focus ?? 50}%`} title="" tabindex="-1" allow="autoplay; encrypted-media" data-src={c.src} data-start={c.world.start ?? 0} data-end={c.world.end}></iframe>
           </span>
           <span class="source mono">{c.source}</span>
           <span class="title wide">{c.title}</span>
@@ -59,6 +59,8 @@ const cards = [
   .yt { position: absolute; top: 50%; left: 50%; width: max(100cqw, 177.78cqh); height: max(100cqh, 56.25cqw); transform: translate(-50%, -50%); border: 0; pointer-events: none; opacity: 0; }
   /* Vertical footage in a 16:9 frame: zoom until the vertical part (9/16 of the height wide) fills the card. */
   .yt.portrait { width: 316.05cqw; height: 177.78cqw; top: var(--focus); transform: translate(-50%, calc(var(--focus) * -1)); }
+  /* Slightly larger than the card so the edges where YouTube puts its title and logo stay outside it. */
+  .yt:not(.portrait) { scale: 1.12; }
   .yt.on { opacity: 1; transition: opacity 0.8s; }
   .card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.35) 0%, transparent 22%, transparent 45%, rgba(13, 13, 15, 0.85) 100%); z-index: -1; }
   .source { position: absolute; left: 28px; top: 24px; color: rgba(255, 255, 255, 0.85); }
@@ -78,12 +80,18 @@ const cards = [
 
 <script>
   // Each card's video loads when the card comes near the screen, pauses when it leaves, and loops the chosen
-  // stretch (start → end or the end of the video) by seeking back to the start when it ends.
+  // stretch: just before `end` it seeks back to `start` while still playing (a seek shows no YouTube icons);
+  // without `end` it loops when the video ends.
+  // YouTube flashes its own play/pause icon in the middle of the player when playback starts or resumes, so the
+  // video is only revealed once it has been playing for a moment; until then the card's image stays on top.
+  const REVEAL_DELAY = 900;
   const frames = [...document.querySelectorAll<HTMLIFrameElement>('.worlds .yt')];
   if (frames.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const cmd = (yt: HTMLIFrameElement, func: string, args: unknown[] = []) =>
       yt.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
     const visible = new Map<HTMLIFrameElement, boolean>();
+    const lastState = new Map<HTMLIFrameElement, number>();
+    const setOn = (yt: HTMLIFrameElement, on: boolean) => { visible.set(yt, on); yt.classList.toggle('on', on); };
     const load = (yt: HTMLIFrameElement) => {
       yt.src = `${yt.dataset.src}&origin=${encodeURIComponent(location.origin)}`;
       yt.addEventListener('load', () => yt.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'world', channel: 'widget' }), '*'), { once: true });
@@ -93,17 +101,24 @@ const cards = [
       if (!yt || typeof e.data !== 'string') return;
       let data: { event?: string; info?: unknown };
       try { data = JSON.parse(e.data); } catch { return; }
-      const state = data.event === 'onStateChange' ? data.info
-        : data.event === 'infoDelivery' ? (data.info as { playerState?: number } | undefined)?.playerState
-        : undefined;
+      const info = (data.info ?? {}) as { playerState?: number; currentTime?: number };
+      const start = Number(yt.dataset.start) || 0;
+      const end = Number(yt.dataset.end) || 0;
+      // Loop the stretch before YouTube reaches `end`.
+      if (end && typeof info.currentTime === 'number' && info.currentTime >= end - 0.6) cmd(yt, 'seekTo', [start, true]);
+      const state = data.event === 'onStateChange' ? data.info : data.event === 'infoDelivery' ? info.playerState : undefined;
       if (typeof state !== 'number') return;
-      // 1 = playing, 3 = buffering (keep the current view), 0 = ended (loop back), anything else = hide.
-      const on = state === 1 || (state === 3 && !!visible.get(yt));
-      visible.set(yt, on);
-      yt.classList.toggle('on', on);
-      if (state === 0) { cmd(yt, 'seekTo', [Number(yt.dataset.start) || 0, true]); cmd(yt, 'playVideo'); }
-      // No subtitles: some videos turn them on by default for the viewer's language.
-      if (state === 1) cmd(yt, 'unloadModule', ['captions']);
+      lastState.set(yt, state);
+      if (state === 1) {
+        // No subtitles: some videos turn them on by default for the viewer's language.
+        cmd(yt, 'unloadModule', ['captions']);
+        if (!visible.get(yt)) setTimeout(() => { if (lastState.get(yt) === 1) setOn(yt, true); }, REVEAL_DELAY);
+      } else if (state === 3 && visible.get(yt)) {
+        // buffering (also during the loop's seek): keep showing the video
+      } else {
+        setOn(yt, false);
+        if (state === 0) { cmd(yt, 'seekTo', [start, true]); cmd(yt, 'playVideo'); }
+      }
     });
     const io = new IntersectionObserver((entries) => {
       for (const { target, isIntersecting } of entries) {
