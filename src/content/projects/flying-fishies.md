@@ -10,21 +10,28 @@ services:
 platforms:
   - "android"
 genre:
-  en: "Game trailer"
-  es: "Tráiler de juego"
+  en: "Casual puzzle"
+  es: "Puzzle casual"
 featured: 9
-cover: "../../assets/projects/flying-fishies/unnamed.webp"
+# Cover and hero from the game's screenshots on rookbird.com (the trailer frames all carry text).
+cover: "../../assets/projects/flying-fishies/cover.jpg"
+heroImage: "../../assets/projects/flying-fishies/hero.jpg"
 summary:
   en: "2D animated launch trailer for Rookbird Games’ mobile game."
   es: "Tráiler animado en 2D para el juego mobile de Rookbird Games."
 description:
-  en: "A 43-second 2D animated trailer introducing Flying Fishies, a mobile game by the Argentine studio Rookbird Games: flying fish, a paper sea and a storybook feel."
-  es: "Un tráiler de 43 segundos, animado en 2D, para presentar Flying Fishies, el juego mobile del estudio argentino Rookbird Games: peces voladores, un mar de papel y un tono de libro ilustrado."
+  en: "A 43-second 2D animated trailer introducing Flying Fishies, the Android game by the Argentine studio Rookbird Games. In the game, fish leap out of the river and players link three or more of the same colour to catch them, while dodging the octopus and other enemies. The trailer brings its cut-paper world to animation: a theatre curtain, a paper sea and a storybook feel."
+  es: "Un tráiler de 43 segundos, animado en 2D, para presentar Flying Fishies, el juego para Android del estudio argentino Rookbird Games. En el juego, los peces saltan del río y hay que unir tres o más del mismo color para pescarlos, esquivando al pulpo y a los demás enemigos. El tráiler lleva a la animación su mundo de papel recortado: un telón de teatro, un mar de papel y un tono de libro ilustrado."
 role:
   en: "2D animation, trailer"
   es: "Animación 2D, tráiler"
 videos:
   - "fcHGyp75yMk"
+gallery:
+  - "../../assets/projects/flying-fishies/waterfall.jpg"
+  - "../../assets/projects/flying-fishies/ink.jpg"
+  - "../../assets/projects/flying-fishies/dragon.jpg"
+  - "../../assets/projects/flying-fishies/how-to-play.jpg"
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { role: { en: "Production", es: "Producción" }, names: "Franco Albertti" }
