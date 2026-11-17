@@ -1,0 +1,19 @@
+---
+// Bottom line of every page: version on the left, rights on the right.
+import { type Lang, useT } from '../i18n';
+import { BUILD } from '../data/build';
+
+interface Props { lang: Lang }
+const t = useT(Astro.props.lang);
+---
+
+<div class="legal">
+  <!-- Only the version is visible; commit and build date stay in data attributes for checks. -->
+  <span class="version mono" data-commit={BUILD.commit} data-built={BUILD.date}>{t('footer.version')} {BUILD.version}</span>
+  <span>© {new Date().getFullYear()} Game Ever. {t('footer.rights')}</span>
+</div>
+
+<style>
+  .legal { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--fg2); }
+  .version { font-size: 11px; color: var(--fg2); text-transform: none; letter-spacing: 0.04em; }
+</style>

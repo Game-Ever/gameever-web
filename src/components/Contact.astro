@@ -1,6 +1,6 @@
 ---
 import { type Lang, useT, SOCIAL } from '../i18n';
-import { BUILD } from '../data/build';
+import Legal from './Legal.astro';
 
 interface Props { lang: Lang }
 const t = useT(Astro.props.lang);
@@ -60,11 +60,7 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
         </ul>
       </div>
     </div>
-    <div class="foot">
-      <!-- Only the version is visible; commit and build date stay in data attributes for checks. -->
-      <span class="version mono" data-commit={BUILD.commit} data-built={BUILD.date}>{t('footer.version')} {BUILD.version}</span>
-      <span>© {new Date().getFullYear()} Game Ever. {t('footer.rights')}</span>
-    </div>
+    <div class="legal-row"><Legal lang={Astro.props.lang} /></div>
   </div></div>
 </footer>
 
@@ -118,8 +114,7 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   .social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line2); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
   .social a:hover { background: var(--pink); border-color: var(--pink); transform: translateY(-2px); }
   .social svg { width: 18px; height: 18px; fill: var(--fg); }
-  .version { font-size: 11px; color: var(--fg2); text-transform: none; letter-spacing: 0.04em; }
-  .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--fg2); }
+  .legal-row { margin-top: 32px; }
   .pitch :focus-visible { outline-color: var(--bg); }
 
   @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } .form { padding-top: 0; } }
