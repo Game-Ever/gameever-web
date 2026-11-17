@@ -4,7 +4,7 @@ import BaseV2 from '../../../../layouts/BaseV2.astro';
 import YouTube from '../../../../components/YouTube.astro';
 import { type Lang, type Project, LANGS, tr, getProjects, clientName } from '../../../../i18n';
 import { useV2, v2url } from '../../../../i18n/v2';
-import { SERVICES, PLATFORMS } from '../../../../data/taxonomy';
+import { SERVICES, platformLabels } from '../../../../data/taxonomy';
 
 export async function getStaticPaths() {
   const projects = await getProjects();
@@ -20,7 +20,7 @@ const lang = Astro.params.lang as Lang;
 const { project, more } = Astro.props;
 const d = project.data;
 const t = useV2(lang);
-const platforms = d.platforms.map((p) => PLATFORMS[p][lang]);
+const platforms = platformLabels(d.platforms, lang);
 const services = d.services.map((s) => SERVICES[s][lang]);
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
 const facts = [

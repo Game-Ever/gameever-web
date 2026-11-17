@@ -6,7 +6,7 @@ import LoopVideo from '../../../components/LoopVideo.astro';
 import Legal from '../../../components/Legal.astro';
 import StoreButton from '../../../components/StoreButton.astro';
 import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP } from '../../../i18n';
-import { SERVICES, PLATFORMS } from '../../../data/taxonomy';
+import { SERVICES, platformLabels } from '../../../data/taxonomy';
 
 export async function getStaticPaths() {
   const projects = await getProjects();
@@ -23,7 +23,7 @@ const { project, next } = Astro.props;
 const d = project.data;
 const t = useT(lang);
 
-const platforms = d.platforms.map((p) => PLATFORMS[p][lang]);
+const platforms = platformLabels(d.platforms, lang);
 const services = d.services.map((s) => SERVICES[s][lang]);
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
 // No "Ver tráiler" when the page lists its videos: they are a scroll away.

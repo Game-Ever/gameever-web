@@ -27,6 +27,16 @@ export const PLATFORMS = {
   youtube: { en: 'YouTube', es: 'YouTube' },
 } as const;
 
+// What visitors see: device families, not operating systems or stores. iOS and Android show as "Mobile" and
+// Steam as "PC" (the stores themselves are the logo buttons). The keys stay detailed in the project files.
+const PLATFORM_GROUPS: Partial<Record<keyof typeof PLATFORMS, { en: string; es: string }>> = {
+  ios: { en: 'Mobile', es: 'Mobile' },
+  android: { en: 'Mobile', es: 'Mobile' },
+  steam: { en: 'PC', es: 'PC' },
+};
+export const platformLabels = (keys: readonly (keyof typeof PLATFORMS)[], lang: 'en' | 'es') =>
+  [...new Set(keys.map((k) => (PLATFORM_GROUPS[k] ?? PLATFORMS[k])[lang]))];
+
 export type ServiceKey = keyof typeof SERVICES;
 export type PlatformKey = keyof typeof PLATFORMS;
 export const SERVICE_KEYS = Object.keys(SERVICES) as [ServiceKey, ...ServiceKey[]];
