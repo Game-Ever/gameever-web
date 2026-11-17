@@ -47,7 +47,8 @@ const projects = defineCollection({
     /** "Behind the scenes" blocks; a block without image shows a placeholder. */
     process: z.array(z.object({ title: localized, text: localized.optional(), image: image().optional() })).default([]),
     /** Credits as role → names. Use instead of `credits`; `creditsPending` marks them as provisional. */
-    creditList: z.array(z.object({ role: localized, names: z.string() })).default([]),
+    /** `group` (e.g. "Game Ever" / "El Reino Infantil") starts a sub-block of credits under its own heading. */
+    creditList: z.array(z.object({ group: text.optional(), role: localized, names: z.string() })).default([]),
     creditsPending: z.boolean().default(false),
     links: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
     gallery: z.array(image()).default([]),

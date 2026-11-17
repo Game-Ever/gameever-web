@@ -16,8 +16,8 @@ summary:
   en: "Twelve 3D music videos and 23 play-along videos for La Granja de Zenón’s new adventure: Zenón and friends hit the road, each in their own car."
   es: "Doce videoclips 3D y 23 videos para jugar con la nueva aventura de La Granja de Zenón: Zenón y sus amigos salen a recorrer el mundo, cada uno en su auto."
 description:
-  en: "Since 2022 we have animated La Granja de Zenón: A Rodar for El Reino Infantil. Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and Beto the Wolf leave the farm and take to the road: jungles, beaches, mountains, small towns, big cities and even a rainbow road. Twelve new songs about the world of cars (filling up, washing, fixing, stopping at the traffic light) and, for El Reino a Jugar, 23 play-along videos with the same cars: road trips, the gas station, the garage, the car wash and races. More than 260 million views on YouTube."
-  es: "Desde 2022 animamos La Granja de Zenón: A Rodar para El Reino Infantil. Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el Lobo Beto dejan la granja y salen a la ruta: selvas, playas, montañas, pueblos, grandes ciudades y hasta un camino arcoíris. Doce canciones nuevas sobre el mundo de los autos (cargar combustible, lavarlos, arreglarlos, frenar en el semáforo) y, para El Reino a Jugar, 23 videos para jugar con los mismos autos: viajes, la estación de servicio, el taller, el lavadero y carreras. Más de 260 millones de vistas en YouTube."
+  en: "Since 2022 we have animated La Granja de Zenón: A Rodar, the song series in which El Reino Infantil (Leader Entertainment) takes the farm on the road. Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and naughty Beto the Wolf start their engines and drive through jungles, beaches, mountains, lakes, rivers, small towns, big cities and even a road in the colors of the rainbow. Twelve songs about the world of cars (filling up, washing, fixing, stopping at the traffic light), made for little ones to play and learn. For El Reino a Jugar we added 23 play-along videos with the same cars: road trips, the gas station, the garage, the car wash and races. More than 260 million views on YouTube."
+  es: "Desde 2022 animamos La Granja de Zenón: A Rodar, la serie de canciones con la que El Reino Infantil (Leader Entertainment) saca la granja a la ruta. Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el travieso Lobo Beto encienden los motores y recorren selvas, playas, montañas, lagos, ríos, pueblos, grandes ciudades y hasta un camino con los colores del arcoíris. Doce canciones sobre el mundo de los autos (cargar combustible, lavarlos, arreglarlos, frenar en el semáforo), pensadas para que los más chicos jueguen y aprendan. Para El Reino a Jugar sumamos 23 videos interactivos con los mismos autos: viajes, la estación de servicio, el taller, el lavadero y carreras. Más de 260 millones de vistas en YouTube."
 role:
   en: "3D animation"
   es: "Animación 3D"
@@ -97,17 +97,22 @@ process:
 links:
   - label: "YouTube playlist"
     url: "https://www.youtube.com/playlist?list=PLEtkfEkgMZbgx3AWyN0mNz8o7t-31i1ds"
-# PLACEHOLDER: real A Rodar credits to come (the old site had the Las Canciones del Zoo ones).
+# Game Ever rows are PLACEHOLDERS until the studio sends the real team.
+# El Reino Infantil rows come from the official YouTube descriptions of each song ("Lavando el Auto" lists none).
 creditsPending: true
 creditList:
-  - { role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil" }
-  - { role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
+  - { group: "Game Ever", role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
   - { role: { en: "Production", es: "Producción general" }, names: "Nombre Apellido" }
   - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Nombre Apellido" }
   - { role: { en: "Modeling & rigging", es: "Modelado y rigging" }, names: "Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Animation", es: "Animación" }, names: "Nombre Apellido · Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Editing", es: "Edición" }, names: "Nombre Apellido" }
+  - { group: "El Reino Infantil", role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
+  - { role: { en: "Songs", es: "Canciones" }, names: "Rodrigo De Narváez Casabianca · José Miguel De Narváez Casabianca · Paola Altamirano · Eddie Mort" }
+  - { role: { en: "“El Auto Bochinchero”", es: "«El Auto Bochinchero»" }, names: "Eduardo Marceillac (letra) · Cecilia Rogier (música)" }
+  - { role: { en: "Vocals", es: "Voces" }, names: "Nicole Cristina Garden Cardona · Sandra Rivera · Nicholas Salazar · Miguel De Narváez · Esteban García Andrade" }
+  - { role: { en: "Arrangements", es: "Arreglos" }, names: "Enrique Estrada («Paseando en Auto»)" }
 legacySlugs:
   - "la-granja-de-zenon-a-rodar"
 ---
