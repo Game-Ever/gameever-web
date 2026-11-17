@@ -13,6 +13,7 @@ genre:
   es: "Aprendizaje infantil"
 # TEMPORARY cover: cropped from the official YouTube thumbnail of "Vamos a recorrer el mundo con Bartolito"; replace with a clean render.
 cover: "../../assets/projects/la-granja-de-zenon-a-rodar-a-jugar/cover.jpg"
+heroImage: "../../assets/projects/la-granja-de-zenon-a-rodar-a-jugar/hero.jpg"
 summary:
   en: "23 play-along videos with the cars of La Granja de Zenón: A Rodar, for El Reino a Jugar."
   es: "23 videos para jugar y aprender con los autos de La Granja de Zenón: A Rodar, para El Reino a Jugar."
@@ -79,7 +80,7 @@ creditList:
   - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
   - { role: { en: "Production", es: "Producción general" }, names: "Wanelén Farías" }
   - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Diego Forconi" }
-  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan De Mauricio · Paloma Figaro" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan de Mauricio · Paloma Figaro" }
   - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini · Rocío Blois" }
   - { role: { en: "2D art", es: "Arte 2D" }, names: "Lourdes Hualde · Gabriel Rodríguez" }
   - { role: { en: "VFX", es: "VFX" }, names: "Diego Forconi" }

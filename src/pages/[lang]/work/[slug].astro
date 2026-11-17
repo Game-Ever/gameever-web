@@ -28,6 +28,14 @@ const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos
 const trailer = d.entries.length ? undefined : allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
+// On phones (portrait) a landscape image crops the characters, so the square cover is used there instead.
+const heroNarrow = heroBg !== d.cover ? await getImage({ src: d.cover, width: 900, format: 'webp' }) : null;
+// Credits split into blocks when rows carry a group (e.g. one per album): each block is a collapsible panel.
+const creditBlocks = d.creditList.reduce<{ title?: string; rows: typeof d.creditList }[]>((acc, c) => {
+  if (c.group || !acc.length) acc.push({ title: c.group ? tr(c.group, lang) : undefined, rows: [] });
+  acc[acc.length - 1].rows.push(c);
+  return acc;
+}, []);
 // "94 M" / "7,3 M" / "891 k" (es) and "94M" / "7.3M" / "891K" (en).
 const compact = (n: number) => {
   const [v, unit] = n >= 1e6 ? [n / 1e6, lang === 'es' ? ' M' : 'M'] : [n / 1e3, lang === 'es' ? ' k' : 'K'];
@@ -56,7 +64,10 @@ const jsonLd = {
 <Base lang={lang} path={`work/${project.id}`} title={d.title} description={tr(d.summary, lang)} image={ogUrl} variant="project" jsonLd={jsonLd}>
   <main>
     <section class="hero">
-      <Image class="bg" src={heroBg} alt="" widths={[640, 1024, 1600, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      <picture>
+        {heroNarrow && <source media="(max-width: 760px)" srcset={heroNarrow.src} />}
+        <Image class="bg" src={heroBg} alt="" widths={[640, 1024, 1600, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      </picture>
       {d.heroVideo && <LoopVideo id={d.heroVideo.id} start={d.heroVideo.start} end={d.heroVideo.end} class="hero-video" />}
       <div class="wrap inner">
         <div>
@@ -175,9 +186,14 @@ const jsonLd = {
             <h2 class="wide">{t('project.credits')}</h2>
             {d.creditsPending && <span class="mono pending-tag">{t('project.creditsPending')}</span>}
           </div>
-          <dl>
-            {d.creditList.map((c) => <>{c.group && <dt class="group wide">{tr(c.group, lang)}</dt>}<dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}
-          </dl>
+          {creditBlocks.map((b, i) => b.title ? (
+            <details class="credit-block" open={i === creditBlocks.length - 1}>
+              <summary class="wide">{b.title}</summary>
+              <dl>{b.rows.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}</dl>
+            </details>
+          ) : (
+            <dl>{b.rows.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}</dl>
+          ))}
         </section>
       ) : d.credits && (
         <details class="credits">
@@ -207,8 +223,9 @@ const jsonLd = {
 
 <style>
   .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
-  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) blur(0px); }
-  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.15) 0%, rgba(13, 13, 15, 0.3) 45%, rgba(13, 13, 15, 0.94) 85%, var(--bg) 100%); }
+  .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* Dark only where text sits: a light band under the header and the bottom third under the title. */
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.35) 0%, transparent 16%, transparent 50%, rgba(13, 13, 15, 0.8) 84%, var(--bg) 100%); }
   .inner { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
   .kicker { color: rgba(255, 255, 255, 0.8); }
   .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
@@ -283,8 +300,13 @@ const jsonLd = {
   .credit-list dl { grid-template-columns: minmax(180px, 1fr) 2fr; }
   .credit-list dd { color: var(--fg2); font-weight: 500; }
   /* Sub-heading inside the credits (e.g. Game Ever / El Reino Infantil), across both columns. */
-  .credit-list dt.group { grid-column: 1 / -1; font-family: inherit; font-size: var(--subtitle-size); letter-spacing: 0; color: var(--fg); padding-top: 40px; }
-  .credit-list dt.group:first-child { padding-top: 14px; }
+  .credit-block { border-top: 1px solid var(--line); }
+  .credit-block:last-child { border-bottom: 1px solid var(--line); }
+  .credit-block summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: var(--subtitle-size); }
+  .credit-block summary::-webkit-details-marker { display: none; }
+  .credit-block summary::after { content: '+'; font-family: var(--mono); font-size: 26px; color: var(--pink); }
+  .credit-block[open] summary::after { content: '–'; }
+  .credit-block dl { margin-bottom: 24px; }
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .gallery figure { margin: 0; background: var(--bg2); overflow: hidden; }
   .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
@@ -322,10 +344,19 @@ const jsonLd = {
     .process { grid-template-columns: 1fr; }
     .credit-list dl { grid-template-columns: 1fr; }
     .credit-list dt { padding-bottom: 0; border-bottom: 0; }
+    .hero :global(.hero-video) { display: none; }
     .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
     .stats strong { font-size: 28px; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
+  }
+  /* Phones: the square cover shown whole at the top (no overlay), with the title and tags below it. */
+  @media (max-width: 760px) {
+    .hero { min-height: 0; display: block; padding-top: 64px; }
+    .bg { position: relative; display: block; height: auto; aspect-ratio: 1 / 1; }
+    .hero::after { display: none; }
+    .inner { padding-top: 28px; padding-bottom: 40px; }
+    .art { display: none; }
   }
 </style>
 

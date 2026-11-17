@@ -78,7 +78,7 @@ creditList:
   - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
   - { role: { en: "Production", es: "Producción general" }, names: "Wanelén Farías" }
   - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Diego Forconi" }
-  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan De Mauricio · Paloma Figaro" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan de Mauricio · Paloma Figaro" }
   - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini · Rocío Blois" }
   - { role: { en: "2D art", es: "Arte 2D" }, names: "Lourdes Hualde · Gabriel Rodríguez" }
   - { role: { en: "VFX", es: "VFX" }, names: "Diego Forconi" }

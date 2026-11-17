@@ -11,7 +11,7 @@ Node is installed at `C:\Program Files\nodejs` (add it to PATH in new shells).
 1. Copy `src/content/projects/_template.md` to `src/content/projects/<slug>.md`. The slug is the URL.
 2. Fill in **both** `en` and `es` for `summary`, `description`, `genre` and `role`. Never leave one language behind.
 3. `services` and `platforms` only accept the keys in `src/data/taxonomy.ts`. Add a new key there (with both labels) if needed.
-4. Put images in `src/assets/projects/<slug>/` and reference them relative to the Markdown file (`../../assets/projects/<slug>/cover.jpg`). The cover is square key art (character-led, no text); landscape screenshots in `gallery` are also used as the page hero. Astro converts everything to WebP at the needed sizes, so originals can be large.
+4. Put images in `src/assets/projects/<slug>/` and reference them relative to the Markdown file (`../../assets/projects/<slug>/cover.jpg`). The cover is square key art (character-led, no text); landscape screenshots in `gallery` are also used as the page hero, or set `heroImage` (landscape, characters toward the top/right, since the title sits bottom-left). On phones the hero always shows the square cover whole, so the cover must keep the characters uncut. Astro converts everything to WebP at the needed sizes, so originals can be large.
 5. Run `npm run build`. A schema error names the file and field (including missing images).
 
 Rules:
