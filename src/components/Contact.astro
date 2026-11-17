@@ -57,30 +57,33 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
 </footer>
 
 <style>
-  /* Closing band in brand pink, split in two: the closing phrase on the left, the form (ink panel) on the right. */
+  /* Closing band in brand pink, split in two and top-aligned: the closing phrase on the left, the form on the right,
+     drawn directly on the pink (ink lines and text, ink button) so the band reads as one block. */
   .contact { background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
-  .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center; }
+  .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: start; }
   .label { color: var(--bg); }
   /* Same size as every section title (--title-size). */
   h2 { font-size: var(--title-size); line-height: 0.95; margin-top: 20px; color: #fff; overflow-wrap: break-word; }
   h2 span { display: block; }
   em { font-style: normal; color: var(--bg); display: block; }
 
-  .form { background: var(--bg); color: var(--fg); padding: 36px; display: grid; gap: 22px; }
+  /* Pushed down by the kicker's height so "Empecemos." lines up with the big title. */
+  .form { color: var(--bg); display: grid; gap: 26px; padding-top: 47px; }
   .form h3 { font-size: var(--subtitle-size); line-height: 1; color: #fff; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .form label { display: grid; gap: 8px; }
-  .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9b7b2; }
-  input:not([type='radio']), textarea { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgba(255, 255, 255, 0.3); color: var(--fg); font: 500 17px var(--sans); padding: 8px 0; border-radius: 0; outline: none; transition: border-color 0.2s; }
-  textarea { resize: vertical; min-height: 120px; border: 2px solid rgba(255, 255, 255, 0.3); padding: 12px; }
-  textarea::placeholder { color: #6f6d69; }
-  input:focus, textarea:focus { border-color: var(--pink); }
-  .form :global(.invalid) { border-color: #ff6b6b; }
+  .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bg); }
+  input, textarea { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgba(13, 13, 15, 0.45); color: var(--bg); font: 600 18px var(--sans); padding: 8px 0; border-radius: 0; outline: none; transition: border-color 0.2s; }
+  textarea { resize: vertical; min-height: 110px; border: 2px solid rgba(13, 13, 15, 0.45); padding: 12px; }
+  input:focus, textarea:focus { border-color: var(--bg); }
+  /* Invalid fields: white line, which stands out from the ink ones on the pink background. */
+  .form :global(.invalid) { border-color: #fff; }
+  .form :focus-visible { outline-color: var(--bg); }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  button { justify-self: start; display: inline-flex; gap: 12px; align-items: center; background: var(--pink); color: #fff; border: 0; padding: 16px 26px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  button { justify-self: start; display: inline-flex; gap: 12px; align-items: center; background: var(--bg); color: #fff; border: 0; padding: 16px 26px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: background 0.2s, color 0.2s; }
   button:hover { background: #fff; color: var(--bg); }
   button:disabled { opacity: 0.6; cursor: wait; }
-  .status { min-height: 1.4em; font-size: 15px; color: #fff; }
+  .status { min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--bg); }
   .status:empty { display: none; }
 
   .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 100px; border-top: 1px solid rgba(13, 13, 15, 0.35); padding-top: 24px; font-size: 15px; }
@@ -97,10 +100,10 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 72px; font-size: 13px; color: var(--bg); }
   .pitch :focus-visible, .cols :focus-visible { outline-color: var(--bg); }
 
-  @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } }
+  @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } .form { padding-top: 0; } }
   @media (max-width: 760px) {
     .contact { padding-top: 88px; }
-    .form { padding: 24px 18px; margin: 0 calc(var(--gutter) * -1); }
+    .form { padding-top: 0; }
     .row { grid-template-columns: 1fr; }
     .cols { grid-template-columns: 1fr 1fr; margin-top: 72px; }
   }
