@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids series"
   es: "Serie infantil"
-# Cover and hero: official thumbnails of episodes 3 and 6.
+# Cover (4:3, focused on the characters) and hero (the whole scene): the official thumbnail of episode 5.
 cover: "../../assets/projects/las-canciones-del-zoo-la-serie/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-la-serie/hero.jpg"
 summary:

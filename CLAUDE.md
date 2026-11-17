@@ -17,7 +17,8 @@ Node is installed at `C:\Program Files\nodejs` (add it to PATH in new shells).
 Rules:
 - Projects under NDA are never published, not even anonymized.
 - Projects we drop from the site get `hidden: true` instead of being deleted, so their information is kept.
-- Repeated campaigns of the same client/IP go in one project with `entries` (see `puro-sol.md`, `las-canciones-del-zoo.md`). `entriesTitle` (en/es) renames that block when "Temporadas y campañas" doesn't fit (e.g. "Los videoclips" in `la-granja-de-zenon-a-rodar.md`).
+- One page per product: each album, series or line of videos is its own project (e.g. `las-canciones-del-zoo-1` … `-7`, `las-canciones-del-zoo-la-serie`, `las-canciones-del-zoo-a-jugar`, `la-granja-de-zenon-a-rodar` and `-a-jugar`), because each was made in different years by different people. `entries` lists the clips of that product, most viewed first, with `views`; `entriesTitle` (en/es) names the block ("Los videoclips", "Los capítulos"). Small repeated ad campaigns (`puro-sol.md`) can still share one page.
+- Images: `cover` focuses on the characters (whole, uncut; 4:3 works best since cards are 4:3) and `heroImage` shows the whole scene, usually the same frame. Credits use `creditList` (role → names), without the client or the client's executives.
 - `legacySlugs` lists old WordPress URLs (`/portfolio/<slug>/`); they become 301 redirects in `dist/_redirects`.
 
 ## Structure
