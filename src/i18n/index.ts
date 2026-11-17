@@ -26,7 +26,7 @@ export const ui = {
     'work.service': 'Service', 'work.platform': 'Platform', 'work.era': 'Era', 'work.client': 'Client', 'work.allClients': 'All clients',
     'work.clear': 'Clear all', 'work.show': 'Show results', 'work.empty': 'No projects match these filters.', 'work.emptyClear': 'Clear filters',
     'services.label': 'Services', 'services.title': ['From idea', 'to delivery.'],
-    'services.sub': 'Three areas of expertise.', 'services.hint': 'Each one expands with more detail.', 'services.count': '{n} services', 'services.see': 'See projects',
+    'services.lines': ['Three areas of expertise.', 'Each one expands with more detail.', 'What kind of project do you have in mind?'], 'services.count': '{n} services', 'services.see': 'See projects',
     'services.groups': [
       { title: 'Video games', area: 'games', items: ['Advergames & branded games', 'HTML5 & web games', 'Mobile (iOS & Android)', 'PC & Steam', 'Edutainment', 'Game design & development'] },
       { title: 'Animation', area: 'animation', items: ['2D & 3D animation', 'Character design', 'Series & kids content', 'Music videos & advertising', 'Trailers & cinematics'] },
@@ -69,7 +69,7 @@ export const ui = {
     'work.service': 'Servicio', 'work.platform': 'Plataforma', 'work.era': 'Época', 'work.client': 'Cliente', 'work.allClients': 'Todos los clientes',
     'work.clear': 'Borrar todo', 'work.show': 'Ver resultados', 'work.empty': 'Ningún proyecto coincide con estos filtros.', 'work.emptyClear': 'Borrar filtros',
     'services.label': 'Servicios', 'services.title': ['De la idea', 'a la entrega.'],
-    'services.sub': 'Tres áreas de especialización.', 'services.hint': 'Cada una se despliega con más detalle.', 'services.count': '{n} servicios', 'services.see': 'Ver proyectos',
+    'services.lines': ['Tres áreas de especialización.', 'Cada una se despliega con más detalle.', '¿Qué tipo de proyecto tiene en mente?'], 'services.count': '{n} servicios', 'services.see': 'Ver proyectos',
     'services.groups': [
       { title: 'Videojuegos', area: 'games', items: ['Advergames y branded games', 'Juegos HTML5 y web', 'Mobile (iOS y Android)', 'PC y Steam', 'Edutainment', 'Game design y desarrollo'] },
       { title: 'Animación', area: 'animation', items: ['Animación 2D y 3D', 'Diseño de personajes', 'Series y contenidos infantiles', 'Videoclips y publicidad', 'Tráilers y cinemáticas'] },
