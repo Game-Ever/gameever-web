@@ -58,7 +58,7 @@ Short, strong phrases. No repeated key words across the home. Professional tone:
 - `/[lang]/work/` lists every project with search, filters and sort (`Wall` variant `full`). Links from Qué hacemos and Servicios open it pre-filtered (`?sv=a,b`).
 
 ## Version stamp
-The footer shows `Versión X.Y.Z · commit · date` (`src/data/build.ts`). Bump `version` in package.json on each design round.
+The footer shows `Versión X.Y.Z` on the left (commit and build date only in data attributes, `src/data/build.ts`) and "© YEAR Game Ever. Todos los derechos reservados." on the right. Bump `version` in package.json on each design round.
 
 ## Language
 The user is writing and reviewing the site in Spanish first; English copy is a draft to be translated at the end. Write new copy in Spanish, keep an English draft so builds and the EN pages still work.

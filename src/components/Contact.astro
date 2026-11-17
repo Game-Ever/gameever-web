@@ -49,8 +49,9 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
       </div>
     </div>
     <div class="foot">
-      <span>© {new Date().getFullYear()} Game Ever S.A.</span>
-      <span class="version mono">{t('footer.version')} {BUILD.version}{BUILD.commit && ` · ${BUILD.commit}`} · {BUILD.date}</span>
+      <!-- Only the version is visible; commit and build date stay in data attributes for checks. -->
+      <span class="version mono" data-commit={BUILD.commit} data-built={BUILD.date}>{t('footer.version')} {BUILD.version}</span>
+      <span>© {new Date().getFullYear()} Game Ever. {t('footer.rights')}</span>
     </div>
   </div>
 </footer>
