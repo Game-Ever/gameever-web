@@ -11,15 +11,15 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover (4:3, focused on the character) and hero (the whole scene): the same official YouTube thumbnail.
+# Cover (4:3, the characters) and hero (the scene): two images of the album's most viewed clip (Los bomberos van deprisa).
 cover: "../../assets/projects/las-canciones-del-zoo-5/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-5/hero.jpg"
 summary:
-  en: "12 3D music videos for the fifth album of Las Canciones del Zoo, led by “Los Bomberos Van deprisa”."
-  es: "12 videoclips 3D para el quinto disco de Las Canciones del Zoo, con «Los Bomberos Van deprisa» a la cabeza."
+  en: "12 3D music videos for the fifth album of Las Canciones del Zoo, led by “Los bomberos van deprisa”."
+  es: "12 videoclips 3D para el quinto disco de Las Canciones del Zoo, con «Los bomberos van deprisa» a la cabeza."
 description:
-  en: "In 2019 we animated the fifth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “Los Bomberos Van Deprisa” leads the album with more than 26 million views. More than 124 million views on YouTube."
-  es: "En 2019 animamos el quinto disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «Los Bomberos Van Deprisa» encabeza el disco con más de 26 millones de vistas. Más de 124 millones de vistas en YouTube."
+  en: "In 2019 we animated the fifth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “Los bomberos van deprisa” leads the album with more than 26 million views. +124 M views on YouTube."
+  es: "En 2019 animamos el quinto disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «Los bomberos van deprisa» encabeza el disco con más de 26 millones de vistas. Más de 124 M de vistas en YouTube."
 role:
   en: "3D animation"
   es: "Animación 3D"
@@ -32,7 +32,7 @@ facts:
     value: { en: "Preschool", es: "Preescolar" }
 videos:
   - "Tk3E3-f2RHo"
-# Views checked on YouTube in November 2026 (124.2 M over the clips below).
+# Views checked on YouTube in November 2026 (124.6 M over the clips below).
 stats:
   - value: "12"
     label: { en: "music videos", es: "videoclips musicales" }
@@ -45,18 +45,18 @@ entriesTitle:
   es: "Los videoclips"
 # Most viewed first (when a song is on two channels, the most viewed upload).
 entries:
-  - { title: "Los Bomberos Van deprisa", year: "2019", views: 26528447, videos: ["Tk3E3-f2RHo"] }
-  - { title: "Yo Quiero Caminar", year: "2019", views: 19828886, videos: ["hULyvyLjMf4"] }
-  - { title: "El Oso Iván", year: "2019", views: 11805322, videos: ["jcNdIcvoGn0"] }
-  - { title: "Dicen Que Los Monos", year: "2019", views: 11465232, videos: ["lH8nFP13dhk"] }
-  - { title: "Noche de Brujas", year: "2019", views: 10541374, videos: ["u7Bs19O73-s"] }
-  - { title: "La Mancha del Tigre", year: "2019", views: 8665623, videos: ["P3GYSVd_ivo"] }
-  - { title: "Canción Para Que Vuele Un Elefante", year: "2020", views: 7555129, videos: ["Y9qo8oQUEO0"] }
-  - { title: "Juguemos En El Zoo", year: "2019", views: 7025471, videos: ["g3ys1k4xlaA"] }
-  - { title: "El Semáforo (Que Merengue)", year: "2019", views: 6983317, videos: ["t6fYUBpovt8"] }
-  - { title: "Hipo del Canguro", year: "2019", views: 6853119, videos: ["Tjh_826SRxY"] }
-  - { title: "Canción del Cocodrilo y El Hipopótamo", year: "2019", views: 5511491, videos: ["XsBOw8ZfMc0"] }
-  - { title: "El Mono Toca La Guitarra", year: "2019", views: 1415093, videos: ["0bw6wg3dUOc"] }
+  - { title: "Los bomberos van deprisa", year: "2019", views: 26528424, videos: ["Tk3E3-f2RHo"] }
+  - { title: "Yo quiero caminar", year: "2019", views: 20266322, videos: ["z4MzmQuTy78"] }
+  - { title: "El Oso Iván", year: "2019", views: 11805334, videos: ["jcNdIcvoGn0"] }
+  - { title: "Dicen que los monos", year: "2019", views: 11465386, videos: ["lH8nFP13dhk"] }
+  - { title: "Noche de brujas", year: "2019", views: 10541374, videos: ["u7Bs19O73-s"] }
+  - { title: "La mancha del tigre", year: "2019", views: 8665830, videos: ["P3GYSVd_ivo"] }
+  - { title: "Canción para que vuele un elefante", year: "2020", views: 7555129, videos: ["Y9qo8oQUEO0"] }
+  - { title: "Juguemos en el zoo", year: "2019", views: 7025582, videos: ["g3ys1k4xlaA"] }
+  - { title: "Que merengue", year: "2019", views: 6983317, videos: ["t6fYUBpovt8"] }
+  - { title: "Hipo del canguro", year: "2019", views: 6852959, videos: ["Tjh_826SRxY"] }
+  - { title: "Canción del cocodrilo y el hipopótamo", year: "2019", views: 5511491, videos: ["XsBOw8ZfMc0"] }
+  - { title: "El mono toca la guitarra", year: "2019", views: 1415093, videos: ["0bw6wg3dUOc"] }
 # Credits from this album's page on the old gameeverstudio.com (client and Leader executives left out).
 creditList:
   - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }

@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover and hero: frames from the official "Ponle Gasolina" and "Velocidad" thumbnails (cropped clear of the channel badges).
+# Cover (4:3, the characters) and hero (the scene): two frames of the most viewed clip, "Arreglando el Auto".
 cover: "../../assets/projects/la-granja-de-zenon-a-rodar/cover.jpg"
 heroImage: "../../assets/projects/la-granja-de-zenon-a-rodar/hero.jpg"
 summary:
@@ -32,11 +32,6 @@ facts:
     value: { en: "Preschool", es: "Preescolar" }
 videos:
   - "DzUfPLdTbfs"
-# Moving background behind the title: cars arriving down the farm road in "Arreglando el Auto".
-heroVideo:
-  id: "DzUfPLdTbfs"
-  start: 4
-  end: 18
 # Views and minutes checked on YouTube in November 2026: 234.7 M views on the 11 standalone uploads (the "Ya Vamos a Llegar" mix not counted); 26.6 min.
 stats:
   - value: "12"

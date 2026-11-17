@@ -18,7 +18,7 @@ Rules:
 - Projects under NDA are never published, not even anonymized.
 - Projects we drop from the site get `hidden: true` instead of being deleted, so their information is kept.
 - One page per product: each album, series or line of videos is its own project (e.g. `las-canciones-del-zoo-1` … `-7`, `las-canciones-del-zoo-la-serie`, `las-canciones-del-zoo-a-jugar`, `la-granja-de-zenon-a-rodar` and `-a-jugar`), because each was made in different years by different people. `entries` lists the clips of that product, most viewed first, with `views`; `entriesTitle` (en/es) names the block ("Los videoclips", "Los capítulos"). Small repeated ad campaigns (`puro-sol.md`) can still share one page.
-- Images: `cover` focuses on the characters (whole, uncut; 4:3 works best since cards are 4:3) and `heroImage` shows the whole scene, usually the same frame. Credits use `creditList` (role → names), without the client or the client's executives.
+- Images: static only (no moving hero). Both come from the product's most viewed clip, two different frames when possible (YouTube serves the thumbnail plus frames maxres1–3.jpg): `cover` (4:3, the characters whole and centered, used for cards and on phones) and `heroImage` (16:9, the scene). Song lists come from the album on Spotify/Deezer, matched to the YouTube clips. Credits use `creditList` (role → names), without the client or the client's executives.
 - `legacySlugs` lists old WordPress URLs (`/portfolio/<slug>/`); they become 301 redirects in `dist/_redirects`.
 
 ## Structure

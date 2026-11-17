@@ -32,11 +32,6 @@ facts:
     value: { en: "Preschool", es: "Preescolar" }
 videos:
   - "a04GZbB0Nd4"
-# Moving background behind the title: Bartolito and friends on the road in "Vamos a recorrer el mundo con Bartolito".
-heroVideo:
-  id: "a04GZbB0Nd4"
-  start: 1
-  end: 18
 # Views and minutes checked on YouTube in November 2026: 29.5 M views, 59.1 min over the 23 videos.
 stats:
   - value: "23"

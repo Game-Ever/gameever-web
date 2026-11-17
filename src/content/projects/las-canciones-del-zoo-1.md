@@ -11,15 +11,15 @@ platforms:
 genre:
   en: "Kids music"
   es: "Música infantil"
-# Cover (4:3, focused on the character) and hero (the whole scene): the same official YouTube thumbnail.
+# Cover (4:3, the characters) and hero (the scene): two images of the album's most viewed clip (Cuidado con la Bomba Chita).
 cover: "../../assets/projects/las-canciones-del-zoo-1/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-1/hero.jpg"
 summary:
   en: "9 3D music videos for the first album of Las Canciones del Zoo, led by “Cuidado con la Bomba Chita”."
   es: "9 videoclips 3D para el primer disco de Las Canciones del Zoo, con «Cuidado con la Bomba Chita» a la cabeza."
 description:
-  en: "In 2013 we animated the first album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 9 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. It is where it all started: “Cuidado con la Bomba Chita” is past 1.26 billion views and “Mi Tío Mario Veterinario” past 500 million. More than 2.8 billion views on YouTube."
-  es: "En 2013 animamos el primer disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 9 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. Fue el comienzo de todo: «Cuidado con la Bomba Chita» supera los 1.260 millones de vistas y «Mi Tío Mario Veterinario», los 500 millones. Más de 2.800 millones de vistas en YouTube."
+  en: "In 2013 we animated the first album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 9 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. It is where it all started: “Cuidado con la Bomba Chita” is past 1.26 billion views and “Mi Tío Mario Veterinario” past 500 million. +2.8 B views on YouTube."
+  es: "En 2013 animamos el primer disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 9 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. Fue el comienzo de todo: «Cuidado con la Bomba Chita» supera los 1.260 millones de vistas y «Mi Tío Mario Veterinario», los 500 millones. Más de 2.800 M de vistas en YouTube."
 role:
   en: "3D animation"
   es: "Animación 3D"
@@ -45,15 +45,15 @@ entriesTitle:
   es: "Los videoclips"
 # Most viewed first (when a song is on two channels, the most viewed upload).
 entries:
-  - { title: "Cuidado con la Bomba Chita", year: "2013", views: 1267915993, videos: ["nBANlLaki_Y"] }
-  - { title: "Mi Tío Mario Veterinario", year: "2014", views: 500343096, videos: ["NXQjNdmSF6Y"] }
-  - { title: "Sammy el Heladero", year: "2013", views: 359831781, videos: ["I2Q1oncEwRs"] }
-  - { title: "Zorro Loco", year: "2013", views: 334143262, videos: ["MdNVUlA0Ni8"] }
-  - { title: "Yo Soy tu Osito Gominola", year: "2013", views: 166762899, videos: ["nH6nOqz71-E"] }
-  - { title: "El Arca de Noé", year: "2013", views: 88977366, videos: ["Rm1sOfS97Ec"] }
-  - { title: "La Foca Loca", year: "2013", views: 51022335, videos: ["RqsiSlbu_go"] }
-  - { title: "Tengo una hormiguita en la patita", year: "2014", views: 29276734, videos: ["ntR3cNOgb_A"] }
-  - { title: "Canción del Canguro", year: "2014", views: 28103325, videos: ["m4p202fwUrk"] }
+  - { title: "Cuidado con la Bomba Chita", year: "2013", views: 1267918706, videos: ["nBANlLaki_Y"] }
+  - { title: "Mi Tío Mario veterinario", year: "2014", views: 500343566, videos: ["NXQjNdmSF6Y"] }
+  - { title: "Sammy el Heladero", year: "2013", views: 359832009, videos: ["I2Q1oncEwRs"] }
+  - { title: "Zorro loco", year: "2013", views: 334143959, videos: ["MdNVUlA0Ni8"] }
+  - { title: "Yo Soy tu Osito Gominola", year: "2013", views: 166763005, videos: ["nH6nOqz71-E"] }
+  - { title: "El Arca de Noé", year: "2013", views: 88977555, videos: ["Rm1sOfS97Ec"] }
+  - { title: "La foca loca", year: "2013", views: 51022452, videos: ["RqsiSlbu_go"] }
+  - { title: "Tengo una hormiguita en la patita", year: "2014", views: 29276767, videos: ["ntR3cNOgb_A"] }
+  - { title: "Canción del canguro", year: "2014", views: 28103413, videos: ["m4p202fwUrk"] }
 # Credits from this album's page on the old gameeverstudio.com (client and Leader executives left out).
 creditList:
   - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }

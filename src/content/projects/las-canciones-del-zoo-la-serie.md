@@ -11,7 +11,7 @@ platforms:
 genre:
   en: "Kids series"
   es: "Serie infantil"
-# Cover (4:3, focused on the characters) and hero (the whole scene): the official thumbnail of episode 5.
+# Cover (4:3, the characters) and hero (the scene): two images of the most viewed episode, "Picnic con amigos".
 cover: "../../assets/projects/las-canciones-del-zoo-la-serie/cover.jpg"
 heroImage: "../../assets/projects/las-canciones-del-zoo-la-serie/hero.jpg"
 summary:
@@ -32,11 +32,6 @@ facts:
     value: { en: "Preschool", es: "Preescolar" }
 videos:
   - "bm1XMfLX7s4"
-# Moving background behind the title: the camping trip in episode 6.
-heroVideo:
-  id: "dLFaNdHmBrE"
-  start: 4
-  end: 20
 # Views and minutes checked on YouTube in November 2026 (El Reino Infantil uploads): 69.4 M views, 39.2 min.
 stats:
   - value: "12"
