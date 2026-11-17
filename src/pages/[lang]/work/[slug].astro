@@ -566,7 +566,8 @@ const jsonLd = {
     .hero picture { position: relative; display: block; }
     .hero picture::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(13, 13, 15, 0.6) 80%, var(--bg) 100%); pointer-events: none; }
     .hero::after { display: none; }
-    .inner { padding-top: 28px; padding-bottom: 40px; }
+    /* Kicker, title and buttons start right where the image (and its fade) ends. */
+    .inner { padding-top: 0; padding-bottom: 40px; }
     .art { display: none; }
     /* Trailer and store buttons stacked, full width. */
     .ctas { display: grid; grid-template-columns: 1fr; }
