@@ -98,7 +98,7 @@ links:
   - label: "YouTube playlist"
     url: "https://www.youtube.com/playlist?list=PLEtkfEkgMZbgx3AWyN0mNz8o7t-31i1ds"
 # Game Ever rows are PLACEHOLDERS until the studio sends the real team.
-# El Reino Infantil rows come from the official YouTube descriptions of each song ("Lavando el Auto" lists none).
+# El Reino Infantil rows: executive roles only (press, Jan 2026: Pumar founded the company and was CEO until Nov 2025, now president; De Stefani CEO since).
 creditsPending: true
 creditList:
   - { group: "Game Ever", role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
@@ -109,10 +109,8 @@ creditList:
   - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Editing", es: "Edición" }, names: "Nombre Apellido" }
   - { group: "El Reino Infantil", role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
-  - { role: { en: "Songs", es: "Canciones" }, names: "Rodrigo De Narváez Casabianca · José Miguel De Narváez Casabianca · Paola Altamirano · Eddie Mort" }
-  - { role: { en: "“El Auto Bochinchero”", es: "«El Auto Bochinchero»" }, names: "Eduardo Marceillac (letra) · Cecilia Rogier (música)" }
-  - { role: { en: "Vocals", es: "Voces" }, names: "Nicole Cristina Garden Cardona · Sandra Rivera · Nicholas Salazar · Miguel De Narváez · Esteban García Andrade" }
-  - { role: { en: "Arrangements", es: "Arreglos" }, names: "Enrique Estrada («Paseando en Auto»)" }
+  - { role: { en: "Founder & president", es: "Fundador y presidente" }, names: "Roberto «Kuky» Pumar" }
+  - { role: { en: "CEO", es: "CEO" }, names: "Felipe De Stefani" }
 legacySlugs:
   - "la-granja-de-zenon-a-rodar"
 ---
