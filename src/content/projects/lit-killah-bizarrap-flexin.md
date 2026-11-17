@@ -1,5 +1,6 @@
 ---
 title: "Flexin’ — LIT Killah x Bizarrap"
+series: "LIT Killah x Bizarrap"
 client: "Warner Music Argentina"
 year: 2020
 services:

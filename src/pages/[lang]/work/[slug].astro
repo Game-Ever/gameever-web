@@ -50,6 +50,15 @@ const groups = d.entryGroups.length
 // Gallery: large images for the viewer; portrait screenshots (phone games) go four per row, landscape two.
 const gallery = await Promise.all(d.gallery.map(async (src) => ({ src, full: (await getImage({ src, width: Math.min(src.width, 2000), format: 'webp' })).src })));
 const portraitGallery = d.gallery.length > 0 && d.gallery.every((g) => g.height > g.width);
+// Title in two sizes when the project names its series: "Las Canciones del Zoo" small, "3" big.
+const splitTitle = (p: { title: string; series?: string }) => {
+  const s = p.series;
+  if (!s || !(p.title.startsWith(s) || p.title.endsWith(s))) return { small: undefined, big: p.title };
+  const rest = (p.title.startsWith(s) ? p.title.slice(s.length) : p.title.slice(0, -s.length)).replace(/^[\s:·—–-]+|[\s:·—–-]+$/g, '');
+  return rest ? { small: s, big: rest } : { small: undefined, big: p.title };
+};
+const heading = splitTitle(d);
+const nextHeading = splitTitle(next.data);
 const SHOWN = 9; // entries visible per series before "Ver los N"
 const og = await getImage({ src: d.cover, width: 1200, format: 'jpg' });
 const ogUrl = new URL(og.src, Astro.site).href;
@@ -77,7 +86,7 @@ const jsonLd = {
       <div class="wrap inner">
         <div>
           <span class="mono kicker">{[services[0], d.client === ORIGINAL_IP ? null : d.client, d.years ?? d.year].filter(Boolean).join(" · ")}</span>
-          <h1 class="wide">{d.title}</h1>
+          <h1 class="wide">{heading.small && <><span class="series">{heading.small}</span> </>}{heading.big}</h1>
           {(trailer || d.links.length > 0) && (
             <div class="ctas">
               {trailer && <button class="cta primary" data-trailer={trailer}>▶ {t('project.trailer')}</button>}
@@ -223,7 +232,7 @@ const jsonLd = {
 
     <a class="next" href={url(lang, `work/${next.id}`)}>
       <div class="wrap">
-        <div><span class="mono">{t('project.next')}</span><h2 class="wide">{next.data.title}</h2></div>
+        <div><span class="mono">{t('project.next')}</span><h2 class="wide">{nextHeading.small && <><span class="series">{nextHeading.small}</span> </>}{nextHeading.big}</h2></div>
         <Image src={next.data.cover} alt="" width={240} height={240} densities={[1, 2]} />
       </div>
     </a>
@@ -258,6 +267,8 @@ const jsonLd = {
   .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
   /* Same size as the home tagline ("Soñamos. Creamos. Jugamos."). */
   h1 { font-size: clamp(34px, 6vw, 88px); line-height: 0.9; margin: 14px 0 0; overflow-wrap: break-word; }
+  /* Series line over the title (e.g. "Las Canciones del Zoo" over "3"), at the sub-title size. */
+  h1 .series, .next h2 .series { display: block; font-size: var(--subtitle-size); line-height: 1; margin-bottom: 0.35em; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
   .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
   .cta.primary { background: var(--pink); border-color: var(--pink); color: #fff; }

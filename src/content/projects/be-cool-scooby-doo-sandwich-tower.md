@@ -1,5 +1,6 @@
 ---
-title: "Scooby-Doo! Sandwich Tower"
+title: "Be Cool, Scooby-Doo! Sandwich Tower"
+series: "Be Cool, Scooby-Doo!"
 client: "Cartoon Network"
 year: 2019
 services:

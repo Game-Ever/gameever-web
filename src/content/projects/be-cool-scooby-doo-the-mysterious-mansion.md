@@ -1,5 +1,6 @@
 ---
-title: "Scooby-Doo! The Mysterious Mansion"
+title: "Be Cool, Scooby-Doo! The Mysterious Mansion"
+series: "Be Cool, Scooby-Doo!"
 client: "Cartoon Network"
 year: 2019
 services:

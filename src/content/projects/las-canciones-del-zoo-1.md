@@ -1,5 +1,6 @@
 ---
 title: "Las Canciones del Zoo 1"
+series: "Las Canciones del Zoo"
 client: "El Reino Infantil"
 year: 2013
 years: "2013"

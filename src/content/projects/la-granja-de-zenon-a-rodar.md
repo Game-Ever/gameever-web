@@ -1,5 +1,6 @@
 ---
 title: "La Granja de Zenón: A Rodar"
+series: "La Granja de Zenón"
 client: "El Reino Infantil"
 year: 2024
 years: "2022–2024"

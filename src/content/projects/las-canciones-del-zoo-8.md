@@ -1,5 +1,6 @@
 ---
 title: "Las Canciones del Zoo 8"
+series: "Las Canciones del Zoo"
 client: "El Reino Infantil"
 year: 2024
 years: "2023–2024"
