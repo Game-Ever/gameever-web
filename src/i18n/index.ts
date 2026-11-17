@@ -48,7 +48,7 @@ export const ui = {
     'project.videos': 'Videos', 'project.seasons': 'Seasons & campaigns', 'project.gallery': 'Gallery', 'project.credits': 'Credits',
     'project.next': 'Next project →', 'project.cta': 'A similar project?', 'project.play': 'Play video',
     'project.views': '{n} views', 'project.mostViewed': 'Most viewed', 'project.showAll': 'Show all {n}', 'project.showLess': 'Show less',
-    'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Studio team to be confirmed',
+    'project.press': 'In the press', 'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Studio team to be confirmed',
   },
   es: {
     'meta.title': 'Game Ever — Estudio de videojuegos y animación',
@@ -93,7 +93,7 @@ export const ui = {
     'project.videos': 'Videos', 'project.seasons': 'Temporadas y campañas', 'project.gallery': 'Galería', 'project.credits': 'Créditos',
     'project.next': 'Próximo proyecto →', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video',
     'project.views': '{n} de vistas', 'project.mostViewed': 'El más visto', 'project.showAll': 'Ver los {n}', 'project.showLess': 'Ver menos',
-    'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Equipo del estudio a confirmar',
+    'project.press': 'En la prensa', 'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Equipo del estudio a confirmar',
   },
 } as const;
 

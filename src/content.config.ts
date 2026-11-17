@@ -55,6 +55,8 @@ const projects = defineCollection({
     creditList: z.array(z.object({ group: text.optional(), role: localized, names: z.string() })).default([]),
     creditsPending: z.boolean().default(false),
     links: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
+    /** Press coverage: articles, reviews, interviews, awards. Shown as "En la prensa". */
+    press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url() })).default([]),
     gallery: z.array(image()).default([]),
     credits: z.string().optional(),
     /** Old WordPress slugs (/portfolio/<slug>/) that redirect to this project. */

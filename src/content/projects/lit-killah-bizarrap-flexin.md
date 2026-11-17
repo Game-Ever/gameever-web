@@ -11,18 +11,27 @@ genre:
   en: "Music video"
   es: "Videoclip"
 featured: 6
-cover: "../../assets/projects/lit-killah-bizarrap-flexin/portada.png"
+cover: "../../assets/projects/lit-killah-bizarrap-flexin/cover.jpg"
 summary:
-  en: "3D music video for LIT Killah and Bizarrap’s hit, with 144M+ views."
-  es: "Videoclip 3D del hit de LIT Killah y Bizarrap, con más de 144 millones de vistas."
+  en: "3D animated music video for LIT killah and Bizarrap, with 200M+ views."
+  es: "Videoclip animado en 3D de LIT killah y Bizarrap, con más de 200 millones de vistas."
 description:
-  en: "Argentine trap artist LIT Killah teamed up with Bizarrap for one of 2020’s biggest hits. We made the 3D animated music video, which has passed 144 million views."
-  es: "LIT Killah se unió a Bizarrap para uno de los hits de 2020. Hicimos el videoclip animado en 3D, que ya superó los 144 millones de reproducciones."
+  en: "We directed and produced the animated video for Flexin’, LIT killah’s biggest hit, with a beat by Bizarrap. A retro-futuristic 3D ride from Biza’s studio to a neon desert, sharing the look of the game we made for LIT killah. Over 200 million YouTube views, Platinum in Argentina and #11 on the Billboard Argentina Hot 100."
+  es: "Dirigimos y producimos el videoclip animado de Flexin’, el mayor hit de LIT killah, con beat de Bizarrap. Un viaje retro-futurista en 3D, del estudio de Biza a un desierto de neón, con la misma estética del juego que desarrollamos para LIT killah. Más de 200 millones de vistas en YouTube, Disco de Platino en Argentina y puesto 11 en el Billboard Argentina Hot 100."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Direction, production, 3D animation"
+  es: "Dirección, producción, animación 3D"
 videos:
   - "YWdcQfjdzBc"
+heroImage: "../../assets/projects/lit-killah-bizarrap-flexin/hero.jpg"
+# Figures checked on YouTube / public sources in November 2026.
+stats:
+  - value: "+200 M"
+    label: { en: "views on YouTube", es: "vistas en YouTube" }
+  - value: "#11"
+    label: { en: "Billboard Argentina Hot 100", es: "Billboard Argentina Hot 100" }
+press:
+  - { outlet: "TodoJujuy", title: "«Flexin», lo nuevo de Lit Killah ft. Bizarrap", year: "2020", url: "https://www.todojujuy.com/espectaculos/flexin-lo-nuevo-lit-killah-ft-bizarrap-n136088" }
 legacySlugs:
   - "flexin"
 ---

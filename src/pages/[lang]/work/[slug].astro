@@ -164,6 +164,21 @@ const jsonLd = {
         </section>
       )}
 
+      {d.press.length > 0 && (
+        <section class="block" id="press">
+          <h2 class="wide">{t('project.press')}</h2>
+          <ul class="press">
+            {d.press.map((p) => (
+              <li><a href={p.url} target="_blank" rel="noopener">
+                <span class="mono">{[p.outlet, p.year].filter(Boolean).join(' · ')}</span>
+                <strong>{p.title}</strong>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a></li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {d.process.length > 0 && (
         <section class="block" id="process">
           <h2 class="wide">{t('project.process')}</h2>
@@ -285,6 +300,14 @@ const jsonLd = {
   .show-all { margin-top: 28px; background: none; border: 1px solid var(--line2); color: var(--fg); padding: 14px 22px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
   .show-all:hover { border-color: var(--pink); color: var(--pink); }
 
+  /* Press: one row per article (outlet · year, title, arrow), the whole row is the link. */
+  .press { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+  .press a { display: grid; grid-template-columns: minmax(160px, 1fr) 3fr auto; gap: 8px 24px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); transition: color 0.2s; }
+  .press .mono { color: var(--mute); }
+  .press strong { font-weight: 600; font-size: 18px; line-height: 1.35; }
+  .press .arrow { color: var(--pink); font-size: 20px; }
+  .press a:hover strong { color: var(--pink); }
+
   /* Behind the scenes: three blocks; a missing image shows a striped placeholder. */
   .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .process figure { margin: 0; }
@@ -342,6 +365,8 @@ const jsonLd = {
     .videos, .entries { grid-template-columns: 1fr; }
     .entries.featured article:first-child { grid-column: auto; grid-row: auto; }
     .process { grid-template-columns: 1fr; }
+    .press a { grid-template-columns: 1fr auto; }
+    .press .mono { grid-column: 1 / -1; }
     .credit-list dl { grid-template-columns: 1fr; }
     .credit-list dt { padding-bottom: 0; border-bottom: 0; }
     .hero :global(.hero-video) { display: none; }
