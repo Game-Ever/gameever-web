@@ -97,20 +97,17 @@ process:
 links:
   - label: "YouTube playlist"
     url: "https://www.youtube.com/playlist?list=PLEtkfEkgMZbgx3AWyN0mNz8o7t-31i1ds"
-# Game Ever rows are PLACEHOLDERS until the studio sends the real team.
-# El Reino Infantil rows: executive roles only (press, Jan 2026: Pumar founded the company and was CEO until Nov 2025, now president; De Stefani CEO since).
+# Studio rows are PLACEHOLDERS until the studio sends the real team. No client-side people listed (decided Nov 2026).
 creditsPending: true
 creditList:
-  - { group: "Game Ever", role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
+  - { role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
+  - { role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
   - { role: { en: "Production", es: "Producción general" }, names: "Nombre Apellido" }
   - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Nombre Apellido" }
   - { role: { en: "Modeling & rigging", es: "Modelado y rigging" }, names: "Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Animation", es: "Animación" }, names: "Nombre Apellido · Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Nombre Apellido · Nombre Apellido" }
   - { role: { en: "Editing", es: "Edición" }, names: "Nombre Apellido" }
-  - { group: "El Reino Infantil", role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
-  - { role: { en: "Founder & president", es: "Fundador y presidente" }, names: "Roberto «Kuky» Pumar" }
-  - { role: { en: "CEO", es: "CEO" }, names: "Felipe De Stefani" }
 legacySlugs:
   - "la-granja-de-zenon-a-rodar"
 ---
