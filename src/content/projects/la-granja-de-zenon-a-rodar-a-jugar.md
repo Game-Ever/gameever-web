@@ -74,10 +74,9 @@ entries:
   - { title: "¡Se ensució el auto de Lola!", year: "2026", views: 396490, videos: ["7Tu-CZqWhYE"] }
   - { title: "Reparemos el Auto Bochinchero", year: "2026", views: 378541, videos: ["gIj0z6zFAFA"] }
   - { title: "Lavadero de autos con Pepe y Lola", year: "2025", views: 364455, videos: ["QJBWQrblwlI"] }
-# Studio rows are PLACEHOLDERS until the studio sends the real team. No client-side people listed.
+# PLACEHOLDERS until the studio sends the real team (not on the old site). The client is in the fact sheet.
 creditsPending: true
 creditList:
-  - { role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
   - { role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
   - { role: { en: "Production", es: "Producción general" }, names: "Nombre Apellido" }
   - { role: { en: "Animation", es: "Animación" }, names: "Nombre Apellido · Nombre Apellido · Nombre Apellido" }

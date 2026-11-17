@@ -73,17 +73,17 @@ process:
     text: { en: "From the farm road to the jungle, the beach and the rainbow road.", es: "Del camino de la granja a la selva, la playa y el camino arcoíris." }
   - title: { en: "From animatic to render", es: "Del animatic al render" }
     text: { en: "How a song goes from storyboard to final frame.", es: "Cómo pasa una canción del storyboard al cuadro final." }
-# Studio rows are PLACEHOLDERS until the studio sends the real team. No client-side people listed (decided Nov 2026).
-creditsPending: true
+# Credits from the A Rodar page on the old gameeverstudio.com (2022). The client is in the fact sheet, so it is not repeated here.
 creditList:
-  - { role: { en: "Client", es: "Cliente" }, names: "El Reino Infantil · Leader Entertainment" }
-  - { role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
-  - { role: { en: "Production", es: "Producción general" }, names: "Nombre Apellido" }
-  - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Nombre Apellido" }
-  - { role: { en: "Modeling & rigging", es: "Modelado y rigging" }, names: "Nombre Apellido · Nombre Apellido" }
-  - { role: { en: "Animation", es: "Animación" }, names: "Nombre Apellido · Nombre Apellido · Nombre Apellido" }
-  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Nombre Apellido · Nombre Apellido" }
-  - { role: { en: "Editing", es: "Edición" }, names: "Nombre Apellido" }
+  - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción general" }, names: "Wanelén Farías" }
+  - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan De Mauricio · Paloma Figaro" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini · Rocío Blois" }
+  - { role: { en: "2D art", es: "Arte 2D" }, names: "Lourdes Hualde · Gabriel Rodríguez" }
+  - { role: { en: "VFX", es: "VFX" }, names: "Diego Forconi" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Daniela Bruno" }
+  - { role: { en: "Sound effects", es: "Efectos de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "la-granja-de-zenon-a-rodar"
 ---
