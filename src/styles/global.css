@@ -48,6 +48,8 @@ button { font: inherit; color: inherit; }
    (same size, weight, colour, bar and width everywhere — no bold lines). */
 .aside { display: grid; gap: 16px; border-left: 4px solid var(--pink); padding-left: 22px; max-width: 46ch; margin-top: 8px; }
 .aside p { color: var(--fg2); font-size: var(--body-size); line-height: 1.55; }
+/* Text written as fixed lines (array in i18n): each line starts on its own row. */
+.aside .lines span { display: block; }
 /* On pink backgrounds the bar switches to white so it stays visible. */
 .aside.on-pink { border-left-color: #fff; }
 .aside.on-pink p { color: rgba(255, 255, 255, 0.9); }
