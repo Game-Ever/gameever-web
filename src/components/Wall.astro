@@ -106,9 +106,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; padding-bottom: 40px; }
   .card { display: flex; flex-direction: column; gap: 12px; animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   @keyframes rise { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
-  /* Landscape thumbnails cropped from the square key art; faces sit in the upper half, so bias the crop up. */
-  .img { position: relative; aspect-ratio: var(--card-ratio, 4 / 3); overflow: hidden; background: var(--bg2); }
-  .img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s; }
+  /* Square thumbnails: the cover is square (two image formats on the site: 16:9 header, 1:1 cover). */
+  .img { position: relative; aspect-ratio: var(--card-ratio, 1 / 1); overflow: hidden; background: var(--bg2); }
+  .img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s; }
   .img::after { content: ''; position: absolute; right: 0; bottom: 0; width: 28px; height: 28px; background: var(--pink); transform: scale(0); transform-origin: bottom right; transition: transform 0.25s; }
   .card h3 { font-size: clamp(18px, 1.8vw, 26px); line-height: 1.05; overflow-wrap: break-word; font-stretch: 125%; font-weight: 800; text-transform: uppercase; transition: color 0.25s; }
   .meta { color: var(--mute); margin-top: -6px; }
