@@ -67,7 +67,7 @@ const projects = defineCollection({
     /** With `video` (a YouTube id: TV news, streams, interviews) the item shows as a playable card; without it, as a link. */
     press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url().optional(), video: z.string().optional(),
       /** Review score shown big on the card, e.g. "7/10" or "4/5". */
-      score: z.string().optional() })
+      score: z.string().optional(), author: z.string().optional() })
       .refine((p) => p.url || p.video, { message: 'press items need a url or a video' })).default([]),
     gallery: z.array(image()).default([]),
     credits: z.string().optional(),

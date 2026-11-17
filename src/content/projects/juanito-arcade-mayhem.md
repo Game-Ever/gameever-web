@@ -62,9 +62,9 @@ stats:
   - value: "6"
     label: { en: "languages", es: "idiomas" }
 press:
-  - { outlet: "IGN España", title: "Juanito Arcade Mayhem. Análisis para PC", year: "2017", url: "https://es.ign.com/juanito-arcade-mayhem/124334/juanito-arcade-mayhem-analisis-para-pc", score: "7/10" }
-  - { outlet: "Pocket Gamer", title: "Juanito Arcade Mayhem review", year: "2018", url: "https://www.pocketgamer.com/juanito-arcade-mayhem/review/", score: "4/5" }
-  - { outlet: "Press Over", title: "Análisis: el arcade 2D de disparos que te revolea creatividad por la cabeza", year: "2017", url: "https://pressover.news/analisis/juanito-arcade-mayhem/", score: "8/10" }
+  - { outlet: "Press Over", title: "Juanito Arcade Mayhem: el arcade 2D de disparos que te revolea creatividad por la cabeza", author: "Gustavo Sobrero", year: "2017", score: "8/10", url: "https://pressover.news/analisis/juanito-arcade-mayhem/" }
+  - { outlet: "IGN España", title: "Juanito Arcade Mayhem. Análisis para PC", author: "Jose A. Rodríguez", year: "2017", score: "7/10", url: "https://es.ign.com/juanito-arcade-mayhem/124334/juanito-arcade-mayhem-analisis-para-pc" }
+  - { outlet: "Pocket Gamer", title: "Juanito Arcade Mayhem review: a nostalgic shooter that's definitely not stuck in the past", author: "Harry Slater", year: "2018", score: "4/5", url: "https://www.pocketgamer.com/juanito-arcade-mayhem/review/" }
 # More press, not shown on this page (kept for the Juanito site):
 # - { outlet: "Clarín", title: "Boom retro: los jóvenes que recuperan el espíritu de los fichines en Argentina", year: "2017", url: "https://www.clarin.com/sociedad/boom-retro-jovenes-recuperan-espiritu-fichines-argentina_0_rkzBkdoJW.html" }
 # - { outlet: "Siliconera", title: "Juanito Arcade Mayhem Offers Animated Looks At Classic Games", year: "2017", url: "https://www.siliconera.com/juanito-arcade-mayhem-offers-animated-looks-classic-games/" }
