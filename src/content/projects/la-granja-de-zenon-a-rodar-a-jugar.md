@@ -43,7 +43,7 @@ stats:
   - value: "+29 M"
     label: { en: "views on YouTube", es: "vistas en YouTube" }
   - value: "59"
-    label: { en: "minutes of video", es: "minutos de video" }
+    label: { en: "min. of video", es: "min. de video" }
   - value: "7"
     label: { en: "characters at the wheel", es: "personajes al volante" }
 entriesTitle:

@@ -246,7 +246,7 @@ const jsonLd = {
   .stats { list-style: none; padding: 34px 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; border-bottom: 1px solid var(--line); }
   .stats li { display: grid; gap: 6px; border-left: 3px solid var(--pink); padding-left: 16px; }
   .stats strong { font-size: clamp(32px, 3.8vw, 56px); line-height: 0.95; color: var(--fg); white-space: nowrap; }
-  .stats span { color: var(--fg2); font-size: 15px; }
+  .stats span { color: var(--fg2); font-size: 15px; white-space: nowrap; }
 
   /* Clips: title with series tabs, the most viewed clip large, the rest in a grid. */
   .clips-head { display: flex; justify-content: space-between; align-items: end; gap: 20px 32px; flex-wrap: wrap; margin-bottom: 28px; }
@@ -322,7 +322,8 @@ const jsonLd = {
     .process { grid-template-columns: 1fr; }
     .credit-list dl { grid-template-columns: 1fr; }
     .credit-list dt { padding-bottom: 0; border-bottom: 0; }
-    .stats { display: grid; grid-template-columns: 1fr 1fr; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+    .stats strong { font-size: 28px; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
   }

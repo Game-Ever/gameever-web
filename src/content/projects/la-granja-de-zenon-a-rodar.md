@@ -40,11 +40,11 @@ heroVideo:
 # Views and minutes checked on YouTube in November 2026: 234.7 M views on the 11 standalone uploads (the "Ya Vamos a Llegar" mix not counted); 26.6 min.
 stats:
   - value: "12"
-    label: { en: "music videos", es: "videoclips" }
+    label: { en: "music videos", es: "videoclips musicales" }
   - value: "+230 M"
     label: { en: "views on YouTube", es: "vistas en YouTube" }
   - value: "26"
-    label: { en: "minutes of animation", es: "minutos de animación" }
+    label: { en: "min. of animation", es: "min. de animación" }
   - value: "7"
     label: { en: "characters at the wheel", es: "personajes al volante" }
 entriesTitle:
