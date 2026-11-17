@@ -27,6 +27,8 @@ const projects = defineCollection({
     summary: localized,
     description: localized,
     role: localized.optional(),
+    /** Extra rows for the project's fact sheet (e.g. Canales, Formato, Público), shown before "Nuestro rol". */
+    facts: z.array(z.object({ label: localized, value: text })).default([]),
     videos: z.array(z.string()).default([]),
     /** Muted YouTube loop behind the project title (start / end in seconds). */
     heroVideo: z.object({ id: z.string(), start: z.number().default(0), end: z.number().optional() }).optional(),

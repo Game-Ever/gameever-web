@@ -95,8 +95,10 @@ const jsonLd = {
           <dt>{t('project.year')}</dt><dd>{d.years ?? d.year}</dd>
           {platforms.length > 0 && <><dt>{t('project.platforms')}</dt><dd>{platforms.join(' · ')}</dd></>}
           {d.genre && <><dt>{t('project.genre')}</dt><dd>{tr(d.genre, lang)}</dd></>}
+          {d.facts.map((x) => <><dt>{tr(x.label, lang)}</dt><dd>{tr(x.value, lang)}</dd></>)}
           {d.role && <><dt>{t('project.role')}</dt><dd>{tr(d.role, lang)}</dd></>}
-          <dt>{t('project.services')}</dt><dd>{services.join(' · ')}</dd>
+          {/* Services only when there is no role: the role already says what we did. */}
+          {!d.role && <><dt>{t('project.services')}</dt><dd>{services.join(' · ')}</dd></>}
         </dl>
       </section>
 

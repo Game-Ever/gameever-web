@@ -13,14 +13,21 @@ genre:
   es: "Música infantil"
 cover: "../../assets/projects/la-granja-de-zenon-a-rodar/zenonarodar.png"
 summary:
-  en: "Twelve 3D music videos and 23 play-along videos for La Granja de Zenón’s new adventure: Zenón and friends hit the road, each in their own car."
-  es: "Doce videoclips 3D y 23 videos para jugar con la nueva aventura de La Granja de Zenón: Zenón y sus amigos salen a recorrer el mundo, cada uno en su auto."
+  en: "Twelve 3D music videos and 23 play-along videos for La Granja de Zenón’s new adventure: A Rodar. Zenón and friends set off to see the world by car."
+  es: "Doce videoclips 3D y 23 videos para jugar con la nueva aventura de La Granja de Zenón: A Rodar. Zenón y sus amigos salen a recorrer el mundo en auto."
 description:
   en: "Since 2022 we have animated La Granja de Zenón: A Rodar, the song series in which El Reino Infantil (Leader Entertainment) takes the farm on the road. Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and naughty Beto the Wolf start their engines and drive through jungles, beaches, mountains, lakes, rivers, small towns, big cities and even a road in the colors of the rainbow. Twelve songs about the world of cars (filling up, washing, fixing, stopping at the traffic light), made for little ones to play and learn. For El Reino a Jugar we added 23 play-along videos with the same cars: road trips, the gas station, the garage, the car wash and races. More than 260 million views on YouTube."
   es: "Desde 2022 animamos La Granja de Zenón: A Rodar, la serie de canciones con la que El Reino Infantil (Leader Entertainment) saca la granja a la ruta. Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el travieso Lobo Beto encienden los motores y recorren selvas, playas, montañas, lagos, ríos, pueblos, grandes ciudades y hasta un camino con los colores del arcoíris. Doce canciones sobre el mundo de los autos (cargar combustible, lavarlos, arreglarlos, frenar en el semáforo), pensadas para que los más chicos jueguen y aprendan. Para El Reino a Jugar sumamos 23 videos interactivos con los mismos autos: viajes, la estación de servicio, el taller, el lavadero y carreras. Más de 260 millones de vistas en YouTube."
 role:
   en: "3D animation"
   es: "Animación 3D"
+facts:
+  - label: { en: "Channels", es: "Canales" }
+    value: "El Reino Infantil · La Granja de Zenón · El Reino a Jugar"
+  - label: { en: "Format", es: "Formato" }
+    value: { en: "Two-minute music videos and play-along videos", es: "Videoclips de 2 minutos y videos interactivos" }
+  - label: { en: "Audience", es: "Público" }
+    value: { en: "Preschool", es: "Preescolar" }
 videos:
   - "DzUfPLdTbfs"
 # Moving background behind the title: cars arriving down the farm road in "Arreglando el Auto".
