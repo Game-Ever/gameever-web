@@ -12,7 +12,10 @@ const groups = t('services.groups');
     <span class="mono kicker">{t('services.label')}</span>
     <div class="head">
       <h2 class="wide">{t('services.title').map((line) => <span>{line}</span>)}</h2>
-      <p class="highlight">{t('services.sub')}</p>
+      <div class="aside">
+        <p class="lead">{t('services.sub')}</p>
+        <p>{t('services.hint')}</p>
+      </div>
     </div>
 
     <div class="acc">
@@ -41,11 +44,10 @@ const groups = t('services.groups');
 <style>
   .services { padding: 70px 0 130px; }
   .kicker { color: var(--pink); }
-  /* Same layout as Nosotros: title left, highlight right, top-aligned. */
+  /* Same layout as Nosotros: title left, side block right, top-aligned. */
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 22px; align-items: start; }
   h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
   h2 span { display: block; }
-  .head .highlight { margin-top: 8px; }
 
   .acc { margin-top: 64px; border-top: 1px solid var(--line); }
   .item { border-bottom: 1px solid var(--line); }
