@@ -46,7 +46,7 @@ button { font: inherit; color: inherit; }
 .wide { font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
 /* Side block: the text next to a section title. One pink bar per block; inside, body paragraphs only
    (same size, weight, colour, bar and width everywhere — no bold lines). */
-.aside { display: grid; gap: 16px; border-left: 4px solid var(--pink); padding-left: 22px; max-width: 46ch; margin-top: 8px; }
+.aside { display: grid; gap: 16px; border-left: 4px solid var(--pink); padding-left: 22px; max-width: 54ch; margin-top: 8px; }
 .aside p { color: var(--fg2); font-size: var(--body-size); line-height: 1.55; }
 /* Text written as fixed lines (array in i18n): each line starts on its own row. */
 .aside .lines span { display: block; }

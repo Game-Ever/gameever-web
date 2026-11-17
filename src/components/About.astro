@@ -10,7 +10,7 @@ const t = useT(Astro.props.lang);
     <div class="grid">
       <h2 class="wide">{t('about.title')}</h2>
       <div class="aside">
-        <p>{t('about.p1')}</p>
+        <p class="lines">{t('about.lines').map((line) => <span>{line}</span>)}</p>
       </div>
     </div>
   </div>
