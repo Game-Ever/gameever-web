@@ -25,9 +25,14 @@ const t = useT(lang);
 
 const platforms = platformLabels(d.platforms, lang);
 const services = d.services.map((s) => SERVICES[s][lang]);
+// New media layout (being tried on Juanito first): projects with `highlights` get the featured band with tabs,
+// and their other videos go in the gallery viewer with the images. The rest keep the video grid and image grid.
+const mediaLayout = d.highlights.length > 0 && !d.entries.length;
+const highlights = mediaLayout ? d.highlights : [];
+const extraVideos = mediaLayout ? d.videos : [];
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
-// No "Ver tráiler" when the page lists its videos: they are a scroll away.
-const trailer = d.entries.length ? undefined : allVideos[0];
+// "Ver tráiler" in the hero plays the first highlight (or video); pages that list their clips don't need it.
+const trailer = d.entries.length ? undefined : highlights[0]?.id ?? allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
 // On phones (portrait) a landscape image crops the characters, so the square cover is used there instead.
@@ -47,9 +52,18 @@ const compact = (n: number) => {
 const groups = d.entryGroups.length
   ? d.entryGroups.map((g) => ({ key: g.key, title: tr(g.title, lang), entries: d.entries.filter((e) => e.group === g.key) }))
   : [{ key: 'all', title: '', entries: d.entries }];
-// Gallery: large images for the viewer; portrait screenshots (phone games) go four per row, landscape two.
-const gallery = await Promise.all(d.gallery.map(async (src) => ({ src, full: (await getImage({ src, width: Math.min(src.width, 2000), format: 'webp' })).src })));
+// Gallery viewer: images first, then the extra videos. Each image has a stage size, a full size for the
+// full-screen viewer and a small one for the strip (also used, blurred, behind images that are not 16:9).
+const gallery = await Promise.all(d.gallery.map(async (src) => ({
+  kind: 'image' as const, src,
+  full: (await getImage({ src, width: Math.min(src.width, 2000), format: 'webp' })).src,
+  thumb: (await getImage({ src, width: 320, format: 'webp' })).src,
+  wide: src.width / src.height > 1.7,
+})));
+const media = !mediaLayout ? [] : [...gallery, ...extraVideos.map((id) => ({ kind: 'video' as const, id, thumb: `https://i.ytimg.com/vi/${id}/mqdefault.jpg` }))];
 const portraitGallery = d.gallery.length > 0 && d.gallery.every((g) => g.height > g.width);
+const pressVideos = d.press.filter((p) => p.video);
+const pressLinks = d.press.filter((p) => !p.video && p.url);
 // Title in two sizes when the project names its series: "Canciones del Zoo" small, "Vol. 3" big.
 const splitTitle = (p: { title: string; series?: string }) => {
   const s = p.series;
@@ -123,7 +137,28 @@ const jsonLd = {
           {!d.role && <><dt>{t('project.services')}</dt><dd>{services.join(' · ')}</dd></>}
         </dl>
       </section>
+    </div>
 
+    {highlights.length > 0 && (
+      <section class="cine" aria-label={t('project.featuredVideos')}>
+        <div class="wrap">
+          {highlights.length > 1 && (
+            <div class="cine-tabs" role="tablist">
+              {highlights.map((h, i) => (
+                <button role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`cine-${i}`}>{h.label ? tr(h.label, lang) : `${t('project.video')} ${i + 1}`}</button>
+              ))}
+            </div>
+          )}
+          {highlights.map((h, i) => (
+            <div class="cine-panel" id={`cine-${i}`} role={highlights.length > 1 ? 'tabpanel' : undefined} hidden={i > 0}>
+              <YouTube id={h.id} title={`${d.title}${h.label ? ` — ${tr(h.label, lang)}` : ''}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="wrap">
       {d.entries.length > 0 ? (
         <section class="block clips" id="videos">
           <div class="clips-head">
@@ -158,20 +193,20 @@ const jsonLd = {
             </div>
           ))}
         </section>
-      ) : allVideos.length > 0 && (
+      ) : !mediaLayout && allVideos.length > 0 ? (
         <section class="block">
           <div class:list={['videos', { single: allVideos.length === 1 }]}>
             {allVideos.map((id, i) => <YouTube id={id} title={`${d.title} ${i + 1}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes={allVideos.length === 1 ? '(max-width: 1340px) 100vw, 1280px' : '(max-width: 900px) 100vw, 50vw'} />)}
           </div>
         </section>
-      )}
+      ) : null}
 
-      {d.gallery.length > 0 && (
+      {!mediaLayout && gallery.length > 0 && (
         <section class="block" aria-label={t('project.gallery')}>
           <div class:list={['gallery', { portrait: portraitGallery }]}>
             {gallery.map(({ src, full }, i) => (
               <figure>
-                <button class="zoom" data-full={full} aria-label={`${t('project.zoom')}: ${d.title} — ${i + 1}`}>
+                <button class="zoom grid-zoom" data-full={full} aria-label={`${t('project.zoom')}: ${d.title} — ${i + 1}`}>
                   <Image src={src} alt={`${d.title} — ${i + 1}`} widths={portraitGallery ? [400, 700] : [700, 1100, 1400]} sizes={portraitGallery ? '(max-width: 760px) 50vw, 25vw' : '(max-width: 760px) 100vw, 50vw'} />
                   <span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 1 0 3.7 10.7l5.3 5.3 1.4-1.4-5.3-5.3A6 6 0 0 0 10 4zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-1 1.5v2H7v1h2v2h1v-2h2v-1h-2v-2z" /></svg></span>
                 </button>
@@ -181,18 +216,38 @@ const jsonLd = {
         </section>
       )}
 
-      {d.press.length > 0 && (
-        <section class="block" id="press">
-          <h2 class="wide">{t('project.press')}</h2>
-          <ul class="press">
-            {d.press.map((p) => (
-              <li><a href={p.url} target="_blank" rel="noopener">
-                <span class="mono">{[p.outlet, p.year].filter(Boolean).join(' · ')}</span>
-                <strong>{p.title}</strong>
-                <span class="arrow" aria-hidden="true">↗</span>
-              </a></li>
+      {media.length > 0 && (
+        <section class="block media" id="gallery" aria-label={t('project.gallery')}>
+          <h2 class="wide">{t('project.gallery')}</h2>
+          <div class="stage">
+            {media.map((m, i) => (
+              <div class="slide" data-i={i} hidden={i > 0}>
+                {m.kind === 'image' ? (
+                  <button class="zoom" data-full={m.full} aria-label={`${t('project.zoom')}: ${d.title} — ${i + 1}`}>
+                    {!m.wide && <img class="backdrop" src={m.thumb} alt="" aria-hidden="true" loading="lazy" />}
+                    <Image class="pic" src={m.src} alt={`${d.title} — ${i + 1}`} widths={[800, 1280, 1600]} sizes="(max-width: 1340px) 100vw, 1280px" loading={i === 0 ? 'lazy' : 'lazy'} />
+                    <span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 1 0 3.7 10.7l5.3 5.3 1.4-1.4-5.3-5.3A6 6 0 0 0 10 4zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-1 1.5v2H7v1h2v2h1v-2h2v-1h-2v-2z" /></svg></span>
+                  </button>
+                ) : (
+                  <YouTube id={m.id} title={`${d.title} — ${t('project.video')} ${i + 1}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
+                )}
+              </div>
             ))}
-          </ul>
+            {media.length > 1 && <>
+              <button class="st-nav st-prev" aria-label={t('project.prev')}>←</button>
+              <button class="st-nav st-next" aria-label={t('project.nextImage')}>→</button>
+            </>}
+          </div>
+          {media.length > 1 && (
+            <div class="strip" role="tablist" aria-label={t('project.gallery')}>
+              {media.map((m, i) => (
+                <button class="thumb" role="tab" data-i={i} aria-selected={i === 0 ? 'true' : 'false'} aria-label={m.kind === 'video' ? `${t('project.video')} ${i + 1}` : `${d.title} — ${i + 1}`}>
+                  <img src={m.thumb} alt="" loading="lazy" />
+                  {m.kind === 'video' && <span class="thumb-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" /></svg></span>}
+                </button>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
@@ -201,14 +256,43 @@ const jsonLd = {
           <h2 class="wide">{t('project.process')}</h2>
           <div class="process">
             {d.process.map((p) => (
-              <figure>
-                {p.image
-                  ? <Image src={p.image} alt={tr(p.title, lang)} widths={[600, 900]} sizes="(max-width: 900px) 100vw, 33vw" />
-                  : <div class="pending mono">{t('project.pendingImage')}</div>}
+              <figure class:list={{ 'has-video': !!p.video }}>
+                {p.video
+                  ? <YouTube id={p.video} title={tr(p.title, lang)} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 900px) 100vw, 66vw" />
+                  : p.image
+                    ? <Image src={p.image} alt={tr(p.title, lang)} widths={[600, 900]} sizes="(max-width: 900px) 100vw, 33vw" />
+                    : <div class="pending mono">{t('project.pendingImage')}</div>}
                 <figcaption><h3>{tr(p.title, lang)}</h3>{p.text && <p>{tr(p.text, lang)}</p>}</figcaption>
               </figure>
             ))}
           </div>
+        </section>
+      )}
+
+      {d.press.length > 0 && (
+        <section class="block" id="press">
+          <h2 class="wide">{t('project.press')}</h2>
+          {pressVideos.length > 0 && (
+            <div class="press-videos">
+              {pressVideos.map((p) => (
+                <figure>
+                  <YouTube id={p.video!} title={`${p.outlet}: ${p.title}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 900px) 100vw, 50vw" />
+                  <figcaption><span class="mono">{[p.outlet, p.year].filter(Boolean).join(' · ')}</span><strong>{p.title}</strong></figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+          {pressLinks.length > 0 && (
+            <ul class="press">
+              {pressLinks.map((p) => (
+                <li><a href={p.url} target="_blank" rel="noopener">
+                  <span class="mono">{[p.outlet, p.year].filter(Boolean).join(' · ')}</span>
+                  <strong>{p.title}</strong>
+                  <span class="arrow" aria-hidden="true">↗</span>
+                </a></li>
+              ))}
+            </ul>
+          )}
         </section>
       )}
 
@@ -335,6 +419,7 @@ const jsonLd = {
   /* Behind the scenes: three blocks; a missing image shows a striped placeholder. */
   .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .process figure { margin: 0; }
+  .process figure.has-video { grid-column: span 2; }
   .process img, .pending { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
   .pending { display: grid; place-items: center; color: var(--mute); border: 1px dashed var(--line2); background: repeating-linear-gradient(135deg, var(--bg2) 0 14px, transparent 14px 28px); }
   .process h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 14px; }
@@ -354,16 +439,49 @@ const jsonLd = {
   .credit-block summary::after { content: '+'; font-family: var(--mono); font-size: 26px; color: var(--pink); }
   .credit-block[open] summary::after { content: '–'; }
   .credit-block dl { margin-bottom: 24px; }
-  /* Gallery: big images at their own shape (two per row, four for phone screenshots); a click opens the viewer. */
+  /* Featured videos: their own dark band, full width, with one tab per video. */
+  .cine { background: var(--bg2); padding: 56px 0 64px; margin-bottom: 90px; }
+  .cine-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+  .cine-tabs button { display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid var(--line2); background: none; color: var(--fg2); font-weight: 800; font-stretch: 115%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: all 0.2s; }
+  .cine-tabs button:hover { border-color: var(--fg); color: var(--fg); }
+  .cine-tabs button[aria-selected='true'] { background: var(--pink); border-color: var(--pink); color: #fff; }
+
+  /* Gallery viewer: one 16:9 stage (images whole, on a blurred copy when they are not 16:9) and a strip of thumbnails. */
+  .stage { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+  .slide, .slide > .zoom { position: absolute; inset: 0; }
+  .slide[hidden] { display: none; }
+  .slide :global(.yt-lite), .slide :global(.frame) { height: 100%; }
+  .zoom { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .backdrop { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(28px) brightness(0.45); }
+  .zoom .pic { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; }
+  .zoom-icon { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 44px; height: 44px; background: rgba(13, 13, 15, 0.7); opacity: 0; transition: opacity 0.2s; }
+  .zoom-icon svg { width: 22px; height: 22px; fill: #fff; }
+  .zoom:hover .zoom-icon, .zoom:focus-visible .zoom-icon { opacity: 1; }
+  .st-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 48px; height: 48px; border: 0; background: rgba(13, 13, 15, 0.65); color: #fff; font-size: 22px; cursor: pointer; opacity: 0; transition: opacity 0.2s, background 0.2s; }
+  .st-prev { left: 12px; }
+  .st-next { right: 12px; }
+  .stage:hover .st-nav, .st-nav:focus-visible { opacity: 1; }
+  .st-nav:hover { background: var(--pink); }
+  .strip { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+  .thumb { position: relative; flex: none; width: 150px; aspect-ratio: 16 / 9; padding: 0; border: 2px solid transparent; background: #000; cursor: pointer; opacity: 0.55; transition: opacity 0.2s, border-color 0.2s; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb:hover { opacity: 0.9; }
+  .thumb[aria-selected='true'] { opacity: 1; border-color: var(--pink); }
+  .thumb-play { position: absolute; left: 6px; bottom: 6px; display: grid; place-items: center; width: 24px; height: 24px; background: var(--pink); }
+  .thumb-play svg { width: 12px; height: 12px; fill: #fff; }
+
+  /* Image grid (projects not on the new media layout yet): images at their own shape, a click opens the viewer. */
   .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start; }
   .gallery.portrait { grid-template-columns: repeat(4, 1fr); }
   .gallery figure { margin: 0; background: var(--bg2); overflow: hidden; }
-  .zoom { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+  .gallery .zoom { position: relative; height: auto; }
   .gallery img { display: block; width: 100%; height: auto; transition: transform 0.6s; }
-  .zoom:hover img { transform: scale(1.03); }
-  .zoom-icon { position: absolute; right: 12px; bottom: 12px; display: grid; place-items: center; width: 40px; height: 40px; background: rgba(13, 13, 15, 0.7); opacity: 0; transition: opacity 0.2s; }
-  .zoom-icon svg { width: 22px; height: 22px; fill: #fff; }
-  .zoom:hover .zoom-icon, .zoom:focus-visible .zoom-icon { opacity: 1; }
+  .gallery .zoom:hover img { transform: scale(1.03); }
+
+  .press-videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 16px; margin-bottom: 32px; }
+  .press-videos figure { margin: 0; }
+  .press-videos figcaption { display: grid; gap: 4px; margin-top: 12px; }
+  .press-videos figcaption .mono { color: var(--mute); }
 
   .lightbox { position: fixed; inset: 0; z-index: 70; background: rgba(0, 0, 0, 0.94); display: grid; place-items: center; padding: 64px 72px; }
   .lightbox[hidden] { display: none; }
@@ -406,6 +524,8 @@ const jsonLd = {
     .videos, .entries { grid-template-columns: 1fr; }
     .entries.featured article:first-child { grid-column: auto; grid-row: auto; }
     .process { grid-template-columns: 1fr; }
+    .process figure.has-video { grid-column: auto; }
+    .press-videos { grid-template-columns: 1fr; }
     .press a { grid-template-columns: 1fr auto; }
     .press .mono { grid-column: 1 / -1; }
     .credit-list dl { grid-template-columns: 1fr; }
@@ -425,8 +545,14 @@ const jsonLd = {
     .art { display: none; }
     /* Trailer and store buttons stacked, full width. */
     .ctas { display: grid; grid-template-columns: 1fr; }
+    .cine { padding: 28px 0 32px; margin-bottom: 64px; }
+    .cine .wrap { padding-left: 0; padding-right: 0; }
+    .cine-tabs { padding: 0 var(--gutter); }
     .gallery { grid-template-columns: 1fr; }
     .gallery.portrait { grid-template-columns: 1fr 1fr; }
+    .media .stage { margin: 0 calc(-1 * var(--gutter)); }
+    .media .strip { margin-right: calc(-1 * var(--gutter)); }
+    .thumb { width: 104px; }
     .zoom-icon { opacity: 1; width: 34px; height: 34px; }
     .lightbox { padding: 56px 8px; }
     .lb-prev, .lb-next { top: auto; bottom: 8px; transform: none; }
@@ -464,10 +590,53 @@ const jsonLd = {
   }));
   modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
 
+  const stopVideos = (root: ParentNode) => (window as any).stopVideos?.(root);
+
+  // Featured videos: one tab per video; switching stops the one that was playing.
+  const cineTabs = [...document.querySelectorAll<HTMLButtonElement>('.cine-tabs [role=tab]')];
+  cineTabs.forEach((tab) => tab.addEventListener('click', () => {
+    cineTabs.forEach((b) => {
+      const on = b === tab;
+      const panel = document.getElementById(b.getAttribute('aria-controls')!)!;
+      b.setAttribute('aria-selected', String(on));
+      if (!on) stopVideos(panel);
+      panel.hidden = !on;
+    });
+  }));
+
+  // Gallery viewer: arrows, thumbnails and swipe change the item on the stage.
+  const stage = document.querySelector<HTMLElement>('.media .stage');
+  if (stage) {
+    const slides = [...stage.querySelectorAll<HTMLElement>('.slide')];
+    const thumbs = [...document.querySelectorAll<HTMLButtonElement>('.media .thumb')];
+    const strip = document.querySelector<HTMLElement>('.media .strip');
+    let cur = 0;
+    const go = (i: number) => {
+      const n = (i + slides.length) % slides.length;
+      if (n === cur) return;
+      stopVideos(slides[cur]);
+      slides[cur].hidden = true;
+      slides[n].hidden = false;
+      thumbs.forEach((t, k) => t.setAttribute('aria-selected', String(k === n)));
+      const th = thumbs[n];
+      if (th && strip) strip.scrollTo({ left: th.offsetLeft - (strip.clientWidth - th.clientWidth) / 2, behavior: 'smooth' });
+      cur = n;
+    };
+    thumbs.forEach((th, k) => th.addEventListener('click', () => go(k)));
+    stage.querySelector('.st-prev')?.addEventListener('click', () => go(cur - 1));
+    stage.querySelector('.st-next')?.addEventListener('click', () => go(cur + 1));
+    let sx = 0;
+    stage.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+    });
+  }
+
   // Gallery viewer: click an image to see it large; arrows, keyboard (← → Esc) and swipe move between images.
   const lb = document.querySelector<HTMLElement>('.lightbox');
   if (lb) {
-    const shots = [...document.querySelectorAll<HTMLButtonElement>('.gallery .zoom')];
+    const shots = [...document.querySelectorAll<HTMLButtonElement>('.media .zoom, .gallery .zoom')];
     const img = lb.querySelector('img')!;
     const count = lb.querySelector('.lb-count');
     let at = 0;

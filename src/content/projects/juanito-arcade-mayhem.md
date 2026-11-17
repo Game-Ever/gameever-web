@@ -24,11 +24,17 @@ description:
 role:
   en: "Original game: design, art, development, publishing"
   es: "Juego propio: diseño, arte, desarrollo, publicación"
+# Reference page for the media layout: highlights (big, with tabs), gallery (images + extra videos),
+# Detrás de escena (process, can hold videos) and En los medios (press: articles and videos).
+highlights:
+  - { id: "WZLc7L7o7aY", label: { en: "Trailer", es: "Tráiler" } }
+  - { id: "0beHvmWqsFY", label: { en: "Gameplay", es: "Gameplay" } }
 videos:
-  - "0beHvmWqsFY"
-  - "bEgnlkaSHkw"
-  - "WZLc7L7o7aY"
-  - "SrUt-f0PrS4"
+  - "bEgnlkaSHkw"     # Tecnópolis 2015
+process:
+  - title: { en: "Stage 8 speed paint", es: "Speed paint del nivel 8" }
+    text: { en: "How a level background is painted, from sketch to final art.", es: "Cómo se pinta el fondo de un nivel, del boceto al arte final." }
+    video: "SrUt-f0PrS4"
 links:
   - label: "Steam"
     url: "https://store.steampowered.com/app/617440/Arcade_Mayhem_Juanito/"

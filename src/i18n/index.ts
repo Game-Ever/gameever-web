@@ -46,9 +46,9 @@ export const ui = {
     'project.allWork': '← All work', 'project.trailer': 'Watch trailer', 'project.client': 'Client', 'project.year': 'Year',
     'project.platforms': 'Platforms', 'project.genre': 'Genre', 'project.role': 'Our role', 'project.services': 'Services',
     'project.videos': 'Videos', 'project.seasons': 'Seasons & campaigns', 'project.gallery': 'Gallery', 'project.credits': 'Credits',
-    'project.next': 'Next project →', 'project.cta': 'A similar project?', 'project.play': 'Play video', 'project.watch': 'Watch video', 'store.available': 'Available on', 'store.playOnline': 'Play online', 'store.website': 'Website', 'store.on': 'On', 'store.browser': 'In the browser', 'project.zoom': 'Enlarge image', 'project.prev': 'Previous', 'project.nextImage': 'Next', 'project.close': 'Close',
+    'project.next': 'Next project →', 'project.cta': 'A similar project?', 'project.play': 'Play video', 'project.watch': 'Watch video', 'project.featuredVideos': 'Featured videos', 'project.video': 'Video', 'store.available': 'Available on', 'store.playOnline': 'Play online', 'store.website': 'Website', 'store.on': 'On', 'store.browser': 'In the browser', 'project.zoom': 'Enlarge image', 'project.prev': 'Previous', 'project.nextImage': 'Next', 'project.close': 'Close',
     'project.views': '{n} views', 'project.mostViewed': 'Most viewed', 'project.showAll': 'Show all {n}', 'project.showLess': 'Show less',
-    'project.press': 'In the press', 'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Studio team to be confirmed',
+    'project.press': 'In the media', 'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Studio team to be confirmed',
   },
   es: {
     'meta.title': 'Game Ever — Estudio de videojuegos y animación',
@@ -91,9 +91,9 @@ export const ui = {
     'project.allWork': '← Todos los proyectos', 'project.trailer': 'Ver tráiler', 'project.client': 'Cliente', 'project.year': 'Año',
     'project.platforms': 'Plataformas', 'project.genre': 'Género', 'project.role': 'Nuestro rol', 'project.services': 'Servicios',
     'project.videos': 'Videos', 'project.seasons': 'Temporadas y campañas', 'project.gallery': 'Galería', 'project.credits': 'Créditos',
-    'project.next': 'Próximo proyecto →', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video', 'project.watch': 'Ver video', 'store.available': 'Disponible en', 'store.playOnline': 'Jugar online', 'store.website': 'Sitio web', 'store.on': 'En', 'store.browser': 'En el navegador', 'project.zoom': 'Ampliar imagen', 'project.prev': 'Anterior', 'project.nextImage': 'Siguiente', 'project.close': 'Cerrar',
+    'project.next': 'Próximo proyecto →', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video', 'project.watch': 'Ver video', 'project.featuredVideos': 'Videos destacados', 'project.video': 'Video', 'store.available': 'Disponible en', 'store.playOnline': 'Jugar online', 'store.website': 'Sitio web', 'store.on': 'En', 'store.browser': 'En el navegador', 'project.zoom': 'Ampliar imagen', 'project.prev': 'Anterior', 'project.nextImage': 'Siguiente', 'project.close': 'Cerrar',
     'project.views': '{n} de vistas', 'project.mostViewed': 'El más visto', 'project.showAll': 'Ver los {n}', 'project.showLess': 'Ver menos',
-    'project.press': 'En la prensa', 'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Equipo del estudio a confirmar',
+    'project.press': 'En los medios', 'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Equipo del estudio a confirmar',
   },
 } as const;
 

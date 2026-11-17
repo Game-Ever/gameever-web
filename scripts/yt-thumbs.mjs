@@ -10,10 +10,11 @@ const known = existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf8')) : {};
 const ids = new Set();
 for (const f of readdirSync(DIR).filter((f) => f.endsWith('.md'))) {
   const s = readFileSync(`${DIR}/${f}`, 'utf8');
-  // Video ids appear in `videos:` lists, quoted, 11 characters.
+  // Video ids appear quoted in `videos:` lists and as `id:` / `video:` values (highlights, process, press).
   for (const block of s.matchAll(/videos:\s*(\[[^\]]*\]|(?:\n\s+- .*)+)/g)) {
-    for (const m of block[1].matchAll(/["']?([A-Za-z0-9_-]{11})["']?/g)) ids.add(m[1]);
+    for (const m of block[1].matchAll(/["']([A-Za-z0-9_-]{11})["']/g)) ids.add(m[1]);
   }
+  for (const m of s.matchAll(/\b(?:id|video):\s*["']([A-Za-z0-9_-]{11})["']/g)) ids.add(m[1]);
 }
 const exists = async (url) => {
   for (let i = 0; i < 3; i++) {

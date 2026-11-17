@@ -34,6 +34,10 @@ const projects = defineCollection({
     role: localized.optional(),
     /** Extra rows for the project's fact sheet (e.g. Canales, Formato, Público), shown before "Nuestro rol". */
     facts: z.array(z.object({ label: localized, value: text, url: z.url().optional() })).default([]),
+    /** Highlighted videos, shown big in their own band with one tab per video ("Tráiler", "Gameplay").
+     *  Without highlights, the first of `videos` is the highlight. */
+    highlights: z.array(z.object({ id: z.string(), label: localized.optional() })).default([]),
+    /** Other YouTube videos of the project: they go in the gallery viewer with the images. */
     videos: z.array(z.string()).default([]),
     /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
     heroImage: image().optional(),
@@ -54,7 +58,7 @@ const projects = defineCollection({
       }))
       .default([]),
     /** "Behind the scenes" blocks; a block without image shows a placeholder. */
-    process: z.array(z.object({ title: localized, text: localized.optional(), image: image().optional() })).default([]),
+    process: z.array(z.object({ title: localized, text: localized.optional(), image: image().optional(), video: z.string().optional() })).default([]),
     /** Credits as role → names. Use instead of `credits`; `creditsPending` marks them as provisional. */
     /** `group` (e.g. "Game Ever" / "El Reino Infantil") starts a sub-block of credits under its own heading. */
     creditList: z.array(z.object({ group: text.optional(), role: localized, names: z.string() })).default([]),
@@ -62,7 +66,9 @@ const projects = defineCollection({
     /** Store links become logo buttons (src/components/StoreButton.astro). `webGame: true` marks a game played in the browser on any site. */
     links: z.array(z.object({ label: z.string(), url: z.url(), webGame: z.boolean().default(false) })).default([]),
     /** Press coverage: articles, reviews, interviews, awards. Shown as "En la prensa". */
-    press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url() })).default([]),
+    /** With `video` (a YouTube id: TV news, streams, interviews) the item shows as a playable card; without it, as a link. */
+    press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url().optional(), video: z.string().optional() })
+      .refine((p) => p.url || p.video, { message: 'press items need a url or a video' })).default([]),
     gallery: z.array(image()).default([]),
     credits: z.string().optional(),
     /** Old WordPress slugs (/portfolio/<slug>/) that redirect to this project. */

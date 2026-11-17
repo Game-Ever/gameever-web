@@ -80,11 +80,16 @@ async function checkThumb(videoId: string) {
   document.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.yt-lite .frame');
     if (!btn || btn.querySelector('iframe')) return;
+    btn.dataset.poster = btn.innerHTML; // restored by stopVideos() when the video is hidden
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube-nocookie.com/embed/${btn.dataset.id}?autoplay=1&rel=0`;
     iframe.title = btn.dataset.title ?? '';
     iframe.allow = 'autoplay; encrypted-media; fullscreen';
     iframe.allowFullscreen = true;
     btn.replaceChildren(iframe);
+  });
+  // Stops any playing video inside `root` by putting its poster back (used by tabs and the gallery viewer).
+  (window as any).stopVideos = (root: ParentNode) => root.querySelectorAll<HTMLElement>('.yt-lite .frame').forEach((f) => {
+    if (f.querySelector('iframe') && f.dataset.poster) f.innerHTML = f.dataset.poster;
   });
 </script>
