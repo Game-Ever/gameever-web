@@ -26,7 +26,7 @@ export const ui = {
     'work.sort.featured': 'Featured', 'work.sort.newest': 'Newest', 'work.sort.az': 'A–Z', 'work.sort': 'Sort projects',
     'work.service': 'Service', 'work.platform': 'Platform', 'work.era': 'Era', 'work.client': 'Client', 'work.allClients': 'All clients',
     'work.clear': 'Clear all', 'work.show': 'Show results', 'work.empty': 'No projects match these filters.', 'work.emptyClear': 'Clear filters',
-    'services.label': 'Services', 'services.title': 'From idea to delivery.',
+    'services.label': 'Services', 'services.title': ['From idea', 'to delivery.'],
     'services.sub': 'Three areas of expertise.', 'services.count': '{n} services', 'services.see': 'See projects',
     'services.groups': [
       { title: 'Video games', jump: 'brand-games,web-games,edutainment,original-ip', items: ['Advergames & branded games', 'HTML5 & web games', 'Mobile (iOS & Android)', 'PC & Steam', 'Edutainment', 'Game design & development'] },
@@ -70,7 +70,7 @@ export const ui = {
     'work.sort.featured': 'Destacados', 'work.sort.newest': 'Más nuevos', 'work.sort.az': 'A–Z', 'work.sort': 'Ordenar proyectos',
     'work.service': 'Servicio', 'work.platform': 'Plataforma', 'work.era': 'Época', 'work.client': 'Cliente', 'work.allClients': 'Todos los clientes',
     'work.clear': 'Borrar todo', 'work.show': 'Ver resultados', 'work.empty': 'Ningún proyecto coincide con estos filtros.', 'work.emptyClear': 'Borrar filtros',
-    'services.label': 'Servicios', 'services.title': 'De la idea a la entrega.',
+    'services.label': 'Servicios', 'services.title': ['De la idea', 'a la entrega.'],
     'services.sub': 'Tres áreas de especialización.', 'services.count': '{n} servicios', 'services.see': 'Ver proyectos',
     'services.groups': [
       { title: 'Videojuegos', jump: 'brand-games,web-games,edutainment,original-ip', items: ['Advergames y branded games', 'Juegos HTML5 y web', 'Mobile (iOS y Android)', 'PC y Steam', 'Edutainment', 'Game design y desarrollo'] },

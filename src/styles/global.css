@@ -45,6 +45,9 @@ button { font: inherit; color: inherit; }
 .wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--gutter); }
 .mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
 .wide { font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
+/* Highlight block: the one emphasized line in a section (Nosotros manifesto, Servicios subtitle).
+   Same size, weight, pink bar and width everywhere. */
+.highlight { color: var(--fg); font-size: var(--lead-size); line-height: 1.35; font-weight: 600; border-left: 4px solid var(--pink); padding-left: 22px; max-width: 34ch; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 760px) {

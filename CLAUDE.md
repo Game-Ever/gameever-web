@@ -48,7 +48,7 @@ Until the user says the design is final: only the GitHub Pages preview is update
 - Closing — EN: "Let's make something awesome." · ES: "Hagamos algo increíble juntos."
 
 ## Type scale
-Every section title uses `var(--title-size)` and every sub-title (card titles, accordion names, form title) uses `var(--subtitle-size)` (both in `src/styles/global.css`). Only the pink statement band and project page heroes are larger. Paragraphs use `var(--body-size)`; the only highlighted line (Nosotros manifesto) uses `var(--lead-size)`. New sections must use these variables, not their own clamp().
+Every section title uses `var(--title-size)` and every sub-title (card titles, accordion names, form title) uses `var(--subtitle-size)` (both in `src/styles/global.css`). Only the pink statement band and project page heroes are larger. Paragraphs use `var(--body-size)`. A section's one emphasized line uses the global `.highlight` block (lead size, bold, pink left bar, max 34ch), e.g. the Nosotros manifesto and the Servicios subtitle; sections with title + highlight use a 1fr/1fr grid, top-aligned. Multi-line titles are arrays of lines in i18n (rendered as block spans). New sections must use these variables, not their own clamp().
 
 ## Copy style
 Short, strong phrases. No repeated key words across the home. Professional tone: first person plural or no verb; never tú/vos (no "Contanos", "Escribinos", "¿Buscás…?").
