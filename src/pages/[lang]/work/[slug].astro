@@ -241,7 +241,8 @@ const jsonLd = {
   .hero::after { z-index: 1; }
 
   /* Key figures under the title. */
-  .stats { list-style: none; padding: 34px 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; border-bottom: 1px solid var(--line); }
+  /* Each figure takes its own width and the free space is split evenly between them, so a long value ("+230 M") never looks squeezed next to short ones. */
+  .stats { list-style: none; padding: 34px 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; border-bottom: 1px solid var(--line); }
   .stats li { display: grid; gap: 6px; border-left: 3px solid var(--pink); padding-left: 16px; }
   .stats strong { font-size: clamp(32px, 3.8vw, 56px); line-height: 0.95; color: var(--fg); white-space: nowrap; }
   .stats span { color: var(--fg2); font-size: 15px; }
@@ -318,7 +319,7 @@ const jsonLd = {
     .process { grid-template-columns: 1fr; }
     .credit-list dl { grid-template-columns: 1fr; }
     .credit-list dt { padding-bottom: 0; border-bottom: 0; }
-    .stats { grid-template-columns: 1fr 1fr; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
   }
