@@ -40,6 +40,13 @@ Both read the same project files. When one design is chosen, delete the other on
 - Internal links must go through `url()`, `v2url()` or `withBase()` (`src/i18n/`), because the preview lives under `/gameever-web/`. `SITE_URL`, `BASE_PATH` and `PUBLIC_NOINDEX` env vars control this; without them the build targets gameeverstudio.com at the root.
 - Git push uses SSH with the repo-local `core.sshCommand` (key `~/.ssh/DesktopPablo`).
 
+## Current phase: design
+Until the user says the design is final: only the GitHub Pages preview is updated. Do not move the site to gameeverstudio.com (Cloudflare/DNS) and do not connect the form to a delivery service.
+
+## Brand phrases (use exactly)
+- Tagline — EN: "We dare. We create. We play." · ES: "Desafiamos. Creamos. Jugamos."
+- Closing — EN: "Let's make something awesome." · ES: "Hagamos algo increíble juntos."
+
 ## Language
 The user is writing and reviewing the site in Spanish first; English copy is a draft to be translated at the end. Write new copy in Spanish, keep an English draft so builds and the EN pages still work.
 
