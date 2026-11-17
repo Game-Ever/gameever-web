@@ -74,11 +74,15 @@ entries:
   - { title: "¡Se ensució el auto de Lola!", year: "2026", views: 396490, videos: ["7Tu-CZqWhYE"] }
   - { title: "Reparemos el Auto Bochinchero", year: "2026", views: 378541, videos: ["gIj0z6zFAFA"] }
   - { title: "Lavadero de autos con Pepe y Lola", year: "2025", views: 364455, videos: ["QJBWQrblwlI"] }
-# PLACEHOLDERS until the studio sends the real team (not on the old site). The client is in the fact sheet.
-creditsPending: true
+# Same team as A Rodar (confirmed by the studio, Nov 2026); credits from the A Rodar page on the old site.
 creditList:
-  - { role: { en: "Director", es: "Dirección" }, names: "Nombre Apellido" }
-  - { role: { en: "Production", es: "Producción general" }, names: "Nombre Apellido" }
-  - { role: { en: "Animation", es: "Animación" }, names: "Nombre Apellido · Nombre Apellido · Nombre Apellido" }
-  - { role: { en: "Editing", es: "Edición" }, names: "Nombre Apellido" }
+  - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción general" }, names: "Wanelén Farías" }
+  - { role: { en: "3D direction", es: "Dirección 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Jean Pierre Dufort · Juan De Mauricio · Paloma Figaro" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini · Rocío Blois" }
+  - { role: { en: "2D art", es: "Arte 2D" }, names: "Lourdes Hualde · Gabriel Rodríguez" }
+  - { role: { en: "VFX", es: "VFX" }, names: "Diego Forconi" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Daniela Bruno" }
+  - { role: { en: "Sound effects", es: "Efectos de sonido" }, names: "Guillermo Bruno" }
 ---

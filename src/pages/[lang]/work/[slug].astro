@@ -125,7 +125,7 @@ const jsonLd = {
                     {e.videos[0]
                       ? <YouTube id={e.videos[0]} title={tr(e.title, lang)} playLabel={t('project.play')} />
                       : <div class="novideo" />}
-                    {j === 0 && e.views && <span class="badge mono">{t('project.mostViewed')}</span>}
+                    {j === 0 && e.views && <span class="badge">{t('project.mostViewed')}</span>}
                     <h3>{tr(e.title, lang)}</h3>
                     <span class="mono">{[e.year, e.views ? t('project.views', { n: compact(e.views) }) : null].filter(Boolean).join(' · ')}</span>
                   </article>
@@ -260,7 +260,9 @@ const jsonLd = {
   .entries article { position: relative; }
   .entries.featured article:first-child { grid-column: span 2; grid-row: span 2; }
   .entries.featured article:first-child h3 { font-size: clamp(22px, 2.2vw, 32px); }
-  .badge { position: absolute; top: 12px; left: 12px; background: var(--pink); color: #fff; padding: 6px 10px; font-size: 11px; pointer-events: none; }
+  /* "El más visto": solid tag between the thumbnail and the title, never over the image. */
+  .badge { display: inline-block; margin-top: 14px; background: var(--pink); color: #fff; padding: 6px 10px; font-size: 13px; font-weight: 800; font-stretch: 115%; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
+  .badge + h3 { margin-top: 10px; }
   .entries article.more { display: none; }
   .series-panel.expanded .entries article.more { display: block; }
   .show-all { margin-top: 28px; background: none; border: 1px solid var(--line2); color: var(--fg); padding: 14px 22px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }

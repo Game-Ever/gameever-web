@@ -14,10 +14,12 @@ const { id, title, playLabel, caption } = Astro.props;
 <style>
   .yt-lite { margin: 0; }
   .frame { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; border: 0; padding: 0; cursor: pointer; overflow: hidden; }
-  .frame img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: opacity 0.3s, transform 0.6s; }
-  .frame:hover img { opacity: 0.9; transform: scale(1.02); }
-  .play { position: absolute; inset: 0; display: grid; place-items: center; }
-  .play svg { width: 72px; height: 72px; padding: 22px; background: var(--pink); fill: #fff; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .frame:hover img { transform: scale(1.03); }
+  /* Small play button in the bottom-right corner, so the thumbnail art stays visible. */
+  .play { position: absolute; right: 12px; bottom: 12px; display: grid; transition: transform 0.2s; }
+  .frame:hover .play { transform: scale(1.1); }
+  .play svg { width: 44px; height: 44px; padding: 13px; background: var(--pink); fill: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); }
   .frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   figcaption { color: var(--mute); margin-top: 10px; }
 </style>
