@@ -55,6 +55,11 @@ Every section title uses `var(--title-size)` and every sub-title (card titles, a
 ## Copy style
 Short, strong phrases. No repeated key words across the home. Professional tone: first person plural or no verb; never tú/vos (no "Contanos", "Escribinos", "¿Buscás…?").
 
+## Project page patterns
+- Videos (`src/components/YouTube.astro`): the poster is YouTube's best thumbnail (maxres 1280x720 when it exists), recorded in `src/data/yt-thumbs.json` by `node scripts/yt-thumbs.mjs` (run it after adding videos; missing ones are checked at build time). Desktop shows a centered pink "Ver video" button (bigger on large players); phones keep a small play button in the corner.
+- Gallery: images at their own shape, two per row (four for phone screenshots, one/two on phones); a click opens the viewer (arrows, keys, swipe, Esc).
+- The thumbnail next to the title and the "Próximo proyecto" one have rounded corners.
+
 ## Home vs. projects page
 - Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link. Projects used in the "Qué hacemos" cards (`src/data/worlds.ts`: one muted YouTube loop per card, now the LIT Killah game trailer and the Flexin' video) are left out of that selection so nothing repeats; they still show on the projects page.
 - `/[lang]/work/` lists every project (`Wall` variant `full`) with area tabs (Todos / Videojuegos / Animación / Co-producción), search and sort (Featured, Newest, A–Z), kept in the URL (`?area=games&q=…&sort=newest`). Areas are derived from services/platforms by `areasOf()` in `src/data/taxonomy.ts` (no extra field in project files). Links from Qué hacemos and Servicios open the matching tab. Platform, era and client filters were dropped on purpose (not useful: almost one project per client).

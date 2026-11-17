@@ -1,12 +1,48 @@
 ---
 // Lightweight YouTube embed: shows the thumbnail and only loads the player on click.
-interface Props { id: string; title: string; playLabel: string; caption?: string }
-const { id, title, playLabel, caption } = Astro.props;
+import THUMBS from '../data/yt-thumbs.json';
+
+interface Props {
+  id: string; title: string; playLabel: string; caption?: string;
+  /** Visible label of the play button on desktop ("Ver video"). */
+  watchLabel?: string;
+  /** Rendered width of the player, so the browser picks the right thumbnail size. */
+  sizes?: string;
+}
+const { id, title, playLabel, caption, watchLabel, sizes = '(max-width: 760px) 100vw, 50vw' } = Astro.props;
+
+// Best thumbnail YouTube has for this video (scripts/yt-thumbs.mjs). hqdefault (480x360) always exists but looks
+// blurry on large players; maxresdefault (1280x720) and sddefault (640x480) only exist for some videos.
+const known = (THUMBS as Record<string, string>)[id];
+const best = known ?? (await checkThumb(id));
+const thumb = (name: string) => `https://i.ytimg.com/vi/${id}/${name}.jpg`;
+const srcset = best === 'maxres'
+  ? `${thumb('hqdefault')} 480w, ${thumb('maxresdefault')} 1280w`
+  : best === 'sd' ? `${thumb('hqdefault')} 480w, ${thumb('sddefault')} 640w` : undefined;
+
+// Videos not yet in yt-thumbs.json are checked once per build.
+async function checkThumb(videoId: string) {
+  const cache = ((globalThis as any).__ytThumbs ??= new Map<string, Promise<string>>());
+  if (!cache.has(videoId)) {
+    cache.set(videoId, (async () => {
+      try {
+        if ((await fetch(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`, { method: 'HEAD' })).ok) return 'maxres';
+        if ((await fetch(`https://i.ytimg.com/vi/${videoId}/sddefault.jpg`, { method: 'HEAD' })).ok) return 'sd';
+      } catch {}
+      return 'hq';
+    })());
+  }
+  return cache.get(videoId);
+}
 ---
 <figure class="yt-lite">
   <button class="frame" data-id={id} data-title={title} aria-label={`${playLabel}: ${title}`}>
-    <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" decoding="async" width="480" height="360" />
-    <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" /></svg></span>
+    <img src={thumb(best === 'maxres' ? 'maxresdefault' : best === 'sd' ? 'sddefault' : 'hqdefault')} srcset={srcset} sizes={srcset ? sizes : undefined}
+      alt="" loading="lazy" decoding="async" width="1280" height="720" />
+    <span class="play">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" /></svg>
+      {watchLabel && <span class="label">{watchLabel}</span>}
+    </span>
   </button>
   {caption && <figcaption class="mono">{caption}</figcaption>}
 </figure>
@@ -14,12 +50,28 @@ const { id, title, playLabel, caption } = Astro.props;
 <style>
   .yt-lite { margin: 0; }
   .frame { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; border: 0; padding: 0; cursor: pointer; overflow: hidden; }
-  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s, filter 0.3s; }
   .frame:hover img { transform: scale(1.03); }
-  /* Small play button in the bottom-right corner, so the thumbnail art stays visible. */
-  .play { position: absolute; right: 12px; bottom: 12px; display: grid; transition: transform 0.2s; }
+  /* Phones: small play button in the bottom-right corner, so the thumbnail art stays visible. */
+  .play { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; background: var(--pink); color: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); transition: transform 0.2s, background 0.2s; }
   .frame:hover .play { transform: scale(1.1); }
-  .play svg { width: 44px; height: 44px; padding: 13px; background: var(--pink); fill: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); }
+  .play svg { width: 44px; height: 44px; padding: 13px; fill: currentColor; flex: none; }
+  .label { display: none; }
+  /* Desktop: a centered "Ver video" button, so it reads as a video at a glance. */
+  @media (min-width: 761px) {
+    .play { right: auto; bottom: auto; left: 50%; top: 50%; transform: translate(-50%, -50%); padding-right: 22px; }
+    .play svg { width: 48px; height: 48px; padding: 15px 10px 15px 16px; }
+    .label { display: block; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; letter-spacing: 0.02em; white-space: nowrap; }
+    .frame:hover .play { transform: translate(-50%, -50%) scale(1.06); }
+    .frame:hover img { filter: brightness(0.8); }
+    /* Big players (a single trailer) get a bigger button. */
+    .frame { container-type: inline-size; }
+    @container (min-width: 800px) {
+      .play { padding-right: 30px; }
+      .play svg { width: 64px; height: 64px; padding: 20px 12px 20px 22px; }
+      .label { font-size: 18px; }
+    }
+  }
   .frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   figcaption { color: var(--mute); margin-top: 10px; }
 </style>
