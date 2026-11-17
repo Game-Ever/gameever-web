@@ -58,7 +58,8 @@ Short, strong phrases. No repeated key words across the home. Professional tone:
 ## Project page patterns
 - Videos (`src/components/YouTube.astro`): the poster is YouTube's best thumbnail (maxres 1280x720 when it exists), recorded in `src/data/yt-thumbs.json` by `node scripts/yt-thumbs.mjs` (run it after adding videos; missing ones are checked at build time). Desktop shows a centered pink "Ver video" button (bigger on large players); phones keep a small play button in the corner.
 - Gallery: images at their own shape, two per row (four for phone screenshots, one/two on phones); a click opens the viewer (arrows, keys, swipe, Esc).
-- The thumbnail next to the title and the "Próximo proyecto" one have rounded corners.
+- Corners: images that stand alone (the thumbnail next to the title, the "Próximo proyecto" one) are rounded; edge-to-edge images (hero, phone cover) are square. Some old-site covers have dark rounded corners painted in; replace them with clean images.
+- The small line over the title shows service · client only (no year: it is in the fact sheet). Titles go down to 30px on phones so most fit in two lines.
 - Titles with a series or franchise set `series` (e.g. "Canciones del Zoo" over "Vol. 3", "LIT Killah" over "The Game", "Juanito" over "Arcade Mayhem"): the project page shows it as a smaller line over the rest of the title; cards, search and meta use the full `title`.
 - No tags under the project title: genre and platforms live only in the fact sheet. `role` is short (e.g. "Desarrollo integral"); the detail goes in the description and credits.
 - Platforms are shown as device families (`platformLabels()` in `src/data/taxonomy.ts`): iOS and Android read "Mobile", Steam reads "PC"; the stores show in the logo buttons. Project files keep the detailed keys.

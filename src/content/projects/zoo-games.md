@@ -1,5 +1,6 @@
 ---
 title: "Zoo Games: Fun & Puzzles for Kids"
+series: "Fun & Puzzles for Kids"
 client: "El Reino Infantil"
 year: 2020
 services:
