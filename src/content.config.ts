@@ -34,10 +34,8 @@ const projects = defineCollection({
     role: localized.optional(),
     /** Extra rows for the project's fact sheet (e.g. Canales, Formato, Público), shown before "Nuestro rol". */
     facts: z.array(z.object({ label: localized, value: text, url: z.url().optional() })).default([]),
-    /** Highlighted videos, shown big in their own band with one tab per video ("Tráiler", "Gameplay").
-     *  Without highlights, the first of `videos` is the highlight. */
-    highlights: z.array(z.object({ id: z.string(), label: localized.optional() })).default([]),
-    /** Other YouTube videos of the project: they go in the gallery viewer with the images. */
+    /** Highlighted videos (new media layout): shown big, one under the other, each with a title and a short text. */
+    highlights: z.array(z.object({ id: z.string(), title: localized.optional(), text: localized.optional() })).default([]),
     videos: z.array(z.string()).default([]),
     /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
     heroImage: image().optional(),
@@ -67,7 +65,9 @@ const projects = defineCollection({
     links: z.array(z.object({ label: z.string(), url: z.url(), webGame: z.boolean().default(false) })).default([]),
     /** Press coverage: articles, reviews, interviews, awards. Shown as "En la prensa". */
     /** With `video` (a YouTube id: TV news, streams, interviews) the item shows as a playable card; without it, as a link. */
-    press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url().optional(), video: z.string().optional() })
+    press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url().optional(), video: z.string().optional(),
+      /** Review score shown big on the card, e.g. "7/10" or "4/5". */
+      score: z.string().optional() })
       .refine((p) => p.url || p.video, { message: 'press items need a url or a video' })).default([]),
     gallery: z.array(image()).default([]),
     credits: z.string().optional(),

@@ -25,11 +25,11 @@ const t = useT(lang);
 
 const platforms = platformLabels(d.platforms, lang);
 const services = d.services.map((s) => SERVICES[s][lang]);
-// New media layout (being tried on Juanito first): projects with `highlights` get the featured band with tabs,
-// and their other videos go in the gallery viewer with the images. The rest keep the video grid and image grid.
+// New media layout (being tried on Juanito first): projects with `highlights` show them big, one under the other,
+// each with a title and a short text; images go in the gallery viewer; press links become cards.
+// The rest keep the video grid, image grid and press list.
 const mediaLayout = d.highlights.length > 0 && !d.entries.length;
 const highlights = mediaLayout ? d.highlights : [];
-const extraVideos = mediaLayout ? d.videos : [];
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
 // "Ver tráiler" in the hero plays the first highlight (or video); pages that list their clips don't need it.
 const trailer = d.entries.length ? undefined : highlights[0]?.id ?? allVideos[0];
@@ -60,7 +60,7 @@ const gallery = await Promise.all(d.gallery.map(async (src) => ({
   thumb: (await getImage({ src, width: 320, format: 'webp' })).src,
   wide: src.width / src.height > 1.7,
 })));
-const media = !mediaLayout ? [] : [...gallery, ...extraVideos.map((id) => ({ kind: 'video' as const, id, thumb: `https://i.ytimg.com/vi/${id}/mqdefault.jpg` }))];
+const media = mediaLayout ? gallery : [];
 const portraitGallery = d.gallery.length > 0 && d.gallery.every((g) => g.height > g.width);
 const pressVideos = d.press.filter((p) => p.video);
 const pressLinks = d.press.filter((p) => !p.video && p.url);
@@ -142,16 +142,15 @@ const jsonLd = {
     {highlights.length > 0 && (
       <section class="cine" aria-label={t('project.featuredVideos')}>
         <div class="wrap">
-          {highlights.length > 1 && (
-            <div class="cine-tabs" role="tablist">
-              {highlights.map((h, i) => (
-                <button role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`cine-${i}`}>{h.label ? tr(h.label, lang) : `${t('project.video')} ${i + 1}`}</button>
-              ))}
-            </div>
-          )}
-          {highlights.map((h, i) => (
-            <div class="cine-panel" id={`cine-${i}`} role={highlights.length > 1 ? 'tabpanel' : undefined} hidden={i > 0}>
-              <YouTube id={h.id} title={`${d.title}${h.label ? ` — ${tr(h.label, lang)}` : ''}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
+          {highlights.map((h) => (
+            <div class="cine-item">
+              {(h.title || h.text) && (
+                <div class="cine-head">
+                  {h.title && <h2 class="wide">{tr(h.title, lang)}</h2>}
+                  {h.text && <div class="aside"><p>{tr(h.text, lang)}</p></div>}
+                </div>
+              )}
+              <YouTube id={h.id} title={`${d.title}${h.title ? ` — ${tr(h.title, lang)}` : ''}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
             </div>
           ))}
         </div>
@@ -222,14 +221,12 @@ const jsonLd = {
           <div class="stage">
             {media.map((m, i) => (
               <div class="slide" data-i={i} hidden={i > 0}>
-                {m.kind === 'image' ? (
+                {(
                   <button class="zoom" data-full={m.full} aria-label={`${t('project.zoom')}: ${d.title} — ${i + 1}`}>
                     {!m.wide && <img class="backdrop" src={m.thumb} alt="" aria-hidden="true" loading="lazy" />}
                     <Image class="pic" src={m.src} alt={`${d.title} — ${i + 1}`} widths={[800, 1280, 1600]} sizes="(max-width: 1340px) 100vw, 1280px" loading={i === 0 ? 'lazy' : 'lazy'} />
                     <span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 1 0 3.7 10.7l5.3 5.3 1.4-1.4-5.3-5.3A6 6 0 0 0 10 4zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-1 1.5v2H7v1h2v2h1v-2h2v-1h-2v-2z" /></svg></span>
                   </button>
-                ) : (
-                  <YouTube id={m.id} title={`${d.title} — ${t('project.video')} ${i + 1}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
                 )}
               </div>
             ))}
@@ -241,9 +238,8 @@ const jsonLd = {
           {media.length > 1 && (
             <div class="strip" role="tablist" aria-label={t('project.gallery')}>
               {media.map((m, i) => (
-                <button class="thumb" role="tab" data-i={i} aria-selected={i === 0 ? 'true' : 'false'} aria-label={m.kind === 'video' ? `${t('project.video')} ${i + 1}` : `${d.title} — ${i + 1}`}>
+                <button class="thumb" role="tab" data-i={i} aria-selected={i === 0 ? 'true' : 'false'} aria-label={`${d.title} — ${i + 1}`}>
                   <img src={m.thumb} alt="" loading="lazy" />
-                  {m.kind === 'video' && <span class="thumb-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" /></svg></span>}
                 </button>
               ))}
             </div>
@@ -282,7 +278,18 @@ const jsonLd = {
               ))}
             </div>
           )}
-          {pressLinks.length > 0 && (
+          {mediaLayout && pressLinks.length > 0 && (
+            <div class="press-cards">
+              {pressLinks.map((p) => (
+                <a class="press-card" href={p.url} target="_blank" rel="noopener">
+                  <span class="pc-top"><span class="pc-outlet wide">{p.outlet}</span>{p.score && <span class="pc-score wide">{p.score}</span>}</span>
+                  <span class="pc-title">{p.title}</span>
+                  <span class="pc-foot mono">{p.year && <span>{p.year}</span>}<span>{t('project.readArticle')} ↗</span></span>
+                </a>
+              ))}
+            </div>
+          )}
+          {!mediaLayout && pressLinks.length > 0 && (
             <ul class="press">
               {pressLinks.map((p) => (
                 <li><a href={p.url} target="_blank" rel="noopener">
@@ -439,12 +446,11 @@ const jsonLd = {
   .credit-block summary::after { content: '+'; font-family: var(--mono); font-size: 26px; color: var(--pink); }
   .credit-block[open] summary::after { content: '–'; }
   .credit-block dl { margin-bottom: 24px; }
-  /* Featured videos: their own dark band, full width, with one tab per video. */
-  .cine { background: var(--bg2); padding: 56px 0 64px; margin-bottom: 90px; }
-  .cine-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
-  .cine-tabs button { display: inline-flex; align-items: center; min-height: 46px; padding: 0 20px; border: 1px solid var(--line2); background: none; color: var(--fg2); font-weight: 800; font-stretch: 115%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: all 0.2s; }
-  .cine-tabs button:hover { border-color: var(--fg); color: var(--fg); }
-  .cine-tabs button[aria-selected='true'] { background: var(--pink); border-color: var(--pink); color: #fff; }
+  /* Featured videos: a dark full-width band, one video under the other, each with a title and a short text. */
+  .cine { background: var(--bg2); padding: 80px 0 90px; margin-bottom: 90px; }
+  .cine-item + .cine-item { margin-top: 96px; }
+  .cine-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: start; margin-bottom: 32px; }
+  .cine-head h2 { font-size: var(--title-size); line-height: 1; }
 
   /* Gallery viewer: one 16:9 stage (images whole, on a blurred copy when they are not 16:9) and a strip of thumbnails. */
   .stage { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
@@ -467,8 +473,17 @@ const jsonLd = {
   .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .thumb:hover { opacity: 0.9; }
   .thumb[aria-selected='true'] { opacity: 1; border-color: var(--pink); }
-  .thumb-play { position: absolute; left: 6px; bottom: 6px; display: grid; place-items: center; width: 24px; height: 24px; background: var(--pink); }
-  .thumb-play svg { width: 12px; height: 12px; fill: #fff; }
+
+  /* Press cards (new layout): outlet in big type, review score in pink, headline, year and link. */
+  .press-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .press-card { display: flex; flex-direction: column; gap: 18px; min-height: 280px; padding: 30px 28px 26px; border: 1px solid var(--line2); background: var(--bg); transition: border-color 0.25s, background 0.25s, transform 0.25s; }
+  .press-card:hover { border-color: var(--pink); background: var(--bg2); transform: translateY(-4px); }
+  .pc-top { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+  .pc-outlet { font-size: var(--subtitle-size); line-height: 1; text-transform: uppercase; transition: color 0.25s; }
+  .press-card:hover .pc-outlet { color: var(--pink); }
+  .pc-score { flex: none; background: var(--pink); color: #fff; font-size: 22px; line-height: 1; padding: 10px 12px; }
+  .pc-title { font-size: 20px; line-height: 1.35; font-weight: 500; color: var(--fg); }
+  .pc-foot { margin-top: auto; display: flex; justify-content: space-between; gap: 12px; color: var(--mute); }
 
   /* Image grid (projects not on the new media layout yet): images at their own shape, a click opens the viewer. */
   .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start; }
@@ -545,9 +560,11 @@ const jsonLd = {
     .art { display: none; }
     /* Trailer and store buttons stacked, full width. */
     .ctas { display: grid; grid-template-columns: 1fr; }
-    .cine { padding: 28px 0 32px; margin-bottom: 64px; }
+    .cine { padding: 48px 0 56px; margin-bottom: 64px; }
     .cine .wrap { padding-left: 0; padding-right: 0; }
-    .cine-tabs { padding: 0 var(--gutter); }
+    .cine-head { grid-template-columns: 1fr; padding: 0 var(--gutter); margin-bottom: 20px; }
+    .cine-item + .cine-item { margin-top: 64px; }
+    .press-card { min-height: 0; }
     .gallery { grid-template-columns: 1fr; }
     .gallery.portrait { grid-template-columns: 1fr 1fr; }
     .media .stage { margin: 0 calc(-1 * var(--gutter)); }
@@ -591,18 +608,6 @@ const jsonLd = {
   modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
 
   const stopVideos = (root: ParentNode) => (window as any).stopVideos?.(root);
-
-  // Featured videos: one tab per video; switching stops the one that was playing.
-  const cineTabs = [...document.querySelectorAll<HTMLButtonElement>('.cine-tabs [role=tab]')];
-  cineTabs.forEach((tab) => tab.addEventListener('click', () => {
-    cineTabs.forEach((b) => {
-      const on = b === tab;
-      const panel = document.getElementById(b.getAttribute('aria-controls')!)!;
-      b.setAttribute('aria-selected', String(on));
-      if (!on) stopVideos(panel);
-      panel.hidden = !on;
-    });
-  }));
 
   // Gallery viewer: arrows, thumbnails and swipe change the item on the stage.
   const stage = document.querySelector<HTMLElement>('.media .stage');

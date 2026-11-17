@@ -27,10 +27,13 @@ role:
 # Reference page for the media layout: highlights (big, with tabs), gallery (images + extra videos),
 # Detrás de escena (process, can hold videos) and En los medios (press: articles and videos).
 highlights:
-  - { id: "WZLc7L7o7aY", label: { en: "Trailer", es: "Tráiler" } }
-  - { id: "0beHvmWqsFY", label: { en: "Gameplay", es: "Gameplay" } }
-videos:
-  - "bEgnlkaSHkw"     # Tecnópolis 2015
+  - id: "WZLc7L7o7aY"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "The clonocells infect an old arcade machine and Juanito, in his pajamas, jumps in to save the video games.", es: "Las clonocélulas infectan una vieja máquina de arcade y Juanito, en pijama, entra a salvar los videojuegos." }
+  - id: "0beHvmWqsFY"
+    title: { en: "How it plays", es: "Así se juega" }
+    text: { en: "Each world borrows the mechanic of the classic it honors: shooters, platforms, bricks and bosses.", es: "Cada mundo toma la mecánica del clásico que homenajea: naves, plataformas, ladrillos y jefes." }
+# Not shown (kept for the Juanito site): Tecnópolis 2015 stand, bEgnlkaSHkw.
 process:
   - title: { en: "Stage 8 speed paint", es: "Speed paint del nivel 8" }
     text: { en: "How a level background is painted, from sketch to final art.", es: "Cómo se pinta el fondo de un nivel, del boceto al arte final." }
@@ -59,14 +62,15 @@ stats:
   - value: "6"
     label: { en: "languages", es: "idiomas" }
 press:
+  - { outlet: "IGN España", title: "Juanito Arcade Mayhem. Análisis para PC", year: "2017", url: "https://es.ign.com/juanito-arcade-mayhem/124334/juanito-arcade-mayhem-analisis-para-pc", score: "7/10" }
+  - { outlet: "Pocket Gamer", title: "Juanito Arcade Mayhem review", year: "2018", url: "https://www.pocketgamer.com/juanito-arcade-mayhem/review/", score: "4/5" }
   - { outlet: "Clarín", title: "Boom retro: los jóvenes que recuperan el espíritu de los fichines en Argentina", year: "2017", url: "https://www.clarin.com/sociedad/boom-retro-jovenes-recuperan-espiritu-fichines-argentina_0_rkzBkdoJW.html" }
-  - { outlet: "Siliconera", title: "Juanito Arcade Mayhem Offers Animated Looks At Classic Games", year: "2017", url: "https://www.siliconera.com/juanito-arcade-mayhem-offers-animated-looks-classic-games/" }
-  - { outlet: "IGN España", title: "Juanito Arcade Mayhem. Análisis para PC (7/10)", year: "2017", url: "https://es.ign.com/juanito-arcade-mayhem/124334/juanito-arcade-mayhem-analisis-para-pc" }
-  - { outlet: "Cultura Geek", title: "Review Juanito Arcade Mayhem: la gran misión de salvar los videojuegos retro", year: "2017", url: "https://culturageek.com.ar/review-juanito-arcade-mayhem/" }
-  - { outlet: "Cultura Geek", title: "Juanito Arcade Mayhem: conocé el game indie que homenajea juegos retro", year: "2017", url: "https://culturageek.com.ar/juanito-arcade-mayhem-adva/" }
-  - { outlet: "Pocket Gamer", title: "Juanito Arcade Mayhem review (4/5)", year: "2018", url: "https://www.pocketgamer.com/juanito-arcade-mayhem/review/" }
-  - { outlet: "GameGrin", title: "So I Tried... Arcade Mayhem Juanito", year: "2020", url: "https://gamegrin.com/articles/so-i-tried-arcade-mayhem-juanito" }
-  - { outlet: "La Nación", title: "Los fichines salen a la calle en Palermo y muestran sus novedades nacionales", year: "2023", url: "https://www.lanacion.com.ar/tecnologia/los-fichines-salen-a-la-calle-en-palermo-y-muestran-sus-novedades-nacionales-nid06032023/" }
+# More press, not shown on this page (kept for the Juanito site):
+# - { outlet: "Siliconera", title: "Juanito Arcade Mayhem Offers Animated Looks At Classic Games", year: "2017", url: "https://www.siliconera.com/juanito-arcade-mayhem-offers-animated-looks-classic-games/" }
+# - { outlet: "Cultura Geek", title: "Review Juanito Arcade Mayhem: la gran misión de salvar los videojuegos retro", year: "2017", url: "https://culturageek.com.ar/review-juanito-arcade-mayhem/" }
+# - { outlet: "Cultura Geek", title: "Juanito Arcade Mayhem: conocé el game indie que homenajea juegos retro", year: "2017", url: "https://culturageek.com.ar/juanito-arcade-mayhem-adva/" }
+# - { outlet: "GameGrin", title: "So I Tried... Arcade Mayhem Juanito", year: "2020", url: "https://gamegrin.com/articles/so-i-tried-arcade-mayhem-juanito" }
+# - { outlet: "La Nación", title: "Los fichines salen a la calle en Palermo y muestran sus novedades nacionales", year: "2023", url: "https://www.lanacion.com.ar/tecnologia/los-fichines-salen-a-la-calle-en-palermo-y-muestran-sus-novedades-nacionales-nid06032023/" }
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi · Joaquín Ibarlucía" }
