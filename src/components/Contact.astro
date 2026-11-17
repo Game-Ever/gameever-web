@@ -44,7 +44,7 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   </div>
   </div>
 
-  <!-- Site footer: black strip under the pink band. -->
+  <!-- Site footer: black strip under the closing band. -->
   <div class="site-foot"><div class="wrap">
     <div class="cols">
       <div><span class="mono">{t('contact.careers')}</span><a href="mailto:jobs@gameeverstudio.com">jobs@gameeverstudio.com</a></div>
@@ -65,11 +65,16 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
 </footer>
 
 <style>
-  /* Closing band in brand pink, split in two and top-aligned: the closing phrase on the left, the form on the right,
-     drawn directly on the pink (ink lines and text, ink button) so the band reads as one block. */
-  .band { position: relative; overflow: hidden; background: var(--pink); color: var(--bg); padding: 120px 0 112px; }
-  /* 32px grid over the pink, anchored to the band's top-left so the pixels sit exactly in its cells. */
-  .band::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+  /* Closing band split in two and top-aligned: the closing phrase on the left, the form on the right. Background:
+     pink glowing from the top-left, cyan from the top-right, a dark violet between them and along the bottom, so
+     the white text and the pink button sit on the dark part. */
+  .band { position: relative; overflow: hidden; color: #fff; padding: 120px 0 112px;
+    background:
+      radial-gradient(ellipse 55% 95% at 0% 0%, rgba(255, 31, 107, 0.95) 0%, rgba(200, 16, 79, 0.55) 45%, transparent 100%),
+      radial-gradient(ellipse 50% 85% at 100% 0%, rgba(20, 200, 220, 0.8) 0%, rgba(20, 120, 150, 0.35) 50%, transparent 100%),
+      linear-gradient(180deg, #2a0a2a 0%, #16081a 70%, #0f0812 100%); }
+  /* 32px grid anchored to the band's top-left so the pixels sit exactly in its cells. Hidden for now. */
+  .band::before { display: none; content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
   .band > .wrap { position: relative; z-index: 1; }
   .pixels i { position: absolute; left: calc(var(--x) * 32px); top: calc(var(--y) * 32px); width: 32px; height: 32px; background: #fff; animation: blink var(--dur, 3.2s) steps(1, end) infinite var(--delay, 0s); }
   .pixels i.dim { background: rgba(255, 255, 255, 0.55); }
@@ -78,29 +83,29 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   @keyframes blink { 0%, 62% { opacity: 1; } 63%, 100% { opacity: 0; } }
   @keyframes walk { from { transform: translateX(0); } to { transform: translateX(256px); } }
   .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: start; }
-  .label { color: var(--bg); }
+  .label { color: #fff; }
   /* Same size as every section title (--title-size). */
   h2 { font-size: var(--title-size); line-height: 0.95; margin-top: 20px; color: #fff; overflow-wrap: break-word; }
   h2 span { display: block; }
-  em { font-style: normal; color: var(--bg); display: block; }
+  em { font-style: normal; color: var(--pink); display: block; }
 
   /* Pushed down by the kicker's height so "Empecemos." lines up with the big title. */
-  .form { color: var(--bg); display: grid; gap: 26px; padding-top: 47px; }
+  .form { color: #fff; display: grid; gap: 26px; padding-top: 47px; }
   .form h3 { font-size: var(--subtitle-size); line-height: 1; color: #fff; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .form label { display: grid; gap: 8px; }
-  .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bg); }
-  input, textarea { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgba(13, 13, 15, 0.45); color: var(--bg); font: 600 18px var(--sans); padding: 8px 0; border-radius: 0; outline: none; transition: border-color 0.2s; }
-  textarea { resize: vertical; min-height: 110px; border: 2px solid rgba(13, 13, 15, 0.45); padding: 12px; }
-  input:focus, textarea:focus { border-color: var(--bg); }
-  /* Invalid fields: white line, which stands out from the ink ones on the pink background. */
-  .form :global(.invalid) { border-color: #fff; }
-  .form :focus-visible { outline-color: var(--bg); }
+  .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.85); }
+  input, textarea { width: 100%; background: transparent; border: 0; border-bottom: 2px solid rgba(255, 255, 255, 0.4); color: #fff; font: 600 18px var(--sans); padding: 8px 0; border-radius: 0; outline: none; transition: border-color 0.2s; }
+  textarea { resize: vertical; min-height: 110px; border: 2px solid rgba(255, 255, 255, 0.4); padding: 12px; }
+  input:focus, textarea:focus { border-color: #fff; }
+  /* Invalid fields: pink line, which stands out from the white ones. */
+  .form :global(.invalid) { border-color: var(--pink); }
+  .form :focus-visible { outline-color: #fff; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  button { justify-self: start; display: inline-flex; gap: 12px; align-items: center; background: var(--bg); color: #fff; border: 0; padding: 16px 26px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  button { justify-self: start; display: inline-flex; gap: 12px; align-items: center; background: var(--pink); color: #fff; border: 0; padding: 16px 26px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 15px; cursor: pointer; transition: background 0.2s, color 0.2s; }
   button:hover { background: #fff; color: var(--bg); }
   button:disabled { opacity: 0.6; cursor: wait; }
-  .status { min-height: 1.4em; font-size: 15px; font-weight: 600; color: var(--bg); }
+  .status { min-height: 1.4em; font-size: 15px; font-weight: 600; color: #fff; }
   .status:empty { display: none; }
 
   /* Black footer strip: light text, tight bottom margin. */
@@ -115,12 +120,17 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   .social a:hover { background: var(--pink); border-color: var(--pink); transform: translateY(-2px); }
   .social svg { width: 18px; height: 18px; fill: var(--fg); }
   .legal-row { margin-top: 32px; }
-  .pitch :focus-visible { outline-color: var(--bg); }
+  .pitch :focus-visible { outline-color: #fff; }
 
   @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } .form { padding-top: 0; } }
   @media (max-width: 760px) {
     /* Leaves the first three grid rows free for the pixels above the "Contacto" label. */
-    .band { padding: 112px 0 72px; }
+    .band { padding: 112px 0 72px;
+      /* The band is tall and narrow here: the glows open sideways from the top corners instead of running down. */
+      background:
+        radial-gradient(ellipse 110% 40% at 0% 0%, rgba(255, 31, 107, 0.95) 0%, rgba(200, 16, 79, 0.5) 50%, transparent 100%),
+        radial-gradient(ellipse 100% 32% at 100% 0%, rgba(20, 200, 220, 0.75) 0%, rgba(20, 120, 150, 0.3) 50%, transparent 100%),
+        linear-gradient(180deg, #2a0a2a 0%, #16081a 60%, #0f0812 100%); }
     .form { padding-top: 0; }
     .row { grid-template-columns: 1fr; }
     .cols { grid-template-columns: 1fr 1fr; }
