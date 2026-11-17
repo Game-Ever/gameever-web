@@ -4,6 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import YouTube from '../../../components/YouTube.astro';
 import LoopVideo from '../../../components/LoopVideo.astro';
 import Legal from '../../../components/Legal.astro';
+import StoreButton from '../../../components/StoreButton.astro';
 import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP } from '../../../i18n';
 import { SERVICES, PLATFORMS } from '../../../data/taxonomy';
 
@@ -84,7 +85,7 @@ const jsonLd = {
           {(trailer || d.links.length > 0) && (
             <div class="ctas">
               {trailer && <button class="cta primary" data-trailer={trailer}>▶ {t('project.trailer')}</button>}
-              {d.links.map((l) => <a class="cta" href={l.url} target="_blank" rel="noopener">{l.label}</a>)}
+              {d.links.map((l) => <StoreButton lang={lang} label={l.label} url={l.url} />)}
             </div>
           )}
         </div>
@@ -264,7 +265,7 @@ const jsonLd = {
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tags span { border: 1px solid rgba(255, 255, 255, 0.55); padding: 6px 11px; font-size: 14px; font-weight: 600; background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(4px); }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
-  .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
+  .cta { display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 22px; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; border: 2px solid var(--fg); cursor: pointer; background: none; transition: all 0.2s; }
   .cta.primary { background: var(--pink); border-color: var(--pink); color: #fff; }
   .cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
@@ -417,6 +418,8 @@ const jsonLd = {
     .hero::after { display: none; }
     .inner { padding-top: 28px; padding-bottom: 40px; }
     .art { display: none; }
+    /* Trailer and store buttons stacked, full width. */
+    .ctas { display: grid; grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr; }
     .gallery.portrait { grid-template-columns: 1fr 1fr; }
     .zoom-icon { opacity: 1; width: 34px; height: 34px; }

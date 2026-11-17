@@ -59,6 +59,7 @@ Short, strong phrases. No repeated key words across the home. Professional tone:
 - Videos (`src/components/YouTube.astro`): the poster is YouTube's best thumbnail (maxres 1280x720 when it exists), recorded in `src/data/yt-thumbs.json` by `node scripts/yt-thumbs.mjs` (run it after adding videos; missing ones are checked at build time). Desktop shows a centered pink "Ver video" button (bigger on large players); phones keep a small play button in the corner.
 - Gallery: images at their own shape, two per row (four for phone screenshots, one/two on phones); a click opens the viewer (arrows, keys, swipe, Esc).
 - The thumbnail next to the title and the "Próximo proyecto" one have rounded corners.
+- `links` render as store buttons with the store's logo (`src/components/StoreButton.astro`), recognized from the URL: App Store, Google Play, Steam, GOG ("Disponible en"), browser game portals like Poki ("Jugar online"), any other site ("Sitio web"). A label naming another product ("Zoo Animals (App Store)") shows that name with the store as caption. Add new stores or portals there.
 
 ## Home vs. projects page
 - Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link. Projects used in the "Qué hacemos" cards (`src/data/worlds.ts`: one muted YouTube loop per card, now the LIT Killah game trailer and the Flexin' video) are left out of that selection so nothing repeats; they still show on the projects page.

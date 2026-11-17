@@ -10,7 +10,7 @@ platforms:
   - "android"
 genre:
   en: "Platformer"
-  es: "Plataformas"
+  es: "Juego de plataformas"
 featured: 8
 cover: "../../assets/projects/juanito-arcade-mayhem/cover.jpg"
 summary:
