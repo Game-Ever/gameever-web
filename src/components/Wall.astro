@@ -89,7 +89,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .work-head :is(h1, h2) { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
 
   /* Toolbar: area tabs on the left, search and sort on the right; sticks under the header. */
-  .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 14px 0; background: linear-gradient(var(--bg) 75%, transparent); }
+  .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 14px 0; /* Solid behind both rows (tabs and search wrap to two rows on phones), fading out only in the bottom padding. */ background: linear-gradient(var(--bg) calc(100% - 14px), transparent); }
   .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
   .tab { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 2px solid rgba(255, 255, 255, 0.35); background: none; cursor: pointer; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
   .tab:hover { border-color: var(--fg); }
@@ -107,7 +107,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .card { display: flex; flex-direction: column; gap: 12px; animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   @keyframes rise { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
   /* Square thumbnails: the cover is square (two image formats on the site: 16:9 header, 1:1 cover). */
-  .img { position: relative; aspect-ratio: var(--card-ratio, 1 / 1); overflow: hidden; background: var(--bg2); }
+  .img { position: relative; aspect-ratio: var(--card-ratio, 1 / 1); overflow: hidden; background: var(--bg2); border-radius: 16px; }
   .img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.4s; }
   .img::after { content: ''; position: absolute; right: 0; bottom: 0; width: 28px; height: 28px; background: var(--pink); transform: scale(0); transform-origin: bottom right; transition: transform 0.25s; }
   .card h3 { font-size: clamp(18px, 1.8vw, 26px); line-height: 1.05; overflow-wrap: break-word; font-stretch: 125%; font-weight: 800; text-transform: uppercase; transition: color 0.25s; }
