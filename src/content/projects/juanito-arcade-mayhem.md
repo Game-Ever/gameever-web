@@ -35,10 +35,8 @@ highlights:
     title: { en: "How it plays", es: "Así se juega" }
     text: { en: "Each world borrows the mechanic of the classic it honors: shooters, platforms, bricks and bosses.", es: "Cada mundo toma la mecánica del clásico que homenajea: naves, plataformas, ladrillos y jefes." }
 # Not shown (kept for the Juanito site): Tecnópolis 2015 stand, bEgnlkaSHkw.
-process:
-  - title: { en: "Stage 8 speed paint", es: "Speed paint del nivel 8" }
-    text: { en: "How a level background is painted, from sketch to final art.", es: "Cómo se pinta el fondo de un nivel, del boceto al arte final." }
-    video: "SrUt-f0PrS4"
+# Not shown (kept for the Juanito site): stage 8 speed paint by Leo Cirius, SrUt-f0PrS4.
+# "Detrás de escena" comes back when there is more process material (sketches, concept art).
 links:
   - label: "Steam"
     url: "https://store.steampowered.com/app/617440/Arcade_Mayhem_Juanito/"
