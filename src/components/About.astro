@@ -17,12 +17,13 @@ const t = useT(Astro.props.lang);
 </section>
 
 <style>
-  .about { padding: 130px 0 110px; }
+  /* Comes after Servicios, which already leaves room at its bottom. */
+  .about { padding: 70px 0 110px; }
   .kicker { color: var(--pink); }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 22px; align-items: start; }
   h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
   @media (max-width: 900px) {
-    .about { padding: 96px 0 80px; }
+    .about { padding: 56px 0 80px; }
     .grid { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>

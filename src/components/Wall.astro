@@ -25,7 +25,7 @@ const tabs = [
 ];
 const i18n = { count: t('work.count'), showing: t('work.showing') };
 ---
-<section class="work" id="work" data-i18n={JSON.stringify(i18n)}>
+<section class:list={['work', { home: !full }]} id="work" data-i18n={JSON.stringify(i18n)}>
   <div class="wrap">
     <span class="mono kicker">{t('work.label')}</span>
     <div class="work-head">
@@ -83,6 +83,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
 
 <style>
   .work { padding: 110px 0 120px; background: linear-gradient(180deg, var(--pink-d) 0, var(--bg) 420px); }
+  /* On the home the selection comes right after the reel: plain dark background, pink kicker like the other sections. */
+  .work.home { background: none; }
+  .work.home .kicker { color: var(--pink); opacity: 1; }
   .kicker { color: #fff; opacity: 0.85; }
   .work-head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin: 22px 0 36px; }
   .work-head > * { min-width: 0; }
