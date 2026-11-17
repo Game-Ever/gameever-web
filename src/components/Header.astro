@@ -56,11 +56,12 @@ const links = [
     nav { gap: 12px; }
     ul { display: none; }
     .lang { margin-left: auto; }
-    .site-header[data-variant='project'] .lang { margin-left: 0; }
+
     .burger { display: block; }
     nav.open ul { display: flex; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px; margin: 0; }
     nav.open ul a { display: block; padding: 14px 0; font-size: 20px; border-bottom: 1px solid var(--line); }
-    .back { font-size: 12px; padding: 8px 12px; }
+    /* Phones: no "Todos los proyectos" button on project pages (the logo and the browser's back are enough). */
+    .back { display: none; }
   }
 </style>
 
