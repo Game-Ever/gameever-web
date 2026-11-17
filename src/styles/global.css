@@ -45,6 +45,8 @@ button { font: inherit; color: inherit; }
 
 .wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--gutter); }
 .mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+/* Section labels over the titles ("Proyectos", "Contacto", the line over a project title): a bit larger. */
+.mono.kicker { font-size: 14px; }
 .wide { font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
 /* Side block: the text next to a section title. One pink bar per block; inside, body paragraphs only
    (same size, weight, colour, bar and width everywhere — no bold lines). */
