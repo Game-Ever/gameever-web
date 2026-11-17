@@ -2,6 +2,7 @@
 import { Image, getImage } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import YouTube from '../../../components/YouTube.astro';
+import LoopVideo from '../../../components/LoopVideo.astro';
 import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP } from '../../../i18n';
 import { SERVICES, PLATFORMS } from '../../../data/taxonomy';
 
@@ -26,6 +27,16 @@ const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos
 const trailer = allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
+// "94 M" / "7,3 M" / "891 k" (es) and "94M" / "7.3M" / "891K" (en).
+const compact = (n: number) => {
+  const [v, unit] = n >= 1e6 ? [n / 1e6, lang === 'es' ? ' M' : 'M'] : [n / 1e3, lang === 'es' ? ' k' : 'K'];
+  return `${v.toLocaleString(lang === 'es' ? 'es-AR' : 'en-US', { maximumFractionDigits: v < 10 ? 1 : 0 })}${unit}`;
+};
+// Series shown as tabs (one unnamed series when the project has no `entryGroups`).
+const groups = d.entryGroups.length
+  ? d.entryGroups.map((g) => ({ key: g.key, title: tr(g.title, lang), entries: d.entries.filter((e) => e.group === g.key) }))
+  : [{ key: 'all', title: '', entries: d.entries }];
+const SHOWN = 9; // entries visible per series before "Ver los N"
 const og = await getImage({ src: d.cover, width: 1200, format: 'jpg' });
 const ogUrl = new URL(og.src, Astro.site).href;
 const isGame = d.services.some((s) => ['brand-games', 'web-games', 'edutainment', 'original-ip'].includes(s)) && d.platforms.some((p) => !['youtube', 'tv'].includes(p));
@@ -45,6 +56,7 @@ const jsonLd = {
   <main>
     <section class="hero">
       <Image class="bg" src={heroBg} alt="" widths={[640, 1024, 1600, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+      {d.heroVideo && <LoopVideo id={d.heroVideo.id} start={d.heroVideo.start} end={d.heroVideo.end} class="hero-video" />}
       <div class="wrap inner">
         <div>
           <span class="mono kicker">{[services[0], d.client === ORIGINAL_IP ? null : d.client, d.years ?? d.year].filter(Boolean).join(" · ")}</span>
@@ -64,6 +76,14 @@ const jsonLd = {
       </div>
     </section>
 
+    {d.stats.length > 0 && (
+      <div class="wrap">
+        <ul class="stats" id="figures">
+          {d.stats.map((s) => <li><strong class="wide">{s.value}</strong><span>{tr(s.label, lang)}</span></li>)}
+        </ul>
+      </div>
+    )}
+
     <div class="wrap">
       <section class="overview">
         <div>
@@ -81,19 +101,38 @@ const jsonLd = {
       </section>
 
       {d.entries.length > 0 ? (
-        <section class="block">
-          <h2 class="wide">{d.entriesTitle ? tr(d.entriesTitle, lang) : t('project.seasons')}</h2>
-          <div class="entries">
-            {d.entries.map((e) => (
-              <article>
-                {e.videos[0]
-                  ? <YouTube id={e.videos[0]} title={tr(e.title, lang)} playLabel={t('project.play')} />
-                  : <div class="novideo" />}
-                <h3>{tr(e.title, lang)}</h3>
-                <span class="mono">{e.year}</span>
-              </article>
-            ))}
+        <section class="block clips" id="videos">
+          <div class="clips-head">
+            <h2 class="wide">{d.entriesTitle ? tr(d.entriesTitle, lang) : t('project.seasons')}</h2>
+            {groups.length > 1 && (
+              <div class="series" role="tablist">
+                {groups.map((g, i) => (
+                  <button role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`series-${g.key}`} data-series={g.key}>
+                    {g.title} <span class="mono">{g.entries.length}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
+          {groups.map((g, i) => (
+            <div class="series-panel" id={`series-${g.key}`} role={groups.length > 1 ? 'tabpanel' : undefined} hidden={i > 0}>
+              <div class:list={['entries', { featured: g.entries.some((e) => e.views) }]}>
+                {g.entries.map((e, j) => (
+                  <article class:list={{ more: j >= SHOWN }}>
+                    {e.videos[0]
+                      ? <YouTube id={e.videos[0]} title={tr(e.title, lang)} playLabel={t('project.play')} />
+                      : <div class="novideo" />}
+                    {j === 0 && e.views && <span class="badge mono">{t('project.mostViewed')}</span>}
+                    <h3>{tr(e.title, lang)}</h3>
+                    <span class="mono">{[e.year, e.views ? t('project.views', { n: compact(e.views) }) : null].filter(Boolean).join(' · ')}</span>
+                  </article>
+                ))}
+              </div>
+              {g.entries.length > SHOWN && (
+                <button class="show-all mono" data-all={t('project.showAll', { n: g.entries.length })} data-less={t('project.showLess')}>{t('project.showAll', { n: g.entries.length })}</button>
+              )}
+            </div>
+          ))}
         </section>
       ) : allVideos.length > 0 && (
         <section class="block">
@@ -111,7 +150,33 @@ const jsonLd = {
         </section>
       )}
 
-      {d.credits && (
+      {d.process.length > 0 && (
+        <section class="block" id="process">
+          <h2 class="wide">{t('project.process')}</h2>
+          <div class="process">
+            {d.process.map((p) => (
+              <figure>
+                {p.image
+                  ? <Image src={p.image} alt={tr(p.title, lang)} widths={[600, 900]} sizes="(max-width: 900px) 100vw, 33vw" />
+                  : <div class="pending mono">{t('project.pendingImage')}</div>}
+                <figcaption><h3>{tr(p.title, lang)}</h3>{p.text && <p>{tr(p.text, lang)}</p>}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {d.creditList.length > 0 ? (
+        <section class="block credit-list" id="credits">
+          <div class="credits-head">
+            <h2 class="wide">{t('project.credits')}</h2>
+            {d.creditsPending && <span class="mono pending-tag">{t('project.creditsPending')}</span>}
+          </div>
+          <dl>
+            {d.creditList.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}
+          </dl>
+        </section>
+      ) : d.credits && (
         <details class="credits">
           <summary class="wide">{t('project.credits')}</summary>
           {d.credits.split('\n\n').map((c) => <p class="mono">{c}</p>)}
@@ -168,6 +233,49 @@ const jsonLd = {
   .entries h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 12px; line-height: 1.15; }
   .entries .mono { color: var(--mute); }
   .novideo { aspect-ratio: 16 / 9; background: var(--bg2); }
+
+  /* Moving background: 16:9 covering the hero, its top 120px (YouTube's title) above the viewport. */
+  .hero :global(.hero-video) { position: absolute; left: 50%; top: -120px; width: max(100vw, calc((100svh + 120px) * 1.7778)); height: max(calc(100svh + 120px), 56.25vw); transform: translateX(-50%); }
+  .hero::after { z-index: 1; }
+
+  /* Key figures under the title. */
+  .stats { list-style: none; padding: 34px 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; border-bottom: 1px solid var(--line); }
+  .stats li { display: grid; gap: 6px; border-left: 3px solid var(--pink); padding-left: 16px; }
+  .stats strong { font-size: clamp(34px, 4.4vw, 64px); line-height: 0.95; color: var(--fg); white-space: nowrap; }
+  .stats span { color: var(--fg2); font-size: 15px; }
+
+  /* Clips: title with series tabs, the most viewed clip large, the rest in a grid. */
+  .clips-head { display: flex; justify-content: space-between; align-items: end; gap: 20px 32px; flex-wrap: wrap; margin-bottom: 28px; }
+  .clips-head h2 { margin-bottom: 0; }
+  .series { display: flex; gap: 6px; flex-wrap: wrap; }
+  .series button { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 18px; border: 1px solid var(--line2); background: none; color: var(--fg2); font-weight: 800; font-stretch: 115%; text-transform: uppercase; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+  .series button .mono { color: var(--mute); }
+  .series button:hover { border-color: var(--fg); color: var(--fg); }
+  .series button[aria-selected='true'] { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .series button[aria-selected='true'] .mono { color: rgba(255, 255, 255, 0.85); }
+  .entries article { position: relative; }
+  .entries.featured article:first-child { grid-column: span 2; grid-row: span 2; }
+  .entries.featured article:first-child h3 { font-size: clamp(22px, 2.2vw, 32px); }
+  .badge { position: absolute; top: 12px; left: 12px; background: var(--pink); color: #fff; padding: 6px 10px; font-size: 11px; pointer-events: none; }
+  .entries article.more { display: none; }
+  .series-panel.expanded .entries article.more { display: block; }
+  .show-all { margin-top: 28px; background: none; border: 1px solid var(--line2); color: var(--fg); padding: 14px 22px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .show-all:hover { border-color: var(--pink); color: var(--pink); }
+
+  /* Behind the scenes: three blocks; a missing image shows a striped placeholder. */
+  .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .process figure { margin: 0; }
+  .process img, .pending { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+  .pending { display: grid; place-items: center; color: var(--mute); border: 1px dashed var(--line2); background: repeating-linear-gradient(135deg, var(--bg2) 0 14px, transparent 14px 28px); }
+  .process h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 14px; }
+  .process p { color: var(--fg2); margin-top: 6px; font-size: 16px; }
+
+  /* Credits as role → names. */
+  .credits-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .credits-head h2 { margin-bottom: 0; }
+  .pending-tag { color: var(--pink); border: 1px solid var(--pink); padding: 5px 9px; font-size: 11px; }
+  .credit-list dl { grid-template-columns: minmax(180px, 1fr) 2fr; }
+  .credit-list dd { color: var(--fg2); font-weight: 500; }
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .gallery figure { margin: 0; background: var(--bg2); overflow: hidden; }
   .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
@@ -201,6 +309,11 @@ const jsonLd = {
     .art { order: -1; width: 140px; }
     .overview { grid-template-columns: 1fr; gap: 48px; padding: 72px 0 64px; }
     .videos, .entries { grid-template-columns: 1fr; }
+    .entries.featured article:first-child { grid-column: auto; grid-row: auto; }
+    .process { grid-template-columns: 1fr; }
+    .credit-list dl { grid-template-columns: 1fr; }
+    .credit-list dt { padding-bottom: 0; border-bottom: 0; }
+    .stats { grid-template-columns: 1fr 1fr; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
   }
@@ -220,6 +333,21 @@ const jsonLd = {
     modal.querySelector<HTMLButtonElement>('.x')!.focus();
   });
   modal.querySelector('.x')!.addEventListener('click', close);
+
+  // Series tabs (e.g. Canciones / A Jugar) and "Ver los N".
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.series [role=tab]')];
+  tabs.forEach((tab) => tab.addEventListener('click', () => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+    });
+  }));
+  document.querySelectorAll<HTMLButtonElement>('.show-all').forEach((btn) => btn.addEventListener('click', () => {
+    const panel = btn.closest('.series-panel')!;
+    const open = panel.classList.toggle('expanded');
+    btn.textContent = open ? btn.dataset.less! : btn.dataset.all!;
+  }));
   modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
 </script>

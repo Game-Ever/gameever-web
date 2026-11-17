@@ -1,0 +1,64 @@
+---
+// Muted YouTube loop used as a moving background (Qué hacemos cards, project heroes).
+// The iframe loads when it comes near the screen, pauses when it leaves, and loops start → end by seeking back
+// while still playing. It stays transparent until it has been playing for a moment, so YouTube's own play/pause
+// icon and title never show; whatever sits under it (a poster image) is what visitors see until then.
+// Size and position come from the parent through `class` / `style`.
+interface Props { id: string; start?: number; end?: number; class?: string; style?: string }
+const { id, start = 0, end, class: className, style } = Astro.props;
+const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&cc_load_policy=0&enablejsapi=1&start=${start}`;
+---
+<iframe class:list={['loop-yt', className]} style={style} title="" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media" data-src={src} data-start={start} data-end={end}></iframe>
+
+<style>
+  .loop-yt { border: 0; pointer-events: none; opacity: 0; }
+  .loop-yt.on { opacity: 1; transition: opacity 0.8s; }
+</style>
+
+<script>
+  const REVEAL_DELAY = 900;
+  const frames = [...document.querySelectorAll<HTMLIFrameElement>('iframe.loop-yt')];
+  if (frames.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const cmd = (yt: HTMLIFrameElement, func: string, args: unknown[] = []) =>
+      yt.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
+    const visible = new Map<HTMLIFrameElement, boolean>();
+    const lastState = new Map<HTMLIFrameElement, number>();
+    const setOn = (yt: HTMLIFrameElement, on: boolean) => { visible.set(yt, on); yt.classList.toggle('on', on); };
+    const load = (yt: HTMLIFrameElement) => {
+      yt.src = `${yt.dataset.src}&origin=${encodeURIComponent(location.origin)}`;
+      yt.addEventListener('load', () => yt.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'loop', channel: 'widget' }), '*'), { once: true });
+    };
+    addEventListener('message', (e) => {
+      const yt = frames.find((f) => f.contentWindow === e.source);
+      if (!yt || typeof e.data !== 'string') return;
+      let data: { event?: string; info?: unknown };
+      try { data = JSON.parse(e.data); } catch { return; }
+      const info = (data.info ?? {}) as { playerState?: number; currentTime?: number };
+      const start = Number(yt.dataset.start) || 0;
+      const end = Number(yt.dataset.end) || 0;
+      // Loop the stretch before YouTube reaches `end` (a seek shows no YouTube icons).
+      if (end && typeof info.currentTime === 'number' && info.currentTime >= end - 0.6) cmd(yt, 'seekTo', [start, true]);
+      const state = data.event === 'onStateChange' ? data.info : data.event === 'infoDelivery' ? info.playerState : undefined;
+      if (typeof state !== 'number') return;
+      lastState.set(yt, state);
+      if (state === 1) {
+        // No subtitles: some videos turn them on by default for the viewer's language.
+        cmd(yt, 'unloadModule', ['captions']);
+        if (!visible.get(yt)) setTimeout(() => { if (lastState.get(yt) === 1) setOn(yt, true); }, REVEAL_DELAY);
+      } else if (state === 3 && visible.get(yt)) {
+        // buffering (also during the loop's seek): keep showing the video
+      } else {
+        setOn(yt, false);
+        if (state === 0) { cmd(yt, 'seekTo', [start, true]); cmd(yt, 'playVideo'); }
+      }
+    });
+    const io = new IntersectionObserver((entries) => {
+      for (const { target, isIntersecting } of entries) {
+        const yt = target as HTMLIFrameElement;
+        if (!isIntersecting) { cmd(yt, 'pauseVideo'); continue; }
+        if (!yt.getAttribute('src')) load(yt); else cmd(yt, 'playVideo');
+      }
+    }, { rootMargin: '200px 0px' });
+    frames.forEach((yt) => io.observe(yt));
+  }
+</script>

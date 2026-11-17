@@ -1,10 +1,10 @@
 ---
 // "Qué hacemos": the two worlds (games and animation), each card jumping to the matching projects.
-// Each card plays a muted loop of one YouTube video (see src/data/worlds.ts); the project image stays on top
-// until the video is actually playing, so YouTube's own overlay never shows.
+// Each card plays a muted loop of one YouTube video (see src/data/worlds.ts, and LoopVideo for how it plays).
 import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url } from '../i18n';
-import { WORLDS, type World } from '../data/worlds';
+import LoopVideo from './LoopVideo.astro';
+import { WORLDS } from '../data/worlds';
 
 interface Props { lang: Lang; projects: Project[] }
 const { lang, projects } = Astro.props;
@@ -12,12 +12,10 @@ const t = useT(lang);
 const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
 const landscape = (id: string) => byId[id].data.gallery.find((g) => g.width > g.height * 1.2) ?? byId[id].data.cover;
 const groups = t('services.groups');
-const embed = (w: World) =>
-  `https://www.youtube-nocookie.com/embed/${w.video}?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&modestbranding=1&iv_load_policy=3&disablekb=1&cc_load_policy=0&enablejsapi=1&start=${w.start ?? 0}`;
 const cards = [
   { title: t('worlds.games'), cta: t('worlds.gamesCta'), area: groups[0].area, world: WORLDS.games },
   { title: t('worlds.anim'), cta: t('worlds.animCta'), area: groups[1].area, world: WORLDS.animation },
-].map((c) => ({ ...c, img: landscape(c.world.project), source: byId[c.world.project].data.title, src: embed(c.world) }));
+].map((c) => ({ ...c, img: landscape(c.world.project), source: byId[c.world.project].data.title }));
 ---
 <section class="worlds" id="what-we-do">
   <div class="wrap">
@@ -33,7 +31,7 @@ const cards = [
         <a class="card" href={`${url(lang, "work")}?area=${c.area}`}>
           <span class="media" aria-hidden="true">
             <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
-            <iframe class:list={["yt", { portrait: c.world.portrait }]} style={`--focus: ${c.world.focus ?? 50}%`} title="" tabindex="-1" allow="autoplay; encrypted-media" data-src={c.src} data-start={c.world.start ?? 0} data-end={c.world.end}></iframe>
+            <LoopVideo id={c.world.video} start={c.world.start} end={c.world.end} class:list={['yt', { portrait: c.world.portrait }]} style={`--focus: ${c.world.focus ?? 50}%`} />
           </span>
           <span class="source mono">{c.source}</span>
           <span class="title wide">{c.title}</span>
@@ -57,11 +55,10 @@ const cards = [
   .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
   /* 16:9 video covering the 4:3 card, shown only while it plays. Its top 90px (where YouTube draws the video title
      at the start) sit above the card, and its sides (YouTube logo) are cropped by the 16:9 width. */
-  .yt { position: absolute; top: -90px; left: 50%; height: calc(100cqh + 90px); width: max(102cqw, calc((100cqh + 90px) * 1.7778)); transform: translateX(-50%); border: 0; pointer-events: none; opacity: 0; }
+  .card :global(.yt) { position: absolute; top: -90px; left: 50%; height: calc(100cqh + 90px); width: max(102cqw, calc((100cqh + 90px) * 1.7778)); transform: translateX(-50%); }
   /* Vertical footage in a 16:9 frame: zoomed until the vertical part (9/16 of the height wide) fills the card,
      with 4% extra so the black sides of the frame never peek in at the card edges. */
-  .yt.portrait { width: 328.7cqw; height: 184.9cqw; top: var(--focus); transform: translate(-50%, calc(var(--focus) * -1)); }
-  .yt.on { opacity: 1; transition: opacity 0.8s; }
+  .card :global(.yt.portrait) { width: 328.7cqw; height: 184.9cqw; top: var(--focus); transform: translate(-50%, calc(var(--focus) * -1)); }
   .card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.35) 0%, transparent 22%, transparent 45%, rgba(13, 13, 15, 0.85) 100%); z-index: -1; }
   .source { position: absolute; left: 28px; top: 24px; color: rgba(255, 255, 255, 0.85); }
   .title { position: absolute; left: 28px; bottom: 56px; font-size: var(--subtitle-size); line-height: 0.95; transition: color 0.25s; }
@@ -78,55 +75,3 @@ const cards = [
   }
 </style>
 
-<script>
-  // Each card's video loads when the card comes near the screen, pauses when it leaves, and loops the chosen
-  // stretch: just before `end` it seeks back to `start` while still playing (a seek shows no YouTube icons);
-  // without `end` it loops when the video ends.
-  // YouTube flashes its own play/pause icon in the middle of the player when playback starts or resumes, so the
-  // video is only revealed once it has been playing for a moment; until then the card's image stays on top.
-  const REVEAL_DELAY = 900;
-  const frames = [...document.querySelectorAll<HTMLIFrameElement>('.worlds .yt')];
-  if (frames.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const cmd = (yt: HTMLIFrameElement, func: string, args: unknown[] = []) =>
-      yt.contentWindow?.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
-    const visible = new Map<HTMLIFrameElement, boolean>();
-    const lastState = new Map<HTMLIFrameElement, number>();
-    const setOn = (yt: HTMLIFrameElement, on: boolean) => { visible.set(yt, on); yt.classList.toggle('on', on); };
-    const load = (yt: HTMLIFrameElement) => {
-      yt.src = `${yt.dataset.src}&origin=${encodeURIComponent(location.origin)}`;
-      yt.addEventListener('load', () => yt.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 'world', channel: 'widget' }), '*'), { once: true });
-    };
-    addEventListener('message', (e) => {
-      const yt = frames.find((f) => f.contentWindow === e.source);
-      if (!yt || typeof e.data !== 'string') return;
-      let data: { event?: string; info?: unknown };
-      try { data = JSON.parse(e.data); } catch { return; }
-      const info = (data.info ?? {}) as { playerState?: number; currentTime?: number };
-      const start = Number(yt.dataset.start) || 0;
-      const end = Number(yt.dataset.end) || 0;
-      // Loop the stretch before YouTube reaches `end`.
-      if (end && typeof info.currentTime === 'number' && info.currentTime >= end - 0.6) cmd(yt, 'seekTo', [start, true]);
-      const state = data.event === 'onStateChange' ? data.info : data.event === 'infoDelivery' ? info.playerState : undefined;
-      if (typeof state !== 'number') return;
-      lastState.set(yt, state);
-      if (state === 1) {
-        // No subtitles: some videos turn them on by default for the viewer's language.
-        cmd(yt, 'unloadModule', ['captions']);
-        if (!visible.get(yt)) setTimeout(() => { if (lastState.get(yt) === 1) setOn(yt, true); }, REVEAL_DELAY);
-      } else if (state === 3 && visible.get(yt)) {
-        // buffering (also during the loop's seek): keep showing the video
-      } else {
-        setOn(yt, false);
-        if (state === 0) { cmd(yt, 'seekTo', [start, true]); cmd(yt, 'playVideo'); }
-      }
-    });
-    const io = new IntersectionObserver((entries) => {
-      for (const { target, isIntersecting } of entries) {
-        const yt = target.querySelector<HTMLIFrameElement>('.yt')!;
-        if (!isIntersecting) { cmd(yt, 'pauseVideo'); continue; }
-        if (!yt.getAttribute('src')) load(yt); else cmd(yt, 'playVideo');
-      }
-    }, { rootMargin: '200px 0px' });
-    frames.forEach((yt) => io.observe(yt.closest('.card')!));
-  }
-</script>

@@ -28,11 +28,27 @@ const projects = defineCollection({
     description: localized,
     role: localized.optional(),
     videos: z.array(z.string()).default([]),
+    /** Muted YouTube loop behind the project title (start / end in seconds). */
+    heroVideo: z.object({ id: z.string(), start: z.number().default(0), end: z.number().optional() }).optional(),
+    /** Key figures shown in a band under the title, e.g. { value: "12", label: { en: "music videos", es: "videoclips" } }. */
+    stats: z.array(z.object({ value: z.string(), label: localized })).default([]),
     /** Heading over `entries` (default: "Temporadas y campañas"). */
     entriesTitle: localized.optional(),
+    /** Optional series inside `entries` (shown as tabs); each entry names its series in `group`. */
+    entryGroups: z.array(z.object({ key: z.string(), title: localized })).default([]),
     entries: z
-      .array(z.object({ title: text, year: z.string(), videos: z.array(z.string()).default([]), note: text.optional() }))
+      .array(z.object({
+        title: text, year: z.string(), videos: z.array(z.string()).default([]), note: text.optional(),
+        group: z.string().optional(),
+        /** YouTube views, shown under the clip (checked by hand; leave out when unknown). */
+        views: z.number().optional(),
+      }))
       .default([]),
+    /** "Behind the scenes" blocks; a block without image shows a placeholder. */
+    process: z.array(z.object({ title: localized, text: localized.optional(), image: image().optional() })).default([]),
+    /** Credits as role → names. Use instead of `credits`; `creditsPending` marks them as provisional. */
+    creditList: z.array(z.object({ role: localized, names: z.string() })).default([]),
+    creditsPending: z.boolean().default(false),
     links: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
     gallery: z.array(image()).default([]),
     credits: z.string().optional(),

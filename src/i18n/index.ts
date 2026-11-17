@@ -47,6 +47,8 @@ export const ui = {
     'project.platforms': 'Platforms', 'project.genre': 'Genre', 'project.role': 'Our role', 'project.services': 'Services',
     'project.videos': 'Videos', 'project.seasons': 'Seasons & campaigns', 'project.gallery': 'Gallery', 'project.credits': 'Credits',
     'project.next': 'Next project →', 'project.cta': 'A similar project?', 'project.play': 'Play video',
+    'project.views': '{n} views', 'project.mostViewed': 'Most viewed', 'project.showAll': 'Show all {n}', 'project.showLess': 'Show less',
+    'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Provisional credits',
   },
   es: {
     'meta.title': 'Game Ever — Estudio de videojuegos y animación',
@@ -90,6 +92,8 @@ export const ui = {
     'project.platforms': 'Plataformas', 'project.genre': 'Género', 'project.role': 'Nuestro rol', 'project.services': 'Servicios',
     'project.videos': 'Videos', 'project.seasons': 'Temporadas y campañas', 'project.gallery': 'Galería', 'project.credits': 'Créditos',
     'project.next': 'Próximo proyecto →', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video',
+    'project.views': '{n} de vistas', 'project.mostViewed': 'El más visto', 'project.showAll': 'Ver los {n}', 'project.showLess': 'Ver menos',
+    'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Créditos provisorios',
   },
 } as const;
 
