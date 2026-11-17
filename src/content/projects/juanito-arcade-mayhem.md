@@ -46,11 +46,15 @@ links:
     url: "https://apps.apple.com/ar/app/arcade-mayhem-shooter/id937951287"
   - label: "Google Play"
     url: "https://play.google.com/store/apps/details?id=air.com.gameever.juanitoarcade"
+# Steam store promo images (16:9, English captions); the old plain screenshots stay in the folder.
 gallery:
-  - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_2.png"
-  - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_4.png"
-  - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_5.png"
-  - "../../assets/projects/juanito-arcade-mayhem/screenshot_1920x1080_3.png"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-worlds.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-80-levels.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-bosses.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-weapons.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-difficulties.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-achievements.jpg"
+  - "../../assets/projects/juanito-arcade-mayhem/promo-infinite-mode.jpg"
 # Key art from the studio (2026-11-17); the previous hero.jpg is kept in the folder.
 heroImage: "../../assets/projects/juanito-arcade-mayhem/hero-key-art.jpg"
 # Phone hero: the center square of the header art (Juanito and the robot whole).
