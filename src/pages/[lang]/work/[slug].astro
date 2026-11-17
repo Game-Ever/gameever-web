@@ -282,7 +282,7 @@ const jsonLd = {
             <div class="press-cards">
               {pressLinks.map((p) => (
                 <a class="press-card" href={p.url} target="_blank" rel="noopener">
-                  <span class="pc-top">{p.score && <span class="pc-score wide">{p.score}</span>}<span class="pc-outlet wide">{p.outlet}</span></span>
+                  <span class="pc-top"><span class="pc-outlet wide">{p.outlet}</span>{p.score && <span class="pc-score wide">{p.score}</span>}</span>
                   <span class="pc-title">{p.title}</span>
                   <span class="pc-foot">
                     {p.author && <span class="pc-by">{t('project.by')} <strong>{p.author}</strong></span>}
@@ -352,7 +352,7 @@ const jsonLd = {
 </Base>
 
 <style>
-  @property --fold { syntax: '<length>'; inherits: false; initial-value: 34px; }
+  @property --fold { syntax: '<length>'; inherits: true; initial-value: 30px; }
   .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
   .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   /* Dark only where text sits: a light band under the header and the bottom third under the title. */
@@ -486,12 +486,12 @@ const jsonLd = {
   .press-card::after { content: ''; position: absolute; right: 0; bottom: 0; width: var(--fold); height: var(--fold); background: linear-gradient(to top left, transparent 50%, #c8c3b8 50%); box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.18); transition: background 0.25s; }
   .press-card:hover { --fold: 46px; transform: translateY(-4px); }
   .press-card:hover::after { background: linear-gradient(to top left, transparent 50%, var(--pink) 50%); }
-  /* Score badge over the outlet name; the name scales with the card's width so it always fits on one line. */
+  /* Outlet name on the left (scales with the card's width so it stays on one line), small score badge on the right. */
   .press-card { container-type: inline-size; }
-  .pc-top { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
-  .pc-outlet { font-size: min(28px, 7.6cqi); line-height: 1; text-transform: uppercase; white-space: nowrap; transition: color 0.25s; }
+  .pc-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .pc-outlet { font-size: min(28px, calc((100cqi - 70px) / 10.7)); line-height: 1; text-transform: uppercase; white-space: nowrap; transition: color 0.25s; }
   .press-card:hover .pc-outlet { color: var(--pink); }
-  .pc-score { flex: none; min-width: 80px; text-align: center; background: var(--pink); color: #fff; font-size: 22px; line-height: 1; padding: 10px 0; }
+  .pc-score { flex: none; min-width: 58px; text-align: center; background: var(--pink); color: #fff; font-size: 15px; line-height: 1; padding: 7px 0; }
   .pc-title { font-size: 20px; line-height: 1.35; font-weight: 500; }
   .pc-foot { margin-top: auto; display: grid; gap: 6px; padding-top: 16px; border-top: 1px solid rgba(13, 13, 15, 0.14); }
   .pc-by { color: #4a4844; font-size: 15px; }
