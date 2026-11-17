@@ -11,11 +11,11 @@ genre:
   es: "Miniserie animada"
 cover: "../../assets/projects/the-real-monster-show/monstershow.png"
 summary:
-  en: "2D animated mini-series about monsters in rehab."
-  es: "Miniserie animada en 2D sobre monstruos en rehabilitación."
+  en: "2D animation for an anti-bullying monster license."
+  es: "Animación 2D para una licencia de monstruos antibullying."
 description:
-  en: "Welcome to the Rehabilitation Club, where the living dead and crazy monsters set their instincts aside to fit into society. An overdose of optimism in the scariest world, with monsters who see the glass half full… of blood."
-  es: "Bienvenidos al Club de Rehabilitación, donde muertos vivos y monstruos locos dejan de lado sus instintos para integrarse a la sociedad. Una sobredosis de optimismo en el mundo más terrorífico, con monstruos que ven el vaso medio lleno… de sangre."
+  en: "The Real Monster Show is a character license by Liebre about monsters who break with family tradition: a garlic-loving vampire, a vegetarian zombie, a mummy who wants to be a model, a dashing werewolf. Humor, diversity and zero stereotypes. We brought its characters to life in 2D animation."
+  es: "The Real Monster Show es una licencia de Liebre con monstruos que reniegan de su tradición familiar: un vampiro que ama el ajo, un zombi vegetariano, una momia que quiere ser modelo, un hombre lobo galán. Humor, diversidad y cero estereotipos. Animamos en 2D a sus personajes."
 role:
   en: "2D animation"
   es: "Animación 2D"
