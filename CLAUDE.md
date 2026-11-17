@@ -44,13 +44,23 @@ Both read the same project files. When one design is chosen, delete the other on
 Until the user says the design is final: only the GitHub Pages preview is updated. Do not move the site to gameeverstudio.com (Cloudflare/DNS) and do not connect the form to a delivery service.
 
 ## Brand phrases (use exactly)
-- Tagline — EN: "We dare. We create. We play." · ES: "Desafiamos. Creamos. Jugamos."
+- Tagline — EN: "We dream. We create. We play." · ES: "Soñamos. Creamos. Jugamos." (shown once, in the pink statement band; not repeated in the footer)
 - Closing — EN: "Let's make something awesome." · ES: "Hagamos algo increíble juntos."
+
+## Copy style
+Short, strong phrases. No repeated key words across the home. Professional tone: first person plural or no verb; never tú/vos (no "Contanos", "Escribinos", "¿Buscás…?").
+
+## Home vs. projects page
+- Home shows a selection of 6 projects (`Wall` variant `home`, first 6 in Featured order) and a "Ver todos los proyectos" link.
+- `/[lang]/work/` lists every project with search, filters and sort (`Wall` variant `full`). Links from Qué hacemos and Servicios open it pre-filtered (`?sv=a,b`).
+
+## Version stamp
+The footer shows `Versión X.Y.Z · commit · date` (`src/data/build.ts`). Bump `version` in package.json on each design round.
 
 ## Language
 The user is writing and reviewing the site in Spanish first; English copy is a draft to be translated at the end. Write new copy in Spanish, keep an English draft so builds and the EN pages still work.
 
 ## Contact
-The closing section (`src/components/Contact.astro`) has a contact form plus the direct info@ / jobs@ emails.
+The closing section (`src/components/Contact.astro`) has a short contact form (name, email, message) plus the direct info@ / jobs@ emails and social icons.
 - Delivery: set `PUBLIC_FORM_ENDPOINT` (and `PUBLIC_FORM_KEY` if the service needs one, e.g. Web3Forms) at build time. Without them the form opens the visitor's email app with the message addressed to info@.
 - Spam: hidden honeypot field `botcheck`.

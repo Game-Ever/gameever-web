@@ -3,13 +3,14 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo-game-ever.png';
 import { type Lang, useT, url } from '../i18n';
 
-interface Props { lang: Lang; path: string; variant: 'home' | 'project' }
+// home: full menu over the reel · page: full menu, always solid · project: back link to all projects
+interface Props { lang: Lang; path: string; variant: 'home' | 'page' | 'project' }
 const { lang, path, variant } = Astro.props;
 const t = useT(lang);
 const other: Lang = lang === 'en' ? 'es' : 'en';
 const home = url(lang);
 const links = [
-  { href: `${home}#work`, label: t('nav.work') },
+  { href: url(lang, "work"), label: t("nav.work") },
   { href: `${home}#services`, label: t('nav.services') },
   { href: `${home}#about`, label: t('nav.studio') },
   { href: `${home}#contact`, label: t('nav.contact') },
@@ -18,17 +19,17 @@ const links = [
 <header class="site-header" data-variant={variant}>
   <nav class="wrap" aria-label="Main">
     <a class="logo" href={home}><Image src={logo} alt="Game Ever" height={36} densities={[1, 2]} loading="eager" /></a>
-    {variant === 'home' ? (
+    {variant !== 'project' ? (
       <ul id="site-menu">
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
       </ul>
     ) : (
-      <a class="back" href={`${home}#work`}>{t('project.allWork')}</a>
+      <a class="back" href={url(lang, "work")}>{t("project.allWork")}</a>
     )}
     <a class="lang" href={url(other, path)} hreflang={other} lang={other}>
       <span aria-current="true">{lang.toUpperCase()}</span> / {other.toUpperCase()}
     </a>
-    {variant === 'home' && (
+    {variant !== 'project' && (
       <button class="burger" aria-label={t('nav.menu')} aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span></span></button>
     )}
   </nav>
@@ -66,7 +67,8 @@ const links = [
   const header = document.querySelector<HTMLElement>('.site-header')!;
   const nav = header.querySelector('nav')!;
   const burger = header.querySelector<HTMLButtonElement>('.burger');
-  const onScroll = () => header.classList.toggle('solid', scrollY > innerHeight * 0.6 || nav.classList.contains('open'));
+  const alwaysSolid = header.dataset.variant === 'page';
+  const onScroll = () => header.classList.toggle('solid', alwaysSolid || scrollY > innerHeight * 0.6 || nav.classList.contains('open'));
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
   burger?.addEventListener('click', () => {

@@ -3,8 +3,14 @@ import { Image } from 'astro:assets';
 import { type Lang, type Project, useT, url, clientName } from '../i18n';
 import { SERVICES, PLATFORMS, eraOf } from '../data/taxonomy';
 
-interface Props { lang: Lang; projects: Project[] }
-const { lang, projects } = Astro.props;
+// variant "home": a short selection (first HOME_COUNT in Featured order) with a link to the full list.
+// variant "full": every project with search, filters, sort and shareable URLs (the projects page).
+interface Props { lang: Lang; projects: Project[]; variant?: 'home' | 'full' }
+const { lang, variant = 'full' } = Astro.props;
+const HOME_COUNT = 6;
+const projects = variant === 'home' ? Astro.props.projects.slice(0, HOME_COUNT) : Astro.props.projects;
+const full = variant === 'full';
+const Heading = full ? 'h1' : 'h2';
 const t = useT(lang);
 
 // Only offer filter options that at least one published project uses.
@@ -24,9 +30,10 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   <div class="wrap">
     <span class="mono kicker">{t('work.label')}</span>
     <div class="work-head">
-      <h2 class="wide">{t('work.title')}</h2>
-      <p class="intro">{t('work.intro')}</p>
+      <Heading class="wide">{full ? t('work.allTitle') : t('work.title')}</Heading>
+      {full && <p class="intro">{t('work.intro')}</p>}
     </div>
+    {full && <>
     <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>
 
     <div class="toolbar">
@@ -69,6 +76,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     </div>
 
     <div class="active" data-clear-label={t('work.clear')}></div>
+    </>}
 
     <div class="wall">
       {projects.map((p, i) => (
@@ -89,7 +97,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
         </a>
       ))}
     </div>
-    <p class="empty" hidden>{t('work.empty')} <button class="clear-all">{t('work.emptyClear')}</button></p>
+    {full
+      ? <p class="empty" hidden>{t('work.empty')} <button class="clear-all">{t('work.emptyClear')}</button></p>
+      : <a class="all" href={url(lang, 'work')}>{t('work.all')} <span aria-hidden="true">→</span></a>}
   </div>
 </section>
 
@@ -98,7 +108,8 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .kicker { color: #fff; opacity: 0.85; }
   .work-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; margin: 22px 0 36px; }
   .intro { color: rgba(255, 255, 255, 0.85); font-size: 18px; max-width: 46ch; }
-  .work-head h2 { font-size: clamp(36px, 5vw, 80px); line-height: 0.92; overflow-wrap: break-word; }
+  .work-head > * { min-width: 0; }
+  .work-head :is(h1, h2) { font-size: clamp(28px, 5vw, 80px); line-height: 0.92; overflow-wrap: break-word; }
   .count { display: block; color: rgba(255, 255, 255, 0.75); margin-bottom: 4px; }
 
   .toolbar { display: flex; gap: 8px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 12px 0; background: linear-gradient(var(--bg) 70%, transparent); }
@@ -145,6 +156,8 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     .card:hover h3 { color: var(--pink); }
   }
   .card:focus-visible h3 { color: var(--pink); }
+  .all { display: inline-flex; gap: 12px; align-items: center; font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 15px; border: 2px solid var(--fg); padding: 16px 24px; transition: background 0.2s, color 0.2s; }
+  .all:hover { background: var(--fg); color: var(--bg); }
   .empty { text-align: center; padding: 80px 0; color: var(--mute); }
   .empty button { background: none; border: 0; color: var(--fg); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
@@ -165,8 +178,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
 
 <script>
   type Group = 'sv' | 'pf' | 'era';
+  // Only the full projects page has filters; the home selection is static.
   const root = document.querySelector<HTMLElement>('.work');
-  if (root) {
+  if (root?.querySelector('.toolbar')) {
     const labels: Record<string, string> = JSON.parse(root.dataset.labels!);
     const i18n = JSON.parse(root.dataset.i18n!);
     const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
@@ -267,13 +281,5 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
       else state[b.dataset.g as Group].delete(b.dataset.k!);
       render();
     });
-    // Links elsewhere on the page (Qué hacemos, Servicios) can jump here with a preset filter.
-    document.querySelectorAll<HTMLElement>('[data-jump-service]').forEach((el) => el.addEventListener('click', (e) => {
-      e.preventDefault();
-      clearAll();
-      el.dataset.jumpService!.split(",").forEach((k) => state.sv.add(k)); // one service or a comma list
-      render();
-      root.scrollIntoView();
-    }));
   }
 </script>

@@ -1,7 +1,7 @@
 ---
 // "Qué hacemos": the two worlds (games and animation), each card jumping to the matching projects.
 import { Image } from 'astro:assets';
-import { type Lang, type Project, useT } from '../i18n';
+import { type Lang, type Project, useT, url } from '../i18n';
 
 interface Props { lang: Lang; projects: Project[] }
 const { lang, projects } = Astro.props;
@@ -25,7 +25,7 @@ const cards = [
     </div>
     <div class="cards">
       {cards.map((c) => (
-        <a class="card" href={`?sv=${c.jump}#work`} data-jump-service={c.jump}>
+        <a class="card" href={`${url(lang, "work")}?sv=${c.jump}`}>
           <Image src={c.img} alt="" widths={[600, 900, 1300]} sizes="(max-width: 900px) 100vw, 50vw" />
           <span class="title wide">{c.title}</span>
           <span class="cta mono">{c.cta} →</span>

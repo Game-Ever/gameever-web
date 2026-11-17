@@ -4,7 +4,7 @@ import { type Lang, withBase } from './index';
 export const v2 = {
   en: {
     menu: 'Menu', close: 'Close', cta: 'Start a project',
-    'hero.title': 'We dare. We create. We play.',
+    'hero.title': 'We dream. We create. We play.',
     'hero.sub': 'Game & animation studio',
     'hero.place': 'Buenos Aires, Argentina · since 2010',
     'stats.years': 'Years making games', 'stats.projects': 'Projects in the portfolio', 'stats.clients': 'Brands & studios', 'stats.ips': 'Original IPs', 'stats.platforms': 'Platforms shipped',
@@ -43,7 +43,7 @@ export const v2 = {
     'videos.title': 'See it in motion',
     'videos.reel': 'Demo reel 2024', 'videos.lit': 'LIT Killah The Game · gameplay', 'videos.flexin': 'Flexin’ · LIT Killah x Bizarrap',
     'clients.title': 'Thank you to the brands and studios we play with',
-    'footer.tag': '#WeDareWeCreateWePlay',
+    'footer.tag': '#WeDreamWeCreateWePlay',
     'footer.mail': 'New projects', 'footer.jobs': 'Careers', 'footer.studio': 'Belgrano, Buenos Aires · Mon–Fri 10–18 (GMT-3)',
     'project.back': 'All projects', 'project.trailer': 'Watch trailer', 'project.client': 'Client', 'project.year': 'Year', 'project.platforms': 'Platforms', 'project.genre': 'Genre',
     'project.role': 'Our role', 'project.about': 'About the project', 'project.seasons': 'Seasons & campaigns', 'project.videos': 'Videos', 'project.gallery': 'Gallery',
@@ -52,7 +52,7 @@ export const v2 = {
   },
   es: {
     menu: 'Menú', close: 'Cerrar', cta: 'Empezá un proyecto',
-    'hero.title': 'Desafiamos. Creamos. Jugamos.',
+    'hero.title': 'Soñamos. Creamos. Jugamos.',
     'hero.sub': 'Estudio de videojuegos y animación',
     'hero.place': 'Buenos Aires, Argentina · desde 2010',
     'stats.years': 'Años haciendo juegos', 'stats.projects': 'Proyectos en el portfolio', 'stats.clients': 'Marcas y estudios', 'stats.ips': 'IPs propias', 'stats.platforms': 'Plataformas',
@@ -91,7 +91,7 @@ export const v2 = {
     'videos.title': 'Miralo en movimiento',
     'videos.reel': 'Demo reel 2024', 'videos.lit': 'LIT Killah The Game · gameplay', 'videos.flexin': 'Flexin’ · LIT Killah x Bizarrap',
     'clients.title': 'Gracias a las marcas y estudios con los que jugamos',
-    'footer.tag': '#DesafiamosCreamosJugamos',
+    'footer.tag': '#SoñamosCreamosJugamos',
     'footer.mail': 'Proyectos nuevos', 'footer.jobs': 'Trabajá con nosotros', 'footer.studio': 'Belgrano, Buenos Aires · Lun–Vie 10–18 (GMT-3)',
     'project.back': 'Todos los proyectos', 'project.trailer': 'Ver tráiler', 'project.client': 'Cliente', 'project.year': 'Año', 'project.platforms': 'Plataformas', 'project.genre': 'Género',
     'project.role': 'Nuestro rol', 'project.about': 'Sobre el proyecto', 'project.seasons': 'Temporadas y campañas', 'project.videos': 'Videos', 'project.gallery': 'Galería',

@@ -18,7 +18,7 @@ const t = useT(Astro.props.lang);
   .statement { position: relative; background: var(--pink); color: #fff; padding: 140px 0 120px; overflow: hidden; text-align: center; }
   .statement::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
   .px { position: absolute; background: #fff; width: 32px; height: 32px; }
-  /* Sized so the longest word ("DESAFIAMOS.", ~9.1× the font size wide) fits from 320px phones to wide screens. */
+  /* Sized so the longest line ("WE CREATE." ~8.3×, room for up to ~9× the font size) fits from 320px phones to wide screens. */
   h2 { position: relative; font-size: clamp(30px, 9.6vw, 136px); line-height: 0.88; }
   h2 span { display: block; opacity: 0.28; transition: opacity 0.25s linear; }
   p { position: relative; max-width: 640px; margin: 40px auto 0; font-size: clamp(17px, 1.6vw, 20px); font-weight: 500; }

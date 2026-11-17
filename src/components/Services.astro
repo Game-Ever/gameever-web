@@ -1,9 +1,10 @@
 ---
 // Services as accordions: three blocks, all closed on load; each opens smoothly to show its list.
-import { type Lang, useT } from '../i18n';
+import { type Lang, useT, url } from '../i18n';
 
 interface Props { lang: Lang }
-const t = useT(Astro.props.lang);
+const { lang } = Astro.props;
+const t = useT(lang);
 const groups = t('services.groups');
 ---
 <section class="services" id="services">
@@ -28,7 +29,7 @@ const groups = t('services.groups');
           <div class="panel" id={`svc-panel-${i}`} role="region" aria-labelledby={`svc-btn-${i}`} inert>
             <div class="inner">
               <ul>{g.items.map((item) => <li>{item}</li>)}</ul>
-              <a class="see" href={`?sv=${g.jump}#work`} data-jump-service={g.jump}>{t('services.see')} →</a>
+              <a class="see" href={`${url(lang, "work")}?sv=${g.jump}`}>{t('services.see')} →</a>
             </div>
           </div>
         </div>

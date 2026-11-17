@@ -11,12 +11,12 @@ export const GET: APIRoute = async () => {
   const projects = await getCollection('projects');
   const lines = [
     '/ /en/ 302',
-    '/portfolio/ /en/#work 301',
-    '/about-us/ /en/#clients 301',
+    '/portfolio/ /en/work/ 301',
+    '/about-us/ /en/#about 301',
     '/contact/ /en/#contact 301',
   ];
   for (const p of projects) {
-    const target = p.data.hidden ? '/en/#work' : `/en/work/${p.id}/`;
+    const target = p.data.hidden ? '/en/work/' : `/en/work/${p.id}/`;
     for (const old of p.data.legacySlugs) {
       lines.push(`/portfolio/${old}/ ${target} 301`, `/portfolio/${old} ${target} 301`);
     }
