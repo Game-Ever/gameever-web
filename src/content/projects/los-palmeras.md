@@ -39,7 +39,16 @@ stats:
     label: { en: "min. of animation", es: "min. de animación" }
   - value: "+7 M"
     label: { en: "views on YouTube", es: "vistas en YouTube" }
-credits: "CLIENT EL REINO INFANTIL DIRECTOR PABLO FORCONI PRODUCER WANELÉN FARÍAS CHARACTER DESIGN GABRIEL RODRIGUEZ • LUCÍA GANDINI 3D MODELING & RIG GUSTAVO SCHREYER 3D ANIMATOR DIEGO FORCONI LIGHTING & RENDER LUCIANA FACCINI COMPOSITION & VFX DANIELA BRUNO SOUND DESIGNER GUILLERMO BRUNO"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción" }, names: "Wanelén Farías" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Gabriel Rodríguez · Lucía Gandini" }
+  - { role: { en: "3D modeling & rigging", es: "Modelado 3D y rigging" }, names: "Gustavo Schreyer" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Daniela Bruno" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "los-palmeras"
 ---

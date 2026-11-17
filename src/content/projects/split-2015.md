@@ -21,7 +21,14 @@ description:
 videos:
   - "QNszq-fuJSs"
   - "gfK3LhkY-LE"
-credits: "ADVERTISER: A.V. S. A. Pepsico Paraguay / PRODUCT: Split / AGENCY: Lupe / GENERAL PRODUCTION: Pablo Forconi / DIRECTION: Rodrigo Gonzalez / ILLUSTRATION: Gabriel Rodriguez / BACKGROUNDS: Lucas Bustos / 2D ANIMATION: Diego Forconi / MUSIC & SFX: Guillermo Bruno"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Rodrigo González" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi" }
+  - { role: { en: "Music & sound effects", es: "Música y efectos de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "split-2015"
 ---

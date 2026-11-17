@@ -20,7 +20,14 @@ role:
   en: "2D animation"
   es: "Animación 2D"
 videos: []
-credits: "CREATED BY Liebre Design Boutique / GENERAL PRODUCTION: Avalon Latam / DIRECTION: Avalon Latam / ILLUSTRATION: Gabriel Rodriguez and Lucas Bustos / 2D ANIMATION: Facundo Friquet and Diego Forconi / POST-PRODUCTION: Pablo Forconi / MUSIC & SFX: Avalon Latam"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Avalon Latam" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Avalon Latam" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Facundo Friquet · Diego Forconi" }
+  - { role: { en: "Post-production", es: "Posproducción" }, names: "Pablo Forconi" }
+  - { role: { en: "Music & sound effects", es: "Música y efectos de sonido" }, names: "Avalon Latam" }
 legacySlugs:
   - "the-real-monster-show"
 ---

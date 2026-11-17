@@ -40,7 +40,11 @@ links:
 press:
   - { outlet: "ModDB", title: "Okhlos Omega is out (with thanks to Game Ever for the illustration)", year: "2017", url: "https://www.moddb.com/games/okhlos/news/okhlos-omega-is-out" }
   - { outlet: "Cosmocover", title: "OKHLOS OMEGA: Better, Harder, Greeker", year: "2017", url: "https://www.cosmocover.com/newsroom/okhlos-omega-better-harder-greeker/" }
-credits: "CLIENT DEVOLVER DIGITAL DIRECTOR PABLO FORCONI PRODUCER FRANCO ALBERTI CHARACTER DESIGN AND ART GABRIEL RODRIGUEZ"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción" }, names: "Franco Alberti" }
+  - { role: { en: "Character design & art", es: "Diseño de personajes y arte" }, names: "Gabriel Rodríguez" }
 legacySlugs:
   - "okhlos"
 ---

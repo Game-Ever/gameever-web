@@ -51,7 +51,62 @@ stats:
 entriesTitle:
   en: "The spots"
   es: "Los spots"
-credits: "CLIENT PURO SOL AGENCY PRANA PRODUCER WANELÉN FARÍAS STORYBOARD & ANIMATIC GABRIEL RODRIGUEZ 3D MODELING GUSTAVO SCHREYER • LUCIANA FACCINI 3D ANIMATOR DIEGO FORCONI • PALOMA FIGARO LIGHTING & RENDER LUCIANA FACCINI COMPOSITION DANIELA BRUNO • PABLO FORCONI SOUND DESIGNER GUILLERMO BRUNO\n\nCLIENT PURO SOL AGENCY PRANA PRODUCER WANELÉN FARÍAS 3D MODELING GUSTAVO SCHREYER 3D ANIMATOR DIEGO FORCONI LIGHTING & RENDER LUCIANA FACCINI COMPOSITION PABLO FORCONI SOUND DESIGNER GUILLERMO BRUNO\n\nCLIENT PURO SOL AGENCY PRANA PRODUCER FRANCO ALBERTTI STORYBOARD & ANIMATIC LUCÍA GANDINI ILLUSTRATOR GABRIEL RODRIGUEZ AND LUCÍA GANDINI 3D GENERALIST ROBERTO GERÉZ 3D ANIMATOR DIEGO FORCONI LIGHTING & RENDER LUCIANA FACCINI SOUND DESIGNER GUILLERMO BRUNO\n\nCLIENT: Puro Sol / AGENCY: Prana / GENERAL PRODUCTION: Franco Albertti / STORYBOARD & ANIMATIC: Lucia Gandini / ILLUSTRATION: Gabriel Rodriguez and Lucia Gandini / 3D GENERALIST: Roberto Gerez / 3D ANIMATION: Diego Forconi / LIGHTING & RENDER: Luciana Faccini / SOUND: Guillermo Bruno\n\nCLIENT: Puro Sol / AGENCY: Prana / GENERAL PRODUCTION : Pablo Forconi / STORYBOARD & ANIMATIC: Facundo Friquet / ILLUSTRATION: Gabriel Rodriguez / 3D ANIMATION: Diego Forconi / LIGHTING & RENDER: Martín Diome / ADDITIONAL MODELING: Erica Soric / SOUND EDITING: Guillermo Bruno / VIDEO EDITING: Micaela Lara\n\nCLIENT: Puro Sol / AGENCY: Prana / GENERAL PRODUCTION : Pablo Forconi / DIRECTION: Rodrigo Gonzalez / STORYBOARD & ANIMATIC: Facundo Friquet / ILLUSTRATION: Gabriel Rodriguez / BACKGROUNDS: Lucas Bustos / 3D GENERALIST: Roberto Gerez / 3D ANIMATION: Diego Forconi / LIGHTING & RENDER: Luciana Faccini / SOUND: Guillermo Bruno / VOICEOVER: Hernán Palma\n\nCLIENT: Puro Sol / AGENCY: Prana / GENERAL PRODUCTION : Pablo Forconi / DIRECTION: Rodrigo Gonzalez / STORYBOAD & ANIMATIC: Gabriel Rodriguez / ILLUSTRATION: Lucas Bustos / 3D GENERALIST: Roberto Gerez / 3D ANIMATION: Diego Forconi / LIGHTING & RENDER: Luciana Faccini / SOUND: Guillermo Bruno / JINGLE: Ezequiel Castro"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { group: "2022", role: { en: "Production", es: "Producción" }, names: "Wanelén Farías" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "3D modeling", es: "Modelado 3D" }, names: "Gustavo Schreyer · Luciana Faccini" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi · Paloma Figaro" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Compositing", es: "Composición" }, names: "Daniela Bruno · Pablo Forconi" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
+  - { group: "2021", role: { en: "Production", es: "Producción" }, names: "Wanelén Farías" }
+  - { role: { en: "3D modeling", es: "Modelado 3D" }, names: "Gustavo Schreyer" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Compositing", es: "Composición" }, names: "Pablo Forconi" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
+  - { group: "2020", role: { en: "Production", es: "Producción" }, names: "Franco Albertti" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Lucía Gandini" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucía Gandini" }
+  - { role: { en: "3D generalist", es: "Generalista 3D" }, names: "Roberto Gerez" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
+  - { group: "2019", role: { en: "Production", es: "Producción general" }, names: "Franco Albertti" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Lucía Gandini" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucía Gandini" }
+  - { role: { en: "3D generalist", es: "Generalista 3D" }, names: "Roberto Gerez" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { group: "2018", role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Facundo Friquet" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Martín Diome" }
+  - { role: { en: "Additional modeling", es: "Modelado adicional" }, names: "Erica Soric" }
+  - { role: { en: "Sound editing", es: "Edición de sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Micaela Lara" }
+  - { group: "2017", role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Rodrigo González" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Facundo Friquet" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "3D generalist", es: "Generalista 3D" }, names: "Roberto Gerez" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Voice-over", es: "Locución" }, names: "Hernán Palma" }
+  - { group: "2016", role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Rodrigo González" }
+  - { role: { en: "Storyboard & animatic", es: "Storyboard y animatic" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Lucas Bustos" }
+  - { role: { en: "3D generalist", es: "Generalista 3D" }, names: "Roberto Gerez" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Jingle", es: "Jingle" }, names: "Ezequiel Castro" }
 legacySlugs:
   - "puro-sol-2022"
   - "puro-sol-2021-2"

@@ -33,7 +33,15 @@ entries:
 heroImage: "../../assets/projects/maggie-boo/hero.jpg"
 press:
   - { outlet: "Latinspots", title: "Game Ever Studio produce el piloto de Maggie Boo", year: "2013", url: "https://www.latinspots.com/noticia/game-ever-studio-produce-el-piloto-de-maggie-boo/30881" }
-credits: "CREATED BY Game Ever / GENERAL PRODUCTION: Pablo Forconi / DIRECTION: Guillermo Forlenza / ILLUSTRATION: Gabriel Rodriguez / BACKGROUNDS: Lucas Bustos / ANIMATION: Diego Forconi and Jorge Álvarez / SOUND: Guillermo Bruno / ORIGINAL MUSIC: Damián Cegarra"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Guillermo Forlenza" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi · Jorge Álvarez" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Original music", es: "Música original" }, names: "Damián Cegarra" }
 legacySlugs:
   - "maggie-boo-serie"
   - "maggie-boo-game"

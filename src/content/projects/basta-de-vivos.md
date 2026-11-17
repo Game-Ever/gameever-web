@@ -19,7 +19,15 @@ description:
   en: "Animation for #BastaDeVivos, Chevrolet’s digital campaign by Commonwealth McCann against unfair “street-smart” behavior in city traffic, for the launch of the new Tracker."
   es: "Animación para #BastaDeVivos, la campaña digital de Chevrolet creada por Commonwealth McCann contra la \"viveza criolla\" en el tránsito, para el lanzamiento de la nueva Tracker."
 videos: []
-credits: "ADVERTISER: General Motors / PRODUCT: Chevrolet Tracker / AGENCY: Commonwealth McCann Bs. Como. / PRODUCER: Rebolucion / DIRECTION: Luciano Urbani / MUSICAL BAND: Unociclo / ILLUSTRATION: Leonardo Cirius / BACKGROUNDS: Lucas Bustos / 2D ANIMATION: Diego Forconi and Facundo Friquet / EDITION: Rodrigo Gonzalez"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción" }, names: "Rebolucion" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Luciano Urbani" }
+  - { role: { en: "Band", es: "Banda" }, names: "Unociclo" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Leonardo Cirius" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi · Facundo Friquet" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Rodrigo González" }
 legacySlugs:
   - "basta-de-vivos"
 ---

@@ -28,7 +28,13 @@ heroImage: "../../assets/projects/cargobot/hero.jpg"
 links:
   - label: "cargobot.io"
     url: "https://www.cargobot.io"
-credits: "ADVERTISER: Cargobot / GENERAL PRODUCTION: Pablo Forconi / ILLUSTRATION: Gabriel Rodriguez and Leonardo Cirius / BACKGROUNDS: Leonardo Cirius and Jonatan Warf / ANIMATION: Diego Forconi and Facundo Friquet / ORIGINAL MUSIC & SFX: Guillermo Bruno"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Leonardo Cirius" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Leonardo Cirius · Jonatan Warf" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi · Facundo Friquet" }
+  - { role: { en: "Music & sound effects", es: "Música y efectos de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "cargobot"
 ---

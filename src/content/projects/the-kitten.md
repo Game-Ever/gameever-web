@@ -21,7 +21,21 @@ description:
   es: "Un gato callejero de Buenos Aires termina perdido en el desierto patagónico, donde encuentra el hogar que la ciudad nunca le dio. Cuatro capítulos que también funcionan como cortometraje; ganadora del Concurso Federal de Animación del INCAA."
 videos:
   - "vZE1pev2IWE"
-credits: "CREATED BY Pablo Siciliano and Game Ever / SCRIPT: Pablo Siciliano / EXECUTIVE PRODUCER: Gustavo Alonzo / PRODUCTION MANAGER: Gaston Markotic / GENERAL PRODUCTION: Pablo Forconi / DIRECTION: Pablo Siciliano / CO-DIRECTION: Guillermo Forlenza / ART DIRECTION: Gabriel Rodriguez / ANIMATION DIRECTOR: Diego Forconi / BACKGROUNDS: Lucas Bustos / CHARACTER DESIGN: Nadia Rodil / COMPO & VFX: Pablo Forconi / SOUND & MIX: Guillermo Bruno and Felipe de Francisco / ORIGINAL MUSIC: Daniel Soruco"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Script", es: "Guion" }, names: "Pablo Siciliano" }
+  - { role: { en: "Executive production", es: "Producción ejecutiva" }, names: "Gustavo Alonzo" }
+  - { role: { en: "Production management", es: "Jefatura de producción" }, names: "Gastón Markotic" }
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Siciliano" }
+  - { role: { en: "Co-direction", es: "Codirección" }, names: "Guillermo Forlenza" }
+  - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Animation direction", es: "Dirección de animación" }, names: "Diego Forconi" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Nadia Rodil" }
+  - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Pablo Forconi" }
+  - { role: { en: "Sound & mix", es: "Sonido y mezcla" }, names: "Guillermo Bruno · Felipe de Francisco" }
+  - { role: { en: "Original music", es: "Música original" }, names: "Daniel Soruco" }
 legacySlugs:
   - "the-kitten"
 ---

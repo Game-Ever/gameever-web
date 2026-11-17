@@ -41,7 +41,21 @@ stats:
 entriesTitle:
   en: "The spots"
   es: "Los spots"
-credits: "CLIENT: Enka de Colombia S.A. / AGENCY: Tokio / EXECUTIVE PRODUCER: Juan Piedrahita / PRODUCTION: Pablo Forconi / ILLUSTRATOR: Gabriel Rodriguez, Lucia Gandini, Irina Lescano and Florencia Barranuz / ANIMATION: Facundo Friquet and Diego Forconi / COMPOSITION: Daniela Bruno / SOUND: Guillermo Bruno\n\nCLIENT: Enka de Colombia S.A. / AGENCY: Tokio / EXECUTIVE PRODUCER: Juan Piedrahita / CHARACTER DESIGN: Pepper Melon and Gabriel Rodriguez / ANIMATION: Facundo Friquet and Diego Forconi / BACKGROUNDS: Leonardo Cirius and Lucas Bustos / COMPOSITION: Pablo Forconi / SOUND: Guillermo Bruno / JINGLE “MUNDIAL»: Play music\n\nCLIENT: Enka de Colombia S.A. / AGENCY: Pepper Melon / EXECUTIVE PRODUCER: Fernando Sarmiento / CHARACTER DESIGN: Pepper Melon / ANIMATION AND ADDITIONAL ART: Game Ever"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { group: "2019", role: { en: "Production", es: "Producción" }, names: "Pablo Forconi" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucía Gandini · Irina Lescano · Florencia Barranuz" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Facundo Friquet · Diego Forconi" }
+  - { role: { en: "Compositing", es: "Composición" }, names: "Daniela Bruno" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { group: "2017–2018", role: { en: "Character design", es: "Diseño de personajes" }, names: "Pepper Melon · Gabriel Rodríguez" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Facundo Friquet · Diego Forconi" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Leonardo Cirius · Lucas Bustos" }
+  - { role: { en: "Compositing", es: "Composición" }, names: "Pablo Forconi" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "World Cup jingle", es: "Jingle «Mundial»" }, names: "Play Music" }
+  - { group: "2014–2015", role: { en: "Character design", es: "Diseño de personajes" }, names: "Pepper Melon" }
+  - { role: { en: "Animation & additional art", es: "Animación y arte adicional" }, names: "Game Ever" }
 legacySlugs:
   - "unete-a-mi-eko-3-monstruo"
   - "unete-a-mi-eko-2017"

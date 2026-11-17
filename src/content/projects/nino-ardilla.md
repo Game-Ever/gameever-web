@@ -18,7 +18,12 @@ description:
   es: "Niño Ardilla tiene tres días para llenar su alacena antes del invierno, corriendo por un bosque lleno de trampas."
 videos:
   - "csH4A97Y6JA"
-credits: "CLIENT: Game Ever / GENERAL PRODUCTION: Pablo Forconi / ILLUSTRATION: Gabriel Rodriguez / ANIMATION: Diego Forconi / SOUND: Guillermo Bruno"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "nino-ardilla"
 ---

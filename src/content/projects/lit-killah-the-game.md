@@ -49,7 +49,27 @@ stats:
 press:
   - { outlet: "Infobae", title: "LIT killah lanzó un juego musical para celulares", year: "2020", url: "https://www.infobae.com/gaming/2020/04/10/lit-killah-lanzo-un-juego-musical-para-celulares/" }
   - { outlet: "Cultura Geek", title: "LIT killah The Game: el trapero protagoniza su videojuego de ritmo y ya es récord de descargas", year: "2020", url: "https://culturageek.com.ar/lit-killah-the-game-el-trapero-protagoniza-su-videojuego-de-ritmo-y-ya-es-record-de-descargas/" }
-credits: "CO-PRODUCED BY GAME EVER & WARNER MUSIC ARGENTINA CREATIVE PRODUCERS PABLO FORCONI • JULIETA LANZO GAME DESIGNER JOAQUIN IBARLUCIA LEVEL DESIGNER FRANCO ALBERTTI LEAD PROGRAMMER JOAQUIN IBARLUCIA PROGRAMMERS PABLO ALTAMIRANDA • PACO ALVAREZ LOJO ADDITIONAL PROGRAMMING LUCIANO PEREZ BADON 3D TECHNICAL DIRECTOR ROBERTO GEREZ CHARACTER MODELER GABRIEL GALVAO MODELERS GUSTAVO SCHREYER • MARTIN GIRGENTI 3D ANIMATION DIRECTOR DIEGO FORCONI 3D ANIMATORS MICAELA LARA • CRISTIAN GARCIA AMEIJENDA • NATALIA BRONDO • NAYLA SAENZ LOPEZ • TOMÁS GOTTILEB 2D ANIMATOR FACUNDO FRIQUET 2D CHARACTER DESIGNER LUCIA GANDINI ADDITIONAL ART IRINA LESCANO • GABRIEL RODRIGUEZ UI/UX ARTIST JULIAN TUNNI SOUND DESIGNER GUILLERMO BRUNO VIDEO EDITOR DANIELA BRUNO COPYWRITER AGUSTINA BAÑOS"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Co-production", es: "Coproducción" }, names: "Game Ever · Warner Music Argentina" }
+  - { role: { en: "Creative production", es: "Producción creativa" }, names: "Pablo Forconi · Julieta Lanzo" }
+  - { role: { en: "Game design", es: "Diseño de juego" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Level design", es: "Diseño de niveles" }, names: "Franco Albertti" }
+  - { role: { en: "Lead programming", es: "Programación principal" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Programming", es: "Programación" }, names: "Pablo Altamiranda · Paco Álvarez Lojo" }
+  - { role: { en: "Additional programming", es: "Programación adicional" }, names: "Luciano Pérez Badon" }
+  - { role: { en: "3D technical direction", es: "Dirección técnica 3D" }, names: "Roberto Gerez" }
+  - { role: { en: "Character modeling", es: "Modelado de personajes" }, names: "Gabriel Galvao" }
+  - { role: { en: "Modeling", es: "Modelado" }, names: "Gustavo Schreyer · Martín Girgenti" }
+  - { role: { en: "3D animation direction", es: "Dirección de animación 3D" }, names: "Diego Forconi" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Micaela Lara · Cristian García Ameijenda · Natalia Brondo · Nayla Sáenz López · Tomás Gottileb" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Facundo Friquet" }
+  - { role: { en: "2D character design", es: "Diseño de personajes 2D" }, names: "Lucía Gandini" }
+  - { role: { en: "Additional art", es: "Arte adicional" }, names: "Irina Lescano · Gabriel Rodríguez" }
+  - { role: { en: "UI/UX", es: "UI/UX" }, names: "Julián Tunni" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Daniela Bruno" }
+  - { role: { en: "Copywriting", es: "Redacción" }, names: "Agustina Baños" }
 legacySlugs:
   - "lit-killah-the-game"
 ---

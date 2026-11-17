@@ -24,7 +24,14 @@ role:
 videos:
   - "z6wZsB5_uMA"
 heroImage: "../../assets/projects/capitan-coco/hero.jpg"
-credits: "CLIENT: Game Ever / GENERAL PRODUCTION: Pablo Forconi / SCRIPT: Sebastián Ortiz / ILLUSTRATION: Gabriel Rodriguez / ANIMATION: Diego Forconi / SCENARIOS: Lucas Bustos / SOUND: Guillermo Bruno"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Script", es: "Guion" }, names: "Sebastián Ortiz" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "capitan-coco"
 ---

@@ -20,7 +20,13 @@ description:
   es: "Spot de 30 segundos para Wt. Morgan, un local de comidas rápidas y juegos para cumpleaños."
 videos:
   - "pOcLYmjP9Lc"
-credits: "CLIENT: Wt. Morgan / AGENCY: Pepper Melon / DIRECTION: Pepper Melon / GENERAL PRODUCTION: Pablo Forconi / BACKGROUND COLOR: Lucas Bustos / 2D ANIMATION: Facundo Friquet, Sofía Gomez Lorenzon and Mariano Russo / CHARACTER DESIGN: Gastón Pacheco"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pepper Melon" }
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Background color", es: "Color de fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Facundo Friquet · Sofía Gómez Lorenzon · Mariano Russo" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Gastón Pacheco" }
 legacySlugs:
   - "wt-morgan"
 ---

@@ -59,7 +59,24 @@ press:
   - { outlet: "Pocket Gamer", title: "Juanito Arcade Mayhem review (4/5)", year: "2018", url: "https://www.pocketgamer.com/juanito-arcade-mayhem/review/" }
   - { outlet: "GameGrin", title: "So I Tried... Arcade Mayhem Juanito", year: "2020", url: "https://gamegrin.com/articles/so-i-tried-arcade-mayhem-juanito" }
   - { outlet: "La Nación", title: "Los fichines salen a la calle en Palermo y muestran sus novedades nacionales", year: "2023", url: "https://www.lanacion.com.ar/tecnologia/los-fichines-salen-a-la-calle-en-palermo-y-muestran-sus-novedades-nacionales-nid06032023/" }
-credits: "CREATED & DEVELOPED BY GAME EVER DIRECTORS PABLO FORCONI & JOAQUIN IBARLUCIA PRODUCER PABLO FORCONI LEAD GAME DESIGNER JOAQUIN IBARLUCIA ART DIRECTOR DIEGO FORCONI LEAD PROGRAMMER JOAQUIN IBARLUCIA LEAD ANIMATORS FACUNDO FRIQUET • DIEGO FORCONI CHARACTER DESIGN & CONCEPT ARTIST GABRIEL RODRIGUEZ LEAD BACKGROUNDS ARTIST LUCAS BUSTOS LEAD TECH ARTIST LEONARDO CIRIUS ADDITIONAL PROGRAMMING SUPPORT LEONARDO FERNANDEZ ESTEBERENA JUANITO ARCADE MAYHEM LOGO BY SCUZZO VIDEO EDITOR MICAELA LARA VOICES FELIPE DE FRANCISCO SOUND FX GUILLERMO BRUNO • TONI LEYS • MAURO ARAMBURU ORIGINAL MUSIC SOUNDTRACK MARIANO GUERINO PRESS & MARKETING JUAN LOMANTO • ALEJANDRO PRO PUBLISHED BY GAME EVER"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi · Joaquín Ibarlucía" }
+  - { role: { en: "Production", es: "Producción" }, names: "Pablo Forconi" }
+  - { role: { en: "Game design", es: "Diseño de juego" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Diego Forconi" }
+  - { role: { en: "Lead programming", es: "Programación principal" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Lead animation", es: "Animación principal" }, names: "Facundo Friquet · Diego Forconi" }
+  - { role: { en: "Character design & concept art", es: "Diseño de personajes y arte conceptual" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "Tech art", es: "Arte técnico" }, names: "Leonardo Cirius" }
+  - { role: { en: "Additional programming", es: "Programación adicional" }, names: "Leonardo Fernández Esteberena" }
+  - { role: { en: "Logo", es: "Logo" }, names: "Scuzzo" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Micaela Lara" }
+  - { role: { en: "Voices", es: "Voces" }, names: "Felipe de Francisco" }
+  - { role: { en: "Sound effects", es: "Efectos de sonido" }, names: "Guillermo Bruno · Toni Leys · Mauro Aramburu" }
+  - { role: { en: "Original soundtrack", es: "Banda sonora original" }, names: "Mariano Guerino" }
+  - { role: { en: "Press & marketing", es: "Prensa y marketing" }, names: "Juan Lomanto · Alejandro Pro" }
 legacySlugs:
   - "juanito-arcade-mayhem"
 ---

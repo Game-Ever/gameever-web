@@ -195,25 +195,20 @@ const jsonLd = {
         </section>
       )}
 
-      {d.creditList.length > 0 ? (
-        <section class="block credit-list" id="credits">
-          <div class="credits-head">
-            <h2 class="wide">{t('project.credits')}</h2>
-            {d.creditsPending && <span class="mono pending-tag">{t('project.creditsPending')}</span>}
-          </div>
-          {creditBlocks.map((b, i) => b.title ? (
-            <details class="credit-block" open={i === creditBlocks.length - 1}>
-              <summary class="wide">{b.title}</summary>
+      {/* Credits: collapsed under one title; with several groups (e.g. one per campaign) each group is its own panel inside. */}
+      {d.creditList.length > 0 && (
+        <details class="credits credit-list" id="credits">
+          <summary><span class="wide">{t('project.credits')}</span>{d.creditsPending && <span class="mono pending-tag">{t('project.creditsPending')}</span>}</summary>
+          <div class="credits-body">
+            {creditBlocks.map((b, i) => b.title ? (
+              <details class="credit-block" open={i === 0}>
+                <summary class="wide">{b.title}</summary>
+                <dl>{b.rows.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}</dl>
+              </details>
+            ) : (
               <dl>{b.rows.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}</dl>
-            </details>
-          ) : (
-            <dl>{b.rows.map((c) => <><dt>{tr(c.role, lang)}</dt><dd>{c.names}</dd></>)}</dl>
-          ))}
-        </section>
-      ) : d.credits && (
-        <details class="credits">
-          <summary class="wide">{t('project.credits')}</summary>
-          {d.credits.split('\n\n').map((c) => <p class="mono">{c}</p>)}
+            ))}
+          </div>
         </details>
       )}
     </div>
@@ -336,10 +331,12 @@ const jsonLd = {
   .gallery figure:hover img { transform: scale(1.04); }
 
   .credits { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .credits summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 28px 0; font-size: clamp(26px, 3vw, 40px); }
-  .credits summary::-webkit-details-marker { display: none; }
-  .credits summary::after { content: '+'; font-family: var(--mono); font-size: 28px; color: var(--pink); }
-  .credits[open] summary::after { content: '–'; }
+  .credits > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 28px 0; font-size: clamp(26px, 3vw, 40px); }
+  .credits > summary::-webkit-details-marker { display: none; }
+  .credits > summary::after { content: '+'; margin-left: auto; font-family: var(--mono); font-size: 28px; color: var(--pink); }
+  .credits[open] > summary::after { content: '–'; }
+  .credits-body { padding-bottom: 32px; }
+  .credits-body > dl { border-top: 1px solid var(--line); }
   .credits p { color: var(--fg2); line-height: 2; padding-bottom: 28px; text-transform: none; }
 
   .next { display: block; margin-top: 110px; border-top: 1px solid var(--line); }

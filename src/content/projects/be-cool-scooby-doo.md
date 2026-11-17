@@ -29,7 +29,15 @@ entries:
     year: "2019"
     videos: ["e1XYhSRGZjQ"]
 heroImage: "../../assets/projects/be-cool-scooby-doo/hero.png"
-credits: "CREATED BY GAME EVER DIRECTOR PABLO FORCONI PRODUCER JULIÁN CASTRO ART DIRECTOR GABRIEL RODRIGUEZ LEAD PROGRAMMER AGUSTÍN PEREZ FERNANDEZ (TEMBAC) LEAD ANIMATOR DIEGO FORCONI LEAD TECH ARTIST LEONARDO CIRIUS SOUND DESIGNER GUILLERMO BRUNO"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción" }, names: "Julián Castro" }
+  - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Lead programming", es: "Programación principal" }, names: "Agustín Pérez Fernández (Tembac)" }
+  - { role: { en: "Lead animation", es: "Animación principal" }, names: "Diego Forconi" }
+  - { role: { en: "Tech art", es: "Arte técnico" }, names: "Leonardo Cirius" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "bee-cool-scooby-doo-sandwich-tower"
   - "be-cool-scooby-doo-the-mysterious-mansion"

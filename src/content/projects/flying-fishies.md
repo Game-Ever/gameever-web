@@ -24,7 +24,12 @@ role:
   es: "Animación 2D, tráiler"
 videos:
   - "fcHGyp75yMk"
-credits: "CLIENT ROOKBIRD GAMES PRODUCER FRANCO ALBERTTI VIDEO EDITOR LUCIO PRECIADO DESIGN AND ART MICAELA KARAMAN 2D ANIMATOR PABLO FORCONI"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción" }, names: "Franco Albertti" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Lucio Preciado" }
+  - { role: { en: "Design & art", es: "Diseño y arte" }, names: "Micaela Karaman" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Pablo Forconi" }
 legacySlugs:
   - "flying-fishies"
 ---

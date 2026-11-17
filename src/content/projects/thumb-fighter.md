@@ -30,7 +30,14 @@ links:
     url: "https://poki.com/en/g/thumb-fighter"
   - label: "Steam"
     url: "https://store.steampowered.com/app/1522620/"
-credits: "VIDEOGAME CREATOR: AVIX / PRODUCT: Thumb Fighter / GENERAL PRODUCTION: Pablo Forconi / ILLUSTRATION: Gabriel Rodriguez and Diego Forconi / BACKGROUNDS: Leonardo Cirius / ANIMATION: Facundo Friquet / MUSIC& SFX: Guillermo Bruno / EDITION: Micaela Lara"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Diego Forconi" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Leonardo Cirius" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Facundo Friquet" }
+  - { role: { en: "Music & sound effects", es: "Música y efectos de sonido" }, names: "Guillermo Bruno" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Micaela Lara" }
 legacySlugs:
   - "view-all-link"
 ---

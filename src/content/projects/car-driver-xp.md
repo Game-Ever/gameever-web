@@ -27,7 +27,13 @@ heroImage: "../../assets/projects/car-driver-xp/hero.jpg"
 press:
   - { outlet: "16 Válvulas", title: "CarDriverXP: el videojuego online de Michelin que busca concientizar sobre seguridad vial", year: "2020", url: "https://www.16valvulas.com.ar/?p=188901" }
   - { outlet: "Revista Aire Libre", title: "CarDriverXP: la nueva campaña de seguridad vial de Michelin", year: "2020", url: "https://revista-airelibre.com/2020/10/20/cardriverxp" }
-credits: "DEVELOPMENT: Game Ever & 3OGS / GENERAL PRODUCTION: Franco Albertti / ILLUSTRATION: Leonardo Cirius and Lucia Gandini / ANIMATION: Diego Forconi / SOUND: Guillermo Bruno"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Development", es: "Desarrollo" }, names: "Game Ever · 3OGS" }
+  - { role: { en: "Production", es: "Producción general" }, names: "Franco Albertti" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Leonardo Cirius · Lucía Gandini" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "car-driver-xp"
 ---

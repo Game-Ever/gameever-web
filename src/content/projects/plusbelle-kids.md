@@ -24,7 +24,12 @@ videos:
   - "WfJLd5F_rQ4"
   - "xcSFxJXSz-o"
 heroImage: "../../assets/projects/plusbelle-kids/hero.jpg"
-credits: "PRODUCT: Plusbelle Kids / AGENCY: Smilehood / GENERAL PRODUCTION: Pablo Forconi / ILLUSTRATION: Gabriel Rodriguez / BACKGROUNDS: Leonardo Cirius / ANIMATION: Diego Forconi and Facundo Friquet"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Leonardo Cirius" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Diego Forconi · Facundo Friquet" }
 legacySlugs:
   - "plusbelle-kids"
 ---

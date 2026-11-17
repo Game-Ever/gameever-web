@@ -33,7 +33,16 @@ facts:
     value: { en: "7th Buenos Aires International Motor Show, 2015", es: "7º Salón Internacional del Automóvil de Buenos Aires, 2015" }
   - label: { en: "Languages", es: "Idiomas" }
     value: { en: "Spanish · English", es: "Español · Inglés" }
-credits: "CLIENT: Fiat / DIRECTOR: Pablo Forconi / PRODUCERS: Rodrigo Díaz and Mariano Kogan / DEVEOPMENT AND PROGRAMMING: Joaquín Ibarlucía / ILLUSTRATION: Lucas Bustos / 2D ANIMATION: Facundo Friquet and Diego Forconi / MUSIC & SFX: Lucía Velarde Mulligan / ADDITIONAL PROGRAMMING: Leonardo Fernández Esteberena / BACKSTAGE REALIZATION: Rodrigo Gonzalez"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción" }, names: "Rodrigo Díaz · Mariano Kogan" }
+  - { role: { en: "Development & programming", es: "Desarrollo y programación" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Facundo Friquet · Diego Forconi" }
+  - { role: { en: "Music & sound effects", es: "Música y efectos de sonido" }, names: "Lucía Velarde Mulligan" }
+  - { role: { en: "Additional programming", es: "Programación adicional" }, names: "Leonardo Fernández Esteberena" }
+  - { role: { en: "Backstage video", es: "Video de backstage" }, names: "Rodrigo González" }
 legacySlugs:
   - "fiat-race"
 ---

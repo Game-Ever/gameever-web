@@ -43,7 +43,13 @@ press:
   - { outlet: "Gobierno de Mendoza", title: "El festival Mendoza Proyecta tendrá su gala inaugural en noviembre", year: "2014", url: "https://www.mendoza.gov.ar/prensa/el-festival-mendoza-proyecta-tendra-su-gala-inaugural-en-noviembre/" }
   - { outlet: "Filming in Argentina", title: "Winners of the 28th Mar del Plata Film Festival announced!", year: "2013", url: "https://filminginargentina.wordpress.com/2013/11/24/mar_del_plata_winners/" }
   - { outlet: "SIGNIS Argentina", title: "Festival de Mar del Plata: los ganadores", year: "2013", url: "https://www.signisargentina.ar/festival-internacional-de-cine-de-mar-del-plata/los-ganadores.htm" }
-credits: "CREATED BY Game Ever / GENERAL PRODUCTION: Pablo Forconi / DIRECTION AND DEVELOPMENT: Joaquín Ibarlucía / ILLUSTRATION: Gabriel Rodriguez and Lucas Bustos / 2D ANIMATION: Diego Forconi / SOUND: Guillermo Bruno and Felipe de Francisco PLAY"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction & development", es: "Dirección y desarrollo" }, names: "Joaquín Ibarlucía" }
+  - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucas Bustos" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi" }
+  - { role: { en: "Sound", es: "Sonido" }, names: "Guillermo Bruno · Felipe de Francisco" }
 legacySlugs:
   - "el-gatito"
 ---

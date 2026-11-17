@@ -24,7 +24,17 @@ videos:
   - "jstcfh2823Y"
   - "k1XacxxOAKw"
 heroImage: "../../assets/projects/loto-plus/hero.jpg"
-credits: "CREATED BY GAME EVER CLIENT LOTO PLUS • LOTERÍA DE LA CIUDAD DIRECTOR PABLO FORCONI PRODUCER WANELÉN FARÍAS CHARACTER DESIGN GABRIEL RODRIGUEZ STORYBOARD AYELÉN GARCÍA 3D MODELING & RIG GUSTAVO SCHREYER 3D ANIMATOR DIEGO FORCONI • PALOMA FIGARO LIGHTING & RENDER LUCIANA FACCINI COMPOSITION & VFX DANIELA BRUNO SOUND DESIGNER GUILLERMO BRUNO"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Production", es: "Producción" }, names: "Wanelén Farías" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Storyboard", es: "Storyboard" }, names: "Ayelén García" }
+  - { role: { en: "3D modeling & rigging", es: "Modelado 3D y rigging" }, names: "Gustavo Schreyer" }
+  - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi · Paloma Figaro" }
+  - { role: { en: "Lighting & render", es: "Iluminación y render" }, names: "Luciana Faccini" }
+  - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Daniela Bruno" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
 legacySlugs:
   - "loto-plus"
 ---

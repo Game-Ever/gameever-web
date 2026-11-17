@@ -31,7 +31,12 @@ facts:
     value: { en: "15- and 30-second spots", es: "Spots de 15 y 30 segundos" }
 press:
   - { outlet: "iSpot.tv", title: "Tic Tac Gum TV Spot, ‘Pinball’", year: "2018", url: "https://www.ispot.tv/ad/wx0x/tic-tac-pinball" }
-credits: "CLIENT: Tic Tac Gum Germany / AGENCY: Gizmo / DIRECTOR: Emmanuel Verruno / PRODUCERS: Eva Amuchastegui, Agustina Rossito and Ro Kancepolski / CG DESIGN AND PRODUCTION: BUDA / 2D ANIMATION: Diego Forconi and Facundo Friquet"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "Emmanuel Verruno" }
+  - { role: { en: "Production", es: "Producción" }, names: "Eva Amuchastegui · Agustina Rossito · Ro Kancepolski" }
+  - { role: { en: "CG design & production", es: "Diseño y producción CG" }, names: "BUDA" }
+  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi · Facundo Friquet" }
 legacySlugs:
   - "pinball-tic-tac-gum"
 ---

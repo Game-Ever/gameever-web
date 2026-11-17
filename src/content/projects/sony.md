@@ -20,7 +20,18 @@ description:
   es: "Dos mundos chocan para ayudar a construir un futuro para las próximas generaciones."
 videos:
   - "J-tfCZ1B0zc"
-credits: "CLIENT: Sony / AGENCY: TheFactory / DIRECTOR: The Factory / EXECUTIVE PRODUCER: Ignacio Godoy / ACCOUNT EXECUTIVE: Fernando Sarmiento / ANIMATION DIRECTOR: Martin Dasnoy / STORYBOARDS: The Factory, Mariano Russo and Flavio Greco / ART DIRECTOR: The Factory / ENVIRONMENTS: Hernan Torras, Flavio Greco and Martin Dasnoy / EDITOR: Max D’angelo and Mariano Russo / CHARACTER DESIGN: Rolito / ANIMATIONS: Martin Dasnoy, Mariano Russo, Leo Campaso, Dante Zabala and Diego Forconi / / COMPOSERS: Ignacio Godoy, Matias Plonsky, Mariano Russo and Martin Dasnoy / SOUND DESIGN: The Factory"
+# Credits converted from the old site's text (client and agency left out).
+creditList:
+  - { role: { en: "Direction", es: "Dirección" }, names: "The Factory" }
+  - { role: { en: "Animation direction", es: "Dirección de animación" }, names: "Martín Dasnoy" }
+  - { role: { en: "Storyboard", es: "Storyboard" }, names: "The Factory · Mariano Russo · Flavio Greco" }
+  - { role: { en: "Art direction", es: "Dirección de arte" }, names: "The Factory" }
+  - { role: { en: "Environments", es: "Escenarios" }, names: "Hernán Torras · Flavio Greco · Martín Dasnoy" }
+  - { role: { en: "Editing", es: "Edición" }, names: "Max D’angelo · Mariano Russo" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Rolito" }
+  - { role: { en: "Animation", es: "Animación" }, names: "Martín Dasnoy · Mariano Russo · Leo Campaso · Dante Zabala · Diego Forconi" }
+  - { role: { en: "Music", es: "Música" }, names: "Ignacio Godoy · Matías Plonsky · Mariano Russo · Martín Dasnoy" }
+  - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "The Factory" }
 legacySlugs:
   - "sony"
 ---
