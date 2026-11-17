@@ -13,7 +13,7 @@ genre:
   en: "Casual puzzle"
   es: "Puzzle casual"
 featured: 9
-# Cover and hero from the game's screenshots on rookbird.com (the trailer frames all carry text).
+# Cover and hero from the game's screenshots on rookbird.com (the trailer frames all carry text). The cover is square, framed on the three fish as the user chose; 4:3 cards crop only sky and roof.
 cover: "../../assets/projects/flying-fishies/cover.jpg"
 heroImage: "../../assets/projects/flying-fishies/hero.jpg"
 summary:
