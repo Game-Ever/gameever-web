@@ -74,9 +74,6 @@ entries:
   - { title: "¡Se ensució el auto de Lola!", year: "2026", views: 396490, videos: ["7Tu-CZqWhYE"] }
   - { title: "Reparemos el Auto Bochinchero", year: "2026", views: 378541, videos: ["gIj0z6zFAFA"] }
   - { title: "Lavadero de autos con Pepe y Lola", year: "2025", views: 364455, videos: ["QJBWQrblwlI"] }
-links:
-  - label: "YouTube playlist"
-    url: "https://www.youtube.com/playlist?list=PLLNMoSAtyXQkMAFWGaKw8zZRrzvOltjFA"
 # Studio rows are PLACEHOLDERS until the studio sends the real team. No client-side people listed.
 creditsPending: true
 creditList:

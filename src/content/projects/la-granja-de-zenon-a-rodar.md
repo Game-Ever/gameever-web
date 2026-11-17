@@ -73,9 +73,6 @@ process:
     text: { en: "From the farm road to the jungle, the beach and the rainbow road.", es: "Del camino de la granja a la selva, la playa y el camino arcoíris." }
   - title: { en: "From animatic to render", es: "Del animatic al render" }
     text: { en: "How a song goes from storyboard to final frame.", es: "Cómo pasa una canción del storyboard al cuadro final." }
-links:
-  - label: "YouTube playlist"
-    url: "https://www.youtube.com/playlist?list=PLEtkfEkgMZbgx3AWyN0mNz8o7t-31i1ds"
 # Studio rows are PLACEHOLDERS until the studio sends the real team. No client-side people listed (decided Nov 2026).
 creditsPending: true
 creditList:

@@ -24,7 +24,8 @@ const t = useT(lang);
 const platforms = d.platforms.map((p) => PLATFORMS[p][lang]);
 const services = d.services.map((s) => SERVICES[s][lang]);
 const allVideos = d.videos.length ? d.videos : d.entries.flatMap((e) => e.videos);
-const trailer = allVideos[0];
+// No "Ver tráiler" when the page lists its videos: they are a scroll away.
+const trailer = d.entries.length ? undefined : allVideos[0];
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
 // "94 M" / "7,3 M" / "891 k" (es) and "94M" / "7.3M" / "891K" (en).
