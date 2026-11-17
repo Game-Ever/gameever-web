@@ -19,7 +19,7 @@ const groups = t('services.groups');
 
     <div class="acc">
       {groups.map((g, i) => (
-        <div class="item">
+        <div class:list={['item', `area-${g.area}`]}>
           <h3>
             <button class="trigger" id={`svc-btn-${i}`} aria-expanded="false" aria-controls={`svc-panel-${i}`}>
               <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
@@ -54,7 +54,7 @@ const groups = t('services.groups');
   .num { color: var(--mute); }
   .name { font-size: var(--subtitle-size); line-height: 1; overflow-wrap: break-word; transition: color 0.25s, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .count { color: var(--mute); }
-  .trigger:hover .name, .item.open .name { color: var(--pink); }
+  .trigger:hover .name, .item.open .name { color: var(--area); }
   .trigger:hover .name { transform: translateX(8px); }
 
   /* Plus that turns into a minus: the vertical bar rotates flat when the block is open. */
@@ -62,7 +62,7 @@ const groups = t('services.groups');
   .icon::before, .icon::after { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 2px; background: var(--fg); transform: translate(-50%, -50%); transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .icon::after { transform: translate(-50%, -50%) rotate(90deg); }
   .trigger:hover .icon { border-color: var(--fg); }
-  .item.open .icon { background: var(--pink); border-color: var(--pink); }
+  .item.open .icon { background: var(--area); border-color: var(--area); }
   .item.open .icon::after { transform: translate(-50%, -50%) rotate(0deg); }
 
   /* Smooth height animation without measuring: grid row goes from 0fr to 1fr. */
@@ -72,9 +72,9 @@ const groups = t('services.groups');
   ul { list-style: none; padding: 0 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 32px; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s, transform 0.4s; }
   .item.open ul { opacity: 1; transform: none; transition-delay: 0.1s; }
   li { display: flex; gap: 12px; align-items: baseline; font-size: var(--body-size); color: var(--fg2); }
-  li::before { content: ''; flex: 0 0 auto; width: 8px; height: 8px; background: var(--pink); transform: translateY(-2px); }
-  .see { display: inline-block; margin: 24px 0 36px; font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid var(--pink); padding-bottom: 3px; }
-  .see:hover { color: var(--pink); }
+  li::before { content: ''; flex: 0 0 auto; width: 8px; height: 8px; background: var(--area); transform: translateY(-2px); }
+  .see { display: inline-block; margin: 24px 0 36px; font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid var(--area); padding-bottom: 3px; }
+  .see:hover { color: var(--area); }
 
   @media (max-width: 900px) {
     .services { padding: 56px 0 96px; }

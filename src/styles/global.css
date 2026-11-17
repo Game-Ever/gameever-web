@@ -10,6 +10,7 @@
   --pink: #ff1f6b;
   --pink-d: #c8104f;
   --cyan: #14c8dc;
+  --violet: #9b5cff;
   --paper: #f2f0eb;
   --paper-mute: #77746e;
   --sans: 'Archivo', system-ui, sans-serif;
@@ -53,6 +54,10 @@ button { font: inherit; color: inherit; }
 .aside .lines span { display: block; }
 /* On pink backgrounds the bar switches to white so it stays visible. */
 .aside.on-pink { border-left-color: #fff; }
+/* One color per area (Qué hacemos, Servicios): cyan is always video games, pink animation, violet co-production. */
+.area-games { --area: var(--cyan); }
+.area-animation { --area: var(--pink); }
+.area-coproduction { --area: var(--violet); }
 .aside.on-pink p { color: rgba(255, 255, 255, 0.9); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
