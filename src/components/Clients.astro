@@ -29,7 +29,7 @@ const t = useT(Astro.props.lang);
   .clients { background: #fff; color: var(--bg); padding: 110px 0 90px; }
   .kicker { color: var(--pink); }
   .head { margin: 22px 0 48px; }
-  h2 { font-size: clamp(36px, 5vw, 80px); line-height: 0.92; }
+  h2 { font-size: var(--title-size); line-height: 0.95; }
   @media (max-width: 900px) { .head { margin-bottom: 32px; } }
   .grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px 16px; align-items: center; }
   li { aspect-ratio: 1; display: grid; place-items: center; transition: transform 0.25s; }

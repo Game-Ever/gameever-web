@@ -109,7 +109,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .work-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; margin: 22px 0 36px; }
   .intro { color: rgba(255, 255, 255, 0.85); font-size: 18px; max-width: 46ch; }
   .work-head > * { min-width: 0; }
-  .work-head :is(h1, h2) { font-size: clamp(28px, 5vw, 80px); line-height: 0.92; overflow-wrap: break-word; }
+  .work-head :is(h1, h2) { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
   .count { display: block; color: rgba(255, 255, 255, 0.75); margin-bottom: 4px; }
 
   .toolbar { display: flex; gap: 8px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 12px 0; background: linear-gradient(var(--bg) 70%, transparent); }

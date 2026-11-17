@@ -39,7 +39,7 @@ const cards = [
   .worlds { padding: 40px 0 130px; }
   .kicker { color: var(--pink); }
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 22px; align-items: start; }
-  h2 { font-size: clamp(36px, 4.6vw, 72px); line-height: 0.95; overflow-wrap: break-word; }
+  h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
   .text { display: grid; gap: 18px; padding-top: 8px; }
   p { color: var(--fg2); font-size: 18px; max-width: 46ch; }
   .lead { color: var(--fg); font-size: clamp(20px, 1.8vw, 24px); line-height: 1.35; font-weight: 600; }
@@ -47,7 +47,7 @@ const cards = [
   .card { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg2); isolation: isolate; }
   .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: -1; }
   .card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(13, 13, 15, 0.85) 100%); z-index: -1; }
-  .title { position: absolute; left: 28px; bottom: 56px; font-size: clamp(32px, 4.4vw, 68px); line-height: 0.9; transition: color 0.25s; }
+  .title { position: absolute; left: 28px; bottom: 56px; font-size: var(--subtitle-size); line-height: 0.95; transition: color 0.25s; }
   .cta { position: absolute; left: 28px; bottom: 26px; color: var(--fg2); }
   .card:hover img { transform: scale(1.05); }
   .card:hover .title { color: var(--pink); }

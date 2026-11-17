@@ -60,13 +60,13 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
   .contact { background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
   .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center; }
   .label { color: var(--bg); }
-  /* Longest word ("INCREÍBLE", ~7.5× the font size) must fit half the page: capped at 80px. */
-  h2 { font-size: clamp(40px, 5.6vw, 80px); line-height: 0.88; margin-top: 20px; color: #fff; overflow-wrap: break-word; }
+  /* Same size as every section title (--title-size). */
+  h2 { font-size: var(--title-size); line-height: 0.95; margin-top: 20px; color: #fff; overflow-wrap: break-word; }
   h2 span { display: block; }
   em { font-style: normal; color: var(--bg); display: block; }
 
   .form { background: var(--bg); color: var(--fg); padding: 36px; display: grid; gap: 22px; }
-  .form h3 { font-size: clamp(26px, 2.4vw, 36px); line-height: 1; color: #fff; }
+  .form h3 { font-size: var(--subtitle-size); line-height: 1; color: #fff; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .form label { display: grid; gap: 8px; }
   .form label > span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #b9b7b2; }
