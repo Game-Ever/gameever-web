@@ -31,7 +31,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     <span class="mono kicker">{t('work.label')}</span>
     <div class="work-head">
       <Heading class="wide">{full ? t('work.allTitle') : t('work.title')}</Heading>
-      {full && <div class="aside on-pink"><p class="lead">{t('work.intro')}</p></div>}
+      {full && <div class="aside on-pink"><p>{t('work.intro')}</p></div>}
     </div>
     {full && <>
     <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>
