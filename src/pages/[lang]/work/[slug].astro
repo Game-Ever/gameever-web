@@ -104,7 +104,7 @@ const jsonLd = {
           <p class="body">{tr(d.description, lang)}</p>
         </div>
         <dl>
-          <dt>{t("project.client")}</dt><dd>{clientName(d.client, lang)}</dd>
+          <dt>{t("project.client")}</dt><dd>{d.clientUrl ? <a class="fact-link" href={d.clientUrl} target="_blank" rel="noopener">{clientName(d.client, lang)}</a> : clientName(d.client, lang)}</dd>
           <dt>{t('project.year')}</dt><dd>{d.years ?? d.year}</dd>
           {platforms.length > 0 && <><dt>{t('project.platforms')}</dt><dd>{platforms.join(' · ')}</dd></>}
           {d.genre && <><dt>{t('project.genre')}</dt><dd>{tr(d.genre, lang)}</dd></>}

@@ -11,6 +11,8 @@ const projects = defineCollection({
   schema: ({ image }) => z.object({
     title: z.string(),
     client: z.string(),
+    /** Client's website; turns the client name in the fact sheet into a link. */
+    clientUrl: z.url().optional(),
     /** Year used for sorting and the era filter (last year for multi-year projects). */
     year: z.number().int().min(2010).max(2100),
     /** Optional label for multi-year projects, e.g. "2013–2022". */
