@@ -85,7 +85,7 @@ const jsonLd = {
           {(trailer || d.links.length > 0) && (
             <div class="ctas">
               {trailer && <button class="cta primary" data-trailer={trailer}>▶ {t('project.trailer')}</button>}
-              {d.links.map((l) => <StoreButton lang={lang} label={l.label} url={l.url} />)}
+              {d.links.map((l) => <StoreButton lang={lang} label={l.label} url={l.url} webGame={l.webGame} />)}
             </div>
           )}
         </div>

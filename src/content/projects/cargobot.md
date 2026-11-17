@@ -1,6 +1,7 @@
 ---
 title: "Cargobot"
 client: "Cargobot"
+clientUrl: "https://www.cargobot.io"
 year: 2018
 services:
   - "animation-2d"
@@ -25,9 +26,6 @@ videos:
   - "uoUxUGMKEo0"
   - "AN8WYoDk988"
 heroImage: "../../assets/projects/cargobot/hero.jpg"
-links:
-  - label: "cargobot.io"
-    url: "https://www.cargobot.io"
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }

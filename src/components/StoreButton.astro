@@ -1,10 +1,10 @@
 ---
-// Link button with the store's logo: "Disponible en / Google Play", "Jugar online / Poki", "Sitio web / cargobot.io".
+// Link button with the store's logo: "Disponible en / Google Play", "En Poki / Jugar online", "En el navegador / Jugar online", "Sitio web / ...".
 // The store is recognized from the URL, so project files keep plain { label, url } links.
 import { type Lang, useT } from '../i18n';
 
-interface Props { lang: Lang; label: string; url: string }
-const { lang, label, url } = Astro.props;
+interface Props { lang: Lang; label: string; url: string; webGame?: boolean }
+const { lang, label, url, webGame = false } = Astro.props;
 const t = useT(lang);
 const host = new URL(url).hostname.replace(/^www\./, '');
 
@@ -26,7 +26,7 @@ const STORES: { match: RegExp; icon: keyof typeof ICONS; name: string }[] = [
   { match: /(^|\.)steampowered\.com$|(^|\.)steamcommunity\.com$/, icon: 'steam', name: 'Steam' },
   { match: /(^|\.)gog\.com$/, icon: 'gog', name: 'GOG' },
 ];
-// Browser game portals: shown as "Jugar online".
+// Browser game portals, recognized from the URL. A game on any other site is marked with `webGame: true`.
 const WEB_GAMES: Record<string, string> = { 'poki.com': 'Poki', 'crazygames.com': 'CrazyGames', 'itch.io': 'itch.io', 'newgrounds.com': 'Newgrounds' };
 
 const store = STORES.find((s) => s.match.test(host));
@@ -35,7 +35,7 @@ const portal = Object.entries(WEB_GAMES).find(([h]) => host === h || host.endsWi
 const own = store ? label.replace(/\s*\(.*\)\s*$/, '').trim() : '';
 const [icon, caption, name] = store
   ? own && own.toLowerCase() !== store.name.toLowerCase() ? [store.icon, store.name, own] : [store.icon, t('store.available'), store.name]
-  : portal || /^(play|jugar)\b/i.test(label) ? ['web', t('store.playOnline'), portal ?? host] : ['site', t('store.website'), label];
+  : portal || webGame ? ['web', portal ? `${t('store.on')} ${portal}` : t('store.browser'), t('store.playOnline')] : ['site', t('store.website'), label];
 ---
 <a class="store" href={url} target="_blank" rel="noopener" aria-label={`${caption} ${name}`}>
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d={ICONS[icon as keyof typeof ICONS]} /></svg>

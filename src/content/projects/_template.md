@@ -26,9 +26,10 @@ role:
   es: "Game design, arte, desarrollo"
 videos:                          # YouTube IDs (the part after watch?v=)
   - "XXXXXXXXXXX"
-links:
+links:                           # store links get their logo (App Store, Google Play, Steam, GOG, Poki...)
   - label: "Play"
     url: "https://example.com"
+    webGame: true                # a game played in the browser on its own site ("Jugar online")
 gallery: []                      # e.g. - "../../assets/projects/<slug>/screen-1.jpg"
 # credits: "DIRECTOR NAME · PRODUCER NAME"
 ---

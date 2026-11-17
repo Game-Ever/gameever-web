@@ -56,7 +56,8 @@ const projects = defineCollection({
     /** `group` (e.g. "Game Ever" / "El Reino Infantil") starts a sub-block of credits under its own heading. */
     creditList: z.array(z.object({ group: text.optional(), role: localized, names: z.string() })).default([]),
     creditsPending: z.boolean().default(false),
-    links: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
+    /** Store links become logo buttons (src/components/StoreButton.astro). `webGame: true` marks a game played in the browser on any site. */
+    links: z.array(z.object({ label: z.string(), url: z.url(), webGame: z.boolean().default(false) })).default([]),
     /** Press coverage: articles, reviews, interviews, awards. Shown as "En la prensa". */
     press: z.array(z.object({ outlet: z.string(), title: z.string(), year: z.string().optional(), url: z.url() })).default([]),
     gallery: z.array(image()).default([]),
