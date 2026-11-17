@@ -50,8 +50,8 @@ button { font: inherit; color: inherit; }
 .aside { display: grid; gap: 16px; border-left: 4px solid var(--pink); padding-left: 22px; max-width: 46ch; margin-top: 8px; }
 .aside p { color: var(--fg2); font-size: var(--body-size); line-height: 1.55; }
 .aside .lead { color: var(--fg); font-size: var(--lead-size); line-height: 1.35; font-weight: 600; }
-/* On pink backgrounds the bar switches to ink so it stays visible. */
-.aside.on-pink { border-left-color: var(--bg); }
+/* On pink backgrounds the bar switches to white so it stays visible. */
+.aside.on-pink { border-left-color: #fff; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 760px) {
