@@ -17,6 +17,9 @@
      The brand statement (pink band) and project heroes are the only larger exceptions. */
   --title-size: clamp(28px, 3.6vw, 52px);
   --subtitle-size: clamp(22px, 2.4vw, 36px);
+  /* Body text: one size for every paragraph; "lead" only for the highlighted manifesto line. */
+  --body-size: clamp(17px, 1.3vw, 19px);
+  --lead-size: clamp(19px, 1.5vw, 22px);
   --header-h: 76px;
   --gutter: 40px;
   color-scheme: dark;

@@ -43,7 +43,7 @@ const groups = t('services.groups');
   .kicker { color: var(--pink); }
   .head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; margin-top: 22px; align-items: end; }
   h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
-  .head p { color: var(--fg2); font-size: 20px; }
+  .head p { color: var(--fg2); font-size: var(--body-size); }
 
   .acc { margin-top: 64px; border-top: 1px solid var(--line); }
   .item { border-bottom: 1px solid var(--line); }
@@ -68,7 +68,7 @@ const groups = t('services.groups');
   .inner { overflow: hidden; padding-left: 80px; }
   ul { list-style: none; padding: 0 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 32px; opacity: 0; transform: translateY(-8px); transition: opacity 0.3s, transform 0.4s; }
   .item.open ul { opacity: 1; transform: none; transition-delay: 0.1s; }
-  li { display: flex; gap: 12px; align-items: baseline; font-size: 18px; color: var(--fg2); }
+  li { display: flex; gap: 12px; align-items: baseline; font-size: var(--body-size); color: var(--fg2); }
   li::before { content: ''; flex: 0 0 auto; width: 8px; height: 8px; background: var(--pink); transform: translateY(-2px); }
   .see { display: inline-block; margin: 24px 0 36px; font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid var(--pink); padding-bottom: 3px; }
   .see:hover { color: var(--pink); }
@@ -83,7 +83,6 @@ const groups = t('services.groups');
     .icon { width: 40px; height: 40px; }
     .inner { padding-left: 0; }
     ul { grid-template-columns: 1fr; gap: 12px; }
-    li { font-size: 17px; }
   }
 </style>
 

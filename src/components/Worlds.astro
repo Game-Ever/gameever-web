@@ -18,9 +18,9 @@ const cards = [
   <div class="wrap">
     <span class="mono kicker">{t('worlds.label')}</span>
     <div class="head">
-      <h2 class="wide">{t('worlds.title')}</h2>
+      <h2 class="wide">{t('worlds.title').map((line) => <span>{line}</span>)}</h2>
       <div class="text">
-        <p class="lead">{t('worlds.p1')}</p>
+        <p>{t("worlds.p1")}</p>
       </div>
     </div>
     <div class="cards">
@@ -40,9 +40,9 @@ const cards = [
   .kicker { color: var(--pink); }
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 22px; align-items: start; }
   h2 { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
+  h2 span { display: block; }
   .text { display: grid; gap: 18px; padding-top: 8px; }
-  p { color: var(--fg2); font-size: 18px; max-width: 46ch; }
-  .lead { color: var(--fg); font-size: clamp(20px, 1.8vw, 24px); line-height: 1.35; font-weight: 600; }
+  p { color: var(--fg2); font-size: var(--body-size); max-width: 46ch; }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 64px; }
   .card { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg2); isolation: isolate; }
   .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: -1; }
