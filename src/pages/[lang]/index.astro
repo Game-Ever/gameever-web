@@ -1,7 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Reel from '../../components/Reel.astro';
-import Statement from '../../components/Statement.astro';
 import About from '../../components/About.astro';
 import Worlds from '../../components/Worlds.astro';
 import Wall from '../../components/Wall.astro';
@@ -17,7 +16,6 @@ const projects = await getProjects();
 <Base lang={lang} path="">
   <main>
     <Reel lang={lang} />
-    <Statement lang={lang} />
     <About lang={lang} />
     <Worlds lang={lang} projects={projects} />
     <Wall lang={lang} projects={projects} variant="home" />

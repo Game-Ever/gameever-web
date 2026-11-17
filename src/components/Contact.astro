@@ -13,6 +13,15 @@ const formKey = import.meta.env.PUBLIC_FORM_KEY ?? '';
 const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'), error: t('form.error'), mailto: t('form.mailto'), subject: t('form.subject') };
 ---
 <footer class="contact" id="contact">
+  <!-- Decorative pixels on the 32px grid: two blink like a cursor, two "walk" one cell at a time. -->
+  <div class="pixels" aria-hidden="true">
+    <i style="--x:3;--y:1"></i>
+    <i class="dim" style="--x:2;--y:2;--delay:-1.6s"></i>
+    <i class="walk" style="--x:9;--y:1"></i>
+    <i class="walk dim" style="--x:9;--y:1;--delay:-0.6s"></i>
+    <i style="--x:36;--y:2;--dur:2.6s"></i>
+    <i class="dim" style="--x:37;--y:1;--dur:2.6s;--delay:-1.3s"></i>
+  </div>
   <div class="wrap top">
     <div class="pitch">
       <span class="mono label">{t('contact.label')}</span>
@@ -59,7 +68,16 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
 <style>
   /* Closing band in brand pink, split in two and top-aligned: the closing phrase on the left, the form on the right,
      drawn directly on the pink (ink lines and text, ink button) so the band reads as one block. */
-  .contact { background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
+  .contact { position: relative; overflow: hidden; background: var(--pink); color: var(--bg); padding: 120px 0 40px; }
+  /* 32px grid over the pink, anchored to the section's top-left so the pixels sit exactly in its cells. */
+  .contact::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+  .contact > .wrap { position: relative; z-index: 1; }
+  .pixels i { position: absolute; left: calc(var(--x) * 32px); top: calc(var(--y) * 32px); width: 32px; height: 32px; background: #fff; animation: blink var(--dur, 3.2s) steps(1, end) infinite var(--delay, 0s); }
+  .pixels i.dim { background: rgba(255, 255, 255, 0.55); }
+  /* The walker hops 8 cells to the right, one cell per step, then starts over. */
+  .pixels i.walk { animation: walk 4.8s steps(8, end) infinite var(--delay, 0s); }
+  @keyframes blink { 0%, 62% { opacity: 1; } 63%, 100% { opacity: 0; } }
+  @keyframes walk { from { transform: translateX(0); } to { transform: translateX(256px); } }
   .top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: start; }
   .label { color: var(--bg); }
   /* Same size as every section title (--title-size). */
@@ -102,7 +120,8 @@ const msgs = { sending: t('form.sending'), send: t('form.send'), ok: t('form.ok'
 
   @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 40px; } .form { padding-top: 0; } }
   @media (max-width: 760px) {
-    .contact { padding-top: 88px; }
+    /* Leaves the first three grid rows free for the pixels above the "Contacto" label. */
+    .contact { padding-top: 112px; }
     .form { padding-top: 0; }
     .row { grid-template-columns: 1fr; }
     .cols { grid-template-columns: 1fr 1fr; margin-top: 72px; }
