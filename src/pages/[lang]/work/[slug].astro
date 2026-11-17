@@ -82,7 +82,7 @@ const jsonLd = {
 
       {d.entries.length > 0 ? (
         <section class="block">
-          <h2 class="wide">{t('project.seasons')}</h2>
+          <h2 class="wide">{d.entriesTitle ? tr(d.entriesTitle, lang) : t('project.seasons')}</h2>
           <div class="entries">
             {d.entries.map((e) => (
               <article>

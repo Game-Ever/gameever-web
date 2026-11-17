@@ -28,6 +28,8 @@ const projects = defineCollection({
     description: localized,
     role: localized.optional(),
     videos: z.array(z.string()).default([]),
+    /** Heading over `entries` (default: "Temporadas y campañas"). */
+    entriesTitle: localized.optional(),
     entries: z
       .array(z.object({ title: text, year: z.string(), videos: z.array(z.string()).default([]), note: text.optional() }))
       .default([]),

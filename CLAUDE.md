@@ -17,7 +17,7 @@ Node is installed at `C:\Program Files\nodejs` (add it to PATH in new shells).
 Rules:
 - Projects under NDA are never published, not even anonymized.
 - Projects we drop from the site get `hidden: true` instead of being deleted, so their information is kept.
-- Repeated campaigns of the same client/IP go in one project with `entries` (see `puro-sol.md`, `las-canciones-del-zoo.md`).
+- Repeated campaigns of the same client/IP go in one project with `entries` (see `puro-sol.md`, `las-canciones-del-zoo.md`). `entriesTitle` (en/es) renames that block when "Temporadas y campañas" doesn't fit (e.g. "Los videoclips" in `la-granja-de-zenon-a-rodar.md`).
 - `legacySlugs` lists old WordPress URLs (`/portfolio/<slug>/`); they become 301 redirects in `dist/_redirects`.
 
 ## Structure
