@@ -53,7 +53,7 @@ Casi todas repiten el mismo comunicado de prensa de Michelin.
 
 ## Imágenes
 
-En la web (galería): gallery-boxes.jpg (= Portinos «Videojuego Foto 3»), gallery-tired.jpg (= Portinos «Videojuego Foto 5»), gallery-health.jpg (cuadro de nuestro gameplay, sin las franjas negras) y gallery-site.jpg (= CuyoMotor, el sitio de la campaña).
+En la web (galería): gallery-01.png … gallery-05.png, las cinco escenas preparadas por el estudio (ruta, ciudad, salud, neumáticos, cansancio), 1672×941. Originales en downloads/car-driver-xp/cdxp_img_01…05.png.
 
 Encontradas en las notas:
 

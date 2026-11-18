@@ -30,12 +30,13 @@ highlights:
   - id: "Ckqyzm4VlSI"
     title: { en: "How it plays", es: "Así se juega" }
     text: { en: "Against the clock, checkpoint to checkpoint: mystery boxes on the road and challenges like the health one, which turns the screen red.", es: "Contra reloj, de checkpoint en checkpoint: cajas sorpresa en la ruta y desafíos como el de salud, que tiñe la pantalla de rojo." }
-# Gallery: two screenshots from the press kit (1024 px), a frame of our gameplay video and the campaign site.
+# Gallery: five scenes prepared by the studio (one per risk), in this order.
 gallery:
-  - "../../assets/projects/car-driver-xp/gallery-boxes.jpg"
-  - "../../assets/projects/car-driver-xp/gallery-tired.jpg"
-  - "../../assets/projects/car-driver-xp/gallery-health.jpg"
-  - "../../assets/projects/car-driver-xp/gallery-site.jpg"
+  - "../../assets/projects/car-driver-xp/gallery-01.png"
+  - "../../assets/projects/car-driver-xp/gallery-02.png"
+  - "../../assets/projects/car-driver-xp/gallery-03.png"
+  - "../../assets/projects/car-driver-xp/gallery-04.png"
+  - "../../assets/projects/car-driver-xp/gallery-05.png"
 heroImage: "../../assets/projects/car-driver-xp/hero.jpg"
 press:
   - { outlet: "DossierNet", title: "CarDriverXP: la nueva campaña de seguridad vial de Michelin", year: "2020", url: "https://dossiernet.com/articulo/cardriverxp-la-nueva-campana-de-seguridad-vial-de-michelin/24324" }
