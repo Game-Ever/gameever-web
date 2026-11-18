@@ -26,9 +26,11 @@ No van en los créditos de la web (regla: sin cliente ni agencia); quedan acá c
 
 ## Videos
 
-- **En la web:** Michelin - CarDriverXP (canal DossierNet), gameplay: https://www.youtube.com/watch?v=g-Of0iykr-I
-- Mismo video, canal TotalMedios (antes estaba en la web; se ve peor): https://www.youtube.com/watch?v=0YAoKWdFjHM
-- Video del caso de Almacén (LatinSpots), MP4 de 51 MB, 1280×720, 3:24, descargado en downloads/car-driver-xp/ (fuera de git), explica la campaña con datos de agencia y cliente. Para usarlo en la web hay que subirlo al canal de YouTube de Game Ever: https://static.latinspots.com/comerciales/CASOMICHELIN_Almacen.mp4 · página: https://www.latinspots.com/pieza/comercial/car-driver-xp/38071
+- **En la web:** Car Driver XP | Michelin – Case Study | Game Ever x Almacén (nuestro canal): https://youtu.be/-QrBACII6tg
+- **En la web:** Car Driver XP | Official Gameplay | Game Ever (nuestro canal): https://youtu.be/Ckqyzm4VlSI
+- Michelin - CarDriverXP (canal DossierNet), gameplay: https://www.youtube.com/watch?v=g-Of0iykr-I
+- Mismo video, canal TotalMedios (se ve peor): https://www.youtube.com/watch?v=0YAoKWdFjHM
+- Original del video del caso (LatinSpots, ya subido a nuestro canal), MP4 de 51 MB, 1280×720, 3:24, descargado en downloads/car-driver-xp/ (fuera de git), explica la campaña con datos de agencia y cliente. Para usarlo en la web hay que subirlo al canal de YouTube de Game Ever: https://static.latinspots.com/comerciales/CASOMICHELIN_Almacen.mp4 · página: https://www.latinspots.com/pieza/comercial/car-driver-xp/38071
 - 2020: CarDriverXP Michelin (canal OHLANDA Marcas): https://www.youtube.com/watch?v=iZLZ6wUNz9E
 - CarDriverXP by Michelin (canal Totobarion), grabado desde un celular: https://www.youtube.com/watch?v=QB4BMYfW05A
 - MICHELIN - Tu seguridad es nuestra prioridad (canal Neumáticos Debona), largo, nombra al juego; falta escucharlo: https://www.youtube.com/watch?v=94Sr71yVZgo
@@ -49,7 +51,11 @@ Otras:
 
 Casi todas repiten el mismo comunicado de prensa de Michelin.
 
-## Imágenes encontradas en las notas
+## Imágenes
+
+En la web (galería): gallery-boxes.jpg (= Portinos «Videojuego Foto 3»), gallery-tired.jpg (= Portinos «Videojuego Foto 5»), gallery-health.jpg (cuadro de nuestro gameplay, sin las franjas negras) y gallery-site.jpg (= CuyoMotor, el sitio de la campaña).
+
+Encontradas en las notas:
 
 - Portinos: https://d3hqfahqx9wp4w.cloudfront.net/wp-content/uploads/2020/10/23141058/CarDriverXP-Foto-1.jpg
 - Portinos (landing): https://d3hqfahqx9wp4w.cloudfront.net/wp-content/uploads/2020/10/23140525/CarDriverXP-Landing-Foto-1-1024x514.jpg
@@ -60,6 +66,12 @@ Casi todas repiten el mismo comunicado de prensa de Michelin.
 - CuyoMotor: https://cuyomotor.com.ar/wp-content/uploads/2020/10/Michelion-CarDriverXP-001.jpg
 
 Todas son de 1024 px o menos.
+
+## Datos del video del caso
+
+- «Hagamos que nuestro target viva en carne propia lo que significa no cumplir con las reglas de conducción.»
+- Gana el que maneja más tiempo de forma segura, no el que llega primero.
+- Prensa: más de 85 notas («More than 85 press hits»).
 
 ## Datos del comunicado
 
