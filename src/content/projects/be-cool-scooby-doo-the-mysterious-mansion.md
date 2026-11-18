@@ -18,8 +18,8 @@ summary:
   en: "Hidden-object game for Cartoon Network: the Scooby-Doo gang solves the mystery of a haunted house."
   es: "Juego de objetos ocultos para Cartoon Network: la pandilla de Scooby-Doo resuelve el misterio de una casa embrujada."
 description:
-  en: "For Cartoon Network we made The Mysterious Mansion, a multilingual browser game for Be Cool, Scooby-Doo! The gang searches the rooms of a haunted house by flashlight, finds the hidden clues before time runs out and unmasks the culprit. We handled everything: game design, art, 2D animation, sound and programming."
-  es: "Para Cartoon Network creamos La Mansión Misteriosa, un juego de navegador de Be Cool, Scooby-Doo! en varios idiomas. La pandilla recorre las habitaciones de una casa embrujada linterna en mano, encuentra las pistas escondidas antes de que se acabe el tiempo y descubre al culpable. Nos ocupamos de todo: diseño de juego, arte, animación 2D, sonido y programación."
+  en: "For Cartoon Network we made The Mysterious Mansion, a browser game for the series Be Cool, Scooby-Doo! The gang explores the rooms of a \"haunted\" mansion, flashlight in hand. They find the hidden clues before time runs out and unmask whoever made the great jewel disappear. We handled everything: game design, art, 2D animation, sound and programming."
+  es: "Para Cartoon Network creamos La Mansión Misteriosa, un juego de navegador para la serie Be Cool, Scooby-Doo! La pandilla recorre las habitaciones de una mansión «embrujada», linterna en mano. Encuentra las pistas escondidas antes de que se acabe el tiempo y descubre al culpable de la desaparición de la gran joya. Nos ocupamos de todo: diseño de juego, arte, animación 2D, sonido y programación."
 role:
   en: "Full development"
   es: "Desarrollo integral"
