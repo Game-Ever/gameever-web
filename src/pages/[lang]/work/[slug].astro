@@ -399,12 +399,11 @@ const jsonLd = {
   .credit-list dd { color: var(--fg2); font-weight: 500; }
   /* Sub-heading inside the credits (e.g. Game Ever / El Reino Infantil), across both columns. */
   .credit-block { border-top: 1px solid var(--line); }
-  .credit-block:last-child { border-bottom: 1px solid var(--line); }
   .credit-block summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; font-size: var(--subtitle-size); }
   .credit-block summary::-webkit-details-marker { display: none; }
   .credit-block summary::after { content: '+'; font-family: var(--mono); font-size: 26px; color: var(--pink); }
   .credit-block[open] summary::after { content: '–'; }
-  .credit-block dl { margin-bottom: 24px; }
+  .credit-block dl { margin-bottom: 0; }
   /* Featured videos: a dark full-width band, one video under the other, each with a title and a short text. */
   .cine { background: var(--bg2); padding: 80px 0 90px; margin-bottom: 90px; }
   .cine-item + .cine-item { margin-top: 96px; }
@@ -468,7 +467,10 @@ const jsonLd = {
   .credits > summary::-webkit-details-marker { display: none; }
   .credits > summary::after { content: '+'; margin-left: auto; font-family: var(--mono); font-size: 28px; color: var(--pink); }
   .credits[open] > summary::after { content: '–'; }
-  .credits-body { padding-bottom: 32px; }
+  /* The last row has no line of its own: the line closing the block (or the next group's) closes the list, so
+     there is never a double line at the end. */
+  .credits-body { padding-bottom: 0; }
+  .credits dl > :nth-last-child(-n + 2) { border-bottom: 0; }
   .credits-body > dl { border-top: 1px solid var(--line); }
   .credits p { color: var(--fg2); line-height: 2; padding-bottom: 28px; text-transform: none; }
 
