@@ -50,8 +50,7 @@ async function checkThumb(videoId: string) {
 <style>
   .yt-lite { margin: 0; }
   .frame { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; border: 0; padding: 0; cursor: pointer; overflow: hidden; }
-  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s, filter 0.3s; }
-  .frame:hover img { transform: scale(1.03); }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.3s; }
   /* Play button: YouTube's rounded rectangle in our pink, centered. Its size follows the player's width
      (container query): small on cards and phones, bigger on wide players. No text: the shape says "video". */
   .frame { container-type: inline-size; }
