@@ -38,6 +38,8 @@ const projects = defineCollection({
     facts: z.array(z.object({ label: localized, value: text, url: z.url().optional() })).default([]),
     /** Highlighted videos (new media layout): shown big, one under the other, each with a title and a short text. */
     highlights: z.array(z.object({ id: z.string(), title: localized.optional(), text: localized.optional() })).default([]),
+    // Title over the smaller videos under the featured ones (e.g. "Promocionales").
+    moreVideosTitle: localized.optional(),
     videos: z.array(z.string()).default([]),
     /** Landscape image behind the title (and under the heroVideo while it loads); defaults to a landscape gallery image or the cover. */
     heroImage: image().optional(),

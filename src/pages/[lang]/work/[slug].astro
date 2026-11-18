@@ -25,6 +25,8 @@ const t = useT(lang);
 
 const platforms = platformLabels(d.platforms, lang);
 const services = d.services.map((s) => SERVICES[s][lang]);
+// Line over the title: service · client (no client for our own IP).
+const kicker = [services[0], d.client === ORIGINAL_IP ? null : d.client].filter(Boolean) as string[];
 // Featured videos: big, in a dark band, one under the other. With `highlights` each has a title and a short text;
 // otherwise the first `videos` are featured and the rest go in a two-column grid under them: one big when the
 // count is odd (1, 1+2, 1+4), two when it is even (2, 2+2), so the grid never ends with a gap.
@@ -32,7 +34,8 @@ const services = d.services.map((s) => SERVICES[s][lang]);
 const autoVideos = d.entries.length || d.highlights.length ? [] : d.videos;
 const bigCount = autoVideos.length % 2 ? 1 : 2;
 const highlights = d.entries.length ? [] : d.highlights.length ? d.highlights : autoVideos.slice(0, bigCount).map((id) => ({ id, title: undefined, text: undefined }));
-const moreVideos = autoVideos.slice(bigCount);
+// With `highlights`, the project's other `videos` go in the grid under them.
+const moreVideos = d.entries.length ? [] : d.highlights.length ? d.videos.filter((id) => !d.highlights.some((h) => h.id === id)) : autoVideos.slice(bigCount);
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
 // On phones (portrait) a landscape image crops the characters, so a square image is used there instead:
@@ -100,7 +103,7 @@ const jsonLd = {
       {d.heroVideo && <LoopVideo id={d.heroVideo.id} start={d.heroVideo.start} end={d.heroVideo.end} class="hero-video" />}
       <div class="wrap inner">
         <div>
-          <span class="mono kicker">{[services[0], d.client === ORIGINAL_IP ? null : d.client].filter(Boolean).join(" · ")}</span>
+          <span class="mono kicker">{kicker.map((part, i) => <>{i > 0 && <span class="k-sep"> · </span>}<span class="k-part">{part}</span></>)}</span>
           <h1 class="wide">{heading.small && <><span class="series">{heading.small}</span> </>}{heading.big}</h1>
           {/* No "Ver tráiler" here: the videos are a scroll away. Only store and site buttons. */}
           {d.links.length > 0 && (
@@ -155,11 +158,12 @@ const jsonLd = {
               <YouTube id={h.id} title={`${d.title}${h.title ? ` — ${tr(h.title, lang)}` : ''}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 1340px) 100vw, 1280px" />
             </div>
           ))}
-          {moreVideos.length > 0 && (
+          {moreVideos.length > 0 && <>
+            {d.moreVideosTitle && <div class="cine-head more-head"><h2 class="wide">{tr(d.moreVideosTitle, lang)}</h2></div>}
             <div class="cine-more">
-              {moreVideos.map((id, i) => <YouTube id={id} title={`${d.title} ${i + bigCount + 1}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 900px) 100vw, 640px" />)}
+              {moreVideos.map((id, i) => <YouTube id={id} title={`${d.title} ${i + highlights.length + 1}`} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 900px) 100vw, 640px" />)}
             </div>
-          )}
+          </>}
         </div>
       </section>
     )}
@@ -319,22 +323,28 @@ const jsonLd = {
 </Base>
 
 <style>
+  main { --section-size: clamp(26px, 2.8vw, 40px); }
   @property --fold { syntax: '<length>'; inherits: true; initial-value: 30px; }
   .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
   .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   /* Dark only where text sits: a light band under the header and the bottom third under the title. */
   .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 13, 15, 0.35) 0%, transparent 16%, transparent 50%, rgba(13, 13, 15, 0.8) 84%, var(--bg) 100%); }
   .inner { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; }
-  .kicker { color: rgba(255, 255, 255, 0.8); }
-  .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
+  /* Line over the title (service · client) on a pink tag, so it reads on any header image, light ones too. */
+  .kicker { display: inline; background: var(--pink); color: #fff; padding: 4px 9px 3px; line-height: 2; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  /* When it does not fit on one line, the · becomes the line break (set by the script below). */
+  .kicker.wrapped .k-sep { display: none; }
+  .kicker.wrapped .k-sep + .k-part::before { content: '\A'; white-space: pre; }
+  /* Thumbnail next to the title: white stroke around it (drawn outside, so the image keeps its size). */
+  .art { width: min(320px, 28vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 18px; box-shadow: 0 0 0 3px var(--fg), 0 30px 80px -20px rgba(0, 0, 0, 0.7); }
   /* Same size as the home tagline ("Soñamos. Creamos. Jugamos."). */
-  h1 { font-size: clamp(30px, 6vw, 88px); line-height: 0.9; margin: 14px 0 0; overflow-wrap: break-word; }
+  h1 { font-size: clamp(30px, 4.8vw, 70px); line-height: 0.9; margin: 14px 0 0; overflow-wrap: break-word; }
   /* Series line over the title (e.g. "Canciones del Zoo" over "Vol. 3"), at the sub-title size. */
-  h1 .series, .next h2 .series { display: block; font-size: var(--subtitle-size); line-height: 1; margin-bottom: 0.35em; }
+  h1 .series, .next h2 .series { display: block; font-size: clamp(22px, 3vw, 44px); line-height: 1; margin-bottom: 0.35em; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
 
   .overview { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; padding: 110px 0 90px; }
-  .lead { font-size: clamp(22px, 2.3vw, 32px); line-height: 1.25; font-weight: 500; }
+  .lead { font-size: clamp(20px, 1.9vw, 26px); line-height: 1.25; font-weight: 500; }
   .body { color: var(--fg2); margin-top: 24px; font-size: 18px; }
   dl { display: grid; grid-template-columns: auto 1fr; border-top: 1px solid var(--line); align-self: start; }
   dt, dd { padding: 14px 0; border-bottom: 1px solid var(--line); }
@@ -344,7 +354,8 @@ const jsonLd = {
   .fact-link:hover { color: var(--pink); }
 
   .block { margin-bottom: 90px; }
-  .block h2 { font-size: clamp(28px, 3.4vw, 48px); margin-bottom: 28px; }
+  /* Section titles inside a project page: one step under the home's section titles, so the project title leads. */
+  .block h2 { font-size: var(--section-size); margin-bottom: 22px; }
   .entries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 16px; }
   .entries h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 12px; line-height: 1.15; }
   .entries .mono { color: var(--mute); }
@@ -408,10 +419,14 @@ const jsonLd = {
   /* Featured videos: a dark full-width band, one video under the other, each with a title and a short text. */
   .cine { background: var(--bg2); padding: 80px 0 90px; margin-bottom: 90px; }
   .cine-item + .cine-item { margin-top: 96px; }
-  .cine-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: start; margin-bottom: 32px; }
-  .cine-head h2 { font-size: var(--title-size); line-height: 1; }
+  .cine-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: start; margin-bottom: 18px; }
+  .cine-head h2 { font-size: var(--section-size); line-height: 1; }
+  /* Video captions: the body font, a bit smaller than the project description above. */
+  .cine-head .aside p { font-size: clamp(15px, 1.1vw, 16px); line-height: 1.55; }
   /* Videos after the first two: two per row under the featured ones. */
   .cine-more { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .more-head { margin-top: 96px; }
+  .more-head + .cine-more { margin-top: 0; }
   /* Vertical gallery (phone screenshots): side by side, four per row, rounded like a phone screen. */
   .shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .shots :global(img) { display: block; width: 100%; height: auto; border-radius: 16px; background: var(--bg2); }
@@ -464,7 +479,7 @@ const jsonLd = {
 
 
   .credits { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .credits > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 28px 0; font-size: clamp(26px, 3vw, 40px); }
+  .credits > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 28px 0; font-size: var(--section-size); }
   .credits > summary::-webkit-details-marker { display: none; }
   .credits > summary::after { content: '+'; margin-left: auto; font-family: var(--mono); font-size: 28px; color: var(--pink); }
   .credits[open] > summary::after { content: '–'; }
@@ -478,7 +493,7 @@ const jsonLd = {
   .next { display: block; margin-top: 110px; border-top: 1px solid var(--line); }
   .next .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 70px; padding-bottom: 70px; }
   .next .mono { color: var(--mute); }
-  .next h2 { font-size: clamp(30px, 6vw, 88px); line-height: 0.9; margin-top: 14px; transition: color 0.25s; overflow-wrap: break-word; }
+  .next h2 { font-size: clamp(30px, 4.8vw, 70px); line-height: 0.9; margin-top: 14px; transition: color 0.25s; overflow-wrap: break-word; }
   .next img { width: min(240px, 30vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; transition: transform 0.6s; }
   .next:hover h2 { color: var(--pink); }
   .next:hover img { transform: rotate(-3deg) scale(1.05); }
@@ -551,6 +566,15 @@ const jsonLd = {
     const open = panel.classList.toggle('expanded');
     btn.textContent = open ? btn.dataset.less! : btn.dataset.all!;
   }));
+
+  // Kicker: if service · client does not fit on one line, break at the · instead of wrapping anywhere.
+  const kick = document.querySelector<HTMLElement>('.hero .kicker');
+  if (kick && kick.querySelector('.k-sep')) {
+    const fit = () => { kick.classList.remove('wrapped'); kick.classList.toggle('wrapped', kick.getClientRects().length > 1); };
+    fit();
+    addEventListener('resize', fit);
+    document.fonts?.ready.then(fit);
+  }
 
   const stopVideos = (root: ParentNode) => (window as any).stopVideos?.(root);
 
