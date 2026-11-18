@@ -16,6 +16,10 @@ const projects = variant === 'home'
   ? Astro.props.projects.filter((p) => !WORLD_PROJECTS.includes(p.id)).slice(0, HOME_COUNT)
   : Astro.props.projects;
 const full = variant === 'full';
+// The projects page opens sorted by year, newest first (ties keep the Featured order); `data-order` keeps the
+// Featured position so that sort can still be chosen.
+const featuredPos = new Map(projects.map((p, i) => [p.id, i]));
+const shown = full ? [...projects].sort((a, b) => b.data.year - a.data.year || featuredPos.get(a.id)! - featuredPos.get(b.id)!) : projects;
 const Heading = full ? 'h1' : 'h2';
 const t = useT(lang);
 
@@ -50,8 +54,8 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
             <input type="search" name="q" placeholder={t('work.search')} autocomplete="off" />
           </label>
           <select class="sort" aria-label={t('work.sort')}>
-            <option value="featured">{t('work.sort.featured')}</option>
             <option value="newest">{t('work.sort.newest')}</option>
+            <option value="featured">{t('work.sort.featured')}</option>
             <option value="az">{t('work.sort.az')}</option>
           </select>
         </div>
@@ -60,14 +64,14 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     {full && <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>}
 
     <div class="wall">
-      {projects.map((p, i) => (
+      {shown.map((p, i) => (
         <a
           class="card"
           href={url(lang, `work/${p.id}`)}
           data-title={p.data.title}
           data-client={p.data.client}
           data-year={p.data.year}
-          data-order={i}
+          data-order={featuredPos.get(p.id)}
           data-area={areaOf.get(p.id)!.join(' ')}
         >
           <div class="img"><Image src={p.data.cover} alt="" widths={[320, 480, 640, 960]} sizes="(max-width: 1000px) 50vw, 430px" loading={i < 6 ? "eager" : "lazy"} /></div>
@@ -158,7 +162,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     const emptyEl = root.querySelector<HTMLElement>('.empty')!;
     const AREAS = tabs.map((b) => b.dataset.area!).filter(Boolean);
 
-    const state = { area: '', q: '', sort: 'featured' };
+    const state = { area: '', q: '', sort: 'newest' };
     const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
     function render(writeUrl = true) {
@@ -182,7 +186,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
         const u = new URLSearchParams();
         if (state.area) u.set('area', state.area);
         if (state.q) u.set('q', state.q);
-        if (state.sort !== 'featured') u.set('sort', state.sort);
+        if (state.sort !== 'newest') u.set('sort', state.sort);
         history.replaceState(null, '', `${location.pathname}${u.size ? `?${u}` : ''}${location.hash}`);
       }
     }
@@ -191,7 +195,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
     const params = new URLSearchParams(location.search);
     state.area = AREAS.includes(params.get('area') ?? '') ? params.get('area')! : '';
     state.q = params.get('q') ?? '';
-    state.sort = ['featured', 'newest', 'az'].includes(params.get('sort') ?? '') ? params.get('sort')! : 'featured';
+    state.sort = ['featured', 'newest', 'az'].includes(params.get('sort') ?? '') ? params.get('sort')! : 'newest';
     search.value = state.q;
     sortSel.value = state.sort;
     render(false);
