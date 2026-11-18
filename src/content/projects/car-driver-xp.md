@@ -38,6 +38,8 @@ gallery:
   - "../../assets/projects/car-driver-xp/gallery-04.png"
   - "../../assets/projects/car-driver-xp/gallery-05.png"
 heroImage: "../../assets/projects/car-driver-xp/hero-logo.webp"
+# Phone hero: the square center of the header art (logo and road).
+heroMobile: "../../assets/projects/car-driver-xp/hero-mobile.webp"
 press:
   - { outlet: "DossierNet", title: "CarDriverXP: la nueva campaña de seguridad vial de Michelin", year: "2020", url: "https://dossiernet.com/articulo/cardriverxp-la-nueva-campana-de-seguridad-vial-de-michelin/24324" }
   - { outlet: "16 Válvulas", title: "CarDriverXP: el videojuego online de Michelin que busca concientizar sobre seguridad vial", author: "Jonathan Romero", year: "2020", url: "https://www.16valvulas.com.ar/?p=188901" }
