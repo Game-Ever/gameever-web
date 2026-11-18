@@ -41,7 +41,7 @@ creditList:
   - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
   - { role: { en: "Production", es: "Producción" }, names: "Julián Castro (Turner Latin America)" }
   - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Gabriel Rodríguez" }
-  - { role: { en: "Lead programming", es: "Programación principal" }, names: "Agustín Pérez Fernández (Tembac)" }
+  - { role: { en: "Lead programming", es: "Programación principal" }, names: "Agustín “Tembac” Pérez Fernández" }
   - { role: { en: "Lead animation", es: "Animación principal" }, names: "Diego Forconi" }
   - { role: { en: "Tech art", es: "Arte técnico" }, names: "Leonardo Cirius" }
   - { role: { en: "Sound design", es: "Diseño de sonido" }, names: "Guillermo Bruno" }
