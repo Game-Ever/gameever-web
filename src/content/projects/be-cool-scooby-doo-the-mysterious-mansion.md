@@ -27,7 +27,7 @@ role:
 highlights:
   - id: "HdhAXfihLxU"
     title: { en: "How it plays", es: "Así se juega" }
-    text: { en: "The full playthrough: dark rooms, objects lost in the clutter, magnifier hints and the final round of suspects.", es: "La partida completa: habitaciones a oscuras, objetos perdidos entre el desorden, lupas de ayuda y la ronda final de sospechosos." }
+    text: { en: "Dark rooms, objects lost in the clutter, magnifier hints and the final round of suspects.", es: "Habitaciones a oscuras, objetos perdidos entre el desorden, lupas de ayuda y la ronda final de sospechosos." }
 # Screenshots from the old site's project page.
 gallery:
   - "../../assets/projects/be-cool-scooby-doo-the-mysterious-mansion/flashlight.jpg"
