@@ -37,9 +37,10 @@ links:
     url: "https://store.steampowered.com/app/400180/"
   - label: "GOG"
     url: "https://www.gog.com/en/game/okhlos"
-press:
-  - { outlet: "ModDB", title: "Okhlos Omega is out (with thanks to Game Ever for the illustration)", year: "2017", url: "https://www.moddb.com/games/okhlos/news/okhlos-omega-is-out" }
-  - { outlet: "Cosmocover", title: "OKHLOS OMEGA: Better, Harder, Greeker", year: "2017", url: "https://www.cosmocover.com/newsroom/okhlos-omega-better-harder-greeker/" }
+# Not shown: third-party game where we only made one illustration, so its press coverage is not ours to show.
+# press:
+#   - { outlet: "ModDB", title: "Okhlos Omega is out (with thanks to Game Ever for the illustration)", year: "2017", url: "https://www.moddb.com/games/okhlos/news/okhlos-omega-is-out" }
+#   - { outlet: "Cosmocover", title: "OKHLOS OMEGA: Better, Harder, Greeker", year: "2017", url: "https://www.cosmocover.com/newsroom/okhlos-omega-better-harder-greeker/" }
 # Credits from the old site, with the character credit corrected and digital color added by the studio (November 2026).
 creditList:
   - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
