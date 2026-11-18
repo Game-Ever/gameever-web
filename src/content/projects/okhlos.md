@@ -44,7 +44,7 @@ links:
 # Credits from the old site, with the character credit corrected and digital color added by the studio (November 2026).
 creditList:
   - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
-  - { role: { en: "Production", es: "Producción" }, names: "Franco Alberti" }
+  - { role: { en: "Production", es: "Producción" }, names: "Franco Albertti" }
   - { role: { en: "Concept & character design", es: "Concepto y diseño de personajes" }, names: "Gabriel Rodríguez" }
   - { role: { en: "Digital color", es: "Color digital" }, names: "Lucas Bustos" }
 legacySlugs:
