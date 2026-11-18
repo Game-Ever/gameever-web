@@ -28,7 +28,7 @@ No van en los créditos de la web (regla: sin cliente ni agencia); quedan acá c
 
 - **En la web:** Michelin - CarDriverXP (canal DossierNet), gameplay: https://www.youtube.com/watch?v=g-Of0iykr-I
 - Mismo video, canal TotalMedios (antes estaba en la web; se ve peor): https://www.youtube.com/watch?v=0YAoKWdFjHM
-- Video del caso de Almacén (LatinSpots), MP4 de 51 MB, explica la campaña con datos de agencia y cliente. Para usarlo en la web hay que subirlo al canal de YouTube de Game Ever: https://static.latinspots.com/comerciales/CASOMICHELIN_Almacen.mp4 · página: https://www.latinspots.com/pieza/comercial/car-driver-xp/38071
+- Video del caso de Almacén (LatinSpots), MP4 de 51 MB, 1280×720, 3:24, descargado en downloads/car-driver-xp/ (fuera de git), explica la campaña con datos de agencia y cliente. Para usarlo en la web hay que subirlo al canal de YouTube de Game Ever: https://static.latinspots.com/comerciales/CASOMICHELIN_Almacen.mp4 · página: https://www.latinspots.com/pieza/comercial/car-driver-xp/38071
 - 2020: CarDriverXP Michelin (canal OHLANDA Marcas): https://www.youtube.com/watch?v=iZLZ6wUNz9E
 - CarDriverXP by Michelin (canal Totobarion), grabado desde un celular: https://www.youtube.com/watch?v=QB4BMYfW05A
 - MICHELIN - Tu seguridad es nuestra prioridad (canal Neumáticos Debona), largo, nombra al juego; falta escucharlo: https://www.youtube.com/watch?v=94Sr71yVZgo
