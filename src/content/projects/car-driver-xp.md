@@ -37,7 +37,7 @@ gallery:
   - "../../assets/projects/car-driver-xp/gallery-03.png"
   - "../../assets/projects/car-driver-xp/gallery-04.png"
   - "../../assets/projects/car-driver-xp/gallery-05.png"
-heroImage: "../../assets/projects/car-driver-xp/hero.jpg"
+heroImage: "../../assets/projects/car-driver-xp/hero-logo.webp"
 press:
   - { outlet: "DossierNet", title: "CarDriverXP: la nueva campaña de seguridad vial de Michelin", year: "2020", url: "https://dossiernet.com/articulo/cardriverxp-la-nueva-campana-de-seguridad-vial-de-michelin/24324" }
   - { outlet: "16 Válvulas", title: "CarDriverXP: el videojuego online de Michelin que busca concientizar sobre seguridad vial", author: "Jonathan Romero", year: "2020", url: "https://www.16valvulas.com.ar/?p=188901" }
