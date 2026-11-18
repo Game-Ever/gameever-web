@@ -39,7 +39,7 @@ gallery:
 # Credits from the old site (the same team made Sandwich Tower).
 creditList:
   - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }
-  - { role: { en: "Production", es: "Producción" }, names: "Julián Castro" }
+  - { role: { en: "Production", es: "Producción" }, names: "Julián Castro (Turner Latin America)" }
   - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Gabriel Rodríguez" }
   - { role: { en: "Lead programming", es: "Programación principal" }, names: "Agustín Pérez Fernández (Tembac)" }
   - { role: { en: "Lead animation", es: "Animación principal" }, names: "Diego Forconi" }
