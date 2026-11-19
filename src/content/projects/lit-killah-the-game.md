@@ -41,6 +41,8 @@ gallery:
   - "../../assets/projects/lit-killah-the-game/04.png"
   - "../../assets/projects/lit-killah-the-game/06.png"
 heroImage: "../../assets/projects/lit-killah-the-game/hero-skins.webp"
+# Phone hero: the square center of the header art (as in Juanito).
+heroMobile: "../../assets/projects/lit-killah-the-game/hero-mobile.webp"
 links:
   - label: "Google Play"
     url: "https://play.google.com/store/apps/details?id=com.gameever.litkillah"
