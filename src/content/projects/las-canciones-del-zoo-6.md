@@ -22,8 +22,8 @@ description:
   en: "In 2020 we animated the sixth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 10 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “La Patita Enfermita” leads the album with more than 39 million views. +79 M views on YouTube."
   es: "En 2020 animamos el sexto disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 10 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «La Patita Enfermita» encabeza el disco con más de 39 millones de vistas. Más de 79 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

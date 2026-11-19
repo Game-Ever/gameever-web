@@ -22,8 +22,8 @@ description:
   en: "In 2018 we animated the fourth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. Here is “Soy una Serpiente”, the most viewed music video of the Zoo, with almost 2 billion views. +2.2 B views on YouTube."
   es: "En 2018 animamos el cuarto disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. Acá está «Soy una Serpiente», el videoclip más visto del Zoo, con casi 2.000 millones de vistas. Más de 2.200 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

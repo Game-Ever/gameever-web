@@ -22,8 +22,8 @@ description:
   en: "In 2014 and 2015 we animated the second album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “La Patita Lulú” became one of the channel’s classics, with almost 1.7 billion views. +2.4 B views on YouTube."
   es: "Entre 2014 y 2015 animamos el segundo disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «La Patita Lulú» se convirtió en uno de los clásicos del canal, con casi 1.700 millones de vistas. Más de 2.400 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

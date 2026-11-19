@@ -1,5 +1,7 @@
 ---
 title: "Zoo Games: Fun & Puzzles for Kids"
+# Hidden for now (studio decision, 19/11/2026): the title needs rethinking.
+hidden: true
 series: "Fun & Puzzles for Kids"
 client: "El Reino Infantil"
 year: 2020

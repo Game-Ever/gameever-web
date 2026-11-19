@@ -22,8 +22,8 @@ description:
   en: "Between 2023 and 2024 we animated the eighth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 8 new songs in Tío Mario’s zoo, from a camping trip and hide and seek to Winona’s cumbia and the zoo band. “Bañemos al Zorro” leads the album with more than 10 million views. More than 14 million views on YouTube."
   es: "Entre 2023 y 2024 animamos el octavo disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 8 canciones nuevas en el zoológico del Tío Mario, del campamento y las escondidas a la cumbia de Winona y la banda del zoo. «Bañemos al Zorro» encabeza el disco con más de 10 millones de vistas. Más de 14 millones de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

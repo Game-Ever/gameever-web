@@ -18,8 +18,8 @@ description:
   en: "For Children’s Day 2021, the cumbia legends Los Palmeras joined El Reino Infantil with twelve classic kids’ songs, from “La vaca lechera” to “La gallina Turuleca”. We designed the characters and animated thirteen minutes of 3D music video, now past 7 million views across the band’s and El Reino Infantil’s channels."
   es: "Para el Día del Niño 2021, Los Palmeras llegaron a El Reino Infantil con doce clásicos infantiles, de «La vaca lechera» a «La gallina Turuleca». Diseñamos los personajes y animamos en 3D trece minutos de videoclip. Más de 7 millones de vistas entre el canal de la banda y el de El Reino Infantil."
 role:
-  en: "Character design, 3D animation, VFX"
-  es: "Diseño de personajes, animación 3D, VFX"
+  en: "Full production"
+  es: "Producción integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "_YzNxadXb5A"

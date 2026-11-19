@@ -22,8 +22,8 @@ description:
   en: "In 2016 and 2017 we animated the third album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “El Baile de los Animales” has more than 930 million views and “Las Ruedas del Autobús” more than 260 million. +1.7 B views on YouTube."
   es: "Entre 2016 y 2017 animamos el tercer disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «El Baile de los Animales» suma más de 930 millones de vistas y «Las Ruedas del Autobús», más de 260 millones. Más de 1.700 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

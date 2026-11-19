@@ -1,5 +1,5 @@
 ---
-title: "Plusbelle Kids"
+title: "Gaturro Plusbelle Kids"
 client: "Plusbelle"
 year: 2017
 services:
@@ -8,8 +8,8 @@ services:
 platforms:
   - "tv"
 genre:
-  en: "TV spots"
-  es: "Spots de TV"
+  en: "Advertising"
+  es: "Publicidad"
 cover: "../../assets/projects/plusbelle-kids/cover.jpg"
 summary:
   en: "Gaturro, bathroom superhero, in two 2D spots."

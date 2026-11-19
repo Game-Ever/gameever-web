@@ -22,8 +22,8 @@ description:
   en: "In 2013 we animated the first album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 9 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. It is where it all started: “Cuidado con la Bomba Chita” is past 1.26 billion views and “Mi Tío Mario Veterinario” past 500 million. +2.8 B views on YouTube."
   es: "En 2013 animamos el primer disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 9 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. Fue el comienzo de todo: «Cuidado con la Bomba Chita» supera los 1.260 millones de vistas y «Mi Tío Mario Veterinario», los 500 millones. Más de 2.800 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

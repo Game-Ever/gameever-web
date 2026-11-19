@@ -8,8 +8,8 @@ services:
 platforms:
   - "tv"
 genre:
-  en: "TV spots"
-  es: "Spots de TV"
+  en: "Advertising"
+  es: "Publicidad"
 cover: "../../assets/projects/loto-plus/cover.jpg"
 summary:
   en: "Riverito, in 3D for the first time, for Loto Plus."
@@ -18,8 +18,8 @@ description:
   en: "We brought Riverito, the historic voice of Argentina’s lottery draws, into 3D. Character design, storyboard and 3D animation for two Loto Plus TV spots for Lotería de la Ciudad, on air with every record jackpot."
   es: "Llevamos a Riverito, la voz histórica de los sorteos, al 3D. Diseñamos el personaje, hicimos el storyboard y animamos dos spots de TV de Loto Plus para la Lotería de la Ciudad, al aire con cada pozo récord."
 role:
-  en: "Character design, storyboard, 3D animation, VFX"
-  es: "Diseño de personajes, storyboard, animación 3D, VFX"
+  en: "Full production"
+  es: "Producción integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "jstcfh2823Y"

@@ -23,8 +23,8 @@ description:
   en: "El Gatito tells the story of a cat who lives on the streets of Buenos Aires. Destiny takes him on a long journey to the arid Patagonian desert, where, lost and afraid, he follows his instinct to survive, makes friends and finds the home the city never gave him. The thirteen-minute short was born from INCAA’s First Federal Animation Contest. It then received a special mention at the 2013 Mar del Plata Film Festival and the Best TDA Animation award at Mendoza Proyecta 2014. Later we turned it into a video game for Android: the hero crosses an endless desert, collecting fish, using power-ups and dodging dangers."
   es: "El Gatito narra la historia de un felino que vive en las calles de Buenos Aires. El destino lo lleva en un largo viaje hasta el árido desierto patagónico, donde, perdido y con miedo, se guía por el instinto para sobrevivir, hace amigos y encuentra el hogar que la ciudad nunca le dio. El cortometraje de trece minutos nació del Primer Concurso Federal de Animación del INCAA. Después recibió una mención especial en el Festival de Mar del Plata 2013 y el premio a Mejor Animación TDA en Mendoza Proyecta 2014. Más tarde lo llevamos a un videojuego para Android: el protagonista atraviesa un desierto sin fin, junta pescados, usa power-ups y esquiva peligros."
 role:
-  en: "Full development"
-  es: "Desarrollo integral"
+  en: "Full production"
+  es: "Producción integral"
 highlights:
   - id: "vZE1pev2IWE"
     title: { en: "The short film", es: "El cortometraje" }

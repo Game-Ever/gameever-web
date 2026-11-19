@@ -3,8 +3,8 @@ title: "Wizard vs Orcs"
 client: "Legends of Learning"
 year: 2019
 services:
-  - "web-games"
   - "edutainment"
+  - "web-games"
 platforms:
   - "web"
 genre:
@@ -20,8 +20,8 @@ description:
   en: "For Legends of Learning we made Wizard vs Orcs, a curriculum-aligned math game (7.NS.A.1.d, operations with rational numbers). Orcs march along number paths toward the castle, and the kingdom’s only wizard stops them by solving operations. Built to engage students and support teachers in in-person, hybrid and remote classes."
   es: "Para Legends of Learning creamos Wizard vs Orcs, un juego de matemática alineado al currículo de EE.UU. (7.NS.A.1.d, operaciones con números racionales). Los orcos avanzan por caminos numéricos hacia el castillo y el único mago del reino los frena resolviendo operaciones. Está pensado para enganchar a los alumnos y ayudar a docentes en clases presenciales, híbridas y a distancia."
 role:
-  en: "Game design, 2D art, development"
-  es: "Game design, arte 2D, desarrollo"
+  en: "Full development"
+  es: "Desarrollo integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "eyv4NmCRsGc"

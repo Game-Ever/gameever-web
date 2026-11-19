@@ -8,6 +8,7 @@ services:
   - "animation-2d"
   - "series"
 platforms:
+  - "tv"
   - "ios"
   - "android"
 genre:
@@ -15,21 +16,28 @@ genre:
   es: "Serie · Endless runner"
 cover: "../../assets/projects/maggie-boo/cover.jpg"
 summary:
-  en: "Our first original world: a young witch, a series pilot and a game."
-  es: "Nuestro primer universo propio: una joven bruja, un piloto de serie y un juego."
+  en: "Our first original world: a young witch, a series project and the demo of its game."
+  es: "Nuestro primer universo propio: una joven bruja, un proyecto de serie y la demo de su juego."
 description:
-  en: "Maggie is a young witch, raised by her aunts, who keeps getting tangled up with mythical beings, wizards and creatures, together with her friends Wip and Oku. We produced the series pilot, a comedy in 12-minute episodes (the trailer comes from “The Frog Prince”), and an endless runner where Maggie never hurts her enemies: she breaks their curses."
-  es: "Maggie es una joven bruja, criada por sus tías, que siempre termina enredada con seres míticos, magos y criaturas, junto a sus amigos Wip y Oku. Produjimos el piloto de la serie, una comedia de capítulos de 12 minutos (el tráiler es del episodio «El Príncipe Rana»), y un endless runner donde Maggie no lastima a sus enemigos: les rompe el hechizo."
+  en: "Maggie is a young witch, raised by her aunts, who keeps getting into trouble one spell at a time, with her friends Wip and Oku. We developed the series, a comedy planned as 13 episodes of 12 minutes, and made the trailer of the episode “The Frog Prince” to present it. Alongside it, the demo of an endless runner where Maggie never hurts her enemies: she breaks their curses."
+  es: "Maggie es una joven bruja, criada por sus tías, que se mete en líos a fuerza de hechizos, junto a sus amigos Wip y Oku. Desarrollamos la serie, una comedia pensada en 13 capítulos de 12 minutos, e hicimos el tráiler del episodio «El Príncipe Rana» para presentarla. La acompaña la demo de un endless runner donde Maggie no lastima a sus enemigos: les rompe el hechizo."
+facts:
+  - label: { en: "Format", es: "Formato" }
+    value: { en: "Series project, 13 × 12 min · Game demo", es: "Proyecto de serie, 13 × 12 min · Demo de juego" }
 role:
-  en: "Original IP: series and game"
-  es: "IP propia: serie y juego"
-entries:
-  - title: { en: "The series pilot", es: "El piloto de la serie" }
-    year: "2013"
-    videos: ["W0XPaDKpj2U"]
-  - title: { en: "The game", es: "El juego" }
-    year: "2012"
-    videos: ["mBCLHTeJsxo"]
+  en: "Full production"
+  es: "Producción integral"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "W0XPaDKpj2U"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "Maggie, Wip and Oku in “The Frog Prince”, the episode we chose to present the series.", es: "Maggie, Wip y Oku en «El Príncipe Rana», el episodio que elegimos para presentar la serie." }
+  - id: "mBCLHTeJsxo"
+    title: { en: "The game demo", es: "La demo del juego" }
+    text: { en: "Run, dodge and break spells: a playable preview of Maggie’s world.", es: "Correr, esquivar y romper hechizos: un adelanto jugable del mundo de Maggie." }
+videos:
+  - "W0XPaDKpj2U"
+  - "mBCLHTeJsxo"
 heroImage: "../../assets/projects/maggie-boo/hero.jpg"
 press:
   - { outlet: "Latinspots", title: "Game Ever Studio produce el piloto de Maggie Boo", year: "2013", url: "https://www.latinspots.com/noticia/game-ever-studio-produce-el-piloto-de-maggie-boo/30881" }

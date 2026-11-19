@@ -22,8 +22,8 @@ description:
   en: "In 2019 we animated the fifth album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 12 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “Los bomberos van deprisa” leads the album with more than 26 million views. +124 M views on YouTube."
   es: "En 2019 animamos el quinto disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 12 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «Los bomberos van deprisa» encabeza el disco con más de 26 millones de vistas. Más de 124 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

@@ -4,14 +4,13 @@ client: "Rookbird Games"
 clientUrl: "https://rookbird.com/"
 year: 2022
 services:
-  - "codev"
-  - "trailer"
   - "animation-2d"
+  - "trailer"
 platforms:
   - "android"
 genre:
-  en: "Casual puzzle"
-  es: "Puzzle casual"
+  en: "Video game trailer"
+  es: "Tráiler de videojuego"
 featured: 9
 # Cover and hero from the game's screenshots on rookbird.com (the trailer frames all carry text). The cover is square, framed on the three fish as the user chose; 4:3 cards crop only sky and roof.
 cover: "../../assets/projects/flying-fishies/cover.jpg"
@@ -23,8 +22,8 @@ description:
   en: "A 43-second 2D animated trailer introducing Flying Fishies, the Android game by the Argentine studio Rookbird Games. In the game, fish leap out of the river and players link three or more of the same colour to catch them, while dodging the octopus and other enemies. The trailer brings its cut-paper world to animation: a theatre curtain, a paper sea and a storybook feel."
   es: "Un tráiler de 43 segundos, animado en 2D, para presentar Flying Fishies, el juego para Android del estudio argentino Rookbird Games. En el juego, los peces saltan del río y hay que unir tres o más del mismo color para pescarlos, esquivando al pulpo y a los demás enemigos. El tráiler lleva a la animación su mundo de papel recortado: un telón de teatro, un mar de papel y un tono de libro ilustrado."
 role:
-  en: "2D animation, trailer"
-  es: "Animación 2D, tráiler"
+  en: "Full production"
+  es: "Producción integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "fcHGyp75yMk"

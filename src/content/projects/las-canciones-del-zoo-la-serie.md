@@ -22,8 +22,8 @@ description:
   en: "The characters of Las Canciones del Zoo got their own series, and El Reino Infantil trusted us with it again. Tufín the Fox, Chulo the Monkey, Lalo the Penguin and all the animals at Tío Mario’s zoo live stories, crazy encounters and adventures: bath time, brushing teeth, a picnic, a camping trip, new friends. Twelve three-minute episodes released between 2019 and 2020, with more than 69 million views on YouTube."
   es: "Los personajes de Las Canciones del Zoo tuvieron su propia serie, y El Reino Infantil volvió a confiarnos la animación. El Zorro Tufín, el Mono Chulo, el Pingüino Lalo y todos los animales del zoológico del Tío Mario viven historias, encuentros y aventuras: la hora del baño, lavarse los dientes, un picnic, un campamento, nuevos amigos. Doce capítulos de 3 minutos estrenados entre 2019 y 2020, con más de 69 millones de vistas en YouTube."
 role:
-  en: "3D animation, lighting, render, VFX, editing"
-  es: "Animación 3D, iluminación, render, VFX, edición"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · El Reino Series"

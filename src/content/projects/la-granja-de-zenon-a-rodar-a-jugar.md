@@ -22,8 +22,8 @@ description:
   en: "From the music videos to play: since 2022 we have taken the cars of A Rodar to El Reino a Jugar, El Reino Infantil’s channel for games and learning. Little ones ride along with Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and Beto the Wolf: they see the world, fill up at the gas station, visit the garage and wash the car. More than 18 million views on YouTube."
   es: "De los videoclips al juego: desde 2022 llevamos los autos de A Rodar a El Reino a Jugar, el canal de juegos y aprendizaje de El Reino Infantil. Los chicos acompañan a Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el Lobo Beto: recorren el mundo, cargan combustible, van al taller y lavan el auto. Más de 18 millones de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channel", es: "Canal" }
     value: "El Reino a Jugar"

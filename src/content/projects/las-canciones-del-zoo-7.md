@@ -22,8 +22,8 @@ description:
   en: "In 2021 and 2022 we animated the seventh album of Las Canciones del Zoo for El Reino Infantil (Leader Entertainment): 11 songs in Tío Mario’s zoo with no cages, where the animals sing, dance and play. “Una vez un león” leads the album with more than 21 million views. The last album we animated, with much of the team that also made La Granja de Zenón: A Rodar. +56 M views on YouTube."
   es: "Entre 2021 y 2022 animamos el séptimo disco de Las Canciones del Zoo para El Reino Infantil (Leader Entertainment): 11 canciones en el zoológico sin jaulas del Tío Mario, donde los animales cantan, bailan y juegan. «Una vez un león» encabeza el disco con más de 21 millones de vistas. El último disco que animamos, con buena parte del equipo que también hizo La Granja de Zenón: A Rodar. Más de 56 M de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · Canciones del Zoo"

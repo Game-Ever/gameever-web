@@ -7,11 +7,10 @@ services:
   - "animation-3d"
   - "advertising"
 platforms:
-  - "youtube"
   - "tv"
 genre:
-  en: "Ad campaigns"
-  es: "Campañas publicitarias"
+  en: "Advertising"
+  es: "Publicidad"
 cover: "../../assets/projects/puro-sol/cover.jpg"
 summary:
   en: "Seven years of 3D animated campaigns for PuroSol, in Paraguay."
@@ -20,8 +19,8 @@ description:
   en: "Since 2016 we have animated PuroSol’s kids campaigns with the agency Prana. The Puro Amigos (Mia, Ralph, Andy, Milo, Lua and Tina) hunt for treasure, go back to school and crack secret codes; for one launch we created the Dinos. “The best friend of fun.”"
   es: "Desde 2016 animamos las campañas infantiles de PuroSol con la agencia Prana. Los Puro Amigos (Mia, Ralph, Andy, Milo, Lua y Tina) buscan tesoros, vuelven a clases y descifran códigos secretos; para un lanzamiento creamos los Dinos. «El mejor amigo de la diversión»."
 role:
-  en: "Character design, 3D animation"
-  es: "Diseño de personajes, animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 # One spot per card, most viewed first (official PuroSol uploads when they have more views; checked November 2026).
 entries:
   - { title: "Espacio", year: "2019", views: 148850, videos: ["7V7w3HruQcA"] }

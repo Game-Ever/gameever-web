@@ -3,7 +3,7 @@
 export const SERVICES = {
   'brand-games': { en: 'Brand games', es: 'Juegos para marcas' },
   'web-games': { en: 'Web games', es: 'Juegos web' },
-  edutainment: { en: 'Edutainment', es: 'Edutainment' },
+  edutainment: { en: 'Educational games', es: 'Juegos educativos' },
   codev: { en: 'Co-dev', es: 'Co-desarrollo' },
   'original-ip': { en: 'Original IP', es: 'IP propia' },
   'animation-3d': { en: '3D animation', es: 'Animación 3D' },
@@ -25,6 +25,7 @@ export const PLATFORMS = {
   arcade: { en: 'Arcade', es: 'Arcade' },
   tv: { en: 'TV', es: 'TV' },
   youtube: { en: 'YouTube', es: 'YouTube' },
+  social: { en: 'Social media', es: 'Redes' },
 } as const;
 
 // What visitors see: device families, not operating systems or stores. iOS and Android show as "Mobile" and

@@ -3,8 +3,8 @@ title: "Necromather"
 client: "Legends of Learning"
 year: 2019
 services:
-  - "web-games"
   - "edutainment"
+  - "web-games"
 platforms:
   - "web"
 genre:
@@ -21,8 +21,8 @@ description:
   en: "For Legends of Learning, the educational game platform used in US classrooms, we made Necromather: a necromancer defends his graveyard from monster hordes using magic and the power of area. Built for third grade and aligned to the area-by-tiling standard (3.MD.C.7.a), for in-person, hybrid and remote classes."
   es: "Para Legends of Learning, la plataforma de juegos educativos usada en escuelas de EE.UU., creamos Necromather: un nigromante defiende su cementerio de hordas de monstruos usando magia y el cálculo de áreas. Está pensado para tercer grado y alineado al estándar curricular de área por embaldosado (3.MD.C.7.a), para clases presenciales, híbridas y a distancia."
 role:
-  en: "Game design, 2D art, development"
-  es: "Game design, arte 2D, desarrollo"
+  en: "Full development"
+  es: "Desarrollo integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "aImgcUtgluY"

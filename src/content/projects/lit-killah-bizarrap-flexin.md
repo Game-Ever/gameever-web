@@ -20,8 +20,8 @@ description:
   en: "We directed and produced the animated video for Flexin’, LIT killah’s biggest hit, with a beat by Bizarrap. A retro-futuristic 3D ride from Biza’s studio to a neon desert, sharing the look of the game we made for LIT killah. Over 200 million YouTube views, Platinum in Argentina and #11 on the Billboard Argentina Hot 100."
   es: "Dirigimos y producimos el videoclip animado de Flexin’, el mayor hit de LIT killah, con beat de Bizarrap. Un viaje retro-futurista en 3D, del estudio de Biza a un desierto de neón, con la misma estética del juego que desarrollamos para LIT killah. Más de 200 millones de vistas en YouTube, Disco de Platino en Argentina y puesto 11 en el Billboard Argentina Hot 100."
 role:
-  en: "Direction, production, 3D animation"
-  es: "Dirección, producción, animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "YWdcQfjdzBc"

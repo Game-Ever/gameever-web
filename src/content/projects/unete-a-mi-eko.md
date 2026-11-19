@@ -7,10 +7,10 @@ services:
   - "animation-2d"
   - "advertising"
 platforms:
-  - "youtube"
+  - "tv"
 genre:
-  en: "Ad campaigns"
-  es: "Campañas publicitarias"
+  en: "Advertising"
+  es: "Publicidad"
 cover: "../../assets/projects/unete-a-mi-eko/cover.jpg"
 summary:
   en: "Six years of 2D campaigns for Eko, Enka’s recycling brand."
@@ -19,8 +19,8 @@ description:
   en: "Enka de Colombia is one of the world’s five largest PET bottle recyclers. For its Eko brand we brought the Enkos to life: recycling and global warming explained, a DJ EKO music video and even an anthem for the 2018 World Cup. Characters, music and humor, from 2014 to 2019."
   es: "Enka de Colombia es una de las cinco mayores recicladoras de botellas PET del mundo. Para su marca Eko dimos vida a los Enkos: explicamos el reciclaje y el calentamiento global, hicimos un videoclip con DJ EKO y hasta el himno para el Mundial 2018. Personajes, música y humor, de 2014 a 2019."
 role:
-  en: "Character design, 2D animation"
-  es: "Diseño de personajes, animación 2D"
+  en: "Full production"
+  es: "Producción integral"
 # One spot per card, most viewed first (official Únete a mi EKO uploads when they have more views; checked November 2026).
 entries:
   - { title: "Mannequin Challenge", year: "2017", views: 18107, videos: ["5kJqzl3NNao"] }

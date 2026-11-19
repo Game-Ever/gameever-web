@@ -21,8 +21,8 @@ description:
   en: "The characters of Las Canciones del Zoo play with their audience. In these play-along videos little ones learn numbers, colors, shapes and sizes with a little help from their favorite animals: guessing silhouettes, playing hide and seek, painting, opening surprise eggs and playing football. More than 77 million views on YouTube."
   es: "Los personajes de Las Canciones del Zoo juegan con su público. En estos videos interactivos los más chicos aprenden números, colores, formas y tamaños con la ayuda de sus animales favoritos: adivinan siluetas, juegan a las escondidas, pintan, abren huevos sorpresa y juegan al fútbol. Más de 77 millones de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channel", es: "Canal" }
     value: "El Reino a Jugar"

@@ -22,8 +22,8 @@ description:
   en: "Between 2022 and 2024 we animated La Granja de Zenón: A Rodar, the song series in which El Reino Infantil (Leader Entertainment) takes the farm on the road. Zenón, Bartolito, Lola the Cow, Pepe the Parrot, Percherón, Doña Pancha and naughty Beto the Wolf start their engines and drive through jungles, beaches, mountains, lakes, rivers, small towns, big cities and even a road in the colors of the rainbow. Twelve songs about the world of cars (filling up, washing, fixing, stopping at the traffic light), made for little ones to play and learn. More than 230 million views on YouTube."
   es: "Entre 2022 y 2024 animamos La Granja de Zenón: A Rodar, la serie de canciones con la que El Reino Infantil (Leader Entertainment) saca la granja a la ruta. Zenón, Bartolito, la Vaca Lola, el Lorito Pepe, Percherón, Doña Pancha y el travieso Lobo Beto encienden los motores y recorren selvas, playas, montañas, lagos, ríos, pueblos, grandes ciudades y hasta un camino con los colores del arcoíris. Doce canciones sobre el mundo de los autos (cargar combustible, lavarlos, arreglarlos, frenar en el semáforo), pensadas para que los más chicos jueguen y aprendan. Más de 230 millones de vistas en YouTube."
 role:
-  en: "3D animation"
-  es: "Animación 3D"
+  en: "Full production"
+  es: "Producción integral"
 facts:
   - label: { en: "Channels", es: "Canales" }
     value: "El Reino Infantil · La Granja de Zenón"

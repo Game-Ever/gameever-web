@@ -8,8 +8,8 @@ services:
 platforms:
   - "tv"
 genre:
-  en: "International TV spot"
-  es: "Spot de TV internacional"
+  en: "Advertising"
+  es: "Publicidad"
 cover: "../../assets/projects/tic-tac-gum/cover.jpg"
 summary:
   en: "2D animated faces inside a pinball machine, for the Tic Tac Gum launch."
