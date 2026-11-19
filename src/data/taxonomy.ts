@@ -61,8 +61,10 @@ const PLAYABLE: PlatformKey[] = ['web', 'ios', 'android', 'steam', 'pc', 'consol
 
 export function areasOf(services: readonly ServiceKey[], platforms: readonly PlatformKey[]): AreaKey[] {
   const areas: AreaKey[] = [];
-  // Original IP counts as a game only when it ships on a playable platform (series don't).
-  if (services.some((s) => GAME_SERVICES.includes(s)) || (services.includes('original-ip') && platforms.some((p) => PLAYABLE.includes(p)))) areas.push('games');
+  // Original IP counts as a game only when it ships on a playable platform (series don't); so does an illustration
+  // made for a game (e.g. Okhlos key art).
+  const playable = platforms.some((p) => PLAYABLE.includes(p));
+  if (services.some((s) => GAME_SERVICES.includes(s)) || ((services.includes('original-ip') || services.includes('illustration')) && playable)) areas.push('games');
   if (services.some((s) => ANIMATION_SERVICES.includes(s))) areas.push('animation');
   if (services.includes('codev')) areas.push('coproduction');
   return areas;

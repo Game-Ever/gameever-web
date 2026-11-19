@@ -4,7 +4,6 @@ client: "Devolver Digital"
 year: 2018
 services:
   - "illustration"
-  - "codev"
 platforms:
   - "pc"
 genre:

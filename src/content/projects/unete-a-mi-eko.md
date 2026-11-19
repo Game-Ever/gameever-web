@@ -25,12 +25,12 @@ role:
 entries:
   - { title: "Mannequin Challenge", year: "2017", views: 18107, videos: ["5kJqzl3NNao"] }
   - { title: "Calentamiento global", year: "2014", views: 15780, videos: ["L5z0OlZH98o"] }
-  - { title: "DJ EKO: Mi movida", year: "2015", views: 14427, videos: ["xHYsqYui3X8"] }
+  - { title: "DJ EKO: Mi movida", year: "2014", views: 14427, videos: ["xHYsqYui3X8"] }
   - { title: "Qué es Enka", year: "2014", views: 11577, videos: ["CwG6h7BGtE4"] }
   - { title: "Monstruo", year: "2019", views: 1366, videos: ["5dF_RRzUy7Y"] }
   - { title: "Dino", year: "2019", views: 1292, videos: ["7kOiEcKJL30"] }
-  - { title: "Fábrica", year: "2018", views: 1267, videos: ["UUmIZQC8hkM"] }
-  - { title: "Himno del Mundial 2018", year: "2018", views: 1223, videos: ["4sgmCcazauY"] }
+  - { title: "Fábrica", year: "2017", views: 1267, videos: ["UUmIZQC8hkM"] }
+  - { title: "Himno del Mundial 2018", year: "2017", views: 1223, videos: ["4sgmCcazauY"] }
 heroImage: "../../assets/projects/unete-a-mi-eko/hero.jpg"
 # Figures checked on YouTube / public sources in November 2026.
 stats:
@@ -41,6 +41,8 @@ stats:
 entriesTitle:
   en: "The spots"
   es: "Los spots"
+# Spots by campaign year, newest first (2014, 2017 and 2019 campaigns, as on the old site; no most-viewed block, no views).
+entriesLayout: "years"
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { group: "2019", role: { en: "Production", es: "Producción" }, names: "Pablo Forconi" }

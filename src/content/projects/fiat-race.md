@@ -19,8 +19,8 @@ summary:
   en: "Racing advergame for Fiat: web, mobile and two arcade cabinets for the 2015 Motor Show."
   es: "Advergame de carreras para Fiat: web, mobile y dos arcades para el Salón del Automóvil 2015."
 description:
-  en: "Three Fiat icons (the 500, the 500 Cabrio and the classic 600) racing across Argentina: the Mar del Plata coast, Patagonia, the Pampas and Buenos Aires by night, checkpoint to checkpoint against the clock. Released on Android, iOS and the web in Spanish and English. For the 7th Buenos Aires International Motor Show (2015) we also built two arcade cabinets with steering wheel, pedals and seat, where visitors competed for prizes on a daily leaderboard."
-  es: "Elegimos tres íconos de Fiat (el 500, el 500 Cabrio y el clásico 600) y los pusimos a recorrer la Argentina: la costa de Mar del Plata, la Patagonia, la pampa y la noche porteña, contra reloj y de checkpoint en checkpoint. Salió para Android, iOS y navegador, en español e inglés. Para el 7º Salón Internacional del Automóvil de Buenos Aires (2015) construimos además dos cabinas arcade con volante, pedales y asiento, donde los visitantes competían por premios en un ranking diario."
+  en: "Three Fiat icons (the 500, the 500 Cabrio and the classic 600) racing across Argentina: the Mar del Plata coast, Patagonia, the Pampas and Buenos Aires by night, checkpoint to checkpoint against the clock. Released on Android, iOS and the web. For the 7th Buenos Aires International Motor Show (2015) we also built two arcade cabinets with steering wheel, pedals and seat, where visitors competed for prizes on a daily leaderboard."
+  es: "Elegimos tres íconos de Fiat (el 500, el 500 Cabrio y el clásico 600) y los pusimos a recorrer la Argentina: la costa de Mar del Plata, la Patagonia, la pampa y la noche porteña, contra reloj y de checkpoint en checkpoint. Salió para Android, iOS y navegador. Para el 7º Salón Internacional del Automóvil de Buenos Aires (2015) construimos además dos cabinas arcade con volante, pedales y asiento, donde los visitantes competían por premios en un ranking diario."
 role:
   en: "Full development · Arcade cabinet build"
   es: "Desarrollo integral · Construcción de cabinas arcade"
@@ -39,8 +39,6 @@ heroImage: "../../assets/projects/fiat-race/hero.png"
 facts:
   - label: { en: "Event", es: "Evento" }
     value: { en: "7th Buenos Aires International Motor Show, 2015", es: "7º Salón Internacional del Automóvil de Buenos Aires, 2015" }
-  - label: { en: "Languages", es: "Idiomas" }
-    value: { en: "Spanish · English", es: "Español · Inglés" }
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Forconi" }

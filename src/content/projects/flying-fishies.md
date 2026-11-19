@@ -31,17 +31,18 @@ highlights:
     text: { en: "43 seconds of 2D animation in a paper cut-out world: a theater curtain, a paper sea and a picture-book tone.", es: "43 segundos de animación 2D en un mundo de papel recortado: telón de teatro, mar de papel y tono de libro ilustrado." }
 videos:
   - "fcHGyp75yMk"
-gallery:
-  - "../../assets/projects/flying-fishies/waterfall.jpg"
-  - "../../assets/projects/flying-fishies/ink.jpg"
-  - "../../assets/projects/flying-fishies/dragon.jpg"
-  - "../../assets/projects/flying-fishies/how-to-play.jpg"
+# Gallery taken out of the page (studio decision, 19/11/2026); images kept for later:
+# gallery:
+# - "../../assets/projects/flying-fishies/waterfall.jpg"
+# - "../../assets/projects/flying-fishies/ink.jpg"
+# - "../../assets/projects/flying-fishies/dragon.jpg"
+# - "../../assets/projects/flying-fishies/how-to-play.jpg"
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { role: { en: "Production", es: "Producción" }, names: "Franco Albertti" }
   - { role: { en: "Editing", es: "Edición" }, names: "Lucio Preciado" }
   - { role: { en: "Design & art", es: "Diseño y arte" }, names: "Micaela Karaman" }
-  - { role: { en: "2D animation", es: "Animación 2D" }, names: "Pablo Forconi" }
+  - { role: { en: "Motion graphics", es: "Motion graphics" }, names: "Pablo Forconi" }
 legacySlugs:
   - "flying-fishies"
 ---

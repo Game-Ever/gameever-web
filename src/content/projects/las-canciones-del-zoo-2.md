@@ -60,8 +60,7 @@ entries:
   - { title: "Hola y Adiós", year: "2014", views: 11829793, videos: ["o05sgvjGW5k"] }
 # Credits from this album's page on the old gameeverstudio.com (client and Leader executives left out).
 creditList:
-  - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
-  - { role: { en: "Director", es: "Dirección" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction & production", es: "Dirección y producción" }, names: "Pablo Forconi" }
   - { role: { en: "3D animation", es: "Animación 3D" }, names: "Diego Forconi" }
   - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez" }
   - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }

@@ -7,8 +7,9 @@ import { WORLD_PROJECTS } from '../data/worlds';
 
 // variant "home": a short selection (first HOME_COUNT in Featured order, minus the projects already shown in
 // the "Qué hacemos" cards) with a link to the full list.
-// variant "full": every project, with area tabs (Todos / Videojuegos / Animación / Co-producción),
-// search and sort, all kept in the URL (?area=games&q=…&sort=newest) so links can be shared.
+// variant "full": every project, newest first, with area tabs (Todos / Videojuegos / Animación; an area with no
+// projects gets no tab), kept in the URL (?area=games) so links can be shared. No search or sort: few people use
+// them on a list this size.
 interface Props { lang: Lang; projects: Project[]; variant?: 'home' | 'full' }
 const { lang, variant = 'full' } = Astro.props;
 const HOME_COUNT = 6;
@@ -16,8 +17,7 @@ const projects = variant === 'home'
   ? Astro.props.projects.filter((p) => !WORLD_PROJECTS.includes(p.id)).slice(0, HOME_COUNT)
   : Astro.props.projects;
 const full = variant === 'full';
-// The projects page opens sorted by year, newest first (ties keep the Featured order); `data-order` keeps the
-// Featured position so that sort can still be chosen.
+// The projects page is sorted by year, newest first (ties keep the Featured order).
 const featuredPos = new Map(projects.map((p, i) => [p.id, i]));
 const shown = full ? [...projects].sort((a, b) => b.data.year - a.data.year || featuredPos.get(a.id)! - featuredPos.get(b.id)!) : projects;
 const Heading = full ? 'h1' : 'h2';
@@ -26,7 +26,7 @@ const t = useT(lang);
 const areaOf = new Map(projects.map((p) => [p.id, areasOf(p.data.services, p.data.platforms)]));
 const tabs = [
   { key: '', label: t('work.allAreas'), n: projects.length },
-  ...AREA_KEYS.map((k) => ({ key: k, label: AREAS[k][lang], n: projects.filter((p) => areaOf.get(p.id)!.includes(k)).length })),
+  ...AREA_KEYS.map((k) => ({ key: k, label: AREAS[k][lang], n: projects.filter((p) => areaOf.get(p.id)!.includes(k)).length })).filter((tab) => tab.n > 0),
 ];
 const i18n = { count: t('work.count'), showing: t('work.showing') };
 ---
@@ -47,18 +47,6 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
             </button>
           ))}
         </div>
-        <div class="tools">
-          <label class="search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
-            <span class="sr-only">{t('work.search')}</span>
-            <input type="search" name="q" placeholder={t('work.search')} autocomplete="off" />
-          </label>
-          <select class="sort" aria-label={t('work.sort')}>
-            <option value="newest">{t('work.sort.newest')}</option>
-            <option value="featured">{t('work.sort.featured')}</option>
-            <option value="az">{t('work.sort.az')}</option>
-          </select>
-        </div>
       </div>
     )}
     {full && <span class="count mono" aria-live="polite">{t('work.count', { n: projects.length })}</span>}
@@ -71,7 +59,6 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
           data-title={p.data.title}
           data-client={p.data.client}
           data-year={p.data.year}
-          data-order={featuredPos.get(p.id)}
           data-area={areaOf.get(p.id)!.join(' ')}
         >
           <div class="img"><Image src={p.data.cover} alt="" widths={[320, 480, 640, 960]} sizes="(max-width: 1000px) 50vw, 430px" loading={i < 6 ? "eager" : "lazy"} /></div>
@@ -80,9 +67,7 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
         </a>
       ))}
     </div>
-    {full
-      ? <p class="empty" hidden>{t('work.empty')} <button class="clear-all">{t('work.emptyClear')}</button></p>
-      : <a class="all" href={url(lang, 'work')}>{t('work.all')} <span aria-hidden="true">→</span></a>}
+    {!full && <a class="all" href={url(lang, 'work')}>{t('work.all')} <span aria-hidden="true">→</span></a>}
   </div>
 </section>
 
@@ -96,22 +81,17 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .work-head > * { min-width: 0; }
   .work-head :is(h1, h2) { font-size: var(--title-size); line-height: 0.95; overflow-wrap: break-word; }
 
-  /* Toolbar: area tabs on the left, search and sort on the right; sticks under the header. */
+  /* Toolbar: the area tabs; sticks under the header. */
   .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 20; padding: 14px 0; /* Solid behind both rows (tabs and search wrap to two rows on phones), fading out only in the bottom padding. */ background: linear-gradient(var(--bg) calc(100% - 14px), transparent); }
   .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
   .tab { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 2px solid rgba(255, 255, 255, 0.35); background: none; cursor: pointer; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
   .tab:hover { border-color: var(--fg); }
   .tab[aria-pressed='true'] { background: var(--pink); border-color: var(--pink); color: #fff; }
   .n { font-family: var(--mono); font-size: 11px; font-weight: 400; opacity: 0.75; }
-  .tools { display: flex; gap: 8px; }
-  .search { display: flex; align-items: center; gap: 10px; border: 2px solid rgba(255, 255, 255, 0.35); padding: 0 14px; height: 46px; width: 280px; }
-  .search input { flex: 1; min-width: 0; background: none; border: 0; color: var(--fg); font: 500 16px var(--sans); outline: none; }
-  .search input::placeholder { color: rgba(255, 255, 255, 0.55); }
-  .search:focus-within { border-color: var(--pink); }
-  .sort { height: 46px; border: 2px solid rgba(255, 255, 255, 0.35); background: var(--bg); color: var(--fg); padding: 0 12px; font: 700 14px var(--sans); text-transform: uppercase; cursor: pointer; }
   .count { display: block; color: rgba(255, 255, 255, 0.6); margin: 10px 0 26px; }
 
   .wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; padding-bottom: 40px; }
+  .card[hidden] { display: none; }
   .card { display: flex; flex-direction: column; gap: 12px; animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   @keyframes rise { from { opacity: 0; translate: 0 30px; } to { opacity: 1; translate: 0 0; } }
   /* Square thumbnails: the cover is square (two image formats on the site: 16:9 header, 1:1 cover). */
@@ -128,85 +108,54 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .card:focus-visible h3 { color: var(--pink); }
   .all { display: inline-flex; gap: 12px; align-items: center; font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 15px; border: 2px solid var(--fg); padding: 16px 24px; transition: background 0.2s, color 0.2s; }
   .all:hover { background: var(--fg); color: var(--bg); }
-  .empty { text-align: center; padding: 80px 0; color: var(--mute); }
-  .empty button { background: none; border: 0; color: var(--fg); text-decoration: underline; cursor: pointer; font-weight: 700; }
 
   @media (max-width: 1000px) {
     .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 16px; }
-    .tools { width: 100%; min-width: 0; }
-    .search { flex: 1; width: auto; min-width: 0; }
-    .sort { flex: 0 0 auto; max-width: 46%; }
   }
   @media (max-width: 760px) {
     .work { padding-top: 80px; }
     .work-head { grid-template-columns: 1fr; gap: 18px; }
-    /* Tabs scroll sideways instead of wrapping into several rows. */
-    .tabs { flex-wrap: nowrap; overflow-x: auto; width: calc(100% + var(--gutter) * 2); margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 4px; scrollbar-width: none; }
-    .tab { flex: 0 0 auto; height: 42px; padding: 0 14px; font-size: 13px; }
+    /* The three tabs share one row, full width, no sideways scroll. */
+    .tabs { flex-wrap: nowrap; width: 100%; gap: 6px; }
+    .tab { flex: 1 1 auto; justify-content: center; gap: 6px; height: 42px; padding: 0 8px; font-size: 12px; font-stretch: 110%; }
+    /* No room for the counts next to the names on phones: the count line under the tabs says it. */
+    .tab .n { display: none; }
+    /* Smallest phones (320px): a bit tighter so «Videojuegos» still fits. */
+    @media (max-width: 360px) { .tab { font-size: 11px; padding: 0 6px; font-stretch: 100%; } }
     .card h3 { font-size: 16px; }
     .meta { font-size: 10px; }
   }
 </style>
 
 <script>
-  // Only the full projects page has the toolbar; the home selection is static.
+  // Only the full projects page has the tabs; the home selection is static.
   const root = document.querySelector<HTMLElement>('.work');
   if (root?.querySelector('.toolbar')) {
     const i18n = JSON.parse(root.dataset.i18n!);
-    const wall = root.querySelector<HTMLElement>('.wall')!;
-    const cards = [...wall.querySelectorAll<HTMLAnchorElement>('.card')];
+    const cards = [...root.querySelectorAll<HTMLAnchorElement>('.wall .card')];
     const tabs = [...root.querySelectorAll<HTMLButtonElement>('.tab')];
-    const search = root.querySelector<HTMLInputElement>('input[name=q]')!;
-    const sortSel = root.querySelector<HTMLSelectElement>('.sort')!;
     const countEl = root.querySelector<HTMLElement>('.count')!;
-    const emptyEl = root.querySelector<HTMLElement>('.empty')!;
     const AREAS = tabs.map((b) => b.dataset.area!).filter(Boolean);
-
-    const state = { area: '', q: '', sort: 'newest' };
-    const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    let area = '';
 
     function render(writeUrl = true) {
-      const q = norm(state.q.trim());
-      const list = cards.filter((c) =>
-        (!state.area || c.dataset.area!.split(' ').includes(state.area)) &&
-        (!q || norm(`${c.dataset.title} ${c.dataset.client}`).includes(q)));
-      if (state.sort === 'newest') list.sort((a, b) => +b.dataset.year! - +a.dataset.year! || +a.dataset.order! - +b.dataset.order!);
-      else if (state.sort === 'az') list.sort((a, b) => a.dataset.title!.localeCompare(b.dataset.title!));
-      else list.sort((a, b) => +a.dataset.order! - +b.dataset.order!);
-      // Re-inserting (instead of hiding) keeps the DOM order equal to the visual order.
-      list.forEach((c, i) => (c.style.animationDelay = `${Math.min(i, 8) * 50}ms`));
-      wall.replaceChildren(...list);
-      emptyEl.hidden = list.length > 0;
-      countEl.textContent = list.length === cards.length
+      let shown = 0;
+      cards.forEach((c) => {
+        const on = !area || c.dataset.area!.split(' ').includes(area);
+        c.hidden = !on;
+        if (on) c.style.animationDelay = `${Math.min(shown++, 8) * 50}ms`;
+      });
+      countEl.textContent = shown === cards.length
         ? i18n.count.replace('{n}', cards.length)
-        : i18n.showing.replace('{n}', list.length).replace('{total}', cards.length);
-      tabs.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.area === state.area)));
-
-      if (writeUrl) {
-        const u = new URLSearchParams();
-        if (state.area) u.set('area', state.area);
-        if (state.q) u.set('q', state.q);
-        if (state.sort !== 'newest') u.set('sort', state.sort);
-        history.replaceState(null, '', `${location.pathname}${u.size ? `?${u}` : ''}${location.hash}`);
-      }
+        : i18n.showing.replace('{n}', shown).replace('{total}', cards.length);
+      tabs.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.area === area)));
+      if (writeUrl) history.replaceState(null, '', `${location.pathname}${area ? `?area=${area}` : ''}${location.hash}`);
     }
 
-    // Restore from a shared link (?area=games&sort=newest).
-    const params = new URLSearchParams(location.search);
-    state.area = AREAS.includes(params.get('area') ?? '') ? params.get('area')! : '';
-    state.q = params.get('q') ?? '';
-    state.sort = ['featured', 'newest', 'az'].includes(params.get('sort') ?? '') ? params.get('sort')! : 'newest';
-    search.value = state.q;
-    sortSel.value = state.sort;
+    // Restore from a shared link (?area=games). Unknown areas (or old ?q= and ?sort= links) show everything.
+    const asked = new URLSearchParams(location.search).get('area') ?? '';
+    area = AREAS.includes(asked) ? asked : '';
     render(false);
-
-    tabs.forEach((b) => b.addEventListener('click', () => { state.area = b.dataset.area!; render(); }));
-    search.addEventListener('input', () => { state.q = search.value; render(); });
-    sortSel.addEventListener('change', () => { state.sort = sortSel.value; render(); });
-    root.querySelector('.clear-all')!.addEventListener('click', () => {
-      Object.assign(state, { area: '', q: '' });
-      search.value = '';
-      render();
-    });
+    tabs.forEach((b) => b.addEventListener('click', () => { area = b.dataset.area!; render(); }));
   }
 </script>

@@ -81,6 +81,8 @@ const SHOWN = 9; // entries visible per series before "Ver los N"
 // span more than one year, the rest is grouped by year (newest first), most viewed first inside each year; only the
 // newest years show until "Ver los N". Clips without views keep the plain grid.
 type Entry = (typeof d.entries)[number];
+// Clips by year only (newest first), for products where views are not the point (e.g. Eko's campaigns).
+const yearsOf = (entries: Entry[]) => [...new Set(entries.map((e) => e.year))].sort((a, b) => b.localeCompare(a)).map((y) => ({ year: y, entries: entries.filter((e) => e.year === y) }));
 const layoutOf = (entries: Entry[]) => {
   if (!entries.some((e) => e.views)) return null;
   const sorted = [...entries].sort((a, b) => (b.views ?? 0) - (a.views ?? 0));
@@ -199,10 +201,25 @@ const jsonLd = {
             )}
           </div>
           {groups.map((g, i) => {
-            const L = layoutOf(g.entries);
+            const L = d.entriesLayout === 'years' ? null : layoutOf(g.entries);
+            const Y = d.entriesLayout === 'years' ? yearsOf(g.entries) : null;
             return (
             <div class="series-panel" id={`series-${g.key}`} role={groups.length > 1 ? 'tabpanel' : undefined} hidden={i > 0}>
-              {L ? (<>
+              {Y ? Y.map((y) => (
+                <div class="clip-year">
+                  <h3 class="year-title wide">{y.year}</h3>
+                  <div class="entries">
+                    {y.entries.map((e) => (
+                      <article>
+                        {e.videos[0]
+                          ? <YouTube id={e.videos[0]} title={tr(e.title, lang)} playLabel={t('project.play')} watchLabel={t('project.watch')} sizes="(max-width: 900px) 100vw, 33vw" />
+                          : <div class="novideo" />}
+                        <h3>{tr(e.title, lang)}</h3>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              )) : L ? (<>
                 <div class="clip-top">
                   <p class="top-label mono">{t('project.mostViewedPlural')}</p>
                   <div class="clip-split">

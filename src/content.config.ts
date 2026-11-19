@@ -51,6 +51,8 @@ const projects = defineCollection({
     stats: z.array(z.object({ value: z.string(), label: localized })).default([]),
     /** Heading over `entries` (default: "Temporadas y campañas"). */
     entriesTitle: localized.optional(),
+    // "years": clips grouped by year (newest first), year as the separator, no most-viewed block and no views.
+    entriesLayout: z.enum(['views', 'years']).default('views'),
     /** Optional series inside `entries` (shown as tabs); each entry names its series in `group`. */
     entryGroups: z.array(z.object({ key: z.string(), title: localized })).default([]),
     entries: z
