@@ -11,6 +11,8 @@ genre:
   en: "Educational · Math"
   es: "Educativo · Matemática"
 cover: "../../assets/projects/wizard-vs-orcs/wiza.png"
+# Phone header: the square cover (the title of the header art does not fit a square crop).
+heroMobile: "../../assets/projects/wizard-vs-orcs/wiza.png"
 summary:
   en: "Math game for middle school: a wizard solves operations to stop the orcs."
   es: "Juego de matemática para secundaria: un mago resuelve operaciones para frenar a los orcos."

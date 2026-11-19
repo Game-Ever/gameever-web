@@ -11,6 +11,8 @@ genre:
   en: "Endless runner"
   es: "Endless runner"
 cover: "../../assets/projects/el-gatito/cover.jpg"
+# Phone header: the square cover (the title and laurels of the header art do not fit a square crop).
+heroMobile: "../../assets/projects/el-gatito/cover.jpg"
 summary:
   en: "The runner game of our award-winning short El Gatito."
   es: "El runner de nuestro corto premiado El Gatito."

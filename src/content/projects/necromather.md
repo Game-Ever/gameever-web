@@ -12,6 +12,8 @@ genre:
   es: "Educativo · Matemática"
 featured: 7
 cover: "../../assets/projects/necromather/necro.png"
+# Phone header: the square cover (the logo of the header art does not fit a square crop).
+heroMobile: "../../assets/projects/necromather/necro.png"
 summary:
   en: "Math game for elementary school: magic and area against monster hordes."
   es: "Juego de matemática para primaria: magia y cálculo de áreas contra hordas de monstruos."

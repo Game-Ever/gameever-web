@@ -38,9 +38,9 @@ const highlights = d.entries.length ? [] : d.highlights.length ? d.highlights : 
 const moreVideos = d.entries.length ? [] : d.highlights.length ? d.videos.filter((id) => !d.highlights.some((h) => h.id === id)) : autoVideos.slice(bigCount);
 // Prefer a landscape screenshot behind the title; fall back to the square key art.
 const heroBg = d.heroImage ?? d.gallery.find((g) => g.width > g.height * 1.2) ?? d.cover;
-// On phones (portrait) a landscape image crops the characters, so a square image is used there instead:
-// `heroMobile` when the project has one, else the cover.
-const heroNarrow = heroBg !== d.cover ? await getImage({ src: d.heroMobile ?? d.cover, width: 900, format: 'webp' }) : null;
+// On phones the header is square: `heroMobile` when the project has one (a hand-picked crop), else the center square of the
+// header art. The square cover (the thumbnail) is the same on every screen and is not used here.
+const heroNarrow = heroBg !== d.cover ? await getImage({ src: d.heroMobile ?? heroBg, width: 900, height: 900, fit: 'cover', position: 'center', format: 'webp' }) : null;
 // Credits split into blocks when rows carry a group (e.g. one per album): each block is a collapsible panel.
 const creditBlocks = d.creditList.reduce<{ title?: string; rows: typeof d.creditList }[]>((acc, c) => {
   if (c.group || !acc.length) acc.push({ title: c.group ? tr(c.group, lang) : undefined, rows: [] });
