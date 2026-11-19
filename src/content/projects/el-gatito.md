@@ -74,7 +74,7 @@ creditList:
   - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Pablo Forconi" }
   - { role: { en: "Sound & mix", es: "Sonido y mezcla" }, names: "Guillermo Bruno · Felipe de Francisco" }
   - { role: { en: "Original music", es: "Música original" }, names: "Daniel Soruco" }
-  - { group: { en: "The game", es: "El juego" }, role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { group: { en: "The video game", es: "El videojuego" }, role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
   - { role: { en: "Direction & development", es: "Dirección y desarrollo" }, names: "Joaquín Ibarlucía" }
   - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucas Bustos" }
   - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi" }
