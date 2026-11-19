@@ -24,6 +24,14 @@ description:
 role:
   en: "Game design, 2D art, development, arcade build"
   es: "Game design, arte 2D, desarrollo, armado de arcade"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "wQoL8MNsH3Y"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "Three Fiat icons racing the clock through four Argentine landscapes.", es: "Tres íconos de Fiat contra reloj por cuatro escenarios argentinos." }
+  - id: "qSelgMv6HeU"
+    title: { en: "Behind the scenes", es: "Detrás de escena" }
+    text: { en: "The two arcade machines for the 2015 Motor Show, with steering wheel, pedals and seat.", es: "Las dos máquinas arcade del Salón del Automóvil 2015, con volante, pedales y asiento." }
 videos:
   - "wQoL8MNsH3Y"
   - "qSelgMv6HeU"

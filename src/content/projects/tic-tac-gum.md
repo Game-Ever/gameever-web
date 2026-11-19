@@ -20,6 +20,14 @@ description:
 role:
   en: "2D animation"
   es: "Animación 2D"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "V2NKQ-L6r0Y"
+    title: { en: "US version", es: "Versión de Estados Unidos" }
+    text: { en: "Fifteen seconds: the players’ portraits come to life inside a pinball machine.", es: "Quince segundos: los retratos de los jugadores cobran vida dentro de un pinball." }
+  - id: "nhlLpyVgBVg"
+    title: { en: "Italian version", es: "Versión de Italia" }
+    text: { en: "The same spot for the launch in Italy.", es: "El mismo spot para el lanzamiento en Italia." }
 videos:
   - "V2NKQ-L6r0Y"
   - "nhlLpyVgBVg"

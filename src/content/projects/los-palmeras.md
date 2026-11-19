@@ -20,6 +20,14 @@ description:
 role:
   en: "Character design, 3D animation, VFX"
   es: "Diseño de personajes, animación 3D, VFX"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "_YzNxadXb5A"
+    title: { en: "On El Reino Infantil", es: "En El Reino Infantil" }
+    text: { en: "Twelve children’s classics, from “La vaca lechera” to “La gallina Turuleca”, in thirteen minutes of video.", es: "Doce clásicos infantiles, de «La vaca lechera» a «La gallina Turuleca», en trece minutos de videoclip." }
+  - id: "Cmrzxt6ybos"
+    title: { en: "On Los Palmeras’ channel", es: "En el canal de Los Palmeras" }
+    text: { en: "The same video, on the band’s channel.", es: "El mismo videoclip, en el canal de la banda." }
 videos:
   - "_YzNxadXb5A"
   - "Cmrzxt6ybos"

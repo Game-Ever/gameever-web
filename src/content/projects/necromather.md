@@ -23,6 +23,11 @@ description:
 role:
   en: "Game design, 2D art, development"
   es: "Game design, arte 2D, desarrollo"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "aImgcUtgluY"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "A necromancer, his graveyard and hordes of monsters: the magic depends on calculating areas.", es: "Un nigromante, su cementerio y hordas de monstruos: la magia depende de calcular áreas." }
 videos:
   - "aImgcUtgluY"
 gallery:

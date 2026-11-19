@@ -22,6 +22,11 @@ description:
 role:
   en: "Game design, 2D art, development"
   es: "Game design, arte 2D, desarrollo"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "eyv4NmCRsGc"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "The orcs march along number paths toward the castle and the wizard stops them by solving operations.", es: "Los orcos avanzan por caminos numéricos hacia el castillo y el mago los frena resolviendo operaciones." }
 videos:
   - "eyv4NmCRsGc"
 gallery:

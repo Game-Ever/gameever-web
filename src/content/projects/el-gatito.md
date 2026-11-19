@@ -22,6 +22,14 @@ description:
 role:
   en: "Original game: design, art, development"
   es: "Juego propio: diseño, arte, desarrollo"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "-feLTo4AJo8"
+    title: { en: "The game trailer", es: "El tráiler del juego" }
+    text: { en: "An endless run across the desert, with online rankings.", es: "Una carrera sin fin por el desierto, con rankings online." }
+  - id: "vZE1pev2IWE"
+    title: { en: "The short film", es: "El cortometraje" }
+    text: { en: "Where the game comes from: the cat’s story, before the running began.", es: "El origen del juego: la historia del gatito, antes de salir a correr." }
 videos:
   - "-feLTo4AJo8"
   - "vZE1pev2IWE"

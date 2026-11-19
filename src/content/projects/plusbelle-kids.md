@@ -20,6 +20,14 @@ description:
 role:
   en: "2D animation"
   es: "Animación 2D"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "WfJLd5F_rQ4"
+    title: { en: "Palo Amargo", es: "Palo Amargo" }
+    text: { en: "15-second spot: Gaturro, in his superhero cape, and Agatha in the bathroom with Palo Amargo.", es: "Spot de 15 segundos: Gaturro, con capa de superhéroe, y Agatha en el baño con Palo Amargo." }
+  - id: "xcSFxJXSz-o"
+    title: { en: "Chau Nudos", es: "Chau Nudos" }
+    text: { en: "15-second spot: the same bathroom heroes, now with Chau Nudos.", es: "Spot de 15 segundos: los mismos héroes del baño, ahora con Chau Nudos." }
 videos:
   - "WfJLd5F_rQ4"
   - "xcSFxJXSz-o"

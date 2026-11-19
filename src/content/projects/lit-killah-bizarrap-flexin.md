@@ -22,6 +22,11 @@ description:
 role:
   en: "Direction, production, 3D animation"
   es: "Dirección, producción, animación 3D"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "YWdcQfjdzBc"
+    title: { en: "The music video", es: "El videoclip" }
+    text: { en: "From Biza's studio to a neon desert: a retro-futuristic 3D trip.", es: "Del estudio de Biza a un desierto de neón: un viaje retro-futurista en 3D." }
 videos:
   - "YWdcQfjdzBc"
 heroImage: "../../assets/projects/lit-killah-bizarrap-flexin/hero.jpg"

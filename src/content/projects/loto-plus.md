@@ -20,6 +20,14 @@ description:
 role:
   en: "Character design, storyboard, 3D animation, VFX"
   es: "Diseño de personajes, storyboard, animación 3D, VFX"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "jstcfh2823Y"
+    title: { en: "Levantala en pala", es: "Levantala en pala" }
+    text: { en: "25-second spot for the 700-million jackpot, with Riverito in 3D.", es: "Spot de 25 segundos para el pozo de 700 millones, con Riverito en 3D." }
+  - id: "k1XacxxOAKw"
+    title: { en: "Binoculares", es: "Binoculares" }
+    text: { en: "30-second spot for the 100-million jackpot.", es: "Spot de 30 segundos para el pozo de 100 millones." }
 videos:
   - "jstcfh2823Y"
   - "k1XacxxOAKw"

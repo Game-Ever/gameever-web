@@ -21,6 +21,11 @@ description:
 role:
   en: "Original series: writing, design, 2D animation"
   es: "Serie propia: guion, diseño, animación 2D"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "z6wZsB5_uMA"
+    title: { en: "The teaser", es: "El teaser" }
+    text: { en: "Script, design and 2D animation by us: a desert island, a castaway and a coconut who gives the orders.", es: "Guion, diseño y animación 2D nuestros: una isla desierta, un náufrago y un coco que da órdenes." }
 videos:
   - "z6wZsB5_uMA"
 heroImage: "../../assets/projects/capitan-coco/hero.jpg"

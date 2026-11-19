@@ -21,10 +21,16 @@ description:
 role:
   en: "2D animation"
   es: "Animación 2D"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "m7behhNY-iI"
+    title: { en: "The 60-second spot", es: "El spot de 60 segundos" }
+    text: { en: "The long version: it explains the service and introduces the brand.", es: "La versión larga: explica el servicio y presenta la marca." }
 videos:
   - "m7behhNY-iI"
   - "uoUxUGMKEo0"
   - "AN8WYoDk988"
+moreVideosTitle: { en: "The short versions", es: "Las versiones cortas" }
 heroImage: "../../assets/projects/cargobot/hero.jpg"
 # Credits converted from the old site's text (client and agency left out).
 creditList:

@@ -23,6 +23,11 @@ description:
 role:
   en: "Full development"
   es: "Desarrollo integral"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "e1XYhSRGZjQ"
+    title: { en: "How it plays", es: "Así se juega" }
+    text: { en: "A full round: every well-stacked layer makes Scooby's sandwich grow.", es: "Una partida completa: cada capa bien apilada hace crecer el sándwich de Scooby." }
 videos:
   - "e1XYhSRGZjQ"
 # Credits from the old site (the same team made The Mysterious Mansion).

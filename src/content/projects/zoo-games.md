@@ -23,6 +23,14 @@ description:
 role:
   en: "Game design, 3D art, development"
   es: "Game design, arte 3D, desarrollo"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "VfuTmzcoKco"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "The Zoo animals in the app: puzzles, numbers, colors, shapes and music.", es: "Los animales del Zoo en la app: rompecabezas, números, colores, formas y música." }
+  - id: "6MA4e21pNBU"
+    title: { en: "With Winona", es: "Con Winona" }
+    text: { en: "Winona keeps the little ones company in the app’s games.", es: "Winona acompaña a los chicos en los juegos de la app." }
 videos:
   - "VfuTmzcoKco"
   - "6MA4e21pNBU"

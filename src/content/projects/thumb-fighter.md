@@ -22,6 +22,11 @@ description:
 role:
   en: "2D animation, trailer"
   es: "Animación 2D, tráiler"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "nS_KnAIO1Do"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "AVIX's launch: two fighters, a greeting and the fight is on.", es: "El lanzamiento de AVIX: dos luchadores, un saludo y a pelear." }
 videos:
   - "nS_KnAIO1Do"
 heroImage: "../../assets/projects/thumb-fighter/hero.jpg"

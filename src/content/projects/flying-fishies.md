@@ -25,6 +25,11 @@ description:
 role:
   en: "2D animation, trailer"
   es: "Animación 2D, tráiler"
+# Featured videos (title and text on the page); the full list stays in `videos`.
+highlights:
+  - id: "fcHGyp75yMk"
+    title: { en: "The trailer", es: "El tráiler" }
+    text: { en: "43 seconds of 2D animation in a paper cut-out world: a theater curtain, a paper sea and a picture-book tone.", es: "43 segundos de animación 2D en un mundo de papel recortado: telón de teatro, mar de papel y tono de libro ilustrado." }
 videos:
   - "fcHGyp75yMk"
 gallery:
