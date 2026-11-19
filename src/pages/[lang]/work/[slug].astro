@@ -134,7 +134,7 @@ const jsonLd = {
     {d.stats.length > 0 && (
       <div class="wrap">
         <ul class="stats" id="figures">
-          {d.stats.map((s) => <li><strong class="wide">{s.value}</strong><span>{tr(s.label, lang)}</span></li>)}
+          {d.stats.map((s) => <li><strong class="wide" style={`--chars: ${s.value.length}`}>{s.value}</strong><span>{tr(s.label, lang)}</span></li>)}
         </ul>
       </div>
     )}
@@ -353,7 +353,7 @@ const jsonLd = {
             <div class="press-cards">
               {pressLinks.map((p) => (
                 <a class="press-card" href={p.url} target="_blank" rel="noopener">
-                  <span class="pc-top"><span class="pc-outlet wide">{p.outlet}</span>{p.score && <span class="pc-score wide">{p.score}</span>}</span>
+                  <span class="pc-top"><span class:list={['pc-outlet', 'wide', { long: p.outlet.length > 12 }]}>{p.outlet}</span>{p.score && <span class="pc-score wide">{p.score}</span>}</span>
                   <span class="pc-title">{p.title}</span>
                   <span class="pc-foot">
                     {p.author && <span class="pc-by">{t('project.by')} <strong>{p.author}</strong></span>}
@@ -571,6 +571,8 @@ const jsonLd = {
   .press-card { container-type: inline-size; }
   .pc-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .pc-outlet { font-size: min(28px, calc((100cqi - 70px) / 10.7)); line-height: 1; text-transform: uppercase; white-space: nowrap; transition: color 0.25s; }
+  /* Long outlet names (more than 12 characters) do not fit in one line next to the score: they wrap onto two lines. */
+  .pc-outlet.long { white-space: normal; overflow-wrap: anywhere; font-size: min(24px, 6.4cqi); line-height: 1.08; }
   .press-card:hover .pc-outlet { color: var(--pink); }
   .pc-score { flex: none; min-width: 58px; text-align: center; background: var(--pink); color: #fff; font-size: 15px; line-height: 1; padding: 7px 0; }
   .pc-title { font-size: 20px; line-height: 1.35; font-weight: 500; }
@@ -624,12 +626,17 @@ const jsonLd = {
     .credit-list dt { padding-bottom: 0; border-bottom: 0; }
     .hero :global(.hero-video) { display: none; }
     .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 16px; }
-    .stats strong { font-size: 28px; }
+    /* Each figure is as big as its column allows for its number of characters, up to 28px ("+2.800 M" must not push the page). */
+    .stats li { container-type: inline-size; }
+    .stats strong { font-size: min(28px, calc(100cqi / (var(--chars) * 0.95))); }
     /* Two columns on phones: long labels wrap instead of running into the next column. */
     .stats li { min-width: 0; }
     .stats span { white-space: normal; }
     .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
     .next img { width: 140px; }
+    .next .wrap > div { min-width: 0; max-width: 100%; }
+    /* Very small phones (320px): the longest project names ("Necromather") still fit. */
+    @media (max-width: 380px) { .next h2 { font-size: 26px; } }
   }
   /* Phones: the square cover shown whole at the top (no overlay), with the title and buttons below it. */
   @media (max-width: 760px) {
