@@ -21,8 +21,8 @@ summary:
   en: "Award-winning 2D animated short film, and the video game that came out of it."
   es: "Cortometraje animado en 2D, premiado, y el videojuego que nació de él."
 description:
-  en: "El Gatito follows a cat who lives on the streets of Buenos Aires. Destiny takes him on a long journey to the arid Patagonian desert, where, lost and afraid, he follows his instinct to survive and finds the home the city never gave him. A four-episode miniseries we made for INCAA TV that also works as a short film: winner of INCAA’s First Federal Animation Contest, Best TDA Animation at Mendoza Proyecta 2014 and a special mention at the 2013 Mar del Plata Film Festival. Then we turned it into a video game for Android and iOS: the kitten crosses an endless desert, collecting fish, using power-ups and dodging dangers, with online leaderboards."
-  es: "El Gatito sigue a un gato que vive en las calles de Buenos Aires. El destino lo lleva en un largo viaje hasta el árido desierto patagónico, donde, perdido y con miedo, se guía por el instinto para sobrevivir y encuentra el hogar que la ciudad nunca le dio. Es una miniserie de cuatro capítulos que hicimos para INCAA TV y que también funciona como cortometraje: ganadora del Primer Concurso Federal de Animación del INCAA, Mejor Animación TDA en Mendoza Proyecta 2014 y mención especial en el Festival de Mar del Plata 2013. Después la llevamos a un videojuego para Android y iOS: el gatito cruza un desierto sin fin, junta pescados, usa power-ups y esquiva peligros, con rankings online."
+  en: "El Gatito follows a cat who lives on the streets of Buenos Aires. Destiny takes him on a long journey to the arid Patagonian desert, where, lost and afraid, he follows his instinct to survive and finds the home the city never gave him. A thirteen-minute short film we made for INCAA TV: winner of INCAA’s First Federal Animation Contest, Best TDA Animation at Mendoza Proyecta 2014 and a special mention at the 2013 Mar del Plata Film Festival. Then we turned it into a video game for Android and iOS: the kitten crosses an endless desert, collecting fish, using power-ups and dodging dangers, with online leaderboards."
+  es: "El Gatito sigue a un gato que vive en las calles de Buenos Aires. El destino lo lleva en un largo viaje hasta el árido desierto patagónico, donde, perdido y con miedo, se guía por el instinto para sobrevivir y encuentra el hogar que la ciudad nunca le dio. Es un cortometraje de trece minutos que hicimos para INCAA TV: ganador del Primer Concurso Federal de Animación del INCAA, Mejor Animación TDA en Mendoza Proyecta 2014 y mención especial en el Festival de Mar del Plata 2013. Después la llevamos a un videojuego para Android y iOS: el gatito cruza un desierto sin fin, junta pescados, usa power-ups y esquiva peligros, con rankings online."
 role:
   en: "Production, 2D animation and video game"
   es: "Producción, animación 2D y videojuego"
@@ -30,9 +30,9 @@ role:
 highlights:
   - id: "vZE1pev2IWE"
     title: { en: "The short film", es: "El cortometraje" }
-    text: { en: "Four episodes, thirteen minutes: from the streets of Buenos Aires to the desert of Patagonia.", es: "Cuatro capítulos, trece minutos: de las calles de Buenos Aires al desierto de la Patagonia." }
+    text: { en: "Thirteen minutes: from the streets of Buenos Aires to the desert of Patagonia.", es: "Trece minutos: de las calles de Buenos Aires al desierto de la Patagonia." }
   - id: "-feLTo4AJo8"
-    title: { en: "The video game", es: "El videojuego" }
+    title: { en: "The game", es: "El juego" }
     text: { en: "The extra: the same kitten, now in an endless run across the desert, with online leaderboards.", es: "El extra: el mismo gatito, ahora en una carrera sin fin por el desierto, con rankings online." }
 videos:
   - "vZE1pev2IWE"
@@ -43,7 +43,7 @@ links:
 heroImage: "../../assets/projects/el-gatito/hero.jpg"
 facts:
   - label: { en: "Format", es: "Formato" }
-    value: { en: "4-episode miniseries (13 min), also a short film", es: "Miniserie de 4 capítulos (13 min), también cortometraje" }
+    value: { en: "Short film, 13 min", es: "Cortometraje, 13 min" }
   - label: { en: "Awards", es: "Premios" }
     value: { en: "INCAA First Federal Animation Contest · Best TDA Animation, Mendoza Proyecta 2014 · Special mention, Mar del Plata 2013", es: "Primer Concurso Federal de Animación del INCAA · Mejor Animación TDA, Mendoza Proyecta 2014 · Mención especial, Mar del Plata 2013" }
 # Figures from the stores / YouTube, checked in November 2026.
@@ -61,7 +61,7 @@ press:
   - { outlet: "SIGNIS Argentina", title: "Festival de Mar del Plata: los ganadores", year: "2013", url: "https://www.signisargentina.ar/festival-internacional-de-cine-de-mar-del-plata/los-ganadores.htm" }
 # Credits converted from the old site's text (client and agency left out).
 creditList:
-  - { group: { en: "The miniseries", es: "La miniserie" }, role: { en: "Script", es: "Guion" }, names: "Pablo Siciliano" }
+  - { group: { en: "The animation", es: "La animación" }, role: { en: "Script", es: "Guion" }, names: "Pablo Siciliano" }
   - { role: { en: "Executive production", es: "Producción ejecutiva" }, names: "Gustavo Alonzo" }
   - { role: { en: "Production management", es: "Jefatura de producción" }, names: "Gastón Markotic" }
   - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
