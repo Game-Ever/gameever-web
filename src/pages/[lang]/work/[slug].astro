@@ -150,6 +150,7 @@ const jsonLd = {
         <dl>
           <dt>{t("project.client")}</dt><dd>{d.clientUrl ? <a class="fact-link" href={d.clientUrl} target="_blank" rel="noopener">{clientName(d.client, lang)}</a> : clientName(d.client, lang)}</dd>
           {d.agency && <><dt>{t('project.agency')}</dt><dd>{d.agency.url ? <a class="fact-link" href={d.agency.url} target="_blank" rel="noopener">{d.agency.name}</a> : d.agency.name}</dd></>}
+          {d.producer && <><dt>{t('project.producer')}</dt><dd>{d.producer.url ? <a class="fact-link" href={d.producer.url} target="_blank" rel="noopener">{d.producer.name}</a> : d.producer.name}</dd></>}
           <dt>{t('project.year')}</dt><dd>{d.years ?? d.year}</dd>
           {platforms.length > 0 && <><dt>{t('project.platforms')}</dt><dd>{platforms.join(' · ')}</dd></>}
           {d.genre && <><dt>{t('project.genre')}</dt><dd>{tr(d.genre, lang)}</dd></>}

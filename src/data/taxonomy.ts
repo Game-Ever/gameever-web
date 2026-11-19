@@ -50,7 +50,7 @@ export const eraOf = (year: number) => `${Math.floor(year / 10) * 10}s`;
 export const AREAS = {
   games: { en: 'Video games', es: 'Videojuegos' },
   animation: { en: 'Animation', es: 'Animación' },
-  coproduction: { en: 'Co-production', es: 'Co-producción' },
+  art: { en: 'Art', es: 'Arte' },
 } as const;
 export type AreaKey = keyof typeof AREAS;
 export const AREA_KEYS = Object.keys(AREAS) as AreaKey[];
@@ -61,11 +61,12 @@ const PLAYABLE: PlatformKey[] = ['web', 'ios', 'android', 'steam', 'pc', 'consol
 
 export function areasOf(services: readonly ServiceKey[], platforms: readonly PlatformKey[]): AreaKey[] {
   const areas: AreaKey[] = [];
-  // Original IP counts as a game only when it ships on a playable platform (series don't); so does an illustration
-  // made for a game (e.g. Okhlos key art).
+  // Areas follow what we made, not who it was for: games we develop, pieces we animate (a game trailer is
+  // animation), art we draw (key art, concepts). Original IP counts as a game only when it ships on a playable
+  // platform (series don't). Co-development is game work.
   const playable = platforms.some((p) => PLAYABLE.includes(p));
-  if (services.some((s) => GAME_SERVICES.includes(s)) || ((services.includes('original-ip') || services.includes('illustration')) && playable)) areas.push('games');
+  if (services.some((s) => GAME_SERVICES.includes(s)) || services.includes('codev') || (services.includes('original-ip') && playable)) areas.push('games');
   if (services.some((s) => ANIMATION_SERVICES.includes(s))) areas.push('animation');
-  if (services.includes('codev')) areas.push('coproduction');
+  if (services.includes('illustration')) areas.push('art');
   return areas;
 }

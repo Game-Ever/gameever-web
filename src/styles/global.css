@@ -9,7 +9,7 @@
   --line2: #4a4a50;
   --pink: #ff1f6b;
   --pink-d: #c8104f;
-  --cyan: #14c8dc;
+  --cyan: #0ea5b8;
   --violet: #9b5cff;
   --paper: #f2f0eb;
   --paper-mute: #77746e;
@@ -58,10 +58,10 @@ button { font: inherit; color: inherit; }
 .aside.on-pink { border-left-color: #fff; }
 /* The closing period of a section title (Dot.astro), in pink. */
 .dot { color: var(--pink); }
-/* One color per area (Qué hacemos, Servicios): cyan is always video games, pink animation, violet co-production. */
+/* One color per area (Qué hacemos, Servicios, project tabs): cyan is always video games, pink animation, violet art. */
 .area-games { --area: var(--cyan); }
 .area-animation { --area: var(--pink); }
-.area-coproduction { --area: var(--violet); }
+.area-art { --area: var(--violet); }
 .aside.on-pink p { color: rgba(255, 255, 255, 0.9); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 

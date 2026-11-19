@@ -7,7 +7,7 @@ import { WORLD_PROJECTS } from '../data/worlds';
 
 // variant "home": a short selection (first HOME_COUNT in Featured order, minus the projects already shown in
 // the "Qué hacemos" cards) with a link to the full list.
-// variant "full": every project, newest first, with area tabs (Todos / Videojuegos / Animación; an area with no
+// variant "full": every project, newest first, with area tabs (Todos / Videojuegos / Animación / Arte; an area with no
 // projects gets no tab), kept in the URL (?area=games) so links can be shared. No search or sort: few people use
 // them on a list this size.
 interface Props { lang: Lang; projects: Project[]; variant?: 'home' | 'full' }
@@ -87,6 +87,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   .tab { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 18px; border: 2px solid rgba(255, 255, 255, 0.35); background: none; cursor: pointer; font-weight: 800; font-stretch: 118%; text-transform: uppercase; font-size: 14px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
   .tab:hover { border-color: var(--fg); }
   .tab[aria-pressed='true'] { background: var(--pink); border-color: var(--pink); color: #fff; }
+  /* Each area in its color (cyan = games, violet = art), white text like the other tabs. */
+  .tab[data-area='games'][aria-pressed='true'] { background: var(--cyan); border-color: var(--cyan); color: #fff; }
+  .tab[data-area='art'][aria-pressed='true'] { background: var(--violet); border-color: var(--violet); color: #fff; }
   .n { font-family: var(--mono); font-size: 11px; font-weight: 400; opacity: 0.75; }
   .count { display: block; color: rgba(255, 255, 255, 0.6); margin: 10px 0 26px; }
 
@@ -115,13 +118,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
   @media (max-width: 760px) {
     .work { padding-top: 80px; }
     .work-head { grid-template-columns: 1fr; gap: 18px; }
-    /* The three tabs share one row, full width, no sideways scroll. */
-    .tabs { flex-wrap: nowrap; width: 100%; gap: 6px; }
-    .tab { flex: 1 1 auto; justify-content: center; gap: 6px; height: 42px; padding: 0 8px; font-size: 12px; font-stretch: 110%; }
-    /* No room for the counts next to the names on phones: the count line under the tabs says it. */
-    .tab .n { display: none; }
-    /* Smallest phones (320px): a bit tighter so «Videojuegos» still fits. */
-    @media (max-width: 360px) { .tab { font-size: 11px; padding: 0 6px; font-stretch: 100%; } }
+    /* Four tabs in two rows of two, full width, no sideways scroll. */
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 6px; }
+    .tab { justify-content: center; gap: 8px; height: 42px; padding: 0 8px; font-size: 13px; }
     .card h3 { font-size: 16px; }
     .meta { font-size: 10px; }
   }
@@ -154,7 +153,9 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
 
     // Restore from a shared link (?area=games). Unknown areas (or old ?q= and ?sort= links) show everything.
     const asked = new URLSearchParams(location.search).get('area') ?? '';
-    area = AREAS.includes(asked) ? asked : '';
+    // Old links to the co-production tab now open Arte, where that work lives.
+    const wanted = asked === 'coproduction' ? 'art' : asked;
+    area = AREAS.includes(wanted) ? wanted : '';
     render(false);
     tabs.forEach((b) => b.addEventListener('click', () => { area = b.dataset.area!; render(); }));
   }

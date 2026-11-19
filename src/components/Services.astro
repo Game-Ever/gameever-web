@@ -32,7 +32,7 @@ const groups = t('services.groups');
           <div class="panel" id={`svc-panel-${i}`} role="region" aria-labelledby={`svc-btn-${i}`} inert>
             <div class="inner">
               <ul>{g.items.map((item) => <li>{item}</li>)}</ul>
-              <a class="see" href={`${url(lang, "work")}?area=${g.area === 'coproduction' ? 'games' : g.area}`}>{t('services.see')} →</a>
+              <a class="see" href={`${url(lang, "work")}?area=${g.area}`}>{t('services.see')} →</a>
             </div>
           </div>
         </div>

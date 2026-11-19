@@ -18,6 +18,8 @@ const projects = defineCollection({
     clientUrl: z.url().optional(),
     // Agency that brought us the project (fact sheet, under the client). Link only a page that works.
     agency: z.object({ name: z.string(), url: z.url().optional() }).optional(),
+    // Production company that hired us or produced the piece (shown under the agency in the fact sheet).
+    producer: z.object({ name: z.string(), url: z.url().optional() }).optional(),
     /** Year used for sorting and the era filter (last year for multi-year projects). */
     year: z.number().int().min(2010).max(2100),
     /** Optional label for multi-year projects, e.g. "2013–2022". */
