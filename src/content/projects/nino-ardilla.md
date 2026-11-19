@@ -15,8 +15,8 @@ summary:
   en: "Three days to winter and an empty cupboard: the demo of our endless runner."
   es: "Tres días para el invierno y la alacena vacía: la demo de nuestro endless runner."
 description:
-  en: "Niño Ardilla wakes up in his tree house, looks at the calendar and finds out winter starts in three days and his cupboard is empty. He has to cross a forest full of traps and collect all the food he can before the cold. We created the character and the world and made a playable demo for iPad; the game was never released."
-  es: "Niño Ardilla se despierta en su casa del árbol, mira el calendario y descubre que faltan tres días para el invierno y su alacena está vacía. Tiene que cruzar un bosque lleno de trampas y juntar toda la comida que pueda antes del frío. Creamos el personaje y su mundo e hicimos una demo jugable para iPad; el juego nunca salió."
+  en: "Niño Ardilla wakes up in his tree house, looks at the calendar and finds out winter starts in three days and his cupboard is empty. He has to cross a forest full of traps and collect all the food he can before the cold."
+  es: "Niño Ardilla se despierta en su casa del árbol, mira el calendario y descubre que faltan tres días para el invierno y su alacena está vacía. Tiene que cruzar un bosque lleno de trampas y juntar toda la comida que pueda antes del frío."
 facts:
   - label: { en: "Format", es: "Formato" }
     value: { en: "Game demo", es: "Demo de juego" }

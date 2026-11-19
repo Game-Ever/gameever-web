@@ -519,7 +519,7 @@ const jsonLd = {
   /* Behind the scenes: three blocks; a missing image shows a striped placeholder. */
   .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .process figure { margin: 0; }
-  .process figure.has-video { grid-column: span 2; }
+  /* Process videos (animatics, speed paints) are side material: same one-third size as the clips, not bigger. */
   .process img, .pending { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
   .pending { display: grid; place-items: center; color: var(--mute); border: 1px dashed var(--line2); background: repeating-linear-gradient(135deg, var(--bg2) 0 14px, transparent 14px 28px); }
   .process h3 { font-size: 18px; font-stretch: 115%; font-weight: 800; text-transform: uppercase; margin-top: 14px; }
@@ -580,7 +580,8 @@ const jsonLd = {
   /* Press cards (new layout): white sheets on the dark page with the bottom-right corner folded, like a page about
      to turn. Outlet in big black type on one line, score in a pink badge (same width on every card), full headline,
      author and year. On hover the card lifts, the fold grows and turns pink, and the outlet turns pink. */
-  .press-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  /* At most three per row; one or two cards keep that same width instead of stretching (auto-fill keeps the empty tracks). */
+  .press-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(max(280px, calc((100% - 32px) / 3)), 1fr)); gap: 16px; }
   .press-card { --fold: 30px; position: relative; display: flex; flex-direction: column; gap: 18px; min-height: 300px; padding: 30px 28px 26px; background: var(--fg); color: var(--bg); clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--fold)), calc(100% - var(--fold)) 100%, 0 100%); transition: --fold 0.3s, transform 0.25s; }
   .press-card::after { content: ''; position: absolute; right: 0; bottom: 0; width: var(--fold); height: var(--fold); background: linear-gradient(to top left, transparent 50%, #c8c3b8 50%); box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.18); transition: background 0.25s; }
   .press-card:hover { --fold: 46px; transform: translateY(-4px); }

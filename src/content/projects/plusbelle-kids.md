@@ -1,6 +1,8 @@
 ---
 title: "Gaturro Plusbelle Kids"
 client: "Plusbelle"
+# Smilehood has no working website (checked 19/11/2026), so no link.
+agency: { name: "Smilehood" }
 year: 2017
 services:
   - "animation-2d"

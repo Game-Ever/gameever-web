@@ -17,18 +17,18 @@ summary:
   en: "A brick and a cloud, from two worlds that should never meet, for Sony."
   es: "Un ladrillo y una nube, de dos mundos que no deberían cruzarse, para Sony."
 description:
-  en: "Two worlds collide to build a future for the next generations. A 2D animated piece for Sony’s make.believe, directed by The Factory, where a brick and a cloud meet against all odds. We were part of the animation team."
-  es: "Dos mundos chocan para construir un futuro para las próximas generaciones. Una pieza animada en 2D para make.believe de Sony, dirigida por The Factory, donde un ladrillo y una nube se encuentran contra todo pronóstico. Fuimos parte del equipo de animación."
+  en: "Two worlds collide to build a future for the next generations. A 2D animated short for Sony’s make.believe, directed by The Factory, where a brick and a cloud meet against all odds. We were part of the animation team."
+  es: "Dos mundos chocan para construir un futuro para las próximas generaciones. Un corto animado en 2D para make.believe de Sony, dirigida por The Factory, donde un ladrillo y una nube se encuentran contra todo pronóstico. Fuimos parte del equipo de animación."
 facts:
   - label: { en: "Format", es: "Formato" }
-    value: { en: "Animated piece (1:39)", es: "Pieza animada (1:39)" }
+    value: { en: "Animated short (1:39)", es: "Corto animado (1:39)" }
 role:
   en: "2D animation"
   es: "Animación 2D"
 # Featured videos (title and text on the page); the full list stays in `videos`.
 highlights:
   - id: "J-tfCZ1B0zc"
-    title: { en: "The piece", es: "La pieza" }
+    title: { en: "The short", es: "El corto" }
     text: { en: "From a dark city to an open field: the story of a brick and a cloud, in textured 2D.", es: "De una ciudad oscura a un campo abierto: la historia de un ladrillo y una nube, en 2D con textura." }
 videos:
   - "J-tfCZ1B0zc"

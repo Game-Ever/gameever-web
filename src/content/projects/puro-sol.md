@@ -33,10 +33,15 @@ entries:
   - { title: "Útiles con stickers", year: "2022", views: 22402, videos: ["ZCpNOs9oAak"] }
   - { title: "Vitaminas", year: "2020", views: 19022, videos: ["92SxSTcvGTs"] }
   - { title: "Dinos", year: "2019", views: 14955, videos: ["oAEpuoEZKpk"] }
-  - { title: "Autitos", year: "2016", views: 6327, videos: ["dCcNrGOvaG8"] }
+  - { title: "Autitos", year: "2016", views: 3429, videos: ["xXbhUQ2WMqQ"] }
   - { title: "Vuelta al cole", year: "2016", views: 4210, videos: ["X7-uH065Big"] }
   - { title: "Mochilas", year: "2017", views: 2365, videos: ["_U5HR3skctg"] }
 heroImage: "../../assets/projects/puro-sol/hero.jpg"
+# "Detrás de escena": process videos.
+process:
+  - title: { en: "The “Mochilas” animatic", es: "El animatic de «Mochilas»" }
+    text: { en: "The 2017 spot in animated storyboard: timing, shots and gags set before the final animation.", es: "El spot de 2017 en storyboard animado: tiempos, planos y gags definidos antes de la animación final." }
+    video: "5lc-82FPTTk"
 press:
   - { outlet: "Infonegocios Paraguay", title: "Buscatesoros de PuroSol", year: "2016", url: "https://infonegocios.com.py/infopublicidad/buscatesoros-de-purosol" }
 # Figures checked on YouTube / public sources in November 2026.
@@ -50,6 +55,8 @@ stats:
 entriesTitle:
   en: "The spots"
   es: "Los spots"
+# Spots by year, newest first (no most-viewed block, no views): views are not the point for ad campaigns.
+entriesLayout: "years"
 # Credits converted from the old site's text (client and agency left out).
 creditList:
   - { group: "2022", role: { en: "Production", es: "Producción" }, names: "Wanelén Farías" }
