@@ -32,7 +32,7 @@ highlights:
     title: { en: "The short film", es: "El cortometraje" }
     text: { en: "Thirteen minutes: from the streets of Buenos Aires to the desert of Patagonia.", es: "Trece minutos: de las calles de Buenos Aires al desierto de la Patagonia." }
   - id: "-feLTo4AJo8"
-    title: { en: "The game", es: "El juego" }
+    title: { en: "The video game", es: "El videojuego" }
     text: { en: "The extra: the same kitten, now in an endless run across the desert, with online leaderboards.", es: "El extra: el mismo gatito, ahora en una carrera sin fin por el desierto, con rankings online." }
 videos:
   - "vZE1pev2IWE"
@@ -74,7 +74,7 @@ creditList:
   - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Pablo Forconi" }
   - { role: { en: "Sound & mix", es: "Sonido y mezcla" }, names: "Guillermo Bruno · Felipe de Francisco" }
   - { role: { en: "Original music", es: "Música original" }, names: "Daniel Soruco" }
-  - { group: { en: "The video game", es: "El videojuego" }, role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { group: { en: "The game", es: "El juego" }, role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
   - { role: { en: "Direction & development", es: "Dirección y desarrollo" }, names: "Joaquín Ibarlucía" }
   - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucas Bustos" }
   - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi" }
