@@ -4,9 +4,9 @@ client: "Original IP"
 year: 2014
 years: "2012–2014"
 services:
+  - "original-ip"
   - "animation-2d"
   - "series"
-  - "original-ip"
 platforms:
   - "youtube"
   - "ios"
