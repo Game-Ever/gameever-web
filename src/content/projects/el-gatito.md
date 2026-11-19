@@ -2,44 +2,50 @@
 title: "El Gatito"
 client: "Original IP"
 year: 2014
+years: "2012–2014"
 services:
+  - "animation-2d"
+  - "series"
   - "original-ip"
 platforms:
+  - "youtube"
   - "ios"
   - "android"
 genre:
-  en: "Endless runner"
-  es: "Endless runner"
+  en: "Animated adventure"
+  es: "Aventura animada"
 cover: "../../assets/projects/el-gatito/cover.jpg"
 # Phone header: the square cover (the title and laurels of the header art do not fit a square crop).
 heroMobile: "../../assets/projects/el-gatito/cover.jpg"
 summary:
-  en: "The runner game of our award-winning short El Gatito."
-  es: "El runner de nuestro corto premiado El Gatito."
+  en: "Award-winning 2D animated short film, and the video game that came out of it."
+  es: "Cortometraje animado en 2D, premiado, y el videojuego que nació de él."
 description:
-  en: "Born from El Gatito, the miniseries we made for INCAA TV, which as a short film won Best TDA Animation at Mendoza Proyecta 2014 and a special mention at the 2013 Mar del Plata Film Festival. In the game the kitten crosses an endless desert, collecting fish, using power-ups and dodging sandstorms and wild animals. Our own design, art and development, with online leaderboards."
-  es: "Nace de El Gatito, la miniserie que hicimos para INCAA TV y que, como cortometraje, ganó Mejor Animación TDA en Mendoza Proyecta 2014 y una mención especial en el Festival de Mar del Plata 2013. En el juego, el gatito cruza un desierto sin fin: junta pescados, usa power-ups y esquiva tormentas de arena y animales salvajes. Diseño, arte y desarrollo propios, con rankings online."
+  en: "El Gatito follows a cat who lives on the streets of Buenos Aires. Destiny takes him on a long journey to the arid Patagonian desert, where, lost and afraid, he follows his instinct to survive and finds the home the city never gave him. A four-episode miniseries we made for INCAA TV that also works as a short film: winner of INCAA’s First Federal Animation Contest, Best TDA Animation at Mendoza Proyecta 2014 and a special mention at the 2013 Mar del Plata Film Festival. Then we turned it into a video game for Android and iOS: the kitten crosses an endless desert, collecting fish, using power-ups and dodging dangers, with online leaderboards."
+  es: "El Gatito sigue a un gato que vive en las calles de Buenos Aires. El destino lo lleva en un largo viaje hasta el árido desierto patagónico, donde, perdido y con miedo, se guía por el instinto para sobrevivir y encuentra el hogar que la ciudad nunca le dio. Es una miniserie de cuatro capítulos que hicimos para INCAA TV y que también funciona como cortometraje: ganadora del Primer Concurso Federal de Animación del INCAA, Mejor Animación TDA en Mendoza Proyecta 2014 y mención especial en el Festival de Mar del Plata 2013. Después la llevamos a un videojuego para Android y iOS: el gatito cruza un desierto sin fin, junta pescados, usa power-ups y esquiva peligros, con rankings online."
 role:
-  en: "Original game: design, art, development"
-  es: "Juego propio: diseño, arte, desarrollo"
-# Featured videos (title and text on the page); the full list stays in `videos`.
+  en: "Production, 2D animation and video game"
+  es: "Producción, animación 2D y videojuego"
+# Featured videos (title and text on the page); the full list stays in `videos`. The short film leads; the game is the extra.
 highlights:
-  - id: "-feLTo4AJo8"
-    title: { en: "The game trailer", es: "El tráiler del juego" }
-    text: { en: "An endless run across the desert, with online rankings.", es: "Una carrera sin fin por el desierto, con rankings online." }
   - id: "vZE1pev2IWE"
     title: { en: "The short film", es: "El cortometraje" }
-    text: { en: "Where the game comes from: the cat’s story, before the running began.", es: "El origen del juego: la historia del gatito, antes de salir a correr." }
+    text: { en: "Four episodes, thirteen minutes: from the streets of Buenos Aires to the desert of Patagonia.", es: "Cuatro capítulos, trece minutos: de las calles de Buenos Aires al desierto de la Patagonia." }
+  - id: "-feLTo4AJo8"
+    title: { en: "The video game", es: "El videojuego" }
+    text: { en: "The extra: the same kitten, now in an endless run across the desert, with online leaderboards.", es: "El extra: el mismo gatito, ahora en una carrera sin fin por el desierto, con rankings online." }
 videos:
-  - "-feLTo4AJo8"
   - "vZE1pev2IWE"
+  - "-feLTo4AJo8"
 links:
   - label: "Google Play"
     url: "https://play.google.com/store/apps/details?id=air.com.gameever.thekitten"
 heroImage: "../../assets/projects/el-gatito/hero.jpg"
 facts:
+  - label: { en: "Format", es: "Formato" }
+    value: { en: "4-episode miniseries (13 min), also a short film", es: "Miniserie de 4 capítulos (13 min), también cortometraje" }
   - label: { en: "Awards", es: "Premios" }
-    value: { en: "Best TDA Animation, Mendoza Proyecta 2014 · Special mention, Mar del Plata 2013", es: "Mejor Animación TDA, Mendoza Proyecta 2014 · Mención especial, Mar del Plata 2013" }
+    value: { en: "INCAA First Federal Animation Contest · Best TDA Animation, Mendoza Proyecta 2014 · Special mention, Mar del Plata 2013", es: "Primer Concurso Federal de Animación del INCAA · Mejor Animación TDA, Mendoza Proyecta 2014 · Mención especial, Mar del Plata 2013" }
 # Figures from the stores / YouTube, checked in November 2026.
 stats:
   - value: "+9 M"
@@ -55,7 +61,20 @@ press:
   - { outlet: "SIGNIS Argentina", title: "Festival de Mar del Plata: los ganadores", year: "2013", url: "https://www.signisargentina.ar/festival-internacional-de-cine-de-mar-del-plata/los-ganadores.htm" }
 # Credits converted from the old site's text (client and agency left out).
 creditList:
+  - { group: { en: "The miniseries", es: "La miniserie" }, role: { en: "Script", es: "Guion" }, names: "Pablo Siciliano" }
+  - { role: { en: "Executive production", es: "Producción ejecutiva" }, names: "Gustavo Alonzo" }
+  - { role: { en: "Production management", es: "Jefatura de producción" }, names: "Gastón Markotic" }
   - { role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
+  - { role: { en: "Direction", es: "Dirección" }, names: "Pablo Siciliano" }
+  - { role: { en: "Co-direction", es: "Codirección" }, names: "Guillermo Forlenza" }
+  - { role: { en: "Art direction", es: "Dirección de arte" }, names: "Gabriel Rodríguez" }
+  - { role: { en: "Animation direction", es: "Dirección de animación" }, names: "Diego Forconi" }
+  - { role: { en: "Backgrounds", es: "Fondos" }, names: "Lucas Bustos" }
+  - { role: { en: "Character design", es: "Diseño de personajes" }, names: "Nadia Rodil" }
+  - { role: { en: "Compositing & VFX", es: "Composición y VFX" }, names: "Pablo Forconi" }
+  - { role: { en: "Sound & mix", es: "Sonido y mezcla" }, names: "Guillermo Bruno · Felipe de Francisco" }
+  - { role: { en: "Original music", es: "Música original" }, names: "Daniel Soruco" }
+  - { group: { en: "The video game", es: "El videojuego" }, role: { en: "Production", es: "Producción general" }, names: "Pablo Forconi" }
   - { role: { en: "Direction & development", es: "Dirección y desarrollo" }, names: "Joaquín Ibarlucía" }
   - { role: { en: "Illustration", es: "Ilustración" }, names: "Gabriel Rodríguez · Lucas Bustos" }
   - { role: { en: "2D animation", es: "Animación 2D" }, names: "Diego Forconi" }
