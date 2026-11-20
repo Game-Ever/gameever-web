@@ -13,3 +13,6 @@ content-audit.csv
 shots/
 mockups/
 downloads/
+
+# Studio working files (thumbnails, PSD templates): kept on disk, never committed
+material/
