@@ -1,8 +1,8 @@
 ---
 title: "Puro Sol"
 client: "Puro Sol"
-year: 2022
-years: "2016–2022"
+year: 2025
+years: "2015–2025"
 services:
   - "animation-3d"
   - "advertising"
@@ -13,32 +13,42 @@ genre:
   es: "Publicidad"
 cover: "../../assets/projects/puro-sol/cover.jpg"
 summary:
-  en: "Seven years of 3D animated campaigns for PuroSol, in Paraguay."
-  es: "Siete años de campañas animadas en 3D para PuroSol, en Paraguay."
+  en: "Eleven years of 3D animated campaigns for PuroSol, in Paraguay."
+  es: "Once años de campañas animadas en 3D para PuroSol, en Paraguay."
 description:
-  en: "Since 2016 we have animated PuroSol’s kids campaigns with the agency Prana. The Puro Amigos (Mia, Ralph, Andy, Milo, Lua and Tina) hunt for treasure, go back to school and crack secret codes; for one launch we created the Dinos. “The best friend of fun.”"
-  es: "Desde 2016 animamos las campañas infantiles de PuroSol con la agencia Prana. Los Puro Amigos (Mia, Ralph, Andy, Milo, Lua y Tina) buscan tesoros, vuelven a clases y descifran códigos secretos; para un lanzamiento creamos los Dinos. «El mejor amigo de la diversión»."
+  en: "Since 2015 we have animated PuroSol’s kids campaigns with the agency Prana. The Puro Amigos (Mia, Ralph, Andy, Milo, Lua and Tina) hunt for treasure, go back to school and crack secret codes; for one launch we created the Dinos. “The best friend of fun.”"
+  es: "Desde 2015 animamos las campañas infantiles de PuroSol con la agencia Prana. Los Puro Amigos (Mia, Ralph, Andy, Milo, Lua y Tina) buscan tesoros, vuelven a clases y descifran códigos secretos; para un lanzamiento creamos los Dinos. «El mejor amigo de la diversión»."
 role:
   en: "Full production"
   es: "Producción integral"
-# One spot per card, most viewed first (official PuroSol uploads when they have more views; checked November 2026).
+# One spot per card, by year (entriesLayout "years"). All from the Game Ever channel (better thumbnails; the
+# description says the year we made it); years checked against PuroSol Paraguay's own uploads, see resources/puro-sol.md.
 entries:
-  - { title: "Espacio", year: "2019", views: 148850, videos: ["7V7w3HruQcA"] }
-  - { title: "Buscatesoros", year: "2016", views: 66902, videos: ["marAe0DbjpY"] }
-  - { title: "Clases virtuales", year: "2021", views: 56400, videos: ["eKnL0bqNyco"] }
-  - { title: "Buscatesoros", year: "2018", views: 52551, videos: ["Eefs5agZSDo"] }
-  - { title: "Fruti Mix", year: "2019", views: 43776, videos: ["fWRDA5pZD28"] }
-  - { title: "Códigos secretos", year: "2021", views: 36265, videos: ["AoR17J5z8XI"] }
-  - { title: "Códigos secretos", year: "2020", views: 33502, videos: ["8YawCEBta2M"] }
-  - { title: "Útiles con stickers", year: "2022", views: 22402, videos: ["ZCpNOs9oAak"] }
-  - { title: "Vitaminas", year: "2020", views: 19022, videos: ["92SxSTcvGTs"] }
-  - { title: "Dinos", year: "2019", views: 14955, videos: ["oAEpuoEZKpk"] }
-  - { title: "Autitos", year: "2016", views: 3429, videos: ["xXbhUQ2WMqQ"] }
-  - { title: "Vuelta al cole", year: "2016", views: 4210, videos: ["X7-uH065Big"] }
+  - { title: "Detectives", year: "2025", views: 1487, videos: ["Ya3qoKbh-B4"] }
+  - { title: "Dino Aventuras", year: "2025", views: 901, videos: ["i4xJviEdd2w"] }
+  - { title: "Vuelta al cole", year: "2024", views: 789, videos: ["KVgyUelT4bM"] }
+  - { title: "Dinos: vuelta a clases", year: "2023", views: 709, videos: ["3Hmt5KY_d2I"] }
+  - { title: "Códigos secretos", year: "2022", views: 716, videos: ["aulezktM8Fk"] }
+  - { title: "Cuadernos", year: "2022", views: 2475, videos: ["bcqSglTKvdE"] }
+  - { title: "Códigos secretos", year: "2021", views: 5009, videos: ["FBT6zObQ5cI"] }
+  - { title: "Clases virtuales", year: "2021", views: 1896, videos: ["ARSLmemcukw"] }
+  - { title: "Códigos secretos", year: "2020", views: 3100, videos: ["AwsEJ9VignA"] }
+  - { title: "Vitaminas", year: "2020", views: 2628, videos: ["JpOJSWDbEAI"] }
+  - { title: "Espacio", year: "2019", views: 1485, videos: ["KoXPzrZ6lLU"] }
+  - { title: "Fruti Mix", year: "2019", views: 2217, videos: ["g0i7R24iyrw"] }
+  - { title: "Dinos", year: "2019", views: 3276, videos: ["aMylHA59sb0"] }
+  - { title: "Buscatesoros", year: "2018", views: 1393, videos: ["5QB4gjLwA-s"] }
+  - { title: "Cuadernos", year: "2018", views: 2172, videos: ["DSTVlzYSpAg"] }
   - { title: "Mochilas", year: "2017", views: 2365, videos: ["_U5HR3skctg"] }
+  - { title: "Buscatesoros", year: "2016", views: 3233, videos: ["xasqUO8bY6w"] }
+  - { title: "Autitos", year: "2016", views: 3429, videos: ["xXbhUQ2WMqQ"] }
+  - { title: "Vuelta al cole", year: "2015", views: 4212, videos: ["X7-uH065Big"] }
 heroImage: "../../assets/projects/puro-sol/hero.jpg"
 # "Detrás de escena": process videos.
 process:
+  - title: { en: "The “Detectives” animatic", es: "El animatic de «Detectives»" }
+    text: { en: "The 2025 Secret Codes spot in animated storyboard, before going into 3D.", es: "El spot de Códigos Secretos de 2025 en storyboard animado, antes de pasar al 3D." }
+    video: "JNHa_gfXc_c"
   - title: { en: "The “Mochilas” animatic", es: "El animatic de «Mochilas»" }
     text: { en: "The 2017 spot in animated storyboard: timing, shots and gags set before the final animation.", es: "El spot de 2017 en storyboard animado: tiempos, planos y gags definidos antes de la animación final." }
     video: "5lc-82FPTTk"
@@ -46,9 +56,9 @@ press:
   - { outlet: "Infonegocios Paraguay", title: "Buscatesoros de PuroSol", year: "2016", url: "https://infonegocios.com.py/infopublicidad/buscatesoros-de-purosol" }
 # Figures checked on YouTube / public sources in November 2026.
 stats:
-  - value: "13"
+  - value: "19"
     label: { en: "spots", es: "spots" }
-  - value: "7"
+  - value: "11"
     label: { en: "years of campaigns", es: "años de campañas" }
   - value: "6"
     label: { en: "Puro Amigos", es: "Puro Amigos" }
