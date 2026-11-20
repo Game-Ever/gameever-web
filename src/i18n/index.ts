@@ -46,7 +46,7 @@ export const ui = {
     'project.allWork': '← All work', 'project.trailer': 'Watch trailer', 'project.client': 'Client', 'project.agency': 'Agency', 'project.producer': 'Production company', 'project.year': 'Year',
     'project.platforms': 'Platforms', 'project.genre': 'Genre', 'project.role': 'Our role', 'project.services': 'Services',
     'project.videos': 'Videos', 'project.seasons': 'Seasons & campaigns', 'project.gallery': 'Gallery', 'project.credits': 'Credits',
-    'project.next': 'Next project →', 'project.cta': 'A similar project?', 'project.play': 'Play video', 'project.watch': 'Watch video', 'project.featuredVideos': 'Featured videos', 'project.readArticle': 'Read article', 'project.by': 'By', 'project.video': 'Video', 'store.available': 'Available on', 'store.playOnline': 'Play online', 'store.website': 'Website', 'store.on': 'On', 'store.browser': 'In the browser', 'project.zoom': 'Enlarge image', 'project.prev': 'Previous', 'project.nextImage': 'Next', 'project.close': 'Close',
+    'project.next': 'Next project →', 'project.prevProject': 'Previous project', 'project.nextProject': 'Next project', 'project.browse': 'More projects', 'project.cta': 'A similar project?', 'project.play': 'Play video', 'project.watch': 'Watch video', 'project.featuredVideos': 'Featured videos', 'project.readArticle': 'Read article', 'project.by': 'By', 'project.video': 'Video', 'store.available': 'Available on', 'store.playOnline': 'Play online', 'store.website': 'Website', 'store.on': 'On', 'store.browser': 'In the browser', 'project.zoom': 'Enlarge image', 'project.prev': 'Previous', 'project.nextImage': 'Next', 'project.close': 'Close',
     'project.views': '{n} views', 'project.mostViewed': 'Most viewed', 'project.mostViewedPlural': 'Most viewed', 'project.viewsWord': 'views', 'project.viewsOnYouTube': 'views on YouTube', 'project.showAll': 'Show all {n}', 'project.showLess': 'Show less',
     'project.press': 'In the media', 'project.process': 'Behind the scenes', 'project.pendingImage': 'Image to come', 'project.creditsPending': 'Studio team to be confirmed',
   },
@@ -91,7 +91,7 @@ export const ui = {
     'project.allWork': '← Todos los proyectos', 'project.trailer': 'Ver tráiler', 'project.client': 'Cliente', 'project.agency': 'Agencia', 'project.producer': 'Productora', 'project.year': 'Año',
     'project.platforms': 'Plataformas', 'project.genre': 'Género', 'project.role': 'Nuestro rol', 'project.services': 'Servicios',
     'project.videos': 'Videos', 'project.seasons': 'Temporadas y campañas', 'project.gallery': 'Galería', 'project.credits': 'Créditos',
-    'project.next': 'Próximo proyecto →', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video', 'project.watch': 'Ver video', 'project.featuredVideos': 'Videos destacados', 'project.readArticle': 'Leer nota', 'project.by': 'Por', 'project.video': 'Video', 'store.available': 'Disponible en', 'store.playOnline': 'Jugar online', 'store.website': 'Sitio web', 'store.on': 'En', 'store.browser': 'En el navegador', 'project.zoom': 'Ampliar imagen', 'project.prev': 'Anterior', 'project.nextImage': 'Siguiente', 'project.close': 'Cerrar',
+    'project.next': 'Próximo proyecto →', 'project.prevProject': 'Proyecto anterior', 'project.nextProject': 'Próximo proyecto', 'project.browse': 'Más proyectos', 'project.cta': '¿Un proyecto similar?', 'project.play': 'Reproducir video', 'project.watch': 'Ver video', 'project.featuredVideos': 'Videos destacados', 'project.readArticle': 'Leer nota', 'project.by': 'Por', 'project.video': 'Video', 'store.available': 'Disponible en', 'store.playOnline': 'Jugar online', 'store.website': 'Sitio web', 'store.on': 'En', 'store.browser': 'En el navegador', 'project.zoom': 'Ampliar imagen', 'project.prev': 'Anterior', 'project.nextImage': 'Siguiente', 'project.close': 'Cerrar',
     'project.views': '{n} de vistas', 'project.mostViewed': 'El más visto', 'project.mostViewedPlural': 'Los más vistos', 'project.viewsWord': 'vistas', 'project.viewsOnYouTube': 'vistas en YouTube', 'project.showAll': 'Ver los {n}', 'project.showLess': 'Ver menos',
     'project.press': 'En los medios', 'project.process': 'Detrás de escena', 'project.pendingImage': 'Imagen pendiente', 'project.creditsPending': 'Equipo del estudio a confirmar',
   },
@@ -136,6 +136,11 @@ export async function getProjects() {
   });
 }
 export type Project = CollectionEntry<'projects'>;
+/** The projects page order: newest first, ties keep the Featured order of `projects`. Project pages browse in this order too. */
+export function byNewest(projects: Project[]) {
+  const pos = new Map(projects.map((p, i) => [p.id, i]));
+  return [...projects].sort((a, b) => b.data.year - a.data.year || pos.get(a.id)! - pos.get(b.id)!);
+}
 
 // Plain-text client list (v2 design). Keep in sync with src/data/clients.ts, which has the logos.
 export const CLIENTS = ['Cartoon Network', 'Warner Music', 'Devolver Digital', 'Fiat', 'Michelin', 'Boomerang', 'Legends of Learning', 'Chevrolet', 'Leader Entertainment', 'El Reino Infantil', 'Tic Tac', 'Graffiti Games', 'Loto Plus', 'Rookbird Games', 'Tecpetrol', 'AUBASA'];

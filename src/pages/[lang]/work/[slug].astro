@@ -5,21 +5,22 @@ import YouTube from '../../../components/YouTube.astro';
 import LoopVideo from '../../../components/LoopVideo.astro';
 import Legal from '../../../components/Legal.astro';
 import StoreButton from '../../../components/StoreButton.astro';
-import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP } from '../../../i18n';
-import { SERVICES, platformLabels } from '../../../data/taxonomy';
+import { type Lang, type Project, LANGS, useT, tr, url, getProjects, clientName, ORIGINAL_IP, byNewest } from '../../../i18n';
+import { SERVICES, platformLabels, areasOf } from '../../../data/taxonomy';
 
 export async function getStaticPaths() {
-  const projects = await getProjects();
+  // Browse in the projects-page order (newest first); with ?area= the browser narrows it to that area.
+  const projects = byNewest(await getProjects());
   return LANGS.flatMap((lang) =>
     projects.map((project, i) => ({
       params: { lang, slug: project.id },
-      props: { project, next: projects[(i + 1) % projects.length] },
+      props: { project, all: projects, prev: projects[(i - 1 + projects.length) % projects.length], next: projects[(i + 1) % projects.length] },
     })));
 }
 
-interface Props { project: Project; next: Project }
+interface Props { project: Project; all: Project[]; prev: Project; next: Project }
 const lang = Astro.params.lang as Lang;
-const { project, next } = Astro.props;
+const { project, all, prev, next } = Astro.props;
 const d = project.data;
 const t = useT(lang);
 
@@ -75,7 +76,6 @@ const splitTitle = (p: { title: string; series?: string }) => {
   return rest ? { small: s, big: rest } : { small: undefined, big: p.title };
 };
 const heading = splitTitle(d);
-const nextHeading = splitTitle(next.data);
 const SHOWN = 9; // entries visible per series before "Ver los N"
 // Clips with views: the most viewed big (with its figure), the next two side by side, then the rest. When the clips
 // span more than one year, the rest is grouped by year (newest first), most viewed first inside each year; only the
@@ -96,6 +96,18 @@ const layoutOf = (entries: Entry[]) => {
 };
 // Link previews (WhatsApp, social): the landscape header image when there is one, else the square cover.
 const og = await getImage({ src: heroBg, width: 1200, format: 'jpg' });
+// Every project with its areas and a small thumbnail, so the page can browse only the area the visitor came from.
+const browse = {
+  current: project.id,
+  items: await Promise.all(all.map(async (p) => ({
+    id: p.id,
+    title: p.data.title,
+    href: url(lang, `work/${p.id}`),
+    areas: areasOf(p.data.services, p.data.platforms),
+    src: (await getImage({ src: p.data.cover, width: 112, height: 112, fit: 'cover', format: 'webp' })).src,
+    src2: (await getImage({ src: p.data.cover, width: 224, height: 224, fit: 'cover', format: 'webp' })).src,
+  }))),
+};
 const ogUrl = new URL(og.src, Astro.site).href;
 const isGame = d.services.some((s) => ['brand-games', 'web-games', 'edutainment', 'original-ip'].includes(s)) && d.platforms.some((p) => !['youtube', 'tv'].includes(p));
 const jsonLd = {
@@ -402,12 +414,20 @@ const jsonLd = {
       )}
     </div>
 
-    <a class="next" href={url(lang, `work/${next.id}`)}>
+    {/* Quick browsing: previous project on the left, next on the right: arrow, thumbnail, label and name (name hidden on phones). */}
+    <nav class="pn" aria-label={t('project.browse')} data-prev-label={t('project.prevProject')} data-next-label={t('project.nextProject')}>
+      <script is:inline type="application/json" class="pn-data" set:html={JSON.stringify(browse)} />
       <div class="wrap">
-        <div><span class="mono">{t('project.next')}</span><h2 class="wide">{nextHeading.small && <><span class="series">{nextHeading.small}</span> </>}{nextHeading.big}</h2></div>
-        <Image src={next.data.cover} alt="" width={240} height={240} densities={[1, 2]} />
+        <a class="pn-link pn-prev" href={url(lang, `work/${prev.id}`)} title={prev.data.title} aria-label={`${t('project.prevProject')}: ${prev.data.title}`}>
+          <span class="pn-row"><span class="pn-arrow" aria-hidden="true">←</span><Image src={prev.data.cover} alt="" width={112} height={112} densities={[1, 2]} /></span>
+          <span class="pn-text"><span class="mono">{t('project.prevProject')}</span><span class="pn-name wide">{prev.data.title}</span></span>
+        </a>
+        <a class="pn-link pn-next" href={url(lang, `work/${next.id}`)} title={next.data.title} aria-label={`${t('project.nextProject')}: ${next.data.title}`}>
+          <span class="pn-row"><Image src={next.data.cover} alt="" width={112} height={112} densities={[1, 2]} /><span class="pn-arrow" aria-hidden="true">→</span></span>
+          <span class="pn-text"><span class="mono">{t('project.nextProject')}</span><span class="pn-name wide">{next.data.title}</span></span>
+        </a>
       </div>
-    </a>
+    </nav>
   </main>
 
   <footer class="foot">
@@ -435,7 +455,7 @@ const jsonLd = {
   /* Same size as the home tagline ("Soñamos. Creamos. Jugamos."). */
   h1 { font-size: clamp(30px, 4.8vw, 70px); line-height: 0.9; margin: 14px 0 0; overflow-wrap: break-word; }
   /* Series line over the title (e.g. "Canciones del Zoo" over "Vol. 3"), at the sub-title size. */
-  h1 .series, .next h2 .series { display: block; font-size: clamp(22px, 3vw, 44px); line-height: 1; margin-bottom: 0.35em; }
+  h1 .series { display: block; font-size: clamp(22px, 3vw, 44px); line-height: 1; margin-bottom: 0.35em; }
   .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
 
   .overview { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; padding: 110px 0 90px; }
@@ -619,13 +639,23 @@ const jsonLd = {
   .credits-body > dl { border-top: 1px solid var(--line); }
   .credits p { color: var(--fg2); line-height: 2; padding-bottom: 28px; text-transform: none; }
 
-  .next { display: block; margin-top: 110px; border-top: 1px solid var(--line); }
-  .next .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 70px; padding-bottom: 70px; }
-  .next .mono { color: var(--mute); }
-  .next h2 { font-size: clamp(30px, 4.8vw, 70px); line-height: 0.9; margin-top: 14px; transition: color 0.25s; overflow-wrap: break-word; }
-  .next img { width: min(240px, 30vw); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; transition: transform 0.6s; }
-  .next:hover h2 { color: var(--pink); }
-  .next:hover img { transform: rotate(-3deg) scale(1.05); }
+  /* Previous / next project: two small thumbnails with arrows, label beside them (under them on phones). */
+  .pn { margin-top: 110px; border-top: 1px solid var(--line); }
+  .pn .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 48px; padding-bottom: 48px; }
+  .pn-link { display: flex; align-items: center; gap: 20px; color: var(--fg); }
+  .pn-next { flex-direction: row-reverse; }
+  .pn-row { display: flex; align-items: center; gap: 16px; }
+  .pn-link img { width: 112px; height: 112px; object-fit: cover; border-radius: 12px; box-shadow: 0 0 0 3px transparent; transition: box-shadow 0.25s, transform 0.3s; }
+  .pn-arrow { font-size: 30px; line-height: 1; transition: transform 0.25s, color 0.25s; }
+  .pn-link .mono { color: var(--mute); transition: color 0.25s; }
+  .pn-text { display: flex; flex-direction: column; gap: 8px; max-width: 300px; }
+  .pn-next .pn-text { align-items: flex-end; text-align: right; }
+  .pn-name { font-size: 22px; line-height: 1.05; text-transform: uppercase; font-weight: 800; transition: color 0.25s; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pn-link:hover .pn-name { color: var(--pink); }
+  .pn-link:hover img { box-shadow: 0 0 0 3px var(--pink); }
+  .pn-link:hover .pn-arrow, .pn-link:hover .mono { color: var(--pink); }
+  .pn-prev:hover .pn-arrow { transform: translateX(-6px); }
+  .pn-next:hover .pn-arrow { transform: translateX(6px); }
   /* Same bottom line as the home: version and rights. */
   .foot { padding: 40px 0 20px; }
 
@@ -651,11 +681,15 @@ const jsonLd = {
     /* Two columns on phones: long labels wrap instead of running into the next column. */
     .stats li { min-width: 0; }
     .stats span { white-space: normal; }
-    .next .wrap { flex-direction: column-reverse; align-items: flex-start; }
-    .next img { width: 140px; }
-    .next .wrap > div { min-width: 0; max-width: 100%; }
+    .pn .wrap { padding-top: 36px; padding-bottom: 36px; }
+    .pn-link, .pn-next { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .pn-next { align-items: flex-end; }
+    .pn-row { gap: 10px; }
+    .pn-link img { width: 80px; height: 80px; }
+    .pn-arrow { font-size: 24px; }
+    /* No room for the names on phones: thumbnail, arrow and label only. */
+    .pn-name { display: none; }
     /* Very small phones (320px): the longest project names ("Necromather") still fit. */
-    @media (max-width: 380px) { .next h2 { font-size: 26px; } }
   }
   /* Phones: the square cover shown whole at the top (no overlay), with the title and buttons below it. */
   @media (max-width: 760px) {
@@ -742,5 +776,35 @@ const jsonLd = {
       const dx = e.changedTouches[0].clientX - sx;
       if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
     });
+  }
+</script>
+
+<script>
+  // Browse within the area the visitor came from (?area=games from the projects page): previous / next only pass
+  // through that area, keep it in their links, and the back link returns to the filtered list. Without it (or if the
+  // script fails) the links built at build time browse every project.
+  const nav = document.querySelector<HTMLElement>('.pn');
+  const area = new URLSearchParams(location.search).get('area');
+  if (nav && area) {
+    type Item = { id: string; title: string; href: string; areas: string[]; src: string; src2: string };
+    const data = JSON.parse(nav.querySelector('.pn-data')!.textContent!) as { current: string; items: Item[] };
+    const list = data.items.filter((p) => p.areas.includes(area));
+    const i = list.findIndex((p) => p.id === data.current);
+    if (i >= 0) {
+      const back = document.querySelector<HTMLAnchorElement>('a.back');
+      if (back) back.search = `?area=${area}`;
+      if (list.length < 2) nav.hidden = true;
+      const set = (a: HTMLAnchorElement, p: Item, label: string) => {
+        a.href = `${p.href}?area=${area}`;
+        a.title = p.title;
+        a.setAttribute('aria-label', `${label}: ${p.title}`);
+        const img = a.querySelector('img')!;
+        img.src = p.src;
+        img.srcset = `${p.src} 1x, ${p.src2} 2x`;
+        a.querySelector('.pn-name')!.textContent = p.title;
+      };
+      set(nav.querySelector('.pn-prev')!, list[(i - 1 + list.length) % list.length], nav.dataset.prevLabel!);
+      set(nav.querySelector('.pn-next')!, list[(i + 1) % list.length], nav.dataset.nextLabel!);
+    }
   }
 </script>

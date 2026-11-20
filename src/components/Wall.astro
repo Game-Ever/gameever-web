@@ -1,7 +1,7 @@
 ---
 import Dot from './Dot.astro';
 import { Image } from 'astro:assets';
-import { type Lang, type Project, useT, url, clientName } from '../i18n';
+import { type Lang, type Project, useT, url, clientName, byNewest } from '../i18n';
 import { AREAS, AREA_KEYS, areasOf } from '../data/taxonomy';
 import { WORLD_PROJECTS } from '../data/worlds';
 
@@ -18,8 +18,7 @@ const projects = variant === 'home'
   : Astro.props.projects;
 const full = variant === 'full';
 // The projects page is sorted by year, newest first (ties keep the Featured order).
-const featuredPos = new Map(projects.map((p, i) => [p.id, i]));
-const shown = full ? [...projects].sort((a, b) => b.data.year - a.data.year || featuredPos.get(a.id)! - featuredPos.get(b.id)!) : projects;
+const shown = full ? byNewest(projects) : projects;
 const Heading = full ? 'h1' : 'h2';
 const t = useT(lang);
 
@@ -143,6 +142,8 @@ const i18n = { count: t('work.count'), showing: t('work.showing') };
         const on = !area || c.dataset.area!.split(' ').includes(area);
         c.hidden = !on;
         if (on) c.style.animationDelay = `${Math.min(shown++, 8) * 50}ms`;
+        // The project page then browses (previous / next) only this area, and its back link returns here.
+        c.search = area ? `?area=${area}` : '';
       });
       countEl.textContent = shown === cards.length
         ? i18n.count.replace('{n}', cards.length)
