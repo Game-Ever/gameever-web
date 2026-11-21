@@ -1,9 +1,10 @@
-# Puro Sol (PuroSol Paraguay, 2015–2025)
+# Puro Sol (PuroSol Paraguay, 2015–2026)
 
 Revisado el 20/11/2026. **En la web** van los videos del canal de Game Ever (miniaturas mejoradas por el estudio; la descripción dice el año en que lo hicimos). Cada año se cotejó con lo que subió PuroSol Paraguay (canal UCR5NLgCfW8UveH4IPTjJHpg).
 
 | Spot | Año | Video en la web (Game Ever) | Subida de PuroSol Paraguay | Coincide |
 |---|---|---|---|---|
+| Piratas (Códigos Secretos) | 2026 | Tn_5olV_HQg (subido 20/11/2026) | todavía no está en el canal de PuroSol | según la descripción |
 | Detectives (Códigos Secretos) | 2025 | Ya3qoKbh-B4 | «Purosol códigos secretos», 17/6/2025 (gz9paIIe8AQ, cortes de 10 s) | sí |
 | Dino Aventuras (Puro Amigos + Dinos) | 2025 | i4xJviEdd2w (subido 5/6/2025) | no se identificó; «#VolvéAClasesConLosDinos» de enero de 2026 puede ser otra pieza | sin cotejar |
 | Vuelta al cole | 2024 | KVgyUelT4bM | «Los Puro Amigos están súper emocionados por volver a clases», 6/2/2024 (LmevQoQ3K9w); «Volver a clases es pura diversión», 30/1/2024 (yn-4tqZe67w) | sí |

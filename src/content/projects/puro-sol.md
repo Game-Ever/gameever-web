@@ -1,8 +1,8 @@
 ---
 title: "Puro Sol"
 client: "Puro Sol"
-year: 2025
-years: "2015–2025"
+year: 2026
+years: "2015–2026"
 services:
   - "animation-3d"
   - "advertising"
@@ -13,8 +13,8 @@ genre:
   es: "Publicidad"
 cover: "../../assets/projects/puro-sol/cover.jpg"
 summary:
-  en: "Eleven years of 3D animated campaigns for PuroSol, in Paraguay."
-  es: "Once años de campañas animadas en 3D para PuroSol, en Paraguay."
+  en: "Twelve years of 3D animated campaigns for PuroSol, in Paraguay."
+  es: "Doce años de campañas animadas en 3D para PuroSol, en Paraguay."
 description:
   en: "Since 2015 we have animated PuroSol’s kids campaigns with the agency Prana. The Puro Amigos (Mia, Ralph, Andy, Milo, Lua and Tina) hunt for treasure, go back to school and crack secret codes; for one launch we created the Dinos. “The best friend of fun.”"
   es: "Desde 2015 animamos las campañas infantiles de PuroSol con la agencia Prana. Los Puro Amigos (Mia, Ralph, Andy, Milo, Lua y Tina) buscan tesoros, vuelven a clases y descifran códigos secretos; para un lanzamiento creamos los Dinos. «El mejor amigo de la diversión»."
@@ -24,6 +24,7 @@ role:
 # One spot per card, by year (entriesLayout "years"). All from the Game Ever channel (better thumbnails; the
 # description says the year we made it); years checked against PuroSol Paraguay's own uploads, see resources/puro-sol.md.
 entries:
+  - { title: "Piratas", year: "2026", views: 0, videos: ["Tn_5olV_HQg"] }
   - { title: "Detectives", year: "2025", views: 1487, videos: ["Ya3qoKbh-B4"] }
   - { title: "Dino Aventuras", year: "2025", views: 901, videos: ["i4xJviEdd2w"] }
   - { title: "Vuelta al cole", year: "2024", views: 789, videos: ["KVgyUelT4bM"] }
@@ -56,9 +57,9 @@ press:
   - { outlet: "Infonegocios Paraguay", title: "Buscatesoros de PuroSol", year: "2016", url: "https://infonegocios.com.py/infopublicidad/buscatesoros-de-purosol" }
 # Figures checked on YouTube / public sources in November 2026.
 stats:
-  - value: "19"
+  - value: "20"
     label: { en: "spots", es: "spots" }
-  - value: "11"
+  - value: "12"
     label: { en: "years of campaigns", es: "años de campañas" }
   - value: "6"
     label: { en: "Puro Amigos", es: "Puro Amigos" }
